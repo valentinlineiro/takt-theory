@@ -1,0 +1,45 @@
+{
+  "batch": "001",
+  "results": [
+    {
+      "case_id": "CASE-001",
+      "predicted": "⪰",
+      "observed": "⪰",
+      "match": true,
+      "reasoning": "v2 schema already functional and in use; removing stale v1 paths eliminates inconsistency risk",
+      "rules_triggered": [1, 2]
+    },
+    {
+      "case_id": "CASE-002",
+      "predicted": "⪰",
+      "observed": "⪰",
+      "match": true,
+      "reasoning": "SQLite is source of truth; redundant markdown write eliminated, no readers mentioned",
+      "rules_triggered": [1, 2]
+    },
+    {
+      "case_id": "CASE-003",
+      "predicted": "⪰",
+      "observed": "⪰",
+      "match": true,
+      "reasoning": "DB-gated cleanup removes clutter without affecting active state",
+      "rules_triggered": [1, 2]
+    },
+    {
+      "case_id": "CASE-004",
+      "predicted": "∥",
+      "observed": "≻",
+      "match": false,
+      "reasoning": "latency/coupling savings vs. removing guard for G3; incommensurable without knowing whether hook was sole enforcement",
+      "rules_triggered": []
+    },
+    {
+      "case_id": "CASE-005",
+      "predicted": "∥",
+      "observed": "∥",
+      "match": true,
+      "reasoning": "token/latency savings vs. removing defect-detection phases for G4; trade-off not orderable from case info alone",
+      "rules_triggered": []
+    }
+  ]
+}
