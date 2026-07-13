@@ -1,0 +1,7 @@
+{
+  "case": "CASE-002",
+  "predicted": "⪰",
+  "reasoning": "SQLite is source of truth; redundant markdown write eliminated, no readers mentioned",
+  "batch": "001",
+  "evaluator": "model (blind)"
+}

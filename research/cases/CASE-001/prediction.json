@@ -1,0 +1,7 @@
+{
+  "case": "CASE-001",
+  "predicted": "⪰",
+  "reasoning": "v2 schema already functional and in use; removing stale v1 paths eliminates inconsistency risk",
+  "batch": "001",
+  "evaluator": "model (blind)"
+}

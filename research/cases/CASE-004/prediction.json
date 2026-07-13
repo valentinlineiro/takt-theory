@@ -1,0 +1,7 @@
+{
+  "case": "CASE-004",
+  "predicted": "∥",
+  "reasoning": "latency/coupling savings vs. removing guard for G3; incommensurable without knowing whether hook was sole enforcement",
+  "batch": "001",
+  "evaluator": "model (blind)"
+}

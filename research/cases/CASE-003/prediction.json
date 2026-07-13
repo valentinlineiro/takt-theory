@@ -1,0 +1,7 @@
+{
+  "case": "CASE-003",
+  "predicted": "⪰",
+  "reasoning": "DB-gated cleanup removes clutter without affecting active state",
+  "batch": "001",
+  "evaluator": "model (blind)"
+}

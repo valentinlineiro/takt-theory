@@ -1,0 +1,7 @@
+{
+  "case": "CASE-005",
+  "predicted": "∥",
+  "reasoning": "token/latency savings vs. removing defect-detection phases for G4; trade-off not orderable from case info alone",
+  "batch": "001",
+  "evaluator": "model (blind)"
+}
