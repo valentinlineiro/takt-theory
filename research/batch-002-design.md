@@ -105,7 +105,7 @@ Vertices $V = \{s, v_1, v_2, t\}$, source $s$, sink $t$.
   * **System $S$:** Edges $E = \{(s, v_1), (s, v_2), (v_1, t), (v_2, t)\}$ with capacities $c(s, v_1)=10, c(s, v_2)=5, c(v_1, t)=5, c(v_2, t)=10$. ($g=10, e=30$).
   * **Friction $f$:** Bottleneck edge $(v_1, t)$ of capacity 5.
   * **Transformation $T$:** Increase $c(v_1, t)$ to 10 and reduce $c(v_2, t)$ to 5.
-  * **Outcome:** $g(T(S)) = 15$, $e(T(S)) = 30$.
+  * **Outcome:** $g(T(S)) = 15$, $e(T(S)) = 30$. (The max-flow values are computed by independent parallel paths; no residual augmentation changes the value.)
   * **Oracle Relation:** $T(S) \succ S$.
 
 * **FLOW-002 (Incomparable Trade-off - $\parallel$):**
@@ -126,7 +126,7 @@ Vertices $V = \{s, v_1, v_2, t\}$, source $s$, sink $t$.
   * **System $S$:** Same as FLOW-001. ($g=10, e=30$).
   * **Friction $f$:** Redundant capacity on $(s, v_1)$.
   * **Transformation $T$:** Reduce $c(s, v_1)$ to 8 and increase $c(v_2, t)$ to 12.
-  * **Outcome:** $g(T(S)) = 10$, $e(T(S)) = 30$.
+  * **Outcome:** $g(T(S)) = 10$, $e(T(S)) = 30$. (The max-flow values are computed by independent parallel paths; no residual augmentation changes the value.)
   * **Oracle Relation:** $T(S) \equiv S$.
 
 ---
