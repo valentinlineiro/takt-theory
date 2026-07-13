@@ -1,0 +1,12 @@
+{"case_id":"FSA-001","prediction":"≻","oracle":"≻","match":true,"confidence":"HIGH","rationale":"The transformation reduces environment path cost without altering goal reachability."}
+{"case_id":"FSA-002","prediction":"∥","oracle":"∥","match":true,"confidence":"HIGH","rationale":"Goal reachability is reduced (worse) but environment optimal cost is improved (better), presenting a Pareto trade-off."}
+{"case_id":"FSA-003","prediction":"≺","oracle":"≺","match":true,"confidence":"HIGH","rationale":"Reachability to a terminal state is lost while optimal environment cost remains unchanged."}
+{"case_id":"FSA-004","prediction":"≡","oracle":"≡","match":true,"confidence":"HIGH","rationale":"The modified transition is not on the optimal path, so neither goal reachability nor optimal path cost is affected."}
+{"case_id":"FLOW-001","prediction":"≻","oracle":"≻","match":true,"confidence":"HIGH","rationale":"Max flow is increased while maintaining the same total environment capacity."}
+{"case_id":"FLOW-002","prediction":"∥","oracle":"∥","match":true,"confidence":"HIGH","rationale":"Max flow is increased at the cost of deploying additional capacity, creating a trade-off."}
+{"case_id":"FLOW-003","prediction":"≺","oracle":"≺","match":true,"confidence":"HIGH","rationale":"Additional capacity is deployed without increasing the max flow."}
+{"case_id":"FLOW-004","prediction":"≡","oracle":"≡","match":true,"confidence":"HIGH","rationale":"Total capacity and max flow remain unchanged after redistributing capacity."}
+{"case_id":"RAG-001","prediction":"≻","oracle":"≻","match":true,"confidence":"HIGH","rationale":"Deadlock is resolved and resource/edge complexity is reduced."}
+{"case_id":"RAG-002","prediction":"∥","oracle":"∥","match":true,"confidence":"HIGH","rationale":"Deadlock is resolved by adding more resource capacity, creating a trade-off."}
+{"case_id":"RAG-003","prediction":"≺","oracle":"≺","match":true,"confidence":"HIGH","rationale":"Complexity/edge count is added without improving the deadlock state."}
+{"case_id":"RAG-004","prediction":"≡","oracle":"≡","match":true,"confidence":"HIGH","rationale":"Isomorphic swap of resource names has no impact on deadlock status or resource costs."}
