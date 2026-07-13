@@ -32,7 +32,7 @@ describe('RAG Oracle', () => {
     expect(computeRagOracle(caseEquiv)).toBe('≡');
   });
 
-  it('computes precedence when state degrades (deadlock introduced, more edges) - prec', () => {
+  it('computes precedence when state degrades (deadlock introduced, more edges) - ≺', () => {
     const casePrec: RagCase = {
       id: 'RAG-PREC',
       processes: ['p1', 'p2'],
@@ -44,10 +44,10 @@ describe('RAG Oracle', () => {
       afterRequests: [{ from: 'p1', to: 'r2' }, { from: 'p2', to: 'r1' }],
       afterAllocations: [{ from: 'r1', to: 'p1' }, { from: 'r2', to: 'p2' }]
     };
-    expect(computeRagOracle(casePrec)).toBe('prec');
+    expect(computeRagOracle(casePrec)).toBe('≺');
   });
 
-  it('computes parallel when resolution improves but complexity/cost increases - parallel', () => {
+  it('computes parallel when resolution improves but complexity/cost increases - ∥', () => {
     const caseParallel: RagCase = {
       id: 'RAG-PARALLEL',
       processes: ['p1', 'p2'],
@@ -59,6 +59,6 @@ describe('RAG Oracle', () => {
       afterRequests: [{ from: 'p1', to: 'r2' }],
       afterAllocations: [{ from: 'r2', to: 'p2' }, { from: 'r1', to: 'p1' }, { from: 'r2', to: 'p1' }]
     };
-    expect(computeRagOracle(caseParallel)).toBe('parallel');
+    expect(computeRagOracle(caseParallel)).toBe('∥');
   });
 });

@@ -194,7 +194,7 @@ const ragCases: RagCase[] = [
 export function executeBatch002(): Record<string, string> {
   const results: Record<string, string> = {};
   for (const c of fsaCases) {
-    results[c.id] = computeFsaOracle(c) === 'prec' ? 'prec' : computeFsaOracle(c);
+    results[c.id] = computeFsaOracle(c);
   }
   for (const c of flowCases) {
     results[c.id] = computeFlowOracle(c);

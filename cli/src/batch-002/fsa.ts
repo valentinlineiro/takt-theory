@@ -1,4 +1,4 @@
-export type OracleRelation = '≻' | 'prec' | 'parallel' | '≡';
+export type OracleRelation = '≻' | '≺' | '∥' | '≡';
 
 export interface Transition {
   from: string;
@@ -65,6 +65,6 @@ export function computeFsaOracle(caseData: FsaCase): OracleRelation {
 
   if (g2 === g1 && e2 === e1) return '≡';
   if (g2 >= g1 && e2 <= e1) return '≻';
-  if (g2 <= g1 && e2 >= e1) return 'prec';
-  return 'parallel';
+  if (g2 <= g1 && e2 >= e1) return '≺';
+  return '∥';
 }

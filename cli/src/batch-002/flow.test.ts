@@ -43,7 +43,7 @@ describe('Flow Oracle', () => {
         { from: 'v2', to: 't', cap: 10 }
       ]
     };
-    expect(computeFlowOracle(flow002)).toBe('parallel');
+    expect(computeFlowOracle(flow002)).toBe('∥');
   });
 
   it('computes degrading flow (FLOW-003)', () => {
@@ -65,7 +65,7 @@ describe('Flow Oracle', () => {
         { from: 'v2', to: 't', cap: 15 }
       ]
     };
-    expect(computeFlowOracle(flow003)).toBe('prec');
+    expect(computeFlowOracle(flow003)).toBe('≺');
   });
 
   it('computes equivalent flow (FLOW-004)', () => {

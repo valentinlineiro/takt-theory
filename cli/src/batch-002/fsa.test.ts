@@ -42,7 +42,7 @@ describe('FSA Oracle', () => {
     expect(computeFsaOracle(caseData)).toBe('≡');
   });
 
-  it('computes preceded relation - prec', () => {
+  it('computes preceded relation - ≺', () => {
     const caseData: FsaCase = {
       id: 'FSA-PREC',
       states: ['v0', 'v1', 'v2'],
@@ -57,10 +57,10 @@ describe('FSA Oracle', () => {
         { from: 'v1', to: 'v2', cost: 2 }
       ]
     };
-    expect(computeFsaOracle(caseData)).toBe('prec');
+    expect(computeFsaOracle(caseData)).toBe('≺');
   });
 
-  it('computes parallel relation - parallel', () => {
+  it('computes parallel relation - ∥', () => {
     const caseData: FsaCase = {
       id: 'FSA-PARALLEL',
       states: ['v0', 'v1', 'v2', 'v3'],
@@ -76,8 +76,8 @@ describe('FSA Oracle', () => {
     };
     // before: reached = 1, minCost = 2
     // after: reached = 2, minCost = 4
-    // g2 (2) > g1 (1) but e2 (4) > e1 (2) -> parallel
-    expect(computeFsaOracle(caseData)).toBe('parallel');
+    // g2 (2) > g1 (1) but e2 (4) > e1 (2) -> ∥
+    expect(computeFsaOracle(caseData)).toBe('∥');
   });
 
   it('handles unreachable terminal states', () => {

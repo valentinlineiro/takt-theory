@@ -41,45 +41,43 @@ export function solveRag(
     }
   }
 
-  // 2. Cycle Detection
-  const hasCycle = (start: string): boolean => {
+  // 2. Self-reachability check
+  const isBlocked = (p: string): boolean => {
     const visited = new Set<string>();
-    const recStack = new Set<string>();
-
     const dfs = (u: string): boolean => {
+      if (u === p) return true;
+      if (visited.has(u)) return false;
       visited.add(u);
-      recStack.add(u);
       for (const v of adj[u] ?? []) {
-        if (!visited.has(v)) {
-          if (dfs(v)) return true;
-        } else if (recStack.has(v)) {
-          return true;
-        }
+        if (dfs(v)) return true;
       }
-      recStack.delete(u);
       return false;
     };
-    return dfs(start);
+    for (const neighbor of adj[p] ?? []) {
+      if (dfs(neighbor)) return true;
+    }
+    return false;
   };
 
-  let nonDeadlocked = 0;
+  let nonBlocked = 0;
   for (const p of caseData.processes) {
-    if (!hasCycle(p)) nonDeadlocked++;
+    if (!isBlocked(p)) nonBlocked++;
   }
-  return nonDeadlocked;
+  return nonBlocked;
 }
 
 export function computeRagOracle(caseData: RagCase): OracleRelation {
   const g1 = solveRag(caseData, caseData.beforeCapacities, caseData.beforeRequests, caseData.beforeAllocations);
   const g2 = solveRag(caseData, caseData.afterCapacities, caseData.afterRequests, caseData.afterAllocations);
 
-  const sumCap = (caps: Record<string, number>) => Object.values(caps).reduce((s, v) => s + v, 0);
+  const sumCap = (caps: Record<string, number>) =>
+    caseData.resources.reduce((sum, r) => sum + (caps[r] ?? 1), 0);
 
   const e1 = sumCap(caseData.beforeCapacities) + caseData.beforeRequests.length + caseData.beforeAllocations.length;
   const e2 = sumCap(caseData.afterCapacities) + caseData.afterRequests.length + caseData.afterAllocations.length;
 
   if (g2 === g1 && e2 === e1) return '≡';
   if (g2 >= g1 && e2 <= e1) return '≻';
-  if (g2 <= g1 && e2 >= e1) return 'prec';
-  return 'parallel';
+  if (g2 <= g1 && e2 >= e1) return '≺';
+  return '∥';
 }

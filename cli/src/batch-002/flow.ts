@@ -24,9 +24,10 @@ export function solveMaxFlow(caseData: FlowCase, edges: FlowEdge[]): number {
   for (const e of edges) capMatrix[e.from][e.to] += e.cap;
 
   let maxFlow = 0;
-  const parent: Record<string, string> = {};
+  let parent: Record<string, string> = {};
 
   const bfs = (): boolean => {
+    parent = {};
     const visited = new Set<string>();
     const queue: string[] = [caseData.source];
     visited.add(caseData.source);
@@ -74,6 +75,6 @@ export function computeFlowOracle(caseData: FlowCase): OracleRelation {
 
   if (g2 === g1 && e2 === e1) return '≡';
   if (g2 >= g1 && e2 <= e1) return '≻';
-  if (g2 <= g1 && e2 >= e1) return 'prec';
-  return 'parallel';
+  if (g2 <= g1 && e2 >= e1) return '≺';
+  return '∥';
 }
