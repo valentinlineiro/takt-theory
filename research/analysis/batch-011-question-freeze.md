@@ -24,10 +24,15 @@ Equivalently: **Can the state vector transition $\Delta\Omega$ detect representa
 
 To ensure strict scientific rigor, we define the terms and thresholds ex-ante:
 
-### 3.1 Loss (Decision Mismatch)
-* **Definition**: A run has `Loss > 0` if the optimal action under the corrupted state differs from the optimal action under the clean state, resulting in a utility regret:
+### 3.1 Loss (Decision Mismatch vs. Policy Regret)
+We distinguish between representation-level mismatch and policy-level regret:
+* **Decision Mismatch**: The true optimal action under clean conditions differs from the true optimal action under corrupt conditions:
   \[
-  \text{Regret} = U(\text{Optimal Action}_{clean}) - U(\text{Selected Action}_{corrupt}) > 0
+  a^*_{clean} \neq a^*_{corrupt}
+  \]
+* **Utility Regret**: The utility of the selected action under corrupt conditions is strictly less than the utility of the optimal action under true (clean) conditions:
+  \[
+  \text{Regret} = U_{true}(a^*_{true}) - U_{true}(a_{selected}) > 0
   \]
 
 ### 3.2 Silenced Reliability Delta ($\Delta\rho \approx 0$)
@@ -37,11 +42,11 @@ To ensure strict scientific rigor, we define the terms and thresholds ex-ante:
   \]
 
 ### 3.3 Detectable Signal ($\Delta\Omega_i > \varepsilon_i$)
-* **Definition**: Any other component of the transition delta crosses its specified detection threshold:
-  * **Topological Nodes**: $\Delta V = |V_{k+1}| - |V_k| \neq \Delta V_{clean}$
-  * **Topological Edges**: $\Delta E = |E_{k+1}| - |E_k| \neq \Delta E_{clean}$
-  * **Redundancy Delta**: $|\text{Redundancy}_{k+1} - \text{Redundancy}_k| > \varepsilon_R$
-  * **Clustering Coefficient (Communities)**: $|\text{Communities}_{k+1} - \text{Communities}_k| > \varepsilon_C$
+* **Definition**: Any non-reliability component of the transition delta deviates from the clean system's baseline transition at the same step:
+  * **Topological Nodes**: $|\Delta V_{corrupt} - \Delta V_{clean}| > 0$
+  * **Topological Edges**: $|\Delta E_{corrupt} - \Delta E_{clean}| > 0$
+  * **Redundancy Delta**: $|\Delta \text{Redundancy}_{corrupt} - \Delta \text{Redundancy}_{clean}| > 0.10$
+  * **Clustering Coefficient (Communities)**: $|\Delta \text{Communities}_{corrupt} - \Delta \text{Communities}_{clean}| > 0.05$
 
 ---
 
