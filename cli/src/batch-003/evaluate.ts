@@ -151,7 +151,7 @@ export function runEvaluation(): void {
   }).join('\n');
 
   analysisContent = analysisContent.replace(
-    /\| Case ID \| Domain \| Selected Intervention \| Oracle Optimal \| Match \| Absolute Regret \| Normalized Regret \| Destructive\? \| Friction Accuracy \|\n\| ------- \| ------ \| ---\* \|\n([\s\S]*?)\n\n---/m,
+    /\| Case ID \| Domain \| Selected Intervention \| Oracle Optimal \| Match \| Absolute Regret \| Normalized Regret \| Destructive\? \| Friction Accuracy \|\n\|[ \-|]*\|\n([\s\S]*?)\n\n---/m,
     `| Case ID | Domain | Selected Intervention | Oracle Optimal | Match | Absolute Regret | Normalized Regret | Destructive? | Friction Accuracy |\n| ------- | ------ | --------------------- | -------------- | ----- | --------------- | ----------------- | ------------ | ----------------- |\n${newTableLines}\n\n---`
   );
 

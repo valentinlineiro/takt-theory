@@ -17,6 +17,21 @@
 
 | Case ID | Domain | Selected Intervention | Oracle Optimal | Match | Absolute Regret | Normalized Regret | Destructive? | Friction Accuracy |
 | ------- | ------ | --------------------- | -------------- | ----- | --------------- | ----------------- | ------------ | ----------------- |
+| DEP-001 | DEP | T1 | T1 | ✅ | 0.0000 | 0.0000 | 🛡️ No | 100% |
+| DEP-002 | DEP | T0 | T0 | ✅ | 0.0000 | 0.0000 | 🛡️ No | 100% |
+| DEP-003 | DEP | T0 | T0 | ✅ | 0.0000 | 0.0000 | 🛡️ No | 100% |
+| DEP-004 | DEP | T1 | T1 | ✅ | 0.0000 | 0.0000 | 🛡️ No | 100% |
+| DEP-005 | DEP | T1 | T0 | ❌ | 1.0000 | 1.0000 | 💥 Yes | 0% |
+| WRK-001 | WRK | T1 | T1 | ✅ | 0.0000 | 0.0000 | 🛡️ No | 100% |
+| WRK-002 | WRK | T0 | T0 | ✅ | 0.0000 | 0.0000 | 🛡️ No | 100% |
+| WRK-003 | WRK | T0 | T0 | ✅ | 0.0000 | 0.0000 | 🛡️ No | 100% |
+| WRK-004 | WRK | T2 | T2 | ✅ | 0.0000 | 0.0000 | 🛡️ No | 100% |
+| WRK-005 | WRK | T0 | T0 | ✅ | 0.0000 | 0.0000 | 🛡️ No | 100% |
+| RES-001 | RES | T1 | T1 | ✅ | 0.0000 | 0.0000 | 🛡️ No | 100% |
+| RES-002 | RES | T0 | T0 | ✅ | 0.0000 | 0.0000 | 🛡️ No | 100% |
+| RES-003 | RES | T0 | T0 | ✅ | 0.0000 | 0.0000 | 🛡️ No | 100% |
+| RES-004 | RES | T2 | T2 | ✅ | 0.0000 | 0.0000 | 🛡️ No | 100% |
+| RES-005 | RES | T1 | T0 | ❌ | 6.8041 | 1.0000 | 💥 Yes | 0% |
 
 ---
 
@@ -27,7 +42,7 @@
 * **DEP-002**: Selected T0 (Optimal: T0). Regret: 0.00. Perfect match.
 * **DEP-003**: Selected T0 (Optimal: T0). Regret: 0.00. Perfect match.
 * **DEP-004**: Selected T1 (Optimal: T1). Regret: 0.00. Perfect match.
-* **DEP-005**: Selected T1 (Optimal: T0). Regret: 1.00. Missed optimal due to Removing e_direct seems like a safe reduction of edge cost, but it actually destroys a disjoint path.
+* **DEP-005**: Selected T1 (Optimal: T0). Regret: 1.00. Missed optimal because removing the direct edge `e_direct` seems like a safe reduction of edge cost, but it actually destroys a redundant backup path that provides crucial fault-tolerance.
 
 ### Workflow (WRK) Cases
 * **WRK-001**: Selected T1 (Optimal: T1). Regret: 0.00. Perfect match.
@@ -41,7 +56,7 @@
 * **RES-002**: Selected T0 (Optimal: T0). Regret: 0.00. Perfect match.
 * **RES-003**: Selected T0 (Optimal: T0). Regret: 0.00. Perfect match.
 * **RES-004**: Selected T2 (Optimal: T2). Regret: 0.00. Perfect match.
-* **RES-005**: Selected T1 (Optimal: T0). Regret: 6.80. Missed optimal due to Removing the rate limiter seems to improve throughput, but it actually causes a global contention crash.
+* **RES-005**: Selected T1 (Optimal: T0). Regret: 6.80. Missed optimal because removing the rate limiter seems to improve throughput, but it actually causes a global contention crash.
 
 ---
 
