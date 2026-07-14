@@ -71,4 +71,4 @@ We must design an adversary ($A_{\text{temporalFN}}$) that achieves:
 \text{Loss} > 0 \quad \land \quad \Delta\rho \approx 0
 \]
 
-If such an adversary defeats the transition-based detector, we will know whether the state vector $\Omega$ offers true multidimensional observability (by relying on topological deltas $\Delta T$ or community changes) or if $\Delta\rho$ was simply a highly effective, specific temporal filter for $A_{\text{sparseFN}}$.
+If such an adversary defeats the transition-based detector ($\Delta\Omega \approx 0$), it will demonstrate a clear boundary of internal observability *specific to the defined representation $\Omega$, the adversary, and the experimental domain*—shifting our policy requirements for this domain toward robust hedging rather than detection-based expansion. Conversely, if other dimensions $\Delta\Omega_i$ (such as topology deltas $\Delta T$ or community changes) successfully flag the corruption, we will have proven the true multidimensional self-diagnostic capacity of the representation.
