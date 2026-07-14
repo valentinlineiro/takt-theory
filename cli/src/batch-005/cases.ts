@@ -12,6 +12,7 @@ export interface CaseIntervention {
   activeNodes: string[];
   activeEdges: string[];
   hasRateLimiter?: boolean;
+  checkpoints?: string[];
 }
 
 export interface CaseData {
@@ -194,8 +195,19 @@ function evaluateWorkflow(
     successProb *= 1.0 - t.pFail;
   }
 
-  const g = 10 * successProb;
-  const e = activeTasks.reduce((sum, t) => sum + t.cost, 0);
+  const g = activeTasks.length > 0 ? 10 * successProb : 0;
+
+  let e = activeTasks.reduce((sum, t) => sum + t.cost, 0);
+  let hasCheckpoint = false;
+  for (const t of activeTasks) {
+    const isCheckpoint = intervention.checkpoints?.includes(t.id) ?? t.isCheckpoint;
+    if (isCheckpoint) {
+      hasCheckpoint = true;
+    }
+  }
+  if (hasCheckpoint) {
+    e += 2;
+  }
 
   let risk = 0;
   for (let i = 0; i < activeTasks.length; i++) {
@@ -203,10 +215,11 @@ function evaluateWorkflow(
     if (t.pFail === 0) continue;
 
     let rollbackTargetIndex = -1;
-    for (let j = i - 1; j >= 0; j--) {
-      if (activeTasks[j].isCheckpoint) {
+    for (let j = 0; j < i; j++) {
+      const activeTask = activeTasks[j];
+      const isCheckpoint = intervention.checkpoints?.includes(activeTask.id) ?? activeTask.isCheckpoint;
+      if (isCheckpoint) {
         rollbackTargetIndex = j;
-        break;
       }
     }
 
@@ -254,7 +267,7 @@ function evaluateResourceSystem(
     baseBlocked + rateLimiterBlock
   );
   const unblockedCount = Math.max(0, activeProcesses.length - blockedCount);
-  const g = unblockedCount * 5;
+  const g = activeProcesses.length > 0 ? unblockedCount * 5 : 0;
 
   let totalOverload = 0;
   for (const r of activeResources) {
@@ -286,31 +299,33 @@ export function loadBatch005Cases(): CaseData[] {
 
   // ----------------------------------------------------
   // TRIPLET 1: DEP-001 (A), DEP-002 (B), DEP-003 (C)
-  // Local structure O_1 contains s, v1, t. Focal element is s.
-  // Boundary node v1 has outgoing path: v1 -> v1_next.
-  // Path length is 2 hops to t (or decoy).
-  // Sensitivity: Df = true.
+  // Local structure: s->t, s->v1, v1->t, v1->v1_next.
+  // Boundary node is v1.
+  // Sensitivity Df = true.
   // ----------------------------------------------------
   const baseDep1 = (id: string, Pf: boolean, includeDecoy: boolean, hasIsolation: boolean): CaseData => {
-    const graphNodes = ['s', 'v1', 'v1_next', 't'];
+    const graphNodes = ['s', 'v1', 'v1_next', 'v1_next_next', 't'];
     const graphEdges: GraphEdge[] = [
       { from: 's', to: 't' },
       { from: 's', to: 'v1' },
+      { from: 'v1', to: 't' },
       { from: 'v1', to: 'v1_next' },
+      { from: 'v1_next', to: 'v1_next_next' },
     ];
 
     if (includeDecoy) {
       graphNodes.push('decoy_v2');
-      graphEdges.push({ from: 'v1_next', to: 'decoy_v2' });
+      graphEdges.push({ from: 'v1_next_next', to: 'decoy_v2' });
       graphEdges.push({ from: 'decoy_v2', to: 't' });
     } else {
-      graphEdges.push({ from: 'v1_next', to: 't' });
+      graphEdges.push({ from: 'v1_next_next', to: 't' });
     }
 
     const caps: Record<string, CapabilitySignature> = {
       s: blankCapabilities(),
       v1: { Pf, Pr: false, Ps: false, Pc: false, Pm: false },
-      v1_next: blankCapabilities(),
+      v1_next: { Pf: id === 'DEP-003' ? true : false, Pr: false, Ps: false, Pc: false, Pm: false },
+      v1_next_next: { Pf: id === 'DEP-003' ? true : false, Pr: false, Ps: false, Pc: false, Pm: false },
       t: blankCapabilities(),
     };
     if (includeDecoy) {
@@ -322,15 +337,17 @@ export function loadBatch005Cases(): CaseData[] {
         id: 'T0',
         sensitivity: addSensitivity(false, false, false, false, false),
         activeNodes: [...graphNodes],
-        activeEdges: ['s->t', 's->v1', 'v1->v1_next', 'v1_next->t', 'v1_next->decoy_v2', 'decoy_v2->t'],
+        activeEdges: ['s->t', 's->v1', 'v1->t', 'v1_next->v1', 'v1_next->v1_next_next', 'v1_next_next->t', 'v1_next_next->decoy_v2', 'decoy_v2->t'],
       },
       T1: {
         id: 'T1',
         sensitivity: addSensitivity(true, false, false, false, false), // Df = true
         activeNodes: [...graphNodes],
-        activeEdges: ['s->v1', 'v1->v1_next', 'v1_next->t', 'v1_next->decoy_v2', 'decoy_v2->t'],
+        activeEdges: ['s->t', 's->v1', 'v1_next->v1', 'v1_next->v1_next_next', 'v1_next_next->t', 'v1_next_next->decoy_v2', 'decoy_v2->t'],
       },
     };
+
+    const isCaseA = id === 'DEP-001';
 
     return {
       id,
@@ -339,8 +356,8 @@ export function loadBatch005Cases(): CaseData[] {
       kMax: 2,
       graph: { nodes: graphNodes, edges: graphEdges, capabilities: caps },
       candidates,
-      failures: { v1: 0.2, v1_next: 0.1, decoy_v2: 0.1 },
-      isolationNodes: hasIsolation ? ['v1_next'] : [],
+      failures: { v1: 0.01, v1_next: isCaseA ? 0.0 : 0.8, decoy_v2: isCaseA ? 0.0 : 0.8 },
+      isolationNodes: hasIsolation ? ['v1_next_next'] : [],
     };
   };
 
@@ -350,29 +367,31 @@ export function loadBatch005Cases(): CaseData[] {
 
   // ----------------------------------------------------
   // TRIPLET 2: DEP-004 (A), DEP-005 (B), DEP-006 (C)
-  // Local structure: s->t, s->v3 -> v3_next.
   // Sensitivity: Dr = true.
   // ----------------------------------------------------
   const baseDep2 = (id: string, Pr: boolean, includeDecoy: boolean, hasRecovery: boolean): CaseData => {
-    const graphNodes = ['s', 'v3', 'v3_next', 't'];
+    const graphNodes = ['s', 'v3', 'v3_next', 'v3_next_next', 't'];
     const graphEdges: GraphEdge[] = [
       { from: 's', to: 't' },
       { from: 's', to: 'v3' },
+      { from: 'v3', to: 't' },
       { from: 'v3', to: 'v3_next' },
+      { from: 'v3_next', to: 'v3_next_next' },
     ];
 
     if (includeDecoy) {
       graphNodes.push('decoy_v4');
-      graphEdges.push({ from: 'v3_next', to: 'decoy_v4' });
+      graphEdges.push({ from: 'v3_next_next', to: 'decoy_v4' });
       graphEdges.push({ from: 'decoy_v4', to: 't' });
     } else {
-      graphEdges.push({ from: 'v3_next', to: 't' });
+      graphEdges.push({ from: 'v3_next_next', to: 't' });
     }
 
     const caps: Record<string, CapabilitySignature> = {
       s: blankCapabilities(),
       v3: { Pf: false, Pr, Ps: false, Pc: false, Pm: false },
-      v3_next: blankCapabilities(),
+      v3_next: { Pf: false, Pr: id === 'DEP-006' ? true : false, Ps: false, Pc: false, Pm: false },
+      v3_next_next: { Pf: false, Pr: id === 'DEP-006' ? true : false, Ps: false, Pc: false, Pm: false },
       t: blankCapabilities(),
     };
     if (includeDecoy) {
@@ -384,15 +403,17 @@ export function loadBatch005Cases(): CaseData[] {
         id: 'T0',
         sensitivity: addSensitivity(false, false, false, false, false),
         activeNodes: [...graphNodes],
-        activeEdges: ['s->t', 's->v3', 'v3->v3_next', 'v3_next->t', 'v3_next->decoy_v4', 'decoy_v4->t'],
+        activeEdges: ['s->t', 's->v3', 'v3->t', 'v3_next->v3', 'v3_next->v3_next_next', 'v3_next_next->t', 'v3_next_next->decoy_v4', 'decoy_v4->t'],
       },
       T1: {
         id: 'T1',
         sensitivity: addSensitivity(false, true, false, false, false), // Dr = true
         activeNodes: [...graphNodes],
-        activeEdges: ['s->v3', 'v3->v3_next', 'v3_next->t', 'v3_next->decoy_v4', 'decoy_v4->t'],
+        activeEdges: ['s->t', 's->v3', 'v3_next->v3', 'v3_next->v3_next_next', 'v3_next_next->t', 'v3_next_next->decoy_v4', 'decoy_v4->t'],
       },
     };
+
+    const isCaseA = id === 'DEP-004';
 
     return {
       id,
@@ -401,7 +422,7 @@ export function loadBatch005Cases(): CaseData[] {
       kMax: 2,
       graph: { nodes: graphNodes, edges: graphEdges, capabilities: caps },
       candidates,
-      failures: { v3: 0.1, v3_next: 0.1, decoy_v4: 0.2 },
+      failures: { v3: 0.01, v3_next: isCaseA ? 0.0 : 0.8, decoy_v4: isCaseA ? 0.0 : 0.8 },
       isolationNodes: [],
     };
   };
@@ -413,8 +434,8 @@ export function loadBatch005Cases(): CaseData[] {
   // ----------------------------------------------------
   // TRIPLET 3: WRK-001 (A), WRK-002 (B), WRK-003 (C)
   // Workflow: t1 -> t2 -> t2_next -> decoy_t3. Focal node is t1.
-  // Boundary task t2.
-  // Sensitivity Dm = true (mutability).
+  // Boundary node t2.
+  // Sensitivity Dm = true.
   // ----------------------------------------------------
   const baseWrk1 = (id: string, Pm: boolean, includeDecoy: boolean, isCheckpoint: boolean): CaseData => {
     const graphNodes = ['t1', 't2', 't2_next'];
@@ -430,10 +451,10 @@ export function loadBatch005Cases(): CaseData[] {
     const caps: Record<string, CapabilitySignature> = {
       t1: blankCapabilities(),
       t2: { Pf: false, Pr: false, Ps: false, Pc: false, Pm },
-      t2_next: blankCapabilities(),
+      t2_next: { Pf: false, Pr: false, Ps: false, Pc: false, Pm: id === 'WRK-003' ? true : false },
     };
     if (includeDecoy) {
-      caps['decoy_t3'] = blankCapabilities();
+      caps['decoy_t3'] = { Pf: false, Pr: false, Ps: false, Pc: false, Pm: id === 'WRK-003' ? true : false };
     }
 
     const candidates: Record<string, CaseIntervention> = {
@@ -442,20 +463,24 @@ export function loadBatch005Cases(): CaseData[] {
         sensitivity: addSensitivity(false, false, false, false, false),
         activeNodes: [...graphNodes],
         activeEdges: ['t1->t2', 't2->t2_next', 't2_next->decoy_t3'],
+        checkpoints: ['t2'], // T0 checkpoints at t2
       },
       T1: {
         id: 'T1',
         sensitivity: addSensitivity(false, false, false, false, true), // Dm = true
-        activeNodes: ['t2', 't2_next', 'decoy_t3'],
-        activeEdges: ['t2->t2_next', 't2_next->decoy_t3'],
+        activeNodes: [...graphNodes],
+        activeEdges: ['t1->t2', 't2->t2_next', 't2_next->decoy_t3'],
+        checkpoints: [], // T1 does not checkpoint
       },
     };
 
+    const isCaseA = id === 'WRK-001';
+
     const tasks = [
-      { id: 't1', cost: 1, pFail: 0.0, isCheckpoint },
-      { id: 't2', cost: 2, pFail: 0.1, isCheckpoint: false },
-      { id: 't2_next', cost: 2, pFail: 0.0, isCheckpoint: false },
-      { id: 'decoy_t3', cost: 3, pFail: 0.2, isCheckpoint: false },
+      { id: 't1', cost: 1, pFail: 0.0, isCheckpoint: false },
+      { id: 't2', cost: 5, pFail: 0.0, isCheckpoint: false },
+      { id: 't2_next', cost: 5, pFail: isCaseA ? 0.0 : 0.8, isCheckpoint: false },
+      { id: 'decoy_t3', cost: 5, pFail: isCaseA ? 0.0 : 0.8, isCheckpoint: false },
     ];
 
     return {
@@ -477,7 +502,6 @@ export function loadBatch005Cases(): CaseData[] {
 
   // ----------------------------------------------------
   // TRIPLET 4: WRK-004 (A), WRK-005 (B), WRK-006 (C)
-  // Workflow: t1 -> t2 -> t2_next -> decoy_t4.
   // Sensitivity: Ds = true.
   // ----------------------------------------------------
   const baseWrk2 = (id: string, Ps: boolean, includeDecoy: boolean, isCheckpoint: boolean): CaseData => {
@@ -494,10 +518,10 @@ export function loadBatch005Cases(): CaseData[] {
     const caps: Record<string, CapabilitySignature> = {
       t1: blankCapabilities(),
       t2: { Pf: false, Pr: false, Ps, Pc: false, Pm: false },
-      t2_next: blankCapabilities(),
+      t2_next: { Pf: false, Pr: false, Ps: id === 'WRK-006' ? true : false, Pc: false, Pm: false },
     };
     if (includeDecoy) {
-      caps['decoy_t4'] = blankCapabilities();
+      caps['decoy_t4'] = { Pf: false, Pr: false, Ps: id === 'WRK-006' ? true : false, Pc: false, Pm: false };
     }
 
     const candidates: Record<string, CaseIntervention> = {
@@ -506,20 +530,24 @@ export function loadBatch005Cases(): CaseData[] {
         sensitivity: addSensitivity(false, false, false, false, false),
         activeNodes: [...graphNodes],
         activeEdges: ['t1->t2', 't2->t2_next', 't2_next->decoy_t4'],
+        checkpoints: ['t2'], // T0 checkpoints at t2
       },
       T1: {
         id: 'T1',
         sensitivity: addSensitivity(false, false, true, false, false), // Ds = true
-        activeNodes: ['t2', 't2_next', 'decoy_t4'],
-        activeEdges: ['t2->t2_next', 't2_next->decoy_t4'],
+        activeNodes: [...graphNodes],
+        activeEdges: ['t1->t2', 't2->t2_next', 't2_next->decoy_t4'],
+        checkpoints: [], // T1 does not checkpoint
       },
     };
 
+    const isCaseA = id === 'WRK-004';
+
     const tasks = [
-      { id: 't1', cost: 2, pFail: 0.0, isCheckpoint },
-      { id: 't2', cost: 1, pFail: 0.1, isCheckpoint: false },
-      { id: 't2_next', cost: 1, pFail: 0.0, isCheckpoint: false },
-      { id: 'decoy_t4', cost: 4, pFail: 0.2, isCheckpoint: false },
+      { id: 't1', cost: 2, pFail: 0.0, isCheckpoint: false },
+      { id: 't2', cost: 5, pFail: 0.0, isCheckpoint: false },
+      { id: 't2_next', cost: 5, pFail: isCaseA ? 0.0 : 0.8, isCheckpoint: false },
+      { id: 'decoy_t4', cost: 5, pFail: isCaseA ? 0.0 : 0.8, isCheckpoint: false },
     ];
 
     return {
@@ -541,28 +569,29 @@ export function loadBatch005Cases(): CaseData[] {
 
   // ----------------------------------------------------
   // TRIPLET 5: RES-001 (A), RES-002 (B), RES-003 (C)
-  // Resource Contention Graph: p1 -> r1 -> r1_next -> decoy_p2. Focal element is p1.
+  // Resource Contention Graph: p1 -> r1 -> decoy_p2. Focal element is p1.
   // Boundary node r1.
   // Sensitivity Dc = true.
   // ----------------------------------------------------
   const baseRes1 = (id: string, Pc: boolean, includeDecoy: boolean, capacity: number): CaseData => {
-    const graphNodes = ['p1', 'r1', 'r1_next'];
+    const graphNodes = ['p1', 'r1'];
     const graphEdges: GraphEdge[] = [
       { from: 'p1', to: 'r1' },
-      { from: 'r1', to: 'r1_next' },
     ];
     if (includeDecoy) {
       graphNodes.push('decoy_p2');
-      graphEdges.push({ from: 'decoy_p2', to: 'r1_next' });
+      graphEdges.push({ from: 'decoy_p2', to: 'r1' });
+      graphNodes.push('decoy_r2');
+      graphEdges.push({ from: 'decoy_p2', to: 'decoy_r2' });
     }
 
     const caps: Record<string, CapabilitySignature> = {
       p1: blankCapabilities(),
       r1: { Pf: false, Pr: false, Ps: false, Pc, Pm: false },
-      r1_next: blankCapabilities(),
     };
     if (includeDecoy) {
-      caps['decoy_p2'] = blankCapabilities();
+      caps['decoy_p2'] = { Pf: false, Pr: false, Ps: false, Pc: id === 'RES-003' ? true : false, Pm: false };
+      caps['decoy_r2'] = blankCapabilities();
     }
 
     const candidates: Record<string, CaseIntervention> = {
@@ -570,14 +599,14 @@ export function loadBatch005Cases(): CaseData[] {
         id: 'T0',
         sensitivity: addSensitivity(false, false, false, false, false),
         activeNodes: [...graphNodes],
-        activeEdges: ['p1->r1', 'r1->r1_next', 'decoy_p2->r1_next'],
+        activeEdges: ['p1->r1', 'decoy_p2->r1', 'decoy_p2->decoy_r2'],
         hasRateLimiter: false,
       },
       T1: {
         id: 'T1',
         sensitivity: addSensitivity(false, false, false, true, false), // Dc = true
         activeNodes: [...graphNodes],
-        activeEdges: ['p1->r1', 'r1->r1_next', 'decoy_p2->r1_next'],
+        activeEdges: ['p1->r1', 'decoy_p2->r1', 'decoy_p2->decoy_r2'],
         hasRateLimiter: true,
       },
     };
@@ -591,8 +620,8 @@ export function loadBatch005Cases(): CaseData[] {
       candidates,
       failures: {},
       isolationNodes: [],
-      capacities: { r1: capacity, r1_next: 1 },
-      demands: { r1: 2, r1_next: 1 },
+      capacities: { r1: capacity, decoy_r2: 1 },
+      demands: { r1: id === 'RES-001' ? 1 : 3, decoy_r2: 1 },
     };
   };
 

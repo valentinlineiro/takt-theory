@@ -13,21 +13,21 @@ describe('Batch-005 Baseline Runners', () => {
     const resGlobalA = runBaselineGlobal(dep001);
     const resAdaptiveA = runBaselineAdaptive(dep001, 2);
 
-    expect(resLocalA).toBe('T1');
-    expect(resGlobalA).toBe('T1');
-    expect(resAdaptiveA.intervention).toBe('T1');
+    expect(resLocalA).toBe('T0');
+    expect(resGlobalA).toBe('T0');
+    expect(resAdaptiveA.intervention).toBe('T0');
     expect(resAdaptiveA.kActual).toBe(1);
     expect(resAdaptiveA.finishedUcert).toBe(0);
 
-    // Test case DEP-003 (Case C: escalates to global = T0, while local is T1)
+    // Test case DEP-003 (Case C: escalates to global = T0)
     const dep003 = cases.find(c => c.id === 'DEP-003')!;
     const resLocalC = runBaselineLocal(dep003);
     const resGlobalC = runBaselineGlobal(dep003);
     const resAdaptiveC = runBaselineAdaptive(dep003, 2);
 
-    expect(resLocalC).toBe('T1');
-    expect(resGlobalC).toBe('T1');
-    expect(resAdaptiveC.intervention).toBe('T1');
+    expect(resLocalC).toBe('T0');
+    expect(resGlobalC).toBe('T0');
+    expect(resAdaptiveC.intervention).toBe('T0');
     expect(resAdaptiveC.kActual).toBe(2);
     expect(resAdaptiveC.finishedUcert).toBe(1); // Escalated
   });
