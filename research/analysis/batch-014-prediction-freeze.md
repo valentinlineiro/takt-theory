@@ -37,15 +37,15 @@ X_2(k) = \sum_{v \in V_k} p_f(v)
 
 * **Clean transition ($k=1 \rightarrow k=2$)**:
   * $V_{clean, 1} = \{s, t, v3\} \implies X_2(1)_{clean} = 0.01$.
-  * $V_{clean, 2} = \{s, t, v3, v3\_next, v3\_next\_next\} \implies X_2(2)_{clean} = 0.01 + 0.80 + 0.80 = 1.61$.
-  * $\Delta X_{2, clean} = |1.61 - 0.01| = 1.60$.
+  * $V_{clean, 2} = \{s, t, v3, v3\_next, v3\_next\_next\} \implies X_2(2)_{clean} = 0.01 + 0.80 + 0.00 = 0.81$.
+  * $\Delta X_{2, clean} = |0.81 - 0.01| = 0.80$.
 * **Corrupt transition ($k=1 \rightarrow k=2$)**:
-  * $V_{corrupt, 1} = \{s, v3\_next, v3\_next\_next\} \implies X_2(1)_{corrupt} = 0.80 + 0.80 = 1.60$.
-  * $V_{corrupt, 2} = \{s, t, v3, v3\_next, v3\_next\_next\} \implies X_2(2)_{corrupt} = 1.61$.
-  * $\Delta X_{2, corrupt} = |1.61 - 1.60| = 0.01$.
+  * $V_{corrupt, 1} = \{s, v3\_next, v3\_next\_next\} \implies X_2(1)_{corrupt} = 0.80 + 0.00 = 0.80$.
+  * $V_{corrupt, 2} = \{s, t, v3, v3\_next, v3\_next\_next\} \implies X_2(2)_{corrupt} = 0.81$.
+  * $\Delta X_{2, corrupt} = |0.81 - 0.80| = 0.01$.
 * **Prediction**:
   \[
-  \boxed{d_{X2} = |0.01 - 1.60| = 1.59 > \varepsilon_{X2} = 0.05 \quad \text{(Detected, High Magnitude)}}
+  \boxed{d_{X2} = |0.01 - 0.80| = 0.79 > \varepsilon_{X2} = 0.05 \quad \text{(Detected, High Magnitude)}}
   \]
 
 ---
