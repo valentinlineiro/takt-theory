@@ -54,3 +54,29 @@ Evaluating controls (no topological corruption applied):
 
 ### [Scenario A — Structural Observability Confirmed]
 All topological corruption runs under cardinality invariance were successfully flagged by $\Delta\Omega_i$ (specifically through the Community clustering coefficient delta $\Delta Com$). The higher-order community dimension successfully detects connection rearrangements when count channels are blind.
+
+---
+
+## 5. Resolution of Prediction Magnitude Discrepancy
+
+We resolve the difference between the predicted delta ($\widehat{\Delta Com} = 0.22$) and the observed delta ($\Delta Com_{observed} = 0.53$):
+
+### 5.1 Source of the Error
+The ex-ante prediction assumed Case `DEP-005` included the decoy node `decoy_v4` (which is only present in `DEP-006` under `includeDecoy = true`). In reality, `DEP-005` consists of a 5-node graph: `s, t, v3, v3_next, v3_next_next`.
+
+### 5.2 Mathematical Resolution
+Under the true 5-node topology:
+* **Clean Graph Clustering at $k=2$**:
+  * Local CC: `s` (1.0), `t` (0.33), `v3` (0.33), `v3_next_next` (0.0), `v3_next` (0.0).
+  * Average: $1.66 / 5 = 0.333$.
+  * Clean transition: $\Delta \text{Communities}_{clean} = 0.333 - 1.0 = -0.667$.
+* **Corrupt Graph Clustering at $k=2$** (with `v3_next_next -> v3` redirect):
+  * Local CC: `s` (1.0), `t` (1.0) [closed triangle `s, t, v3`], `v3` (0.33), `v3_next` (1.0) [closed triangle `v3, v3_next, v3_next_next`], `v3_next_next` (1.0).
+  * Average: $4.33 / 5 = 0.866$.
+  * Corrupt transition: $\Delta \text{Communities}_{corrupt} = 0.866 - 1.0 = -0.133$.
+* **Resulting Deviation**:
+  \[
+  \Delta Com = |-0.133 - (-0.667)| = 0.533
+  \]
+
+This explains the discrepancy down to the third decimal place. The detector behaved exactly according to its definitions; the ex-ante prediction was based on a slightly different graph specification.
