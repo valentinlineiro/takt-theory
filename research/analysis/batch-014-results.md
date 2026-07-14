@@ -60,3 +60,30 @@ Both candidates $X_1$ and $X_2$ successfully separated the Batch-013 equivalence
 2. **$dim(X) = 1$** is proven **sufficient** in Batch-014 ($D_{joint}^{+X_1} = D_{joint}^{+X_2} = \text{detected}$).
 3. Therefore, the minimal dimensional augmentation required to separate the Batch-013 equivalence class under the frozen cost metric is exactly:
    $$\boxed{\dim(X)_{min} = 1}$$
+
+## 5. Magnitude Discrepancy Resolution
+
+During execution, a quantitative discrepancy in the $X_2$ deviation magnitude was observed:
+* **Ex-Ante Prediction**: $d_{X2} = 1.59$
+* **Observed Value**: $d_{X2} = 0.790$
+
+### Root Cause Analysis:
+The discrepancy arose from a modeling assumption difference in node failure rates for Case `DEP-005` in `cli/src/batch-005/cases.ts`:
+1. The ex-ante calculation assumed the node `'v3_next_next'` carried a failure rate of $pFail = 0.80$ (modeled symmetrically with `'v3_next'`).
+2. However, the actual fixture's `failures` map is defined as:
+   `failures: { v3: 0.01, v3_next: 0.8, decoy_v4: 0.8 }`
+   Node `'v3_next_next'` is unmapped in the `failures` object, reverting to a default failure rate of $pFail = 0.00$.
+
+### Recalculation under True Fixture Parameters:
+* **Clean transition delta**:
+  * $X_2(1)_{clean} = p_f(v3) = 0.01$
+  * $X_2(2)_{clean} = p_f(v3) + p_f(v3\_next) + p_f(v3\_next\_next) = 0.01 + 0.80 + 0.00 = 0.81$
+  * $\Delta X_{2, clean} = |0.81 - 0.01| = 0.80$
+* **Corrupt transition delta**:
+  * $X_2(1)_{corrupt} = p_f(v3\_next) + p_f(v3\_next\_next) = 0.80 + 0.00 = 0.80$
+  * $X_2(2)_{corrupt} = 0.81$
+  * $\Delta X_{2, corrupt} = |0.81 - 0.80| = 0.01$
+* **Total deviation**:
+  * $d_{X2} = |\Delta X_{2, corrupt} - \Delta X_{2, clean}| = |0.80 - 0.01| = \mathbf{0.790}$
+
+This matches the observed value of exactly $0.790$, fully resolving the discrepancy.
