@@ -49,13 +49,13 @@ We freeze the exact analytical transition metrics of the clean baseline:
   * $|E|_2 = 6$ (all edges)
   * $\Delta |E|_{clean} = 3$
 * **Redundancy baseline**:
-  * $\text{Redundancy}_1 = 1.00$ (average disjoint paths to boundary nodes `{v3, t}`)
+  * $\text{Redundancy}_1 = 2.00$ (average disjoint paths to boundary nodes `{v3, t}`)
   * $\text{Redundancy}_2 = 0.00$ (no boundary nodes exist)
-  * $\Delta \text{Redundancy}_{clean} = -1.00$
+  * $\Delta \text{Redundancy}_{clean} = 2.00$
 * **Communities baseline**:
   * $\text{Communities}_1 = 1.00$ (local CC of `s, t, v3` is 1.0)
   * $\text{Communities}_2 = 0.333$ (average local CC of the full graph)
-  * $\Delta \text{Communities}_{clean} = -0.667$
+  * $\Delta \text{Communities}_{clean} = 0.667$
 * **Reliability baseline**:
   * $\rho_1 = \{t: 1.0, v3: 1.0\}$
   * $\rho_2 = \{\}$
