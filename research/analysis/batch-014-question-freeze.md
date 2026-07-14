@@ -34,12 +34,12 @@ We explore two main candidate invariants for $X$:
   \]
   Because permutation changes which node failure rates are associated with which topological distances, this breaks the structural isomorphism of the representation.
 
-### 3.2 Candidate $X_2$: Structural Failure Entropy
-* **Definition**: The entropy of failure rates across BFS distance shells:
+### 3.2 Candidate $X_2$: Structural Failure Sum (Sum of Observed Failure Rates)
+* **Definition**: The sum of failure rates of observed nodes:
   \[
-  X_2(k) = -\sum_{d} P(p_f | \text{dist}=d) \log P(p_f | \text{dist}=d)
+  X_2(k) = \sum_{v \in V_k} p_f(v)
   \]
-  This measures the distribution of risks across the BFS exploration steps, flagging if high-risk tasks are rearranged relative to the focal node.
+  Because permutation changes which node failure rates are observed at each expansion shell, this maps the spatial distribution of risk relative to the focal node.
 
 ---
 
