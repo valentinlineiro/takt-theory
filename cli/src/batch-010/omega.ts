@@ -238,6 +238,7 @@ export interface DeltaOmegaSnapshot {
     dCommunities: number; // |Communities_{k+1} - Communities_k|
   };
   d_DRU: number;   // |DRU_{k+1} - DRU_k|
+  d_caps: number;  // Capability signature difference for nodes in intersection
 }
 
 export function computeDeltaOmega(
@@ -272,10 +273,28 @@ export function computeDeltaOmega(
 
   const d_DRU = Math.abs(curr.dru - prev.dru);
 
+  // Sum of Hamming distances of capabilities for nodes in intersection
+  let d_caps = 0;
+  for (const n of prev.observation.nodes) {
+    if (setCurr.has(n)) {
+      const capPrev = prev.observation.capabilities[n];
+      const capCurr = curr.observation.capabilities[n];
+      if (capPrev && capCurr) {
+        const dims: (keyof CapabilitySignature)[] = ['Pf', 'Pr', 'Ps', 'Pc', 'Pm'];
+        for (const d of dims) {
+          if (capPrev[d] !== capCurr[d]) {
+            d_caps++;
+          }
+        }
+      }
+    }
+  }
+
   return {
     d_O: symDiff,
     d_rho,
     d_T: { dV, dE, dRedundancy, dCommunities },
     d_DRU,
+    d_caps,
   };
 }

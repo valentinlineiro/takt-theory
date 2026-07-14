@@ -43,9 +43,18 @@ describe('Batch-010 Omega Metrics', () => {
 
 describe('Delta Omega Calculations', () => {
   it('computes symmetric differences and L2 norm correctly', () => {
+    const caps1 = {
+      'A': { Pf: false, Pr: false, Ps: false, Pc: false, Pm: false },
+      'B': { Pf: false, Pr: false, Ps: false, Pc: false, Pm: false },
+    };
+    const caps2 = {
+      'A': { Pf: false, Pr: false, Ps: false, Pc: false, Pm: false },
+      'B': { Pf: false, Pr: false, Ps: false, Pc: false, Pm: true }, // Pm flipped
+      'C': { Pf: false, Pr: false, Ps: false, Pc: false, Pm: false },
+    };
     const snap1 = {
       k: 1,
-      observation: { nodes: ['A', 'B'], edges: [], capabilities: {} },
+      observation: { nodes: ['A', 'B'], edges: [], capabilities: caps1 },
       dru: 1 as const,
       rho: { 'A': 0.8, 'B': 1.0 },
       topology: { boundaryCount: 2, degreeStats: { mean: 0, variance: 0, min: 0, max: 0 }, redundancy: 0, communities: 0 },
@@ -53,7 +62,7 @@ describe('Delta Omega Calculations', () => {
     };
     const snap2 = {
       k: 2,
-      observation: { nodes: ['A', 'B', 'C'], edges: [], capabilities: {} },
+      observation: { nodes: ['A', 'B', 'C'], edges: [], capabilities: caps2 },
       dru: 0 as const,
       rho: { 'A': 0.8, 'B': 0.6, 'C': 1.0 },
       topology: { boundaryCount: 3, degreeStats: { mean: 0, variance: 0, min: 0, max: 0 }, redundancy: 0, communities: 0 },
@@ -66,5 +75,6 @@ describe('Delta Omega Calculations', () => {
     expect(delta.d_rho).toBeCloseTo(0.4);
     expect(delta.d_DRU).toBe(1);
     expect(delta.d_T.dV).toBe(1);
+    expect(delta.d_caps).toBe(1); // One flipped capability Pm on B
   });
 });
