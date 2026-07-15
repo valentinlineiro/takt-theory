@@ -53,6 +53,10 @@ graph TD
 * **Question**: Does preserving the action-conditioned causal connectivity $X_{reach}$ from observed failed nodes to target `'t'` close the residual label-blindness gap?
 * **Outcome**: **Symmetry Closed (Scenario A - Global Sufficiency)**. The global regret bound completely collapsed to exactly **$0.00$** with **0 conflict bins** over all 38,760 graphs. This proves that capturing how each action filters risk propagation to target landmarks provides a mathematically sufficient contracting representation.
 
+### 1.10 Batch-022: Minimal Sufficient Contraction
+* **Question**: What is the minimal sufficient representation contraction under exact safety ($\varepsilon = 0.00$) among all combinations of the five component invariants?
+* **Outcome**: **Pareto Frontier Mapped (Scenario A)**. An exhaustive ablation of all 32 combinations proved that structural baseline $X_0$ (Omega), landmarks $X_1$ (Landmarks), and activation counts $X_3$ (Activation) are completely redundant under exact safety. The minimal representation $R_{minimal} = X_2 \oplus X_4$ (Paths + Reach) is the single Pareto-optimal safe representation. It collapses the partition complexity from $13,442$ down to **$412$ bins** (achieving a compression factor of **over 94x** relative to the 38,760 states) while preserving exact safety ($\varepsilon = 0.00$).
+
 ---
 
 ## 2. Core Mathematical Theorem of TAKT
@@ -79,5 +83,7 @@ or equivalently, in terms of kernels:
   \]
 * **Local vs. Global Sufficiency Gap**: Batch-018 to Batch-020 demonstrated that local symmetry closure on a single orbit does not imply global decision sufficiency. Residual symmetries from epistemic boundary mismatches and intermediate-path label-blindness allowed regret to persist.
 * **Global Sufficiency Achievement**: Batch-021 successfully achieves global sufficiency ($\varepsilon = 0.00$) over the entire directed graph space by appending action-conditioned causal reachability $X_{reach}$.
-* **The Principle of Computational Alignment**: A safe representation contraction does not need to reconstruct the full state $S$ (which would destroy the benefits of representation compression). Instead, it must **preserve the causal connectivity of risk-bearing nodes under action-conditioned semantics**. By aligning the representation with the computational steps of the utility function (structure $\rightarrow$ path geometry $\rightarrow$ activation boundaries $\rightarrow$ causal reachability), we achieve exact decision sufficiency.
+* **Minimal Sufficient Frontier**: Batch-022 mapped the exact Pareto frontier, discovering that safety does not require global layout metrics, landmark distances, or activation counts. The combination $R_{minimal} = X_{path} \oplus X_{reach}$ achieves perfect safety ($\varepsilon = 0.00$) with only **412 equivalence classes** over the 38,760 states.
+* **The Principle of Computational Alignment**: A safe representation contraction does not need to reconstruct the full state $S$ (which would destroy the benefits of representation compression). Instead, it must **preserve the causal connectivity of risk-bearing nodes under action-conditioned semantics**. By aligning the representation with the computational steps of the utility function (paths and causal reachability), we achieve exact decision sufficiency with minimal partition complexity.
 * **Quantitative Governing Policy**: The safety of a contraction is governed by measuring $\varepsilon(R)$. If $\varepsilon(R) = 0$, we have exact sufficiency. For $\varepsilon(R) > 0$, TAKT must define a threshold policy $\tau$, rejecting or escalating representations exceeding acceptable risk limits.
+
