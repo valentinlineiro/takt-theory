@@ -1,0 +1,11 @@
+name = "takt-formal"
+version = "0.1.0"
+defaultTargets = ["takt-formal"]
+
+[[lean_lib]]
+name = "TaktFormal"
+roots = ["TaktFormal"]
+
+[[lean_exe]]
+name = "takt-formal"
+root = "Main"
