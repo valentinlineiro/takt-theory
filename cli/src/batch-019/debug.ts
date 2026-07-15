@@ -4,8 +4,8 @@ import { extractObservableSubgraph } from '../batch-005/estimator.js';
 const cases = loadBatch005Cases();
 const orig = cases.find(c => c.id === 'DEP-005')!;
 
-const S_edges = ['s->v3_next', 't->s', 't->v3', 'v3->t', 'v3_next->v3', 'v3_next_next->v3'];
-const S_prime_edges = ['s->v3_next', 'v3->t', 'v3->v3_next', 'v3_next->v3', 'v3_next_next->s', 'v3_next_next->v3'];
+const S_edges = ['s->t', 's->v3', 's->v3_next_next', 'v3->t', 'v3_next->v3', 'v3_next_next->t'];
+const S_prime_edges = ['s->t', 's->v3', 's->v3_next_next', 'v3->t', 'v3_next->v3_next_next', 'v3_next_next->t'];
 
 const nodes = ['s', 't', 'v3', 'v3_next', 'v3_next_next'];
 
