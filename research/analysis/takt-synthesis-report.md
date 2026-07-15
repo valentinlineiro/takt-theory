@@ -41,6 +41,10 @@ graph TD
 * **Question**: Does local symmetry closure on one orbit generalize to global decision sufficiency ($\varepsilon = 0$) across all 38,760 directed graphs?
 * **Outcome**: **Falsified (Scenario C)**. The global representational regret remained flat at $\varepsilon(R_{dist}) = 15.58$, with 132 conflict bins. While $R_{dist}$ successfully split the space into 10,743 bins (down from 50), residual symmetries from non-isomorphic graphs sharing identical distance signatures still allow maximum regret to hide.
 
+### 1.7 Batch-019: Compositional Path Sufficiency
+* **Question**: Does preserving the compositional path sequences $X_{path}$ to target sink `'t'` break the residual symmetries and achieve global sufficiency?
+* **Outcome**: **Falsified (Scenario C)**. The global regret bound remained flat at $\varepsilon(R_{path}) = 15.58$, though conflict bins decreased to 122. This reveals a fundamental interaction between path sequences and **epistemic limits**: two configurations can share the same directed path sequence to `'t'` while `'t'` occupies different undirected distances from `'s'`. At $k=2$, `'t'` is observed in one graph but unobserved in the other, altering active edges counts and action utilities silently.
+
 ---
 
 ## 2. Core Mathematical Theorem of TAKT
@@ -65,5 +69,7 @@ or equivalently, in terms of kernels:
   \[
   R(S) = R(S') \implies a^*(S) = a^*(S')
   \]
-* **Local vs. Global Sufficiency Gap**: Batch-018 reveals that **local symmetry closure on a single orbit does not imply global decision sufficiency**. While relative coordinates $X_{dist}$ successfully closed the $5!$ permutation symmetries of a single canon graph, the presence of non-isomorphic graph structures sharing identical distance signatures leaves the global regret bound at its theoretical maximum of $15.58$.
+* **Local vs. Global Sufficiency Gap**: Batch-018 and Batch-019 reveal that **local symmetry closure on a single orbit does not imply global decision sufficiency**. While relative coordinates $X_{dist}$ and path invariants $X_{path}$ improve discrimination ($10,902$ bins vs $50$), residual non-isomorphic structures and differences in undirected observation status allow maximum regret to hide.
+* **The Epistemic Boundary Mismatch**: Symmetries are not just structural; they are **observational**. If two configurations share the same directed paths, but differ in undirected distances that determine whether target nodes fall inside the observer's horizon $O_k$, their active subgraphs differ, decoupling representational identity from utility equivalence.
 * **Quantitative Governing Policy**: The safety of a contraction is governed by measuring $\varepsilon(R)$. If $\varepsilon(R) = 0$, we have exact sufficiency. For $\varepsilon(R) > 0$, TAKT must define a threshold policy $\tau$, rejecting or escalating representations exceeding acceptable risk limits.
+
