@@ -37,6 +37,10 @@ graph TD
 * **Question**: Can we close the decision-changing symmetry gap without literal node labels?
 * **Outcome**: **Symmetry Closed (Scenario A)**. Appending the relative shortest-path distance signature $X_{dist}(v) = (d_s(v), d_t(v))$ paired with node attributes successfully collapsed the symmetry mismatch set to exactly **0** ($|M_{X_{dist}}| = 0$).
 
+### 1.6 Batch-018: Global $\varepsilon$-Decision Sufficiency
+* **Question**: Does local symmetry closure on one orbit generalize to global decision sufficiency ($\varepsilon = 0$) across all 38,760 directed graphs?
+* **Outcome**: **Falsified (Scenario C)**. The global representational regret remained flat at $\varepsilon(R_{dist}) = 15.58$, with 132 conflict bins. While $R_{dist}$ successfully split the space into 10,743 bins (down from 50), residual symmetries from non-isomorphic graphs sharing identical distance signatures still allow maximum regret to hide.
+
 ---
 
 ## 2. Core Mathematical Theorem of TAKT
@@ -61,4 +65,5 @@ or equivalently, in terms of kernels:
   \[
   R(S) = R(S') \implies a^*(S) = a^*(S')
   \]
-* Refinement is not about multiplying sensors, but about **pruning spurious symmetries** ($G_R \subseteq G_D$). Anchoring node attributes to relative geometric coordinates from decision landmarks (`s`, `t`) breaks all spurius symmetries, achieving local decision sufficiency.
+* **Local vs. Global Sufficiency Gap**: Batch-018 reveals that **local symmetry closure on a single orbit does not imply global decision sufficiency**. While relative coordinates $X_{dist}$ successfully closed the $5!$ permutation symmetries of a single canon graph, the presence of non-isomorphic graph structures sharing identical distance signatures leaves the global regret bound at its theoretical maximum of $15.58$.
+* **Quantitative Governing Policy**: The safety of a contraction is governed by measuring $\varepsilon(R)$. If $\varepsilon(R) = 0$, we have exact sufficiency. For $\varepsilon(R) > 0$, TAKT must define a threshold policy $\tau$, rejecting or escalating representations exceeding acceptable risk limits.
