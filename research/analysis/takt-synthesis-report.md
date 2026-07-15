@@ -45,6 +45,10 @@ graph TD
 * **Question**: Does preserving the compositional path sequences $X_{path}$ to target sink `'t'` break the residual symmetries and achieve global sufficiency?
 * **Outcome**: **Falsified (Scenario C)**. The global regret bound remained flat at $\varepsilon(R_{path}) = 15.58$, though conflict bins decreased to 122. This reveals a fundamental interaction between path sequences and **epistemic limits**: two configurations can share the same directed path sequence to `'t'` while `'t'` occupies different undirected distances from `'s'`. At $k=2$, `'t'` is observed in one graph but unobserved in the other, altering active edges counts and action utilities silently.
 
+### 1.8 Batch-020: Observational Activation Sufficiency
+* **Question**: Does preserving the observation-aware active subgraph structure $X_{activation}$ under $O_k$ break the symmetries and achieve global sufficiency?
+* **Outcome**: **Falsified (Scenario C - Strict Improvement)**. The global regret bound dropped from $15.58$ to **$13.58$**, with conflict bins dropping from 122 to 23. This confirms a strict improvement but leaves residual symmetries open due to **intermediate-path label-blindness**: two configurations can share identical active edge counts and active node attribute multisets, but the path from an intermediate failed node to `'t'` can be active or blocked depending on the specific intermediate nodes it traverses. Label-blindness prevents the representation from distinguishing these topologies.
+
 ---
 
 ## 2. Core Mathematical Theorem of TAKT
@@ -69,7 +73,9 @@ or equivalently, in terms of kernels:
   \[
   R(S) = R(S') \implies a^*(S) = a^*(S')
   \]
-* **Local vs. Global Sufficiency Gap**: Batch-018 and Batch-019 reveal that **local symmetry closure on a single orbit does not imply global decision sufficiency**. While relative coordinates $X_{dist}$ and path invariants $X_{path}$ improve discrimination ($10,902$ bins vs $50$), residual non-isomorphic structures and differences in undirected observation status allow maximum regret to hide.
+* **Local vs. Global Sufficiency Gap**: Batch-018 to Batch-020 reveal that **local symmetry closure on a single orbit does not imply global decision sufficiency**. While relative coordinates $X_{dist}$, path invariants $X_{path}$, and activation structures $X_{activation}$ improve discrimination ($13,339$ bins vs $50$), residual non-isomorphic structures and differences in undirected observation status allow regret to hide.
 * **The Epistemic Boundary Mismatch**: Symmetries are not just structural; they are **observational**. If two configurations share the same directed paths, but differ in undirected distances that determine whether target nodes fall inside the observer's horizon $O_k$, their active subgraphs differ, decoupling representational identity from utility equivalence.
+* **Intermediate-Path Label-Blindness**: Symmetries also hide in the intermediate paths from failed nodes to target landmarks. If the path from a failed node to `'t'` is active or blocked depending on the specific labels of the intermediate nodes, a label-blind multiset representation cannot distinguish the two states, leaving a residual regret bound of $13.58$.
 * **Quantitative Governing Policy**: The safety of a contraction is governed by measuring $\varepsilon(R)$. If $\varepsilon(R) = 0$, we have exact sufficiency. For $\varepsilon(R) > 0$, TAKT must define a threshold policy $\tau$, rejecting or escalating representations exceeding acceptable risk limits.
+
 
