@@ -4,3 +4,5 @@ import TaktFormal.DecisionSystem
 import TaktFormal.Regret
 import TaktFormal.SafetyEquivalence
 import TaktFormal.EpsilonUCounterexample
+import TaktFormal.RegretPipeline
+
