@@ -24,18 +24,28 @@ A partir del congelado de la versión `v1.0.0-formal-core`, la evolución de TAK
 Para iniciar el ciclo de validación, se establece el siguiente backlog de experimentos iniciales. Cada caso deberá ejecutarse siguiendo el ciclo: **Caso $\rightarrow$ Predicción $\rightarrow$ Aplicación $\rightarrow$ Resultado $\rightarrow$ Conclusión**.
 
 ### ST-001 — Decision Boundary Stability
+* **Estado:** [✓] Completado
+* **Clasificación:** **Boundary Identified** (Límite Identificado)
 * **Objetivo:** Estudiar el comportamiento de la condición $\ker(R) \subseteq \ker(D)$ en escenarios con empates de utilidad extrema y evaluar la sensibilidad al operador de desempate determinista ($\theta$).
 * **Pregunta Clave:** ¿Requiere la condición de seguridad una formulación topológica o estocástica más robusta cuando el espacio de decisión presenta fronteras degeneradas o inestabilidades infinitesimales?
-* **Enlace al Núcleo Formal:** [DecisionSystem.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/DecisionSystem.lean) y [SafetyEquivalence.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/SafetyEquivalence.lean)
+* **Documentación:** [experiments/ST-001/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-001/conclusion.md)
+* **Enlace al Núcleo Formal:** [DecisionSystem.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/DecisionSystem.lean), [SafetyEquivalence.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/SafetyEquivalence.lean) y [EpsilonUCounterexample.lean](file:///home/valentin/code/takt-theory/experiments/ST-001/implementation/EpsilonUCounterexample.lean)
 
 ### ST-002 — Compositional Pipeline
+* **Estado:** [✓] Completado
+* **Clasificación:** **Refined** (Refinado)
 * **Objetivo:** Aplicar el formalismo de TAKT a una cadena secuencial real de transformaciones y abstracciones de datos (por ejemplo: *Filtrado de sensor $\rightarrow$ Extracción de features $\rightarrow$ Clasificación decisional*).
 * **Pregunta Clave:** ¿Se sostiene la aditividad exacta del regret en la práctica y cómo escala la cota superior del error acumulado en pipelines con múltiples etapas de contracción?
-* **Enlace al Núcleo Formal:** [Regret.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Regret.lean)
+* **Documentación:** [experiments/ST-002/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-002/conclusion.md)
+* **Enlace al Núcleo Formal:** [Regret.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Regret.lean) y [RegretPipeline.lean](file:///home/valentin/code/takt-theory/experiments/ST-002/implementation/RegretPipeline.lean)
 
 ### ST-003 — External Formalism
+* **Estado:** [✓] Completado
+* **Clasificación:** **Validated** (Validado)
 * **Objetivo:** Modelar un problema de toma de decisiones o abstracción de estados proveniente de una disciplina externa (por ejemplo: control clásico de procesos, teoría de juegos simple o agregación de estados en procesos de decisión markovianos ya publicados) directamente en el lenguaje de TAKT, sin pre-adaptaciones.
 * **Pregunta Clave:** ¿El lenguaje minimalista de TAKT resulta natural para mapear el problema externo o emergen vacíos conceptuales que no pueden expresarse únicamente con $S$, $A$, $U$ y $R$?
+* **Documentación:** [experiments/ST-003/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-003/conclusion.md)
+* **Enlace al Núcleo Formal:** [ExternalControl.lean](file:///home/valentin/code/takt-theory/experiments/ST-003/implementation/ExternalControl.lean)
 
 ---
 
