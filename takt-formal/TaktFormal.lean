@@ -10,6 +10,8 @@ import TaktFormal.HiddenKernel
 import TaktFormal.DistributedDecision
 import TaktFormal.TemporalDrift
 import TaktFormal.DecisionMargin
+import TaktFormal.Coverage
+
 
 
 
