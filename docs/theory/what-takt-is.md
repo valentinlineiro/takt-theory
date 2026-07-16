@@ -118,8 +118,7 @@ A partir de su núcleo axiomático, TAKT demuestra un conjunto de resultados est
 
 ## 5. Positioning
 
-La auditoría de novedad (Fase A + Fase B) compara el núcleo de TAKT con
-cinco marcos formales existentes. El resultado se resume en una tabla:
+La auditoría de novedad (Fase A + Fase B) compara el núcleo de TAKT con cinco marcos formales existentes. El resultado se resume en la siguiente tabla:
 
 | Framework                         | Preservación decisional | Resultado              |
 |-----------------------------------|------------------------|------------------------|
@@ -129,98 +128,45 @@ cinco marcos formales existentes. El resultado se resume en una tabla:
 | Information Bottleneck            | Ausente                | Independencia          |
 | Bisimulation                      | Teorema + definición   | Correspondencia parcial|
 
-**Interpretación de la tabla:**
+### Observations from the audit
 
-En cuatro de los cinco marcos, la preservación decisional aparece — pero
-siempre como una propiedad derivada (teorema o definición subordinada)
-dentro de un aparato teórico más amplio (estadística, probabilidad,
-dinámica de MDP). En TAKT, esa misma relación es el axioma fundacional.
+1. **Dos correspondencias fuertes:** En Sufficient Statistics (bajo hipótesis estadísticas y de convexidad) y en Decision-Sufficient Representations (específicamente la $\pi^*$-suficiencia), la preservación decisional se expresa de manera estructuralmente idéntica a TAKT.
+2. **Dos correspondencias parciales:** Blackwell (que requiere kernels estocásticos y cuantificación universal sobre toda utilidad y conjunto de acciones) y Bisimulación (que exige preservar la dinámica completa y las recompensas de un MDP) contienen la preservación decisional como una implicación o debilitamiento de sus condiciones más estrictas.
+3. **Un marco independiente:** Information Bottleneck no impone ni preserva la decisión de manera directa, sino que persigue la preservación de información mutua. Esto demuestra que la preservación decisional no es una propiedad trivial de cualquier esquema de compresión de representaciones.
 
-En el quinto marco (Information Bottleneck), la preservación decisional
-no aparece en absoluto: el marco preserva información, no decisiones.
-Esto confirma que el resultado no es trivial — no todo marco de
-representación contiene la condición de TAKT.
+### Transversal Pattern
 
-**Separaciones identificadas (Fase B):**
+A partir de estas observaciones, emerge una constante metodológica clave:
 
-- Information Bottleneck: independencia lógica. Preservación
-  informacional ≠ preservación decisional.
-- Decision-Sufficient: TAKT equivale a π*-suficiencia. Q*-suficiencia
-  es estrictamente más fuerte (requiere preservar valores, no solo
-  acciones óptimas).
-- Bisimulation: TAKT es un debilitamiento. Bisimulación preserva
-  dinámica y recompensa completa; TAKT solo preserva la acción óptima.
-- Blackwell: TAKT es determinista y específico. Blackwell usa kernels
-  estocásticos y cuantifica sobre todo problema de decisión.
-- Sufficient Statistics: la preservación es estructuralmente idéntica,
-  pero TAKT no requiere las hipótesis estadísticas (distribuciones,
-  convexidad, esperanza condicional) que Berger necesita.
+> **TAKT adopta la preservación decisional como una primitiva en lugar de como la consecuencia de una teoría más rica (TAKT takes decision preservation as a primitive rather than as a consequence of a richer theory).**
 
-El patrón transversal: TAKT aísla la preservación decisional de los
-aparatos teóricos en los que aparece incrustada en otros marcos.
+En los marcos tradicionales donde esta relación aparece, siempre lo hace como subproducto o teorema subordinado de un andamiaje teórico mayor (probabilidades, MDPs o teoría de la información). TAKT aísla esta relación y la convierte en el punto de partida autónomo del sistema.
 
 ---
 
 ## 6. Main Claim
 
-La conclusión que emerge de la auditoría no es que TAKT sea equivalente
-o supere a otros marcos. Es que ocupa un lugar lógico distinto:
+La conclusión que emerge de la auditoría no es que TAKT sea equivalente o supere a otros marcos, sino que define su propio objeto de estudio:
 
-> TAKT axiomatiza la preservación decisional independientemente del
-> aparato probabilístico, dinámico o informacional que otras teorías
-> utilizan para derivarla.
+> **TAKT es una teoría axiomática de las representaciones que preservan la decisión (TAKT is an axiomatic theory of decision-preserving representations).**
 
-En Berger, la preservación decisional es consecuencia del teorema de
-Rao-Blackwell y requiere distribuciones, esperanzas y convexidad.
-En Blackwell, es consecuencia del teorema de comparación y requiere
-kernels estocásticos y cuantificación universal. En State Abstraction,
-π*-suficiencia es una definición entre muchas en una jerarquía que
-presupone MDPs. En Bisimulation, la preservación decisional es un
-subproducto de una equivalencia conductual mucho más fuerte.
+Su novedad y valor se sustentan —no se definen— por su contraste con los marcos existentes. Mientras que otras teorías tratan la preservación decisional como un fenómeno colateral de la probabilidad, la dinámica o la información, TAKT la erige como el cimiento a partir del cual se construye todo el aparato teórico.
 
-En TAKT, la preservación decisional no se deriva de nada. Es el punto
-de partida.
-
-Esta diferencia no es de grado — no es que TAKT sea "más simple" o "más
-abstracta". Es una diferencia de **estatus lógico**: qué se postula y
-qué se demuestra. Los otros marcos demuestran la preservación decisional.
-TAKT la postula como axioma, y a partir de ahí deriva consecuencias
-(regret, minimalidad, composicionalidad).
+En los marcos auditados, la preservación decisional aparece como una noción derivada (bien un teorema o una definición subordinada). TAKT, en cambio, la adopta como un axioma primitivo del cual deriva el regret, la minimalidad y la composicionalidad.
 
 ---
 
 ## 7. Limits
 
-TAKT no es un marco universal. No pretende reemplazar ninguno de los
-marcos auditados. Explícitamente:
+TAKT no pretende ser un marco universal ni un sustituto de las teorías con las que se ha comparado. Sus fronteras lógicas están estrictamente delimitadas:
 
-- **No reemplaza MDPs.** TAKT no modela transiciones, descuento,
-  planificación ni aprendizaje secuencial. Para problemas que requieran
-  dinámica, un MDP (o bisimulación) es necesario.
-- **No reemplaza teoría estadística.** TAKT no ofrece estimación,
-  inferencia, intervalos de confianza ni análisis de riesgo. Para
-  problemas que requieran inferencia estadística, la teoría de
-  estadísticos suficientes (Berger) es necesaria.
-- **No reemplaza Information Bottleneck.** TAKT no ofrece compresión
-  informacional, tradeoff β ni representaciones con grados de
-  preservación. Para problemas que requieran cuantificar cuánta
-  información se retiene, IB es necesario.
-- **No modela incertidumbre.** TAKT no tiene distribuciones, creencias
-  previas, riesgo esperado ni análisis bayesiano. Para problemas con
-  incertidumbre epistémica o aleatoria, se necesita teoría de la
-  decisión estadística.
-- **No es algorítmico.** TAKT no ofrece métodos para construir Rs, ni
-  garantías de convergencia, ni cotas de error muestral. Es una teoría
-  de condiciones, no de procedimientos.
-- **No es una teoría de representaciones.** TAKT solo distingue
-  representaciones seguras de inseguras. No dice qué representación
-  es "mejor" entre dos seguras (salvo por minimalidad), ni cómo
-  encontrarla.
+* **TAKT no es una teoría del aprendizaje (TAKT is not a theory of learning).** No prescribe algoritmos de optimización, cotas de generalización ni garantías muestrales.
+* **TAKT no es una teoría de la probabilidad (TAKT is not a theory of probability).** No opera sobre distribuciones de probabilidad, esperanzas matemáticas ni kernels estocásticos.
+* **TAKT no es una teoría de la dinámica (TAKT is not a theory of dynamics).** No modela transiciones de estado a lo largo del tiempo, factores de descuento ni ecuaciones de Bellman.
+* **TAKT no es una teoría de la información (TAKT is not a theory of information).** No emplea entropías, tradeoffs de información mutua ni métricas de codificación.
+* **TAKT no prescribe cómo se construyen las representaciones (TAKT does not prescribe how representations are constructed).** Es una teoría analítica de verificación y caracterización de seguridad, no una guía procedimental para su generación.
 
-Estos límites no son debilidades. Son el resultado de aislar la
-preservación decisional como principio autónomo. Lo que TAKT gana en
-generalidad (no requiere distribuciones, dinámica, ni información) lo
-pierde en expresividad (no modela esos fenómenos).
+Estos límites no constituyen debilidades, sino la consecuencia lógica de su minimalismo axiomático: al desprenderse de toda estructura superflua, la teoría gana en generalidad lo que restringe en expresividad.
 
 ---
 
