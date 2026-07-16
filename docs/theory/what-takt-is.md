@@ -10,15 +10,13 @@ abstraer información no cambiará la decisión que tomaríamos con los datos
 originales.
 
 TAKT (Theory of Adequate Knowledge for Decisions) formaliza esta pregunta.
-No propone un algoritmo para encontrar representaciones. Propone una
-condición para reconocer cuándo una representación es segura.
+TAKT no propone un algoritmo para construir representaciones. Propone un criterio para determinar cuándo una representación preserva la decisión (decision-preserving).
 
 ---
 
 ## 2. Primitive
 
-El núcleo de TAKT es una condición de preservación y su factorización
-equivalente.
+La primitiva de TAKT es la condición de preservación decisional (\(\ker(R) \subseteq \ker(D)\)). Una caracterización equivalente es la factorización (\(D = \pi \circ R\)).
 
 Dado un espacio de estados \(S\), un espacio de acciones \(A\), una función
 de utilidad \(U: S \times A \to \mathbb{R}\), una representación
@@ -65,7 +63,9 @@ A partir de este axioma, TAKT define:
 
 ## 3. Scope
 
-TAKT es una teoría mínima. No presupone nada de lo siguiente:
+TAKT asume deliberadamente la menor estructura posible. Cualquier supuesto adicional (probabilidad, dinámica, aprendizaje, teoría de la información) pertenece a una especialización y no al núcleo de la teoría.
+
+Bajo este enfoque de supuestos mínimos, TAKT no presupone nada de lo siguiente:
 
 - **Probabilidad.** No requiere distribuciones sobre estados,
   transiciones estocásticas, ni esperanzas. \(\ker(R) \subseteq \ker(D)\)
@@ -95,7 +95,28 @@ verifica sin necesidad de estructura adicional.
 
 ---
 
-## 4. Positioning
+## 4. Core Results
+
+A partir de su núcleo axiomático, TAKT demuestra un conjunto de resultados estructurales sobre la decisión y la representación:
+
+* **Teorema de Preservación Decisional (Decision Preservation Theorem):** 
+  Una representación es perfectamente segura si y solo si su regret decisional es nulo:
+  \[
+  \varepsilon_D(R) = 0 \iff \ker(R) \subseteq \ker(D)
+  \]
+* **Teorema de Factorización (Factorization Theorem):** 
+  Una representación preserva la decisión si y solo si el operador de decisión se factoriza a través de ella:
+  \[
+  \ker(R) \subseteq \ker(D) \iff \exists \pi : Z \to A \text{ t.q. } D = \pi \circ R
+  \]
+* **Teorema de Abstracción Mínima (Minimal Representation Theorem):** 
+  La partición inducida por el núcleo del operador de decisión (\(\ker(D)\)) constituye la representación más comprimida que preserva la decisión sin pérdida.
+* **Teorema de Regret Composicional (Compositional Regret Theorem):** 
+  En una cascada de representaciones \(S \to Z_1 \to Z_2\), el regret total acumulado se descompone de manera aditiva por los regrets de las etapas individuales.
+
+---
+
+## 5. Positioning
 
 La auditoría de novedad (Fase A + Fase B) compara el núcleo de TAKT con
 cinco marcos formales existentes. El resultado se resume en una tabla:
@@ -140,7 +161,7 @@ aparatos teóricos en los que aparece incrustada en otros marcos.
 
 ---
 
-## 5. Main Claim
+## 6. Main Claim
 
 La conclusión que emerge de la auditoría no es que TAKT sea equivalente
 o supere a otros marcos. Es que ocupa un lugar lógico distinto:
@@ -168,7 +189,7 @@ TAKT la postula como axioma, y a partir de ahí deriva consecuencias
 
 ---
 
-## 6. Limits
+## 7. Limits
 
 TAKT no es un marco universal. No pretende reemplazar ninguno de los
 marcos auditados. Explícitamente:
@@ -203,7 +224,7 @@ pierde en expresividad (no modela esos fenómenos).
 
 ---
 
-## 7. Outlook
+## 8. Outlook
 
 La utilidad de TAKT no está en competir con los marcos existentes, sino
 en ocupar el espacio que dejan vacío: ofrecer una condición de seguridad
