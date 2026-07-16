@@ -35,8 +35,10 @@ describe('Batch 003 Evaluation', () => {
     runEvaluation();
     
     const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '../../../');
-    const resultsPath = join(rootDir, 'research', 'data', 'batch-003', 'results.jsonl');
-    const analysisPath = join(rootDir, 'research', 'analysis', 'batch-003.md');
+    const batchesDir = join(rootDir, 'experiments', 'computational-batches');
+    const batchDir = join(batchesDir, 'batch-003');
+    const resultsPath = join(batchDir, 'data', 'results.jsonl');
+    const analysisPath = join(batchDir, 'batch-003.md');
     
     expect(existsSync(resultsPath)).toBe(true);
     expect(existsSync(analysisPath)).toBe(true);

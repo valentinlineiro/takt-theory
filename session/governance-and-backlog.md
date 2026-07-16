@@ -28,24 +28,24 @@ Para iniciar el ciclo de validación, se establece el siguiente backlog de exper
 * **Clasificación:** **Boundary Identified** (Límite Identificado)
 * **Objetivo:** Estudiar el comportamiento de la condición $\ker(R) \subseteq \ker(D)$ en escenarios con empates de utilidad extrema y evaluar la sensibilidad al operador de desempate determinista ($\theta$).
 * **Pregunta Clave:** ¿Requiere la condición de seguridad una formulación topológica o estocástica más robusta cuando el espacio de decisión presenta fronteras degeneradas o inestabilidades infinitesimales?
-* **Documentación:** [experiments/ST-001/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-001/conclusion.md)
-* **Enlace al Núcleo Formal:** [DecisionSystem.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/DecisionSystem.lean), [SafetyEquivalence.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/SafetyEquivalence.lean) y [EpsilonUCounterexample.lean](file:///home/valentin/code/takt-theory/experiments/ST-001/implementation/EpsilonUCounterexample.lean)
+* **Documentación:** [experiments/stress-tests/ST-001/conclusion.md](../experiments/stress-tests/ST-001/conclusion.md)
+* **Enlace al Núcleo Formal:** [DecisionSystem.lean](../takt-formal/TaktFormal/DecisionSystem.lean), [SafetyEquivalence.lean](../takt-formal/TaktFormal/SafetyEquivalence.lean) y [EpsilonUCounterexample.lean](../takt-formal/TaktFormal/EpsilonUCounterexample.lean)
 
 ### ST-002 — Compositional Pipeline
 * **Estado:** [✓] Completado
 * **Clasificación:** **Refined** (Refinado)
 * **Objetivo:** Aplicar el formalismo de TAKT a una cadena secuencial real de transformaciones y abstracciones de datos (por ejemplo: *Filtrado de sensor $\rightarrow$ Extracción de features $\rightarrow$ Clasificación decisional*).
 * **Pregunta Clave:** ¿Se sostiene la aditividad exacta del regret en la práctica y cómo escala la cota superior del error acumulado en pipelines con múltiples etapas de contracción?
-* **Documentación:** [experiments/ST-002/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-002/conclusion.md)
-* **Enlace al Núcleo Formal:** [Regret.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Regret.lean) y [RegretPipeline.lean](file:///home/valentin/code/takt-theory/experiments/ST-002/implementation/RegretPipeline.lean)
+* **Documentación:** [experiments/stress-tests/ST-002/conclusion.md](../experiments/stress-tests/ST-002/conclusion.md)
+* **Enlace al Núcleo Formal:** [Regret.lean](../takt-formal/TaktFormal/Regret.lean) y [RegretPipeline.lean](../takt-formal/TaktFormal/RegretPipeline.lean)
 
 ### ST-003 — External Formalism
 * **Estado:** [✓] Completado
 * **Clasificación:** **Validated** (Validado)
 * **Objetivo:** Modelar un problema de toma de decisiones o abstracción de estados proveniente de una disciplina externa (por ejemplo: control clásico de procesos, teoría de juegos simple o agregación de estados en procesos de decisión markovianos ya publicados) directamente en el lenguaje de TAKT, sin pre-adaptaciones.
 * **Pregunta Clave:** ¿El lenguaje minimalista de TAKT resulta natural para mapear el problema externo o emergen vacíos conceptuales que no pueden expresarse únicamente con $S$, $A$, $U$ y $R$?
-* **Documentación:** [experiments/ST-003/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-003/conclusion.md)
-* **Enlace al Núcleo Formal:** [ExternalControl.lean](file:///home/valentin/code/takt-theory/experiments/ST-003/implementation/ExternalControl.lean)
+* **Documentación:** [experiments/stress-tests/ST-003/conclusion.md](../experiments/stress-tests/ST-003/conclusion.md)
+* **Enlace al Núcleo Formal:** [ExternalControl.lean](../takt-formal/TaktFormal/ExternalControl.lean)
 
 ---
 
@@ -58,32 +58,32 @@ Esta fase adopta un enfoque puramente adversarial para evaluar los límites de o
 * **Clasificación:** **Boundary Identified** (Límite Identificado)
 * **Objetivo:** Buscar una representación que preserve todos los observables locales (como la seguridad en un conjunto de test) pero que esconda pérdida de seguridad decisional a nivel global.
 * **Pregunta Clave:** ¿Los observables empíricos sobre subconjuntos de estados son suficientes para certificar la seguridad global de una representación en TAKT?
-* **Documentación:** [experiments/ST-004/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-004/conclusion.md)
-* **Enlace al Núcleo Formal:** [HiddenKernel.lean](file:///home/valentin/code/takt-theory/experiments/ST-004/implementation/HiddenKernel.lean)
+* **Documentación:** [experiments/stress-tests/ST-004/conclusion.md](../experiments/stress-tests/ST-004/conclusion.md)
+* **Enlace al Núcleo Formal:** [HiddenKernel.lean](../takt-formal/TaktFormal/HiddenKernel.lean)
 
 ### ST-005 — Multi-agent / Distributed Decision
 * **Estado:** [✓] Completado
 * **Clasificación:** **Boundary Identified** (Límite Identificado)
 * **Objetivo:** Extender la composición a arquitecturas no lineales (e.g., redes en estrella o diamante) con múltiples agentes decisores independientes.
 * **Pregunta Clave:** ¿Cómo interactúan los contratos decisionales distribuidos y si pueden surgir inconsistencias colectivas a pesar de la seguridad local de cada agente?
-* **Documentación:** [experiments/ST-005/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-005/conclusion.md)
-* **Enlace al Núcleo Formal:** [DistributedDecision.lean](file:///home/valentin/code/takt-theory/experiments/ST-005/implementation/DistributedDecision.lean)
+* **Documentación:** [experiments/stress-tests/ST-005/conclusion.md](../experiments/stress-tests/ST-005/conclusion.md)
+* **Enlace al Núcleo Formal:** [DistributedDecision.lean](../takt-formal/TaktFormal/DistributedDecision.lean)
 
 ### ST-006 — Temporal Drift
 * **Estado:** [✓] Completado
 * **Clasificación:** **Boundary Identified** (Límite Identificado)
 * **Objetivo:** Analizar la deriva temporal infinitesimal de las representaciones ($R_t \to R_{t+1}$).
 * **Pregunta Clave:** ¿Es capaz TAKT de alertar sobre la degradación decisional acumulada antes de que se produzca una pérdida catastrófica visible?
-* **Documentación:** [experiments/ST-006/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-006/conclusion.md)
-* **Enlace al Núcleo Formal:** [TemporalDrift.lean](file:///home/valentin/code/takt-theory/experiments/ST-006/implementation/TemporalDrift.lean)
+* **Documentación:** [experiments/stress-tests/ST-006/conclusion.md](../experiments/stress-tests/ST-006/conclusion.md)
+* **Enlace al Núcleo Formal:** [TemporalDrift.lean](../takt-formal/TaktFormal/TemporalDrift.lean)
 
 ### ST-007 — External Dynamic Safety Contract
 * **Estado:** [✓] Completado
 * **Clasificación:** **Validated** (Validado)
 * **Objetivo:** Evaluar si el Contrato Dinámico de Seguridad detecta y gobierna la degradación decisional en un clasificador neuronal Edge-AI con cuantificación bajo deriva de datos.
 * **Pregunta Clave:** ¿Puede el contrato de gobernanza dinámico actuar como instrumento efectivo de auditoría en un sistema externo no diseñado bajo TAKT?
-* **Documentación:** [experiments/ST-007/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-007/conclusion.md)
-* **Enlace al Núcleo Formal:** [ExternalContract.lean](file:///home/valentin/code/takt-theory/experiments/ST-007/implementation/ExternalContract.lean)
+* **Documentación:** [experiments/stress-tests/ST-007/conclusion.md](../experiments/stress-tests/ST-007/conclusion.md)
+* **Enlace al Núcleo Formal:** [ExternalContract.lean](../takt-formal/TaktFormal/ExternalContract.lean)
 
 ---
 
@@ -95,22 +95,22 @@ Esta fase transforma los límites descubiertos en la Fase C en invariantes preve
 * **Estado:** [✓] Completado
 * **Objetivo:** Formalizar la distancia geométrica al fallo decisional ($M(R)$) en espacios métricos.
 * **Pregunta Clave:** ¿Cómo medimos la deriva permitida antes del colapso decisional?
-* **Documentación:** [docs/research/D-001/formalization.md](file:///home/valentin/code/takt-theory/docs/research/D-001/formalization.md)
-* **Enlace al Núcleo Formal:** [DecisionMargin.lean](file:///home/valentin/code/takt-theory/docs/research/D-001/implementation/DecisionMargin.lean)
+* **Documentación:** [docs/03-design-contracts/D-001/formalization.md](../docs/03-design-contracts/D-001/formalization.md)
+* **Enlace al Núcleo Formal:** [DecisionMargin.lean](../takt-formal/TaktFormal/DecisionMargin.lean)
 
 ### D-002 — Test Coverage Characterization
 * **Estado:** [✓] Completado
 * **Objetivo:** Caracterizar formalmente la Condición de Cobertura de Fibras ($C(T, S)$).
 * **Pregunta Clave:** ¿Bajo qué condiciones una garantía local en un conjunto de test $T$ se generaliza a la seguridad global en $S$?
-* **Documentación:** [docs/research/D-002/formalization.md](file:///home/valentin/code/takt-theory/docs/research/D-002/formalization.md)
-* **Enlace al Núcleo Formal:** [Coverage.lean](file:///home/valentin/code/takt-theory/docs/research/D-002/implementation/Coverage.lean)
+* **Documentación:** [docs/03-design-contracts/D-002/formalization.md](../docs/03-design-contracts/D-002/formalization.md)
+* **Enlace al Núcleo Formal:** [Coverage.lean](../takt-formal/TaktFormal/Coverage.lean)
 
 ### D-003 — Dynamic Safety Contracts
 * **Estado:** [✓] Completado
 * **Objetivo:** Unificar composición, agentes y tiempo en un contrato decisional dinámico.
 * **Pregunta Clave:** ¿Cómo formalizamos un contrato dinámico capaz de blindar la seguridad decisional en entornos distribuidos cambiantes?
-* **Documentación:** [docs/research/D-003/formalization.md](file:///home/valentin/code/takt-theory/docs/research/D-003/formalization.md)
-* **Enlace al Núcleo Formal:** [DynamicSafetyContract.lean](file:///home/valentin/code/takt-theory/docs/research/D-003/implementation/DynamicSafetyContract.lean)
+* **Documentación:** [docs/03-design-contracts/D-003/formalization.md](../docs/03-design-contracts/D-003/formalization.md)
+* **Enlace al Núcleo Formal:** [DynamicSafetyContract.lean](../takt-formal/TaktFormal/DynamicSafetyContract.lean)
 
 ---
 

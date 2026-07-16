@@ -166,7 +166,9 @@ export function runEvaluation(options?: { dryRun?: boolean }): {
 
   // Path resolution
   const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '../../../');
-  const resultsDir = join(rootDir, 'research', 'data', 'batch-004');
+  const batchesDir = join(rootDir, 'experiments', 'computational-batches');
+  const batchDir = join(batchesDir, 'batch-004');
+  const resultsDir = join(batchDir, 'data');
   if (!existsSync(resultsDir)) {
     mkdirSync(resultsDir, { recursive: true });
   }
@@ -175,7 +177,7 @@ export function runEvaluation(options?: { dryRun?: boolean }): {
   const resultsJsonlLines = detailedCaseResults.map((r) => JSON.stringify(r)).join('\n');
   writeFileSync(resultsJsonlPath, resultsJsonlLines + '\n', 'utf8');
 
-  const analysisDir = join(rootDir, 'research', 'analysis');
+  const analysisDir = batchDir;
   if (!existsSync(analysisDir)) {
     mkdirSync(analysisDir, { recursive: true });
   }
@@ -270,7 +272,7 @@ The comparative results demonstrate the power of the **Selective Escalation** pr
   writeFileSync(analysisPath, reportContent, 'utf8');
 
   console.log(`Evaluation Batch-004 completed successfully.`);
-  console.log(`Report written to research/analysis/batch-004.md`);
+  console.log(`Report written to experiments/computational-batches/batch-004/batch-004.md`);
 
   return {
     local: localScorecard,

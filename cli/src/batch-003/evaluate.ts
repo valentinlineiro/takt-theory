@@ -13,9 +13,11 @@ interface BlindPrediction {
 
 export function runEvaluation(): void {
   const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '../../../');
-  const predictionsPath = join(rootDir, 'research', 'data', 'batch-003', 'blind-predictions.jsonl');
-  const resultsJsonlPath = join(rootDir, 'research', 'data', 'batch-003', 'results.jsonl');
-  const analysisPath = join(rootDir, 'research', 'analysis', 'batch-003.md');
+  const batchesDir = join(rootDir, 'experiments', 'computational-batches');
+  const batchDir = join(batchesDir, 'batch-003');
+  const predictionsPath = join(batchDir, 'data', 'blind-predictions.jsonl');
+  const resultsJsonlPath = join(batchDir, 'data', 'results.jsonl');
+  const analysisPath = join(batchDir, 'batch-003.md');
 
   // 1. Read blind predictions
   const predLines = readFileSync(predictionsPath, 'utf8').trim().split('\n');
@@ -130,7 +132,7 @@ export function runEvaluation(): void {
   const resultsJsonlLines = caseResults.map(r => JSON.stringify(r)).join('\n');
   writeFileSync(resultsJsonlPath, resultsJsonlLines + '\n', 'utf8');
 
-  // 5. Update research/analysis/batch-003.md
+  // 5. Update experiments/computational-batches/batch-003/batch-003.md
   let analysisContent = readFileSync(analysisPath, 'utf8');
 
   // Replace Status

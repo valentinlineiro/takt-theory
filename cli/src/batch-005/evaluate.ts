@@ -7,8 +7,9 @@ export function runBatch005Evaluation(): void {
   const results = executeBatch005();
 
   const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '../../../');
-  const analysisDir = join(rootDir, 'research', 'analysis');
-  mkdirSync(analysisDir, { recursive: true });
+  const batchesDir = join(rootDir, 'experiments', 'computational-batches');
+  const batchDir = join(batchesDir, 'batch-005');
+  mkdirSync(batchDir, { recursive: true });
 
   const scorecardRows = [
     `| **Pure Local (k=1)** | ${results.local.oia.toFixed(2)}% | ${results.local.dor.toFixed(2)}% | ${results.local.se.toFixed(2)}% | ${results.local.eer.toFixed(2)}% | ${results.local.er.toFixed(2)}% | ${results.local.ep.toFixed(2)}% | ${results.local.uer.toFixed(2)}% | - | - |`,
@@ -70,7 +71,7 @@ ${detailedRows}
 
 `;
 
-  const reportPath = join(analysisDir, 'batch-005.md');
+  const reportPath = join(batchDir, 'batch-005.md');
   writeFileSync(reportPath, markdownContent, 'utf8');
   console.log(`[Batch-005] Evaluation report successfully written to ${reportPath}`);
 }

@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { executeBatch002 } from './eval.js';
 
 interface BlindPrediction {
@@ -18,10 +19,12 @@ const symbolMap: Record<string, string> = {
 };
 
 export function runEvaluation(): void {
-  const rootDir = process.cwd();
-  const predictionsPath = join(rootDir, 'research', 'data', 'batch-002', 'blind-predictions.jsonl');
-  const resultsJsonlPath = join(rootDir, 'research', 'data', 'batch-002', 'results.jsonl');
-  const analysisPath = join(rootDir, 'research', 'analysis', 'batch-002.md');
+  const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '../../../');
+  const batchesDir = join(rootDir, 'experiments', 'computational-batches');
+  const batchDir = join(batchesDir, 'batch-002');
+  const predictionsPath = join(batchDir, 'data', 'blind-predictions.jsonl');
+  const resultsJsonlPath = join(batchDir, 'data', 'results.jsonl');
+  const analysisPath = join(batchDir, 'batch-002.md');
 
   // 1. Read blind predictions
   const predLines = readFileSync(predictionsPath, 'utf8').trim().split('\n');
@@ -112,7 +115,7 @@ export function runEvaluation(): void {
   const resultsJsonlLines = caseResults.map(r => JSON.stringify(r)).join('\n');
   writeFileSync(resultsJsonlPath, resultsJsonlLines + '\n', 'utf8');
 
-  // 5. Update research/analysis/batch-002.md
+  // 5. Update experiments/computational-batches/batch-002/batch-002.md
   let analysisContent = readFileSync(analysisPath, 'utf8');
 
   // Replace Status

@@ -139,9 +139,10 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 export function runBatch008Report(): void {
   const report = generateReport();
   const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '../../../');
-  const analysisDir = join(rootDir, 'research', 'analysis');
-  mkdirSync(analysisDir, { recursive: true });
-  const reportPath = join(analysisDir, 'batch-008-results.md');
+  const batchesDir = join(rootDir, 'experiments', 'computational-batches');
+  const batchDir = join(batchesDir, 'batch-008');
+  mkdirSync(batchDir, { recursive: true });
+  const reportPath = join(batchDir, 'batch-008-results.md');
   writeFileSync(reportPath, report, 'utf8');
   console.log(`[Batch-008] Report written to ${reportPath}`);
 }

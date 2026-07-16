@@ -100,5 +100,5 @@ survives as genuinely differential.
 ## Relevant files
 
 - `takt-formal/` — Lean proofs (5 modules, 439 lines, 0 errors)
-- `docs/theory/takt-formal-foundations-v1.md` — full derivation in LaTeX
+- `docs/01-foundations/takt-formal-foundations-v1.md` — full derivation in LaTeX
 - `session/README.md` — this file

@@ -46,49 +46,49 @@
 
 - [ ] **Step 1: Create target documentation directories**
   Run: `mkdir -p docs/01-foundations docs/02-theoretical-positioning docs/03-design-contracts docs/04-academic-paper docs/05-archives`
-- [ ] **Step 2: Migrate theory documents from `docs/theory/` to `docs/01-foundations/` using `git mv`**
+- [ ] **Step 2: Migrate theory documents from `docs/01-foundations/` to `docs/01-foundations/` using `git mv`**
   Run:
   ```bash
-  git mv docs/theory/what-takt-is.md docs/01-foundations/what-takt-is.md
-  git mv docs/theory/takt-specification-v3.md docs/01-foundations/takt-specification-v3.md
-  git mv docs/theory/takt-formal-foundations-v1.md docs/01-foundations/takt-formal-foundations-v1.md
-  git mv docs/theory/takt-theoretical-revision-v3.md docs/01-foundations/takt-theoretical-revision-v3.md
-  git mv docs/theory/reference-implementation-guide.md docs/01-foundations/reference-implementation-guide.md
+  git mv docs/01-foundations/what-takt-is.md docs/01-foundations/what-takt-is.md
+  git mv docs/01-foundations/takt-specification-v3.md docs/01-foundations/takt-specification-v3.md
+  git mv docs/01-foundations/takt-formal-foundations-v1.md docs/01-foundations/takt-formal-foundations-v1.md
+  git mv docs/01-foundations/takt-theoretical-revision-v3.md docs/01-foundations/takt-theoretical-revision-v3.md
+  git mv docs/01-foundations/reference-implementation-guide.md docs/01-foundations/reference-implementation-guide.md
   ```
-- [ ] **Step 3: Remove the now-empty `docs/theory/` directory**
+- [ ] **Step 3: Remove the now-empty `docs/01-foundations/` directory**
   Run: `rm -rf docs/theory`
 - [ ] **Step 4: Migrate novelty audit and positioning files from `docs/research/` to `docs/02-theoretical-positioning/`**
   Run:
   ```bash
-  git mv docs/research/novelty-audit.md docs/02-theoretical-positioning/novelty-audit.md
+  git mv docs/02-theoretical-positioning/novelty-audit.md docs/02-theoretical-positioning/novelty-audit.md
   git mv docs/research/novelty docs/02-theoretical-positioning/novelty
   ```
 - [ ] **Step 5: Migrate design contract milestones from `docs/research/` to `docs/03-design-contracts/`**
   Run:
   ```bash
-  git mv docs/research/D-001/formalization.md docs/03-design-contracts/D-001/formalization.md
-  git mv docs/research/D-002/formalization.md docs/03-design-contracts/D-002/formalization.md
-  git mv docs/research/D-003/formalization.md docs/03-design-contracts/D-003/formalization.md
+  git mv docs/03-design-contracts/D-001/formalization.md docs/03-design-contracts/D-001/formalization.md
+  git mv docs/03-design-contracts/D-002/formalization.md docs/03-design-contracts/D-002/formalization.md
+  git mv docs/03-design-contracts/D-003/formalization.md docs/03-design-contracts/D-003/formalization.md
   ```
-- [ ] **Step 6: Delete the duplicate Lean files under `docs/research/D-00x/implementation/` and remove empty dirs**
-  Run: `git rm -r docs/research/D-001/implementation docs/research/D-002/implementation docs/research/D-003/implementation` and remove parent empty folders.
+- [ ] **Step 6: Delete the duplicate Lean files under `docs/03-design-contracts/D-00x/implementation/` and remove empty dirs**
+  Run: `git rm -r docs/03-design-contracts/D-001/implementation docs/03-design-contracts/D-002/implementation docs/03-design-contracts/D-003/implementation` and remove parent empty folders.
 - [ ] **Step 7: Migrate academic paper files to `docs/04-academic-paper/`**
   Run:
   ```bash
-  git mv docs/research/paper-draft-v1.md docs/04-academic-paper/paper-draft-v1.md
-  git mv docs/research/bibliography.md docs/04-academic-paper/bibliography.md
+  git mv docs/04-academic-paper/paper-draft-v1.md docs/04-academic-paper/paper-draft-v1.md
+  git mv docs/04-academic-paper/bibliography.md docs/04-academic-paper/bibliography.md
   ```
 - [ ] **Step 8: Migrate freeze archives and historical revisions to `docs/05-archives/`**
   Run:
   ```bash
-  git mv docs/research/phase-b-freeze.md docs/05-archives/phase-b-freeze.md
-  git mv docs/research/phase-c-freeze.md docs/05-archives/phase-c-freeze.md
-  git mv docs/research/phase-d-freeze.md docs/05-archives/phase-d-freeze.md
-  git mv docs/research/phase-evolution-freeze-v3.md docs/05-archives/phase-evolution-freeze-v3.md
+  git mv docs/05-archives/phase-b-freeze.md docs/05-archives/phase-b-freeze.md
+  git mv docs/05-archives/phase-c-freeze.md docs/05-archives/phase-c-freeze.md
+  git mv docs/05-archives/phase-d-freeze.md docs/05-archives/phase-d-freeze.md
+  git mv docs/05-archives/phase-evolution-freeze-v3.md docs/05-archives/phase-evolution-freeze-v3.md
   git mv research/takt-theoretical-revision-v1.0.md docs/05-archives/takt-theoretical-revision-v1.0.md
-  git mv research/takt-theoretical-revision-v2.0-omega.md docs/05-archives/takt-theoretical-revision-v2.0-omega.md
+  git mv docs/05-archives/takt-theoretical-revision-v2.0-omega.md docs/05-archives/takt-theoretical-revision-v2.0-omega.md
   git mv research/takt-theoretical-revision-v2.1-results.md docs/05-archives/takt-theoretical-revision-v2.1-results.md
-  git mv research/analysis/omega-formalism-v0.1.md docs/05-archives/omega-formalism-v0.1.md
+  git mv docs/05-archives/omega-formalism-v0.1.md docs/05-archives/omega-formalism-v0.1.md
   ```
 - [ ] **Step 9: Remove now-empty `docs/research/` directory**
   Run: `rm -rf docs/research`
@@ -109,28 +109,28 @@
 - [ ] **Step 2: Move root stress tests ST-001 through ST-007 to `experiments/stress-tests/`**
   Run:
   ```bash
-  git mv experiments/ST-001 experiments/stress-tests/ST-001
-  git mv experiments/ST-002 experiments/stress-tests/ST-002
-  git mv experiments/ST-003 experiments/stress-tests/ST-003
-  git mv experiments/ST-004 experiments/stress-tests/ST-004
-  git mv experiments/ST-005 experiments/stress-tests/ST-005
-  git mv experiments/ST-006 experiments/stress-tests/ST-006
-  git mv experiments/ST-007 experiments/stress-tests/ST-007
+  git mv experiments/stress-tests/ST-001 experiments/stress-tests/ST-001
+  git mv experiments/stress-tests/ST-002 experiments/stress-tests/ST-002
+  git mv experiments/stress-tests/ST-003 experiments/stress-tests/ST-003
+  git mv experiments/stress-tests/ST-004 experiments/stress-tests/ST-004
+  git mv experiments/stress-tests/ST-005 experiments/stress-tests/ST-005
+  git mv experiments/stress-tests/ST-006 experiments/stress-tests/ST-006
+  git mv experiments/stress-tests/ST-007 experiments/stress-tests/ST-007
   ```
 - [ ] **Step 3: Move cases study folder CASE-001 through CASE-005**
-  Run: `git mv research/cases experiments/case-studies` (renaming case-studies/cases to case-studies/ is handled by `git mv research/cases experiments/case-studies`)
+  Run: `git mv experiments/case-studies experiments/case-studies` (renaming case-studies/cases to case-studies/ is handled by `git mv experiments/case-studies experiments/case-studies`)
 - [ ] **Step 4: Create individual batch subfolders and move batch analysis, specs, data, results to `experiments/computational-batches/batch-XXX/`**
   Run:
   * For batch-001:
     ```bash
     mkdir -p experiments/computational-batches/batch-001
-    git mv research/analysis/batch-001.md experiments/computational-batches/batch-001/batch-001.md
+    git mv experiments/computational-batches/batch-001/batch-001.md experiments/computational-batches/batch-001/batch-001.md
     git mv research/results/batch-001.json experiments/computational-batches/batch-001/batch-001.json
     ```
   * For batch-002:
     ```bash
     mkdir -p experiments/computational-batches/batch-002
-    git mv research/analysis/batch-002.md experiments/computational-batches/batch-002/batch-002.md
+    git mv experiments/computational-batches/batch-002/batch-002.md experiments/computational-batches/batch-002/batch-002.md
     git mv research/batch-002-design.md experiments/computational-batches/batch-002/batch-002-design.md
     git mv research/batch-002-plan.md experiments/computational-batches/batch-002/batch-002-plan.md
     git mv research/data/batch-002 experiments/computational-batches/batch-002/data
@@ -139,7 +139,7 @@
   * For batch-003:
     ```bash
     mkdir -p experiments/computational-batches/batch-003
-    git mv research/analysis/batch-003.md experiments/computational-batches/batch-003/batch-003.md
+    git mv experiments/computational-batches/batch-003/batch-003.md experiments/computational-batches/batch-003/batch-003.md
     git mv research/batch-003-plan.md experiments/computational-batches/batch-003/batch-003-plan.md
     git mv research/specs/batch-003.md experiments/computational-batches/batch-003/batch-003-spec.md
     git mv research/data/batch-003 experiments/computational-batches/batch-003/data
@@ -147,14 +147,14 @@
   * For batch-004:
     ```bash
     mkdir -p experiments/computational-batches/batch-004
-    git mv research/analysis/batch-004.md experiments/computational-batches/batch-004/batch-004.md
+    git mv experiments/computational-batches/batch-004/batch-004.md experiments/computational-batches/batch-004/batch-004.md
     git mv research/batch-004-plan.md experiments/computational-batches/batch-004/batch-004-plan.md
     git mv research/data/batch-004 experiments/computational-batches/batch-004/data
     ```
   * For batch-005:
     ```bash
     mkdir -p experiments/computational-batches/batch-005
-    git mv research/analysis/batch-005.md experiments/computational-batches/batch-005/batch-005.md
+    git mv experiments/computational-batches/batch-005/batch-005.md experiments/computational-batches/batch-005/batch-005.md
     git mv research/batch-005-plan.md experiments/computational-batches/batch-005/batch-005-plan.md
     git mv research/specs/batch-005.md experiments/computational-batches/batch-005/batch-005-spec.md
     ```
@@ -163,13 +163,13 @@
     ```bash
     for b in 008 009 010 011 012 013 014 015 016 017 018 019 020 021 022 023 024; do
       mkdir -p experiments/computational-batches/batch-$b
-      git mv research/analysis/batch-$b-* experiments/computational-batches/batch-$b/
+      git mv experiments/computational-batches/batch-$b-* experiments/computational-batches/batch-$b/
     done
     ```
   * For batch-0091:
     ```bash
     mkdir -p experiments/computational-batches/batch-0091
-    git mv research/analysis/batch-0091-* experiments/computational-batches/batch-0091/
+    git mv experiments/computational-batches/batch-0091-* experiments/computational-batches/batch-0091/
     ```
 - [ ] **Step 5: Move general reports and fixtures**
   Run:
@@ -207,7 +207,7 @@
   > **Historical Precursor:**
   > * `docs/05-archives/omega-formalism-v0.1.md` — Precursor to the current observability framework, outlining the transition from EVSI to governed representational contraction.
 - [ ] **Step 4: Repair broken relative markdown links in `docs/` and `experiments/`**
-  Search for references to `docs/research/`, `docs/theory/`, and `research/` in all markdown files and update them to the new paths.
+  Search for references to `docs/research/`, `docs/01-foundations/`, and `research/` in all markdown files and update them to the new paths.
 - [ ] **Step 5: Commit phase 4 reference repair**
   Run: `git commit -a -m "refactor(repo): repair path references in CLI and Markdown links"`
 

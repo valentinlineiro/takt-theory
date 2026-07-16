@@ -90,7 +90,7 @@ describe('Batch 004 Evaluation Runner', () => {
   });
 
   it('runs evaluation and writes the report and results files', () => {
-    const results = runEvaluation(); // writes files to research/
+    const results = runEvaluation(); // writes files to experiments/computational-batches/batch-004
     expect(results).toBeDefined();
   });
 });

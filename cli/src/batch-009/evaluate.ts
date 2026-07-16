@@ -152,9 +152,10 @@ export function generateReport(): string {
 export function runBatch009Report(): void {
   const report = generateReport();
   const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), '../../../');
-  const analysisDir = join(rootDir, 'research', 'analysis');
-  mkdirSync(analysisDir, { recursive: true });
-  const reportPath = join(analysisDir, 'batch-009-results.md');
+  const batchesDir = join(rootDir, 'experiments', 'computational-batches');
+  const batchDir = join(batchesDir, 'batch-009');
+  mkdirSync(batchDir, { recursive: true });
+  const reportPath = join(batchDir, 'batch-009-results.md');
   writeFileSync(reportPath, report, 'utf8');
   console.log(`[Batch-009] Report written to ${reportPath}`);
 }

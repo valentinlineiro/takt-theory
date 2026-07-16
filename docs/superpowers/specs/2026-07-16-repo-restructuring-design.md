@@ -40,47 +40,47 @@ To ensure a robust, lossless migration, the following rules apply:
 * No delete-and-copy operations are permitted for versioned files.
 
 ### 2.2 Duplication Cleanup
-* Duplicate Lean files in `docs/research/D-00x/implementation/` (`DecisionMargin.lean`, `Coverage.lean`, `DynamicSafetyContract.lean`) will be deleted. The canonical source of truth remains `takt-formal/TaktFormal/`.
+* Duplicate Lean files in `docs/03-design-contracts/D-00x/implementation/` (`DecisionMargin.lean`, `Coverage.lean`, `DynamicSafetyContract.lean`) will be deleted. The canonical source of truth remains `takt-formal/TaktFormal/`.
 
 ---
 
 ## 3. File Migration Mapping
 
-### 3.1 From `docs/theory/` to `docs/01-foundations/`
-* `docs/theory/what-takt-is.md` $\to$ `docs/01-foundations/what-takt-is.md`
-* `docs/theory/takt-specification-v3.md` $\to$ `docs/01-foundations/takt-specification-v3.md`
-* `docs/theory/takt-formal-foundations-v1.md` $\to$ `docs/01-foundations/takt-formal-foundations-v1.md`
-* `docs/theory/takt-theoretical-revision-v3.md` $\to$ `docs/01-foundations/takt-theoretical-revision-v3.md`
-* `docs/theory/reference-implementation-guide.md` $\to$ `docs/01-foundations/reference-implementation-guide.md`
+### 3.1 From `docs/01-foundations/` to `docs/01-foundations/`
+* `docs/01-foundations/what-takt-is.md` $\to$ `docs/01-foundations/what-takt-is.md`
+* `docs/01-foundations/takt-specification-v3.md` $\to$ `docs/01-foundations/takt-specification-v3.md`
+* `docs/01-foundations/takt-formal-foundations-v1.md` $\to$ `docs/01-foundations/takt-formal-foundations-v1.md`
+* `docs/01-foundations/takt-theoretical-revision-v3.md` $\to$ `docs/01-foundations/takt-theoretical-revision-v3.md`
+* `docs/01-foundations/reference-implementation-guide.md` $\to$ `docs/01-foundations/reference-implementation-guide.md`
 
 ### 3.2 From `docs/research/` to `docs/` Subdirectories
-* `docs/research/novelty-audit.md` $\to$ `docs/02-theoretical-positioning/novelty-audit.md`
-* `docs/research/novelty/` (10 files) $\to$ `docs/02-theoretical-positioning/novelty/`
-* `docs/research/D-001/formalization.md` $\to$ `docs/03-design-contracts/D-001/formalization.md`
-* `docs/research/D-002/formalization.md` $\to$ `docs/03-design-contracts/D-002/formalization.md`
-* `docs/research/D-003/formalization.md` $\to$ `docs/03-design-contracts/D-003/formalization.md`
-* `docs/research/paper-draft-v1.md` $\to$ `docs/04-academic-paper/paper-draft-v1.md`
-* `docs/research/bibliography.md` $\to$ `docs/04-academic-paper/bibliography.md`
-* `docs/research/phase-b-freeze.md` $\to$ `docs/05-archives/phase-b-freeze.md`
-* `docs/research/phase-c-freeze.md` $\to$ `docs/05-archives/phase-c-freeze.md`
-* `docs/research/phase-d-freeze.md` $\to$ `docs/05-archives/phase-d-freeze.md`
-* `docs/research/phase-evolution-freeze-v3.md` $\to$ `docs/05-archives/phase-evolution-freeze-v3.md`
+* `docs/02-theoretical-positioning/novelty-audit.md` $\to$ `docs/02-theoretical-positioning/novelty-audit.md`
+* `docs/02-theoretical-positioning/novelty/` (10 files) $\to$ `docs/02-theoretical-positioning/novelty/`
+* `docs/03-design-contracts/D-001/formalization.md` $\to$ `docs/03-design-contracts/D-001/formalization.md`
+* `docs/03-design-contracts/D-002/formalization.md` $\to$ `docs/03-design-contracts/D-002/formalization.md`
+* `docs/03-design-contracts/D-003/formalization.md` $\to$ `docs/03-design-contracts/D-003/formalization.md`
+* `docs/04-academic-paper/paper-draft-v1.md` $\to$ `docs/04-academic-paper/paper-draft-v1.md`
+* `docs/04-academic-paper/bibliography.md` $\to$ `docs/04-academic-paper/bibliography.md`
+* `docs/05-archives/phase-b-freeze.md` $\to$ `docs/05-archives/phase-b-freeze.md`
+* `docs/05-archives/phase-c-freeze.md` $\to$ `docs/05-archives/phase-c-freeze.md`
+* `docs/05-archives/phase-d-freeze.md` $\to$ `docs/05-archives/phase-d-freeze.md`
+* `docs/05-archives/phase-evolution-freeze-v3.md` $\to$ `docs/05-archives/phase-evolution-freeze-v3.md`
 
 ### 3.3 From `experiments/` to `experiments/stress-tests/`
-* `experiments/ST-001/` through `experiments/ST-007/` $\to$ `experiments/stress-tests/ST-001/` through `experiments/stress-tests/ST-007/`
+* `experiments/stress-tests/ST-001/` through `experiments/stress-tests/ST-007/` $\to$ `experiments/stress-tests/ST-001/` through `experiments/stress-tests/ST-007/`
 
 ### 3.4 From `research/` to `/` Subdirectories
-* `research/analysis/batch-001.md` $\to$ `experiments/computational-batches/batch-001/batch-001.md`
-* `research/analysis/batch-002.md` $\to$ `experiments/computational-batches/batch-002/batch-002.md`
-* `research/analysis/batch-003.md` $\to$ `experiments/computational-batches/batch-003/batch-003.md`
-* `research/analysis/batch-004.md` $\to$ `experiments/computational-batches/batch-004/batch-004.md`
-* `research/analysis/batch-005.md` $\to$ `experiments/computational-batches/batch-005/batch-005.md`
-* `research/analysis/batch-008-*` (4 files) $\to$ `experiments/computational-batches/batch-008/batch-008-*`
+* `experiments/computational-batches/batch-001/batch-001.md` $\to$ `experiments/computational-batches/batch-001/batch-001.md`
+* `experiments/computational-batches/batch-002/batch-002.md` $\to$ `experiments/computational-batches/batch-002/batch-002.md`
+* `experiments/computational-batches/batch-003/batch-003.md` $\to$ `experiments/computational-batches/batch-003/batch-003.md`
+* `experiments/computational-batches/batch-004/batch-004.md` $\to$ `experiments/computational-batches/batch-004/batch-004.md`
+* `experiments/computational-batches/batch-005/batch-005.md` $\to$ `experiments/computational-batches/batch-005/batch-005.md`
+* `experiments/computational-batches/batch-008-*` (4 files) $\to$ `experiments/computational-batches/batch-008/batch-008-*`
 * ... similarly for all other batches `009` through `024`.
-* `research/analysis/batch-0091-experimental-freeze.md` $\to$ `experiments/computational-batches/batch-0091/batch-0091-experimental-freeze.md`
+* `experiments/computational-batches/batch-0091-experimental-freeze.md` $\to$ `experiments/computational-batches/batch-0091/batch-0091-experimental-freeze.md`
 * `research/analysis/fixture-semantic-contract.md` $\to$ `experiments/computational-batches/fixture-semantic-contract.md`
 * `research/analysis/takt-synthesis-report.md` $\to$ `experiments/computational-batches/takt-synthesis-report.md`
-* `research/analysis/omega-formalism-v0.1.md` $\to$ `docs/05-archives/omega-formalism-v0.1.md`
+* `docs/05-archives/omega-formalism-v0.1.md` $\to$ `docs/05-archives/omega-formalism-v0.1.md`
 * `research/batch-002-design.md` $\to$ `experiments/computational-batches/batch-002/batch-002-design.md`
 * `research/batch-002-plan.md` $\to$ `experiments/computational-batches/batch-002/batch-002-plan.md`
 * `research/batch-003-plan.md` $\to$ `experiments/computational-batches/batch-003/batch-003-plan.md`
@@ -91,11 +91,11 @@ To ensure a robust, lossless migration, the following rules apply:
 * `research/experiments/batch-002/predictions.md` $\to$ `experiments/computational-batches/batch-002/predictions.md`
 * `research/results/batch-001.json` $\to$ `experiments/computational-batches/batch-001/batch-001.json`
 * `research/takt-theoretical-revision-v1.0.md` $\to$ `docs/05-archives/takt-theoretical-revision-v1.0.md`
-* `research/takt-theoretical-revision-v2.0-omega.md` $\to$ `docs/05-archives/takt-theoretical-revision-v2.0-omega.md`
+* `docs/05-archives/takt-theoretical-revision-v2.0-omega.md` $\to$ `docs/05-archives/takt-theoretical-revision-v2.0-omega.md`
 * `research/takt-theoretical-revision-v2.1-results.md` $\to$ `docs/05-archives/takt-theoretical-revision-v2.1-results.md`
-* `research/cases/CASE-001/` through `CASE-005/` $\to$ `experiments/case-studies/CASE-001/` through `CASE-005/`
+* `experiments/case-studies/CASE-001/` through `CASE-005/` $\to$ `experiments/case-studies/CASE-001/` through `CASE-005/`
 * `research/data/batch-002/` $\to$ `experiments/computational-batches/batch-002/data/`
-* `research/data/batch-003/` $\to$ `experiments/computational-batches/batch-003/data/`
+* `experiments/computational-batches/batch-003/data/` $\to$ `experiments/computational-batches/batch-003/data/`
 * `research/data/batch-004/` $\to$ `experiments/computational-batches/batch-004/data/`
 
 ---
