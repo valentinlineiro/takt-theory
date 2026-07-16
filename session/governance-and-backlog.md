@@ -62,14 +62,20 @@ Esta fase adopta un enfoque puramente adversarial para evaluar los límites de o
 * **Enlace al Núcleo Formal:** [HiddenKernel.lean](file:///home/valentin/code/takt-theory/experiments/ST-004/implementation/HiddenKernel.lean)
 
 ### ST-005 — Multi-agent / Distributed Decision
-* **Estado:** [ ] Pendiente
+* **Estado:** [✓] Completado
+* **Clasificación:** **Boundary Identified** (Límite Identificado)
 * **Objetivo:** Extender la composición a arquitecturas no lineales (e.g., redes en estrella o diamante) con múltiples agentes decisores independientes.
 * **Pregunta Clave:** ¿Cómo interactúan los contratos decisionales distribuidos y si pueden surgir inconsistencias colectivas a pesar de la seguridad local de cada agente?
+* **Documentación:** [experiments/ST-005/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-005/conclusion.md)
+* **Enlace al Núcleo Formal:** [DistributedDecision.lean](file:///home/valentin/code/takt-theory/experiments/ST-005/implementation/DistributedDecision.lean)
 
 ### ST-006 — Temporal Drift
-* **Estado:** [ ] Pendiente
+* **Estado:** [✓] Completado
+* **Clasificación:** **Boundary Identified** (Límite Identificado)
 * **Objetivo:** Analizar la deriva temporal infinitesimal de las representaciones ($R_t \to R_{t+1}$).
 * **Pregunta Clave:** ¿Es capaz TAKT de alertar sobre la degradación decisional acumulada antes de que se produzca una pérdida catastrófica visible?
+* **Documentación:** [experiments/ST-006/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-006/conclusion.md)
+* **Enlace al Núcleo Formal:** [TemporalDrift.lean](file:///home/valentin/code/takt-theory/experiments/ST-006/implementation/TemporalDrift.lean)
 
 ---
 
