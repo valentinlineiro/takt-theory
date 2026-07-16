@@ -77,6 +77,14 @@ Esta fase adopta un enfoque puramente adversarial para evaluar los límites de o
 * **Documentación:** [experiments/ST-006/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-006/conclusion.md)
 * **Enlace al Núcleo Formal:** [TemporalDrift.lean](file:///home/valentin/code/takt-theory/experiments/ST-006/implementation/TemporalDrift.lean)
 
+### ST-007 — External Dynamic Safety Contract
+* **Estado:** [✓] Completado
+* **Clasificación:** **Validated** (Validado)
+* **Objetivo:** Evaluar si el Contrato Dinámico de Seguridad detecta y gobierna la degradación decisional en un clasificador neuronal Edge-AI con cuantificación bajo deriva de datos.
+* **Pregunta Clave:** ¿Puede el contrato de gobernanza dinámico actuar como instrumento efectivo de auditoría en un sistema externo no diseñado bajo TAKT?
+* **Documentación:** [experiments/ST-007/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-007/conclusion.md)
+* **Enlace al Núcleo Formal:** [ExternalContract.lean](file:///home/valentin/code/takt-theory/experiments/ST-007/implementation/ExternalContract.lean)
+
 ---
 
 ## 4. Backlog de la Fase D (Consolidación)
