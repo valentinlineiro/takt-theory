@@ -19,13 +19,13 @@ es la diferencia irreductible entre ambos.
 
 ## Estado
 
-| Marco                              | Traducción | Separación | Estado  |
-|-------------------------------------|------------|------------|---------|
-| Sufficient Statistics               | ✅         | ⬜         | Fase A completada. |
-| Blackwell                           | ✅         | ⬜         | Fase A completada. Correspondencia parcial (garbling ↔ representación; estocástico ≠ determinista). |
-| Decision-Sufficient Representations | ✅         | ⬜         | Fase A completada. TAKT ↔ φ_π*, no φ_Q*. |
-| Information Bottleneck              | 🚫         | ⬜         | Fase A completada. Preservación informacional ≠ decisional. No traducible. |
-| Bisimulation                        | ✅         | ⬜         | Fase A completada. Correspondencia parcial (bisimulación ⇒ TAKT; TAKT ⇏ bisimulación). |
+| Marco                              | Traducción | Separación | Estado completo |
+|-------------------------------------|------------|------------|-----------------|
+| Sufficient Statistics               | ✅         | ✅         | Correspondencia fuerte; dependiente de hipótesis estadísticas. |
+| Blackwell                           | ✅         | ✅         | Correspondencia parcial (estocástico vs. determinista; universal vs. específico). |
+| Decision-Sufficient Representations | ✅         | ✅         | Correspondencia parcial (TAKT ↔ π*; Q* estrictamente más fuerte). |
+| Information Bottleneck              | 🚫         | ✅         | Independencia: preservación informacional vs. decisional. |
+| Bisimulation                        | ✅         | ✅         | Correspondencia parcial (bisimulación ⇒ TAKT; TAKT ⇏ bisimulación). |
 
 ## Referencia de TAKT
 
@@ -44,7 +44,9 @@ Archivos Lean:
 - `takt-formal/TaktFormal/SafetyEquivalence.lean`
 - `takt-formal/TaktFormal/EpsilonUCounterexample.lean`
 
-## Resultados de la Fase A
+## Resultados
+
+### Fase A — Traducción
 
 | Resultado                     | Marcos                                                     |
 | ----------------------------- | ---------------------------------------------------------- |
@@ -52,22 +54,34 @@ Archivos Lean:
 | **Correspondencia parcial**   | Blackwell, Bisimulation                                    |
 | **No traducible**             | Information Bottleneck                                     |
 
-**Patrón transversal confirmado (4/5 marcos con preservación decisional):**
+### Fase B — Separación
+
+| Resultado                     | Marco               | Detalle                                                |
+| ----------------------------- | ------------------- | ------------------------------------------------------ |
+| **Correspondencia fuerte**    | Sufficient Statistics | Preservación idéntica pero con dependencia de hipótesis estadísticas. |
+| **Correspondencia parcial**   | Decision-Sufficient | Fortalecimiento: TAKT = π*; Q* más fuerte.             |
+|                               | Bisimulation        | Debilitamiento: bisimulación preserva dinámica y recompensa, TAKT no. |
+|                               | Blackwell           | Estocasticidad (kernel vs. función) y dominio (universal vs. fijo). |
+| **Independencia**             | Information Bottleneck | Propiedades ortogonales (información vs. decisión). |
+
+## Patrón transversal
 
 En Berger, Blackwell, State Abstraction y Bisimulation, la preservación
 decisional aparece como una propiedad derivada (teorema o definición
-subordinada) de un aparato teórico más amplio. En TAKT, esa misma propiedad
-es el axioma fundacional. La diferencia no es de contenido formal, sino de
-**estatus lógico**: qué se postula y qué se demuestra.
+subordinada) de un aparato teórico más amplio. En TAKT, esa misma
+propiedad es el axioma fundacional. La diferencia no es de contenido
+formal, sino de **estatus lógico**: qué se postula y qué se demuestra.
 
-**Límite del patrón (1/5 marcos):**
+**Límite del patrón:** Information Bottleneck confirma que el patrón no
+es trivial. No todo marco de representación es una teoría de preservación
+decisional.
 
-Information Bottleneck se separa porque no es una teoría de preservación
-decisional, sino de preservación informacional. Esto confirma que el patrón
-no es trivial ni forzado.
+## Documentos
 
-## Pendiente (Fase B)
+Todos los documentos en `docs/research/novelty/`:
 
-La Fase B (Separación) no se ha iniciado formalmente para ningún marco aún.
-Cada documento de auditoría contiene contraejemplos preliminares, pero el
-análisis sistemático de separación está pendiente.
+- `01-sufficient-statistics.md` + `01-sufficient-statistics-phase-b.md`
+- `02-blackwell.md` + `02-blackwell-phase-b.md`
+- `03-decision-sufficient.md` + `03-decision-sufficient-phase-b.md`
+- `04-information-bottleneck.md` + `04-information-bottleneck-phase-b.md`
+- `05-bisimulation.md` + `05-bisimulation-phase-b.md`
