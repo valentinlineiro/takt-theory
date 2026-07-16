@@ -21,11 +21,11 @@ es la diferencia irreductible entre ambos.
 
 | Marco                              | Traducción | Separación | Estado completo |
 |-------------------------------------|------------|------------|-----------------|
-| Sufficient Statistics               | ✅         | ✅         | Correspondencia fuerte; dependiente de hipótesis estadísticas. |
-| Blackwell                           | ✅         | ✅         | Correspondencia parcial (estocástico vs. determinista; universal vs. específico). |
-| Decision-Sufficient Representations | ✅         | ✅         | Correspondencia parcial (TAKT ↔ π*; Q* estrictamente más fuerte). |
-| Information Bottleneck              | 🚫         | ✅         | Independencia: preservación informacional vs. decisional. |
-| Bisimulation                        | ✅         | ✅         | Correspondencia parcial (bisimulación ⇒ TAKT; TAKT ⇏ bisimulación). |
+| Sufficient Statistics               | ✅         | ✅         | Correspondencia fuerte (con dependencia de hipótesis estadísticas) |
+| Blackwell                           | ✅         | ✅         | Correspondencia parcial (estocástico vs. determinista; universal vs. específico) |
+| Decision-Sufficient Representations | ✅         | ✅         | Correspondencia parcial (fortalecimiento: TAKT ↔ π*, no Q*) |
+| Information Bottleneck              | 🚫         | ✅         | Independencia (preservación informacional vs. decisional) |
+| Bisimulation                        | ✅         | ✅         | Correspondencia parcial (debilitamiento: bisimulación preserva dinámica) |
 
 ## Referencia de TAKT
 
@@ -58,11 +58,11 @@ Archivos Lean:
 
 | Resultado                     | Marco               | Detalle                                                |
 | ----------------------------- | ------------------- | ------------------------------------------------------ |
-| **Correspondencia fuerte**    | Sufficient Statistics | Preservación idéntica pero con dependencia de hipótesis estadísticas. |
-| **Correspondencia parcial**   | Decision-Sufficient | Fortalecimiento: TAKT = π*; Q* más fuerte.             |
-|                               | Bisimulation        | Debilitamiento: bisimulación preserva dinámica y recompensa, TAKT no. |
+| **Correspondencia fuerte**    | Sufficient Statistics | Preservación idéntica, pero dependiente de hipótesis estadísticas. |
+| **Correspondencia parcial**   | Decision-Sufficient | Fortalecimiento: TAKT = π*; Q* es más fuerte.          |
+|                               | Bisimulation        | Debilitamiento: bisimulación preserva dinámica y recompensa completa. |
 |                               | Blackwell           | Estocasticidad (kernel vs. función) y dominio (universal vs. fijo). |
-| **Independencia**             | Information Bottleneck | Propiedades ortogonales (información vs. decisión). |
+| **Independencia**             | Information Bottleneck | Propiedades ortogonales: información vs. decisión.    |
 
 ## Patrón transversal
 
@@ -72,16 +72,20 @@ subordinada) de un aparato teórico más amplio. En TAKT, esa misma
 propiedad es el axioma fundacional. La diferencia no es de contenido
 formal, sino de **estatus lógico**: qué se postula y qué se demuestra.
 
-**Límite del patrón:** Information Bottleneck confirma que el patrón no
-es trivial. No todo marco de representación es una teoría de preservación
-decisional.
+La Fase B añade que cada marco que contiene preservación decisional lo
+hace bajo hipótesis más fuertes que TAKT (distribuciones, dinámica,
+convexidad, cuantificadores universales). TAKT aísla la preservación
+decisional como principio autónomo, eliminando esas dependencias.
+
+**Límite:** Information Bottleneck confirma que no todo marco es una
+teoría de preservación decisional.
 
 ## Documentos
 
-Todos los documentos en `docs/research/novelty/`:
-
-- `01-sufficient-statistics.md` + `01-sufficient-statistics-phase-b.md`
-- `02-blackwell.md` + `02-blackwell-phase-b.md`
-- `03-decision-sufficient.md` + `03-decision-sufficient-phase-b.md`
-- `04-information-bottleneck.md` + `04-information-bottleneck-phase-b.md`
-- `05-bisimulation.md` + `05-bisimulation-phase-b.md`
+| Marco               | Fase A                                    | Fase B                                          |
+|---------------------|-------------------------------------------|-------------------------------------------------|
+| Sufficient Statistics | `01-sufficient-statistics.md`            | `01-sufficient-statistics-phase-b.md`           |
+| Blackwell             | `02-blackwell.md`                        | `02-blackwell-phase-b.md`                       |
+| Decision-Sufficient   | `03-decision-sufficient.md`              | `03-decision-sufficient-phase-b.md`             |
+| Information Bottleneck| `04-information-bottleneck.md`           | `04-information-bottleneck-phase-b.md`          |
+| Bisimulation          | `05-bisimulation.md`                     | `05-bisimulation-phase-b.md`                    |
