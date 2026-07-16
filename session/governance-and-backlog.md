@@ -49,7 +49,31 @@ Para iniciar el ciclo de validación, se establece el siguiente backlog de exper
 
 ---
 
-## 3. Clasificación de Resultados
+## 3. Backlog de la Fase C (Adversarial)
+
+Esta fase adopta un enfoque puramente adversarial para evaluar los límites de observación y robustez de TAKT.
+
+### ST-004 — Hidden Kernel Attack
+* **Estado:** [✓] Completado
+* **Clasificación:** **Boundary Identified** (Límite Identificado)
+* **Objetivo:** Buscar una representación que preserve todos los observables locales (como la seguridad en un conjunto de test) pero que esconda pérdida de seguridad decisional a nivel global.
+* **Pregunta Clave:** ¿Los observables empíricos sobre subconjuntos de estados son suficientes para certificar la seguridad global de una representación en TAKT?
+* **Documentación:** [experiments/ST-004/conclusion.md](file:///home/valentin/code/takt-theory/experiments/ST-004/conclusion.md)
+* **Enlace al Núcleo Formal:** [HiddenKernel.lean](file:///home/valentin/code/takt-theory/experiments/ST-004/implementation/HiddenKernel.lean)
+
+### ST-005 — Multi-agent / Distributed Decision
+* **Estado:** [ ] Pendiente
+* **Objetivo:** Extender la composición a arquitecturas no lineales (e.g., redes en estrella o diamante) con múltiples agentes decisores independientes.
+* **Pregunta Clave:** ¿Cómo interactúan los contratos decisionales distribuidos y si pueden surgir inconsistencias colectivas a pesar de la seguridad local de cada agente?
+
+### ST-006 — Temporal Drift
+* **Estado:** [ ] Pendiente
+* **Objetivo:** Analizar la deriva temporal infinitesimal de las representaciones ($R_t \to R_{t+1}$).
+* **Pregunta Clave:** ¿Es capaz TAKT de alertar sobre la degradación decisional acumulada antes de que se produzca una pérdida catastrófica visible?
+
+---
+
+## 4. Clasificación de Resultados
 
 Cada stress-test o caso de estudio documentado deberá concluir etiquetándose bajo una de las siguientes tres categorías:
 
