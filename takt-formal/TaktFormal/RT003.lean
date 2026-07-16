@@ -1,30 +1,67 @@
+import TaktFormal.DynamicSafetyContract
+
+open DynamicSafetyContract
+open DecisionMargin
+open Coverage
+
 namespace RT003
 
--- State variables representing contract health at time t
-structure ContractState where
-  coverage_satisfied : Bool
-  margin_satisfied : Bool
-  alignment_optimal : Bool
+inductive S : Type where
+  | s0 : S
+  | s1 : S
+  deriving DecidableEq
 
--- Initial state: everything is normal
-def t0 : ContractState := {
-  coverage_satisfied := true,
-  margin_satisfied := true,
-  alignment_optimal := true
+def D : S → Nat
+  | S.s0 => 0
+  | S.s1 => 1
+
+def R : S → Int
+  | S.s0 => 0
+  | S.s1 => 1
+
+def T : S → Prop
+  | _ => True
+
+def dist : S → S → Nat
+  | S.s0, S.s0 => 0
+  | S.s0, S.s1 => 5
+  | S.s1, S.s0 => 5
+  | S.s1, S.s1 => 0
+
+def all_S : List S := [S.s0, S.s1]
+
+-- Non-aligned policy
+def π_bad : Int → Nat
+  | _ => 1  -- Constantly 1, so it fails on s0 where D s0 = 0
+
+def c_bad : SafetyContract S Int Nat := {
+  R := R
+  D := D
+  π := π_bad
+  T := T
+  all_S := all_S
+  dist := dist
+  m_min := 2
 }
 
--- Inversion state: alignment collapses due to exogenous shift, but coverage/margin remain intact
-def t_collapse : ContractState := {
-  coverage_satisfied := true,
-  margin_satisfied := true,
-  alignment_optimal := false
-}
+theorem rt003_coverage_satisfied : fiber_coverage c_bad.R c_bad.D c_bad.T := by
+  intro x
+  cases x
+  · exact ⟨S.s0, True.intro, rfl, rfl⟩
+  · exact ⟨S.s1, True.intro, rfl, rfl⟩
 
-theorem rt003_cascade_inversion :
-  t0.alignment_optimal = true ∧
-  t_collapse.alignment_optimal = false ∧
-  t_collapse.coverage_satisfied = true ∧
-  t_collapse.margin_satisfied = true := by
-  refine ⟨rfl, ⟨rfl, ⟨rfl, rfl⟩⟩⟩
+theorem rt003_margin_satisfied :
+  (match decisionMargin c_bad.dist c_bad.D c_bad.R c_bad.all_S with
+   | none => false
+   | some m => m ≥ c_bad.m_min) = true := by
+  rfl
+
+theorem rt003_alignment_failed : ¬ (∀ x, c_bad.T x → c_bad.π (c_bad.R x) = c_bad.D x) := by
+  intro h
+  have h0 := h S.s0 True.intro
+  -- c_bad.π (c_bad.R S.s0) = π_bad 0 = 1
+  -- c_bad.D S.s0 = 0
+  -- so 1 = 0, which is a contradiction
+  contradiction
 
 end RT003

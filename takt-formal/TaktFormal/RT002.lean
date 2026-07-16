@@ -1,5 +1,9 @@
 import TaktFormal.DynamicSafetyContract
 
+open DynamicSafetyContract
+open DecisionMargin
+open Coverage
+
 namespace RT002
 
 -- State Space: S = {0, 1, 2}
@@ -38,10 +42,18 @@ def step_allowed : S → S → Prop
   | S.s0, S.s2 => True  -- Transition directly crosses decision boundary in 1 step!
   | _, _ => False
 
-theorem rt002_success : 
-  d S.s0 S.s2 = 5 ∧ 
-  D S.s0 ≠ D S.s2 ∧ 
-  step_allowed S.s0 S.s2 := by
-  refine ⟨rfl, ⟨by decide, True.intro⟩⟩
+def all_S : List S := [S.s0, S.s1, S.s2]
+
+def m_min : Nat := 4
+
+theorem rt002_margin_satisfied :
+  (match decisionMargin d D R all_S with
+   | none => false
+   | some m => m ≥ m_min) = true := by
+  rfl
+
+theorem rt002_transition_crosses_classes :
+  ∃ (s1 s2 : S), step_allowed s1 s2 ∧ D s1 ≠ D s2 :=
+  ⟨S.s0, S.s2, True.intro, by decide⟩
 
 end RT002
