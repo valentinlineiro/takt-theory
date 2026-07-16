@@ -164,7 +164,7 @@ TAKT no pretende ser un marco universal ni un sustituto de las teorías con las 
 * **TAKT no es una teoría de la probabilidad (TAKT is not a theory of probability).** No opera sobre distribuciones de probabilidad, esperanzas matemáticas ni kernels estocásticos.
 * **TAKT no es una teoría de la dinámica (TAKT is not a theory of dynamics).** No modela transiciones de estado a lo largo del tiempo, factores de descuento ni ecuaciones de Bellman.
 * **TAKT no es una teoría de la información (TAKT is not a theory of information).** No emplea entropías, tradeoffs de información mutua ni métricas de codificación.
-* **TAKT no prescribe cómo se construyen las representaciones (TAKT does not prescribe how representations are constructed).** Es una teoría analítica de verificación y caracterización de seguridad, no una guía procedimental para su generación.
+* **TAKT no es una teoría de construcción u optimización de representaciones (TAKT is not a theory of representation construction or optimization).** TAKT caracteriza cuándo una representación es segura, pero no prescribe cómo obtenerla, construirla ni optimizarla.
 
 Estos límites no constituyen debilidades, sino la consecuencia lógica de su minimalismo axiomático: al desprenderse de toda estructura superflua, la teoría gana en generalidad lo que restringe en expresividad.
 
@@ -198,7 +198,17 @@ formular una pregunta que otros marcos presuponen respondida:
 > Dado un sistema que decide, ¿qué información es necesario retener
 > para que la decisión no cambie?
 
-Al responder esta pregunta de manera mínima — sin añadir ni probabilidad,
-ni dinámica, ni información — TAKT define el límite inferior de la
-preservación decisional. Todo marco más expresivo añade algo más;
-ninguno puede prescindir de menos.
+Al responder esta pregunta aislando un núcleo mínimo de preservación decisional, TAKT demuestra que, dentro de los marcos auditados, cualquier teoría más expresiva añade estructura adicional (probabilística, dinámica o informacional) más allá de dicho núcleo.
+
+---
+
+## 9. References to the Formal Core
+
+Las definiciones, teoremas y cotas conceptualizadas en este documento están completamente formalizadas en Lean 4 dentro del núcleo formal de TAKT (versión `v1.0.0-formal-core`):
+
+* **Sistema de Decisión y Operador $D$:** [DecisionSystem.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/DecisionSystem.lean)
+* **Particiones y Kernel:** [Kernel.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Kernel.lean)
+* **Teorema de Factorización:** [Factorization.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Factorization.lean)
+* **Regret y Cota de Seguridad:** [Regret.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Regret.lean)
+* **Teorema de Equivalencia de Seguridad:** [SafetyEquivalence.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/SafetyEquivalence.lean)
+* **Contraejemplo de Asimetría ($\varepsilon_U \not\implies \varepsilon_D$):** [EpsilonUCounterexample.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/EpsilonUCounterexample.lean)
