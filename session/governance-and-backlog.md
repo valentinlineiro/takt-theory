@@ -79,7 +79,32 @@ Esta fase adopta un enfoque puramente adversarial para evaluar los límites de o
 
 ---
 
-## 4. Clasificación de Resultados
+## 4. Backlog de la Fase D (Consolidación)
+
+Esta fase transforma los límites descubiertos en la Fase C en invariantes preventivas y métricas dentro del marco formal de TAKT.
+
+### D-001 — Decision Margin Formalization
+* **Estado:** [✓] Completado
+* **Objetivo:** Formalizar la distancia geométrica al fallo decisional ($M(R)$) en espacios métricos.
+* **Pregunta Clave:** ¿Cómo medimos la deriva permitida antes del colapso decisional?
+* **Documentación:** [docs/research/D-001/formalization.md](file:///home/valentin/code/takt-theory/docs/research/D-001/formalization.md)
+* **Enlace al Núcleo Formal:** [DecisionMargin.lean](file:///home/valentin/code/takt-theory/docs/research/D-001/implementation/DecisionMargin.lean)
+
+### D-002 — Test Coverage Characterization
+* **Estado:** [✓] Completado
+* **Objetivo:** Caracterizar formalmente la Condición de Cobertura de Fibras ($C(T, S)$).
+* **Pregunta Clave:** ¿Bajo qué condiciones una garantía local en un conjunto de test $T$ se generaliza a la seguridad global en $S$?
+* **Documentación:** [docs/research/D-002/formalization.md](file:///home/valentin/code/takt-theory/docs/research/D-002/formalization.md)
+* **Enlace al Núcleo Formal:** [Coverage.lean](file:///home/valentin/code/takt-theory/docs/research/D-002/implementation/Coverage.lean)
+
+### D-003 — Dynamic Safety Contracts
+* **Estado:** [ ] Pendiente
+* **Objetivo:** Unificar composición, agentes y tiempo en un contrato decisional dinámico.
+* **Pregunta Clave:** ¿Cómo formalizamos un contrato dinámico capaz de blindar la seguridad decisional en entornos distribuidos cambiantes?
+
+---
+
+## 5. Clasificación de Resultados
 
 Cada stress-test o caso de estudio documentado deberá concluir etiquetándose bajo una de las siguientes tres categorías:
 
