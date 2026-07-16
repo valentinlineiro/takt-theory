@@ -94,14 +94,41 @@ The contract is satisfied if:
 3. $M(R_t) \ge m_{\text{min}}$ (margin sufficiency)
 4. $\forall x \in T, \quad \pi(R_t(x)) = D(x)$ (policy alignment)
 
+### 4.4. Failure Cascade and Early Warning Mechanism
+Rather than checking independent indicators, the Dynamic Safety Contract represents a **causal model of safety degradation**. When a representation undergoes drift, the variables collapse in a predictable cascade:
+
+```text
+               Representational Drift
+                         |
+                         v
+               Coverage Loss C(T,S)   <-- Early Warning Signal
+                         |
+                         v
+             Decision Margin Collapse <-- Critical Failure
+                      M(R) = 0
+                         |
+                         v
+               Contract Invalidation
+                     (C = false)
+                         |
+                         v
+                Policy Deactivation
+                 (Safety Shutdown)
+```
+
+1. **Drift & Coverage Loss:** As the representation boundary shifts, states near the boundaries move into different representation codes. If the test set $T$ does not contain samples in these newly shifted regions, $C(T, S)$ is violated first. This serves as an **early warning indicator** that the empirical test set is no longer representative.
+2. **Margin Collapse:** If coverage loss is ignored, continuing drift causes states with different decisions to collide under the same representation, collapsing the margin $M(R) \to 0$.
+3. **Failsafe Action:** The contract invalidates execution at the first stage of this cascade, preventing unsafe decisions before they occur.
+
 ---
 
 ## 5. Operational Validation (ST-007)
-We validated the contract on an Edge-AI sensor classifier. Under sensor drift ($\theta = 3$), the empirical test set $T$ reported 100% safety because the drift did not cause collisions within the test points. However, the contract's margin monitor detected the global boundary violation, showing:
-* $\text{safe}_T(R_1) = \text{True}$ (Test set fails silently).
-* $M(R_1) = 0 < m_{\text{min}}$ (Contract triggers alarm and disables policy execution).
+We validated the contract on an Edge-AI sensor classifier under sensor drift ($\theta = 3$). The empirical test set $T$ reported 100% safety because the drift did not cause collisions within the test points. However, the contract detected the failure cascade:
+* $\text{safe}_T(R_1) = \text{True}$ (The test set fails silently).
+* $C(T, S) = \text{False}$ (Fiber Coverage is violated first, acting as the early warning signal because state $s = -20$ maps to an unrepresented code).
+* $M(R_1) = 0 < m_{\text{min}}$ (The decision margin collapses to 0 globally, violating margin sufficiency).
 
-This confirms that the TAKT v3.0 contract acts as a robust runtime audit mechanism, successfully preventing silent failures.
+This confirms that the TAKT v3.0 contract acts as a robust runtime audit mechanism, successfully triggering a failsafe shutdown before any unsafe decision can be executed.
 
 ---
 
