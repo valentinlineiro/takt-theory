@@ -34,18 +34,13 @@ Predecimos que **el conjunto de test local fallará silenciosamente, declarando 
 
 ---
 
-## Predicción 3: Alerta del Contrato por Colapso de Margen ($t = 1$)
+## Predicción 3: Alerta del Contrato por Violación en Cascada ($t = 1$)
 
-A nivel global, la deriva térmica colapsa los estados $s = 0$ y $s = -5$ en la misma representación:
-* $R_1(0) = R_1(-5) = -1$
-* Dado que sus decisiones difieren ($D(0) = 1 \neq 0 = D(-5)$), la representación es globalmente insegura.
-* Por la definición de margen decisional de D-001, al ser insegura:
-   \[
-   M(R_1) = 0
-   \]
-* Puesto que el margen requerido es $m_{\text{min}} = 5$, se viola la condición:
-   \[
-   M(R_1) = 0 < 5
-   \]
+A nivel global, la deriva térmica altera las fibras y colapsa los estados $s = 0$ y $s = -5$ en la misma representación:
+* **Colapso global:** $R_1(0) = R_1(-5) = -1$ con decisiones diferentes ($D(0) = 1 \neq 0 = D(-5)$).
+* En el protocolo de auditoría del contrato, las condiciones se evalúan en orden:
+  1. **Seguridad empírica:** Pasa (`True`).
+  2. **Cobertura de fibras ($C(T, S)$):** Falla (`False`), ya que el desplazamiento provoca que el estado $s = -20$ tenga código de representación $R_1(-20) = -3$, el cual no posee ningún representante en $T$. El contrato detecta de forma inmediata una **Violación de Cobertura**.
+  3. **Margen Decisional ($M(R_1)$):** Si se evaluara de forma independiente, colapsaría a $M(R_1) = 0 < 5$, provocando también una **Violación de Margen**.
 
-Predecimos que **el Contrato Dinámico detectará la violación y se inhabilitará (alertando al sistema), bloqueando el fallo silencioso del test**.
+Predecimos que **el Contrato Dinámico detectará la degradación (de forma primaria a través de la pérdida de cobertura de fibras), bloqueando el fallo silencioso del test**.
