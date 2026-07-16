@@ -102,9 +102,9 @@ El Red Team v3.0 se organiza de manera jerárquica, atacando de abajo hacia arri
 
 ## 7. RT-003 — Causal Cascade Inversion (Nivel 3: Causalidad)
 
-* **Objetivo principal**: Causalidad del contrato.
+* **Objetivo principal**: Evaluar si la cascada causal del contrato tiene capacidad predictiva suficiente bajo cambios exógenos del entorno.
 * **Capacidades**: Modificar las entradas del entorno $x_t \in S$. (No modifica la configuración del contrato $R$, $\pi$, $T$).
-* **Hipótesis de Fallo**: Existe una pérdida de alineación de la política cuya causa no es detectable por las variables precedentes del contrato (cobertura y margen).
+* **Hipótesis de Fallo**: Existe una pérdida de alineación de la política cuya causa no es detectable por las variables precedentes del contrato (cobertura y margen) ante perturbaciones del entorno.
 * **Estrategia**:
   El adversario induce una perturbación de estados en el entorno tal que el primer indicador de anomalía observable por el contrato en el tiempo $t_f$ sea la propia desalineación de la política, permaneciendo estables la cobertura y el margen en los instantes inmediatamente anteriores.
 * **Predicción Matemática**:
@@ -123,9 +123,9 @@ El Red Team v3.0 se organiza de manera jerárquica, atacando de abajo hacia arri
 
 * **Objetivo principal**: El contrato dinámico completo $\mathcal{C}$.
 * **Capacidades**: Conoce el contrato $\mathcal{C}$ y el estado del monitor en tiempo real. Puede modificar únicamente las **entradas del sistema** ($x_t \in S$) de manera adaptativa. No puede modificar $R$, $\pi$, $T$ ni la lógica del contrato.
-* **Hipótesis de Fallo**: Un contrato dinámico reactivo e inalterable puede ser evadido de forma persistente por un adversario que optimiza de manera continua sus acciones para situarse en las "zonas grises" o espacio nulo del monitor.
 * **Estrategia**:
   El adversario calcula una secuencia de entradas $\{x_t\}_{t=0}^T$ que de forma acumulada maximiza la pérdida decisional del sistema sin activar las alarmas geométricas, de alineación o de cobertura del contrato en ningún paso de tiempo.
+  *Nota metodológica*: Este ataque constituye el paso inicial y fundamental hacia una formulación de juego dinámico de información parcial estructurada en la triada **Auditor, Sistema y Adversario**.
 * **Predicción Matemática**:
   El adversario resuelve la optimización sobre la trayectoria temporal:
   $$\max_{\{x_t\}_{t=0}^T} \sum_{t=0}^T L(x_t)$$
@@ -138,7 +138,18 @@ El Red Team v3.0 se organiza de manera jerárquica, atacando de abajo hacia arri
 
 ---
 
-## 9. Criterios de Clasificación de Resultados
+## 9. Amenazas a la Validez
+
+Para mitigar interpretaciones excesivas y acotar con rigor el alcance de la Fase E, se declaran los siguientes límites metodológicos:
+
+1. **Escala del Espacio de Estados**: Los dominios discretos y los espacios de estados simulados en los experimentos pueden ser simplificaciones del comportamiento en sistemas de producción complejos, limitando la generalización empírica directa de los coeficientes de éxito.
+2. **Discretización en Lean 4**: Los modelos verificados formalmente operan de forma matemática abstracta y frecuentemente discreta. Fenómenos dinámicos continuos o caóticos podrían no ser capturados en el formalismo actual del Core.
+3. **Brecha de Verificación**: Las simulaciones en TypeScript demuestran la viabilidad de los ataques sobre implementaciones computacionales, pero no constituyen una prueba formal generalizable sobre todas las clases de sistemas descritas por la teoría.
+4. **Relatividad del Modelo de Amenaza**: Un ataque clasificado como exitoso solo invalida la configuración o suficiencia del contrato actual bajo las restricciones estrictas del Threat Model declarado.
+
+---
+
+## 10. Criterios de Clasificación de Resultados
 
 Cada resultado experimental e histórico de los ataques se clasificará bajo una de las siguientes categorías científicas:
 
@@ -148,7 +159,7 @@ Cada resultado experimental e histórico de los ataques se clasificará bajo una
 
 ---
 
-## 10. Scientific Exit Criteria (Criterios de Cierre de la Fase E)
+## 11. Scientific Exit Criteria (Criterios de Cierre de la Fase E)
 
 La Fase E no persigue demostrar de manera complaciente que TAKT es infalible. Su propósito fundamental es determinar el conjunto exacto de hipótesis bajo las cuales sus garantías lógicas y operativas son estrictamente válidas. El éxito científico de la fase consiste en reducir la incertidumbre sobre dicho dominio de aplicabilidad, independientemente de que los ataques resulten validados, refinados o identifiquen nuevas fronteras conceptuales.
 
