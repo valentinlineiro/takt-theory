@@ -98,9 +98,11 @@ Esta fase transforma los límites descubiertos en la Fase C en invariantes preve
 * **Enlace al Núcleo Formal:** [Coverage.lean](file:///home/valentin/code/takt-theory/docs/research/D-002/implementation/Coverage.lean)
 
 ### D-003 — Dynamic Safety Contracts
-* **Estado:** [ ] Pendiente
+* **Estado:** [✓] Completado
 * **Objetivo:** Unificar composición, agentes y tiempo en un contrato decisional dinámico.
 * **Pregunta Clave:** ¿Cómo formalizamos un contrato dinámico capaz de blindar la seguridad decisional en entornos distribuidos cambiantes?
+* **Documentación:** [docs/research/D-003/formalization.md](file:///home/valentin/code/takt-theory/docs/research/D-003/formalization.md)
+* **Enlace al Núcleo Formal:** [DynamicSafetyContract.lean](file:///home/valentin/code/takt-theory/docs/research/D-003/implementation/DynamicSafetyContract.lean)
 
 ---
 
