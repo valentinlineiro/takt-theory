@@ -274,3 +274,47 @@ El objeto de G3 tendrá que explicar dónde está la frontera de $\mathcal{W}_{h
 
 $k_0$ — o $\phi_0$ en la formulación general — no es el objeto. Es el fenómeno que obliga al objeto a existir. Bautizarlo ahora sería cometer el mismo error que habría supuesto llamar $\varepsilon_D$ a la distancia entre kernels antes de entender qué espacio era relevante.
 
+---
+
+## 12. Restricciones Negativas sobre el Objeto de G3
+
+*Lo que HAA-001 demuestra que el objeto no puede ser.*
+
+El fallo ocurre **fuera del espacio observado por G2**. El objeto de G3 no puede vivir dentro de ese espacio. Por tanto, queda descartado que el objeto sea:
+
+| Candidato descartado | Razón |
+|---------------------|-------|
+| Una métrica sobre trayectorias | M_D ya opera en ese espacio; no detectó el fallo |
+| Una corrección de M_D (tipo β de G2) | β corrige la estimación de P dentro del mismo espacio observacional |
+| Un nuevo detector de deriva de estado | La deriva en el espacio de estados es visible a G2; HAA-001 no produce deriva |
+| Una penalización sobre observaciones pasadas | El ataque es invisible a toda observación puntual de G2 por construcción |
+| Una extensión del audit game bajo el mismo Π_adv | El problema es que Π_adv^real ≠ Π_adv^Threat — un audit game más sofisticado dentro del mismo modelo no resuelve el problema |
+
+**Lo que el objeto sí debe hacer:** caracterizar la estructura de $\ker(\operatorname{obs}_{G2})$ respecto a $V(C)$ — es decir, operar en el espacio de mundos, no en el espacio de trayectorias.
+
+**El patrón abstracto que el objeto debe capturar:**
+
+$$\text{equivalencia inducida por obs(G2)} \not\subseteq \text{equivalencia relevante para } V(C)$$
+
+Esta es exactamente la misma forma que en F ($\ker(R) \not\subseteq \ker(D)$), instanciada en un nivel de abstracción superior.
+
+---
+
+## 13. Cierre del Brainstorming de G3
+
+**Fecha de cierre del brainstorming:** 2026-07-17
+
+El brainstorming de apertura de G3 ha producido:
+
+1. **Una pregunta científica falsable** con H₀ y H₁ explícitas.
+2. **Un predicado candidato:** $\ker(\operatorname{obs}_{G2}) \subseteq V(C)$ — forma canónica del problema.
+3. **H₁ establecida constructivamente** (G3-HAA-001) mediante el Hidden Assumption Attack.
+4. **El fenómeno ordenador:** $k_0$ como primera coordenada visible de la frontera de $\mathcal{W}_{hidden}$.
+5. **Restricciones negativas** que acotan el espacio de búsqueda del objeto.
+6. **Una función latente desconocida:** $\phi: W \to X$ con frontera $\phi_0$ — la forma general del objeto sin comprometerse con su naturaleza.
+
+**Lo que no ha producido** (intencionadamente): ningún nombre para el objeto, ninguna especificación de $\phi$, ningún mecanismo de implementación.
+
+El repositorio contiene exactamente lo que debe contener en este momento: el fallo demostrado, la forma matemática del fallo, la propiedad que debe restaurarse, y la evidencia de que la primera variable observada ($k_0$) no es el objeto sino el fenómeno.
+
+**La siguiente acción de G3** es identificar qué transformación $\phi$ sobre mundos produce la partición observada. Esa identificación no puede diseñarse: tiene que emerger de un intento serio de caracterizar la frontera de $\mathcal{W}_{hidden}$ de forma general, más allá del caso específico de profundidad de memoria.
