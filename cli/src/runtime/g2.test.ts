@@ -118,3 +118,38 @@ describe('TransitionEstimator', () => {
     expect(e.count(s0, a1)).toBe(0);
   });
 });
+
+import { ValidityMonitor } from './ValidityMonitor.js';
+
+describe('ValidityMonitor', () => {
+  const s0 = { id: 's0' };
+  const sSafe = { id: 's_safe' };
+  const sFail = { id: 's_fail' };
+  const a0 = { id: 'a0' };
+  const candidates = [s0, sSafe, sFail];
+
+  it('drift is 0 when window and full-history estimates agree', () => {
+    const e = new TransitionEstimator<typeof s0, typeof a0>(20);
+    for (let i = 0; i < 100; i++) e.observe(s0, a0, i % 5 === 0 ? sFail : sSafe);
+    const v = new ValidityMonitor(e, candidates, 0.3);
+    expect(v.drift(s0, a0)).toBeLessThan(0.01);
+  });
+
+  it('drift is large when a burst of anomalous observations fills the window', () => {
+    const e = new TransitionEstimator<typeof s0, typeof a0>(20);
+    for (let i = 0; i < 500; i++) e.observe(s0, a0, sSafe);
+    for (let i = 0; i < 15; i++) e.observe(s0, a0, sFail);
+    const v = new ValidityMonitor(e, candidates, 0.3);
+    expect(v.drift(s0, a0)).toBeGreaterThan(0.3);
+  });
+
+  it('isMismatched compares drift against tau', () => {
+    const e = new TransitionEstimator<typeof s0, typeof a0>(20);
+    for (let i = 0; i < 500; i++) e.observe(s0, a0, sSafe);
+    for (let i = 0; i < 15; i++) e.observe(s0, a0, sFail);
+    const strict = new ValidityMonitor(e, candidates, 0.3);
+    const lenient = new ValidityMonitor(e, candidates, 1.5);
+    expect(strict.isMismatched(s0, a0)).toBe(true);
+    expect(lenient.isMismatched(s0, a0)).toBe(false);
+  });
+});
