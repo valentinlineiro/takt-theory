@@ -17,4 +17,9 @@ describe('G2-002: uncertainty collapse adversary', () => {
     const result = executeBatchG2002();
     expect(result.decisionWithMonitor).toBe('RECALIBRATE');
   });
+
+  it('the naive margin sits well above threshold, not marginally', () => {
+    const result = executeBatchG2002();
+    expect(result.naiveMarginSafe).toBeCloseTo(3.1619, 3);
+  });
 });
