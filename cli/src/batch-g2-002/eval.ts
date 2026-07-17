@@ -37,8 +37,8 @@ export function executeBatchG2002(): BatchG2002Result {
   const drift = validity.drift(s0, a0);
   const driftDetected = validity.isMismatched(s0, a0);
 
-  const trueTds = buildBinaryTDS(estimator.windowEstimate(s0, a0, sFail));
-  const mdSafe = new RobustMarginEstimator(trueTds, estimator, uncertainty, D, π, O).estimate({ states: [s0], actions: [] });
+  const stateSpace = buildBinaryTDS(estimator.windowEstimate(s0, a0, sFail));
+  const mdSafe = new RobustMarginEstimator(stateSpace, estimator, uncertainty, D, π, O).estimate({ states: [s0], actions: [] });
 
   const policy = new AuditPolicy();
   const decision = policy.decideSafe(mdSafe, threshold, drift, tau);

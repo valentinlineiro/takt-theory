@@ -61,8 +61,8 @@ export function executeBatchG2004(): BatchG2004Result {
   }
 
   const driftAfterRecovery = validity.drift(s0, a0);
-  const trueTds = buildBinaryTDS(0.4);
-  const postRecoveryMDSafe = new RobustMarginEstimator(trueTds, estimator, uncertainty, D, π, O)
+  const stateSpace = buildBinaryTDS(0.4);
+  const postRecoveryMDSafe = new RobustMarginEstimator(stateSpace, estimator, uncertainty, D, π, O)
     .estimate({ states: [s0], actions: [] });
   const decision = policy.decideSafe(postRecoveryMDSafe, threshold, driftAfterRecovery, tau);
 

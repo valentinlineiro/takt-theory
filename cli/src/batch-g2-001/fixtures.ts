@@ -15,7 +15,7 @@ export function buildBinaryTDS(pFail: number): TransitionSystem<G2State, G2Actio
   return {
     states: [s0, sSafe, sFail],
     actions: [a0],
-    transition: (s, a) => {
+    transition: (s) => {
       if (s.id === 's0') return [
         { state: sSafe, prob: 1 - pFail },
         { state: sFail, prob: pFail },

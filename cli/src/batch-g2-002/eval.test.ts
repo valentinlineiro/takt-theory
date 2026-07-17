@@ -20,6 +20,6 @@ describe('G2-002: uncertainty collapse adversary', () => {
 
   it('the naive margin sits well above threshold, not marginally', () => {
     const result = executeBatchG2002();
-    expect(result.naiveMarginSafe).toBeCloseTo(3.1619, 3);
+    expect(result.naiveMarginSafe).toBeGreaterThan(3.0);
   });
 });

@@ -13,9 +13,14 @@ function memoKey<S>(state: S, depth: number): string {
   return JSON.stringify(state) + '@' + depth;
 }
 
+// This recursion mirrors computeDynamicMargin in cli/src/takt-core/margin.ts:
+// same decision-loss check, same memoization scheme, same maxDepth cutoff.
+// Key difference: uses UncertaintySet.pMax for worst-case probabilities instead of tds.transition.
+// If either recursion's control flow changes, check the other; the epsilon=0 equivalence test
+// in g2.test.ts ('matches DynamicMarginEstimator') guards against silent divergence.
 export class RobustMarginEstimator<S, A, O> {
   constructor(
-    private tds: TransitionSystem<S, A>,
+    private tds: { states: S[]; actions: A[] },
     private estimator: TransitionEstimator<S, A>,
     private uncertainty: UncertaintySet<S, A>,
     private D: ReferencePolicy<S, A>,

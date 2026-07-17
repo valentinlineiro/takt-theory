@@ -27,9 +27,9 @@ export function executeBatchG2001(): BatchG2001Result {
   const epsilon = uncertainty.radius(s0, a0);
   const pTrueFail = Math.min(1, pHatFail + epsilon / 2);
 
-  const trueTds = buildBinaryTDS(pTrueFail);
-  const mdTrue = new DynamicMarginEstimator(trueTds, D, π, O).estimate({ states: [s0], actions: [] });
-  const mdSafe = new RobustMarginEstimator(trueTds, estimator, uncertainty, D, π, O).estimate({ states: [s0], actions: [] });
+  const stateSpace = buildBinaryTDS(pTrueFail);
+  const mdTrue = new DynamicMarginEstimator(stateSpace, D, π, O).estimate({ states: [s0], actions: [] });
+  const mdSafe = new RobustMarginEstimator(stateSpace, estimator, uncertainty, D, π, O).estimate({ states: [s0], actions: [] });
 
   return {
     pHatFail,

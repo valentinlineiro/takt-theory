@@ -292,6 +292,14 @@ describe('ContractEvaluator RECALIBRATE tracking', () => {
     expect(report.recalibrationCount).toBe(0);
     expect(report.lastRecalibrationReason).toBeNull();
   });
+
+  it('a loss during RECALIBRATE counts as a violation', () => {
+    const evaluator = new ContractEvaluator(0.3);
+    evaluator.evaluate({ action: 'RECALIBRATE', reason: 'test' }, { loss: true });
+    const report = evaluator.report();
+    expect(report.violationCount).toBe(1);
+    expect(report.recalibrationCount).toBe(1);
+  });
 });
 
 describe('R6: Uncertainty lifecycle integrity', () => {
