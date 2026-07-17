@@ -241,29 +241,36 @@ no diseñar el objeto sino dejar que la forma del contraejemplo force su aparici
 
 *Esta sección no define el objeto de G3. Registra lo que la forma del contraejemplo fuerza a observar.*
 
-### La estructura de $\mathcal{W}_{hidden}$
+### El predicado de G3 en su forma más compacta
 
-Define el conjunto de mundos epístoméricamente ocultos al gobernador en el estado $w_1$:
+$\ker(\operatorname{obs}_{G2})$ es el conjunto de mundos colapsados por el sistema de observación de G2 — la generalización exacta de $\ker(R)$ en F:
 
-$$\mathcal{W}_{hidden}(w_1) = \{w' \in [w_1]_{G2} : w' \notin V(C)\}$$
+| Fase | Kernel | Condición de seguridad |
+|------|--------|----------------------|
+| F | $\ker(R) = \{(s,s') : R(s)=R(s')\}$ | $\ker(R) \subseteq \ker(D)$ |
+| G3 | $\ker(\operatorname{obs}_{G2}) = \{(w,w') : \operatorname{obs}(G2,w)=\operatorname{obs}(G2,w')\}$ | $\ker(\operatorname{obs}_{G2}) \subseteq V(C)$ |
 
-El contraejemplo HAA-001 demuestra que $\mathcal{W}_{hidden}(w_1) \neq \varnothing$.
+HAA-001 demuestra: $\ker(\operatorname{obs}_{G2}) \not\subseteq V(C)$.
 
-Lo que la construcción revela sobre la estructura de ese conjunto:
+La condición de seguridad G3 no pide que todos los mundos sean iguales: pide que ningún mundo indistinguible para G2 escape de la región donde el certificado sigue siendo válido.
 
-$\mathcal{W}_{hidden}$ está **ordenado por profundidad de memoria del adversario**:
-- Mundos con $\Pi_{adv}$ de profundidad $k = 0$: todos en $V(C)$ (identiñcos a $w_1$)
-- Mundos con profundidad $k = k_0$: primera aparición de $w' \notin V(C)$
-- Mundos con profundidad $k > k_0$: todos fuera de $V(C)$ (el espacio de amenazas mayor destruye la garantía)
+### $k_0$ es el fenómeno, no el objeto
 
-Eso induce una **frontera en profundidad de memoria**: $k_0$ es el mínimo $k$ tal que el certificado falla para algún $w' \in [w_1]_{G2}$ con profundidad $k$.
+La construcción de HAA-001 usa profundidad de memoria $k$ como dimensión latente. Eso revela que $\mathcal{W}_{hidden}$ tiene estructura interna ordenada:
 
-### Lo que eso sugiere (sin comprometerse)
+$$k < k_0 \Rightarrow w \in V(C) \qquad k \geq k_0 \Rightarrow w \notin V(C)$$
 
-En F, la necesidad de explicar el contraejemplo de $\varepsilon_U$ forzó la aparición de $\varepsilon_D$ — una distancia en el espacio de decisiones.
+Pero $k$ es un **generador del fenómeno**, no necesariamente la variable del objeto. La frontera real podría depender de:
+- complejidad del adversario (memoria como caso particular)
+- capacidad de coordinación inter-agente
+- desviación del supuesto de observabilidad
+- riqueza del espacio de políticas admisibles
 
-En G2, la necesidad de explicar el Asymmetric Margin Effect forzó la aparición de $\beta$ — un offset en el espacio de estimaciones.
+La formulación más general: existe una función latente $\phi: W \to \mathbb{R}$ tal que $\phi(w) < \phi_0 \Rightarrow w \in V(C)$ y $\phi(w) \geq \phi_0 \Rightarrow w \notin V(C)$. La profundidad de memoria es una instancia de $\phi$. No se sabe si $\phi$ es única ni qué forma tiene.
 
-Aquí, la necesidad de explicar por qué $\mathcal{W}_{hidden}$ tiene la estructura de frontera que tiene podría forzar la aparición de una cantidad que mida $k_0$ — la profundidad mínima de memoria que rompe el certificado dado el poder de observación de G2.
+### Disciplina de cierre
 
-Esa cantidad no es necesariamente una distancia ni necesariamente depende de la memoria. El contraejemplo solo exige que exista algo que capture dónde está la frontera de $\mathcal{W}_{hidden}$ dentro de $[w]_{G2}$.
+El objeto de G3 tendrá que explicar dónde está la frontera de $\mathcal{W}_{hidden}$ dentro de $\ker(\operatorname{obs}_{G2})$. Sea eso una métrica, un orden, un margen o algo sin nombre todavía.
+
+$k_0$ — o $\phi_0$ en la formulación general — no es el objeto. Es el fenómeno que obliga al objeto a existir. Bautizarlo ahora sería cometer el mismo error que habría supuesto llamar $\varepsilon_D$ a la distancia entre kernels antes de entender qué espacio era relevante.
+
