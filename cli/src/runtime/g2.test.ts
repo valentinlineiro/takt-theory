@@ -239,3 +239,51 @@ describe('RobustMarginEstimator', () => {
     expect(margin).toBeCloseTo(-Math.log(0.3), 6);
   });
 });
+
+import { AuditPolicy } from './AuditPolicy.js';
+import { ContractEvaluator } from './ContractEvaluator.js';
+
+describe('AuditPolicy.decideSafe', () => {
+  it('returns RECALIBRATE when drift exceeds tau, regardless of margin', () => {
+    const policy = new AuditPolicy();
+    const decision = policy.decideSafe(10, 0.5, 0.6, 0.3);
+    expect(decision.action).toBe('RECALIBRATE');
+  });
+
+  it('returns INTERVENE when drift is within tau but margin is below threshold', () => {
+    const policy = new AuditPolicy();
+    const decision = policy.decideSafe(0.1, 0.5, 0.1, 0.3);
+    expect(decision.action).toBe('INTERVENE');
+  });
+
+  it('returns MONITOR_SAFE when drift is within tau and margin is at or above threshold', () => {
+    const policy = new AuditPolicy();
+    const decision = policy.decideSafe(1.0, 0.5, 0.1, 0.3);
+    expect(decision.action).toBe('MONITOR_SAFE');
+  });
+
+  it('G1 decide() is unaffected', () => {
+    const policy = new AuditPolicy();
+    expect(policy.decide(0.1, 0.5).action).toBe('INTERVENE');
+    expect(policy.decide(1.0, 0.5).action).toBe('MONITOR');
+  });
+});
+
+describe('ContractEvaluator RECALIBRATE tracking', () => {
+  it('counts recalibrations and records the last reason', () => {
+    const evaluator = new ContractEvaluator(0.3);
+    evaluator.evaluate({ action: 'RECALIBRATE', reason: 'Δ=0.60 > τ=0.30' }, { loss: false });
+    const report = evaluator.report();
+    expect(report.recalibrationCount).toBe(1);
+    expect(report.lastRecalibrationReason).toBe('Δ=0.60 > τ=0.30');
+  });
+
+  it('reset() clears recalibration tracking', () => {
+    const evaluator = new ContractEvaluator(0.3);
+    evaluator.evaluate({ action: 'RECALIBRATE', reason: 'first' }, { loss: false });
+    evaluator.reset();
+    const report = evaluator.report();
+    expect(report.recalibrationCount).toBe(0);
+    expect(report.lastRecalibrationReason).toBeNull();
+  });
+});
