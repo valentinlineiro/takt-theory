@@ -1,5 +1,4 @@
 import { TrajectoryPrefix } from '../takt-core/types.js';
-import { TransitionSystem } from '../takt-core/margin.js';
 import type { ReferencePolicy } from '../takt-core/coverage.js';
 import { UncertaintySet } from './UncertaintySet.js';
 import { TransitionEstimator } from './TransitionEstimator.js';
