@@ -293,3 +293,77 @@ describe('ContractEvaluator RECALIBRATE tracking', () => {
     expect(report.lastRecalibrationReason).toBeNull();
   });
 });
+
+describe('R6: Uncertainty lifecycle integrity', () => {
+  interface GState { id: string; }
+  interface GAction { id: string; }
+  interface GObs { id: string; }
+
+  const s0: GState = { id: 's0' };
+  const sSafe: GState = { id: 's_safe' };
+  const sFail: GState = { id: 's_fail' };
+  const a0: GAction = { id: 'a0' };
+
+  function buildTDS(pFail: number): TransitionSystem<GState, GAction> {
+    return {
+      states: [s0, sSafe, sFail],
+      actions: [a0],
+      transition: (s) => {
+        if (s.id === 's0') return [
+          { state: sSafe, prob: 1 - pFail },
+          { state: sFail, prob: pFail },
+        ];
+        if (s.id === 's_safe') return [{ state: s0, prob: 1.0 }];
+        if (s.id === 's_fail') return [{ state: sFail, prob: 1.0 }];
+        return [];
+      },
+    };
+  }
+
+  const O = (s: GState): GObs => ({ id: s.id });
+  const D = (_p: TrajectoryPrefix<GState, GAction>): GAction => a0;
+  const π = (obs: GObs[]): GAction => {
+    const last = obs[obs.length - 1];
+    return last.id === 's_fail' ? { id: 'a1' } : { id: 'a0' };
+  };
+
+  it('U_t contracts under stationary evidence and restores exactly on recovery — never both, never neither', () => {
+    const estimator = new TransitionEstimator<GState, GAction>(20);
+    const uncertainty = new UncertaintySet<GState, GAction>(0.6);
+    const validity = new ValidityMonitor(estimator, [s0, sSafe, sFail], 0.3);
+    const tds = buildTDS(0.1);
+    const policy = new AuditPolicy();
+    const evaluator = new ContractEvaluator(0.3);
+
+    const radii: number[] = [];
+    for (let i = 0; i < 200; i++) {
+      const outcome = i % 10 === 0 ? sFail : sSafe;
+      estimator.observe(s0, a0, outcome);
+      uncertainty.observe(s0, a0);
+      radii.push(uncertainty.radius(s0, a0));
+    }
+
+    // Stationary evidence: radius is monotonically non-increasing.
+    for (let i = 1; i < radii.length; i++) {
+      expect(radii[i]).toBeLessThanOrEqual(radii[i - 1]);
+    }
+
+    const preRecoveryRadius = uncertainty.radius(s0, a0);
+    expect(preRecoveryRadius).toBeLessThan(0.6);
+
+    // A recovery event resets the radius exactly to epsilon0 — not partially, not to zero.
+    uncertainty.recover(s0, a0);
+    expect(uncertainty.radius(s0, a0)).toBe(0.6);
+
+    // The full pipeline runs end to end without throwing, producing a well-formed decision.
+    const robust = new RobustMarginEstimator(tds, estimator, uncertainty, D, π, O);
+    const prefix: TrajectoryPrefix<GState, GAction> = { states: [s0], actions: [] };
+    const marginSafe = robust.estimate(prefix);
+    const drift = validity.drift(s0, a0);
+    const decision = policy.decideSafe(marginSafe, 1.0, drift, 0.3);
+    evaluator.evaluate(decision, { loss: false });
+
+    expect(['MONITOR_SAFE', 'INTERVENE', 'RECALIBRATE']).toContain(decision.action);
+    expect(Number.isFinite(marginSafe) || marginSafe === Infinity).toBe(true);
+  });
+});
