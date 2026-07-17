@@ -63,3 +63,13 @@ Los resultados de los teoremas compilados son:
   - Teorema: `theorem R3_margin : decisionMargin dist D R3 all_S = some 0`
 
 Estos resultados prueban constructivamente que el margen decisional se mantiene constante y positivo ($2$) durante la deriva segura, y colapsa instantáneamente a $0$ en el momento en que se viola la inclusión de kernels.
+
+---
+
+## Nota Terminológica: $M(R)$ estático vs. $M_D(\tau_{:t})$ dinámico
+
+Este documento define el **Margen Decisional estático** $M(R)$ como una distancia geométrica en el espacio de estados: el ínfimo de la distancia entre pares de estados en diferentes clases de equivalencia con decisiones distintas. Es una propiedad del objeto representación $R$ en un instante dado.
+
+El paper v4 (`docs/04-academic-paper/2026-07-17-takt-v4-draft.md`) introduce un objeto relacionado pero distinto: el **Margen Dinámico** $M_D(\tau_{:t})$, definido como el coste de surprisal mínimo acumulado ($\sum -\log P$) para alcanzar el primer fallo decisional desde un prefijo de trayectoria $\tau_{:t}$. Es una propiedad de la trayectoria y del operador de transición, no de la representación estática.
+
+La notación es similar por diseño — ambos miden "distancia al fallo" — pero en espacios distintos (métrico estático vs. informacional dinámico). Los dos coexisten en la teoría: $M(R)$ gobierna la Fase F (contratos estáticos); $M_D(\tau_{:t})$ gobierna la Fase G2 (contratos dinámicos sobre trayectorias).

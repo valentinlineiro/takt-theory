@@ -114,7 +114,39 @@ Esta fase transforma los límites descubiertos en la Fase C en invariantes preve
 
 ---
 
-## 5. Clasificación de Resultados
+## 5. Fase G2 — Gobernanza Dinámica bajo Incertidumbre (Paper v4)
+
+Esta fase extiende TAKT desde gobernanza estática a gobernanza dinámica sobre trayectorias.
+
+**Estado:** [✓] Completada y congelada (`docs/04-academic-paper/2026-07-17-takt-v4-draft.md`)
+
+**Pregunta científica:** ¿Cómo se garantiza seguridad decisional cuando el operador de
+transición es incierto y la observabilidad es parcial?
+
+**Objeto matemático introducido:** El **Margen Dinámico** `M_D(τ_{:t})` — el coste
+de surprisal mínimo acumulado hasta el primer fallo decisional desde un prefijo de
+trayectoria. Objeto distinto del `M(R)` estático de D-001 (véase nota terminológica).
+
+### Red Team (RT-001 a RT-004)
+* **RT-001 — False Coverage Attack:** La cobertura de estados no implica cobertura de trayectorias bajo observabilidad parcial.
+* **RT-002 — Temporal accumulation:** Un agente seguro en cada paso puede acumular fallo decidional no capturable por verificación puntual.
+* **RT-003 — Model uncertainty:** Un operador de transición mal especificado invalida las garantías del margen.
+* **RT-004 — Adaptive Adversary:** Un adversario que aprende la frontera de certificación construye trayectorias que evaden la cobertura.
+* **Enlace al Núcleo Formal:** [`RT001.lean`](../takt-formal/TaktFormal/RT001.lean), [`RT002.lean`](../takt-formal/TaktFormal/RT002.lean), [`RT003.lean`](../takt-formal/TaktFormal/RT003.lean), [`RT004.lean`](../takt-formal/TaktFormal/RT004.lean)
+
+### Experimentos F (F-001 a F-005.1)
+* **F-001 — Temporal Coverage:** Verificación de cobertura y consistencia sobre secuencias de observación.
+* **F-002 — Dynamic Margin:** `M_D` refleja correctamente la accesibilidad del fallo bajo el operador de transición.
+* **F-003 — Guaranteed Intervention Horizon (Theorem F-002):** Si `M_D > C_h^max`, ningún fallo ocurre en `h` pasos — sin counterejemplos en Monte Carlo.
+* **F-004 — Audit Game:** Un auditor con `M_D > θ` como criterio mantiene pérdida esperada bajo ε; sin margen dinámico, falla sistemáticamente.
+* **F-005 — Asymmetric Margin Effect:** El sesgo optimista en `P̂` invalida la garantía contractual; el sesgo pesimista la preserva a coste operacional. Efecto asimétrico confirmado experimentalmente.
+* **F-005.1 — Conservative Calibration:** El offset β ∈ [0.2, 0.5] reduce false safes en ~90% sin generar false alarms — frontera de Pareto observable.
+
+**Implementación:** TypeScript (ESM, Vitest 4.x) — 131 tests, 51 ficheros, 0 fallos.
+
+---
+
+## 6. Clasificación de Resultados
 
 Cada stress-test o caso de estudio documentado deberá concluir etiquetándose bajo una de las siguientes tres categorías:
 

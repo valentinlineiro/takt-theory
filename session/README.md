@@ -61,41 +61,33 @@ zero regret but different decisions.
 
 ## Status
 
+> **Nota:** Este documento es el registro histórico de la sesión de Novelty Audit
+> (comparación formal del núcleo TAKT con marcos vecinos). Los resultados están
+> completados y archivados. No es una hoja de ruta activa.
+
 **Step 1: Freeze** — DONE (`v1.0.0` tagged and pushed).
 
-**Step 2: Novelty audit** — NOT STARTED. Research task requiring:
+**Step 2: Novelty audit** — DONE. Resultados en:
+- `docs/02-theoretical-positioning/novelty-audit.md` — tabla de correspondencias completa
+- `docs/01-foundations/what-takt-is.md` §5 — resumen integrado en la documentación principal
+- `docs/05-archives/phase-b-freeze.md` — freeze de la fase
 
-### Neighboring formalisms to compare
+### Formalisms compared
 
-1. **Sufficient statistics** (Fisher, Neyman, Le Cam)
-2. **Blackwell sufficiency** (comparison of experiments)
-3. **Information bottleneck** (Tishby, Bialek)
-4. **State abstraction / bisimulation** (RL — Li, Dean, Ferns)
-5. **Decision-sufficient representations** (Bertsekas, Tsitsiklis)
-6. **Quotient / factorization approaches** (dynamic programming aggregation, Dean & Givan, Abel et al.)
-7. **Bayesian sufficiency** (Kolgomorov, Pitman)
+1. **Sufficient statistics** — Correspondencia fuerte (con dependencia de hipótesis estadísticas)
+2. **Blackwell sufficiency** — Correspondencia parcial (estocástico vs. determinista)
+3. **Information bottleneck** — Independencia (preservación informacional vs. decisional)
+4. **State abstraction / bisimulation** — Correspondencia parcial (bisimulación preserva dinámica completa)
+5. **Decision-sufficient representations** — Correspondencia parcial (TAKT ↔ π*, no Q*)
 
-### Questions for each
+### Patrón transversal
 
-- Does the neighboring formalism have a `ker(R) ⊆ ker(D)`-like invariant?
-- If so, how does it derive or justify it? Is it definitional or proven?
-- Does any neighboring formalism distinguish decision-preservation from utility-preservation?
-- Which TAKT concepts have exact, approximate, or no correspondence?
-- What is the genuine differential residue — what does TAKT express that no existing formalism captures?
+En todos los marcos donde aparece la preservación decisional, es una consecuencia derivada
+de un aparato teórico más amplio (distribuciones, dinámica, convexidad). TAKT la adopta
+como axioma primitivo autónomo.
 
-### Expected output
-
-A document mapping each TAKT concept to its known-precursor counterpart (or
-marking it as novel), with a final section identifying what (if anything)
-survives as genuinely differential.
-
-## Next steps (as you proposed)
-
-1. Freeze — DONE
-2. Compare — THIS SESSION (novelty audit)
-3. Re-derive — from core to operational concepts
-4. Generate — test on context engineering for agents
-5. Extend — open one frontier (adaptive recommended)
+**Step 3 onwards** — Continuación en G2 / paper v4
+(`docs/04-academic-paper/2026-07-17-takt-v4-draft.md`).
 
 ## Relevant files
 
