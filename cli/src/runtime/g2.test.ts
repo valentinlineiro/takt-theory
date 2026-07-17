@@ -65,3 +65,56 @@ describe('UncertaintySet', () => {
     expect(u.radius(s0, a1)).toBe(0.6);
   });
 });
+
+import { TransitionEstimator } from './TransitionEstimator.js';
+
+describe('TransitionEstimator', () => {
+  const s0 = { id: 's0' };
+  const sSafe = { id: 's_safe' };
+  const sFail = { id: 's_fail' };
+  const a0 = { id: 'a0' };
+
+  it('count is 0 before any observation', () => {
+    const e = new TransitionEstimator<typeof s0, typeof a0>(20);
+    expect(e.count(s0, a0)).toBe(0);
+  });
+
+  it('estimate is 0 for any candidate before any observation', () => {
+    const e = new TransitionEstimator<typeof s0, typeof a0>(20);
+    expect(e.estimate(s0, a0, sFail)).toBe(0);
+  });
+
+  it('estimate reflects observed frequencies over full history', () => {
+    const e = new TransitionEstimator<typeof s0, typeof a0>(20);
+    for (let i = 0; i < 71; i++) e.observe(s0, a0, sSafe);
+    for (let i = 0; i < 29; i++) e.observe(s0, a0, sFail);
+    expect(e.count(s0, a0)).toBe(100);
+    expect(e.estimate(s0, a0, sFail)).toBeCloseTo(0.29, 10);
+    expect(e.estimate(s0, a0, sSafe)).toBeCloseTo(0.71, 10);
+  });
+
+  it('windowEstimate reflects only the most recent windowSize observations', () => {
+    const e = new TransitionEstimator<typeof s0, typeof a0>(5);
+    for (let i = 0; i < 50; i++) e.observe(s0, a0, sSafe);
+    for (let i = 0; i < 5; i++) e.observe(s0, a0, sFail);
+    expect(e.windowEstimate(s0, a0, sFail)).toBe(1);
+    expect(e.estimate(s0, a0, sFail)).toBeCloseTo(5 / 55, 10);
+  });
+
+  it('forget clears full-history counts but not the window', () => {
+    const e = new TransitionEstimator<typeof s0, typeof a0>(5);
+    for (let i = 0; i < 50; i++) e.observe(s0, a0, sSafe);
+    for (let i = 0; i < 5; i++) e.observe(s0, a0, sFail);
+    e.forget(s0, a0);
+    expect(e.count(s0, a0)).toBe(0);
+    expect(e.estimate(s0, a0, sFail)).toBe(0);
+    expect(e.windowEstimate(s0, a0, sFail)).toBe(1);
+  });
+
+  it('tracks (s,a) pairs independently', () => {
+    const e = new TransitionEstimator<typeof s0, typeof a0>(20);
+    const a1 = { id: 'a1' };
+    for (let i = 0; i < 10; i++) e.observe(s0, a0, sFail);
+    expect(e.count(s0, a1)).toBe(0);
+  });
+});
