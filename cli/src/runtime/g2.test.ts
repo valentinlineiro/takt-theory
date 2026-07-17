@@ -250,6 +250,12 @@ describe('AuditPolicy.decideSafe', () => {
     expect(decision.action).toBe('RECALIBRATE');
   });
 
+  it('returns RECALIBRATE when drift exceeds tau even if margin is below threshold', () => {
+    const policy = new AuditPolicy();
+    const decision = policy.decideSafe(0.1, 0.5, 0.6, 0.3);
+    expect(decision.action).toBe('RECALIBRATE');
+  });
+
   it('returns INTERVENE when drift is within tau but margin is below threshold', () => {
     const policy = new AuditPolicy();
     const decision = policy.decideSafe(0.1, 0.5, 0.1, 0.3);

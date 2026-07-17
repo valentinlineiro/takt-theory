@@ -29,14 +29,15 @@ export class ContractEvaluator {
   }
 
   report(): ContractReport {
+    const avgLoss = this.totalLoss;
     return {
-      totalLoss: this.totalLoss,
+      totalLoss: avgLoss,
       interventionCount: this.interventionCount,
       violationCount: this.violationCount,
       recalibrationCount: this.recalibrationCount,
       lastRecalibrationReason: this.lastRecalibrationReason,
       epsilon: this.epsilon,
-      epsilonSatisfied: this.totalLoss <= this.epsilon,
+      epsilonSatisfied: avgLoss <= this.epsilon,
     };
   }
 
