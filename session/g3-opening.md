@@ -318,3 +318,13 @@ El brainstorming de apertura de G3 ha producido:
 El repositorio contiene exactamente lo que debe contener en este momento: el fallo demostrado, la forma matemática del fallo, la propiedad que debe restaurarse, y la evidencia de que la primera variable observada ($k_0$) no es el objeto sino el fenómeno.
 
 **La siguiente acción de G3** es identificar qué transformación $\phi$ sobre mundos produce la partición observada. Esa identificación no puede diseñarse: tiene que emerger de un intento serio de caracterizar la frontera de $\mathcal{W}_{hidden}$ de forma general, más allá del caso específico de profundidad de memoria.
+
+**Agenda de la siguiente sesión G3** (preguntas en orden de prioridad):
+
+1. ¿Existe una representación mínima del espacio oculto $\ker(\operatorname{obs}_{G2}) \setminus V(C)$?
+2. ¿La frontera $k_0$ es siempre inducida por un orden, o puede haber estructuras de frontera no ordenadas?
+3. ¿Existe un operador de expansión de mundos — una operación que genere $\mathcal{W}_{hidden}$ a partir de $w_1$?
+4. ¿La frontera depende del certificado concreto $C_{v4}$ o del mecanismo de gobernanza $\Gamma$ como tal?
+
+La cuarta pregunta tiene consecuencias inmediatas: si la frontera depende del certificado, el objeto de G3 será relativo al contrato; si depende del mecanismo, el objeto será intrínseco al gobernador. Esa distinción determina si G3 produce un nuevo contrato o un nuevo tipo de gobernador.
+
