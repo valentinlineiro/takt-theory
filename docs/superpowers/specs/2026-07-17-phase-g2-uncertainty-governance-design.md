@@ -21,11 +21,46 @@ Tres candidatos para `U_t(s,a)` fueron evaluados por tratabilidad computacional,
 |---|---|---|
 | Intervalo global sobre P | No respeta la estructura de simplex por estado ni la recursión de Bellman | Descartado |
 | Familia finita `{P_1,...,P_n}` | Siempre computable por enumeración, pero no compone con la recursión | Reservado para validación, no para runtime |
-| Restricciones por transición (L1-ball, sa-rectangular) | Recursión de Bellman robusta con solución cerrada (algoritmo greedy) | Elegido |
+| Restricciones por transición (L1-ball, sa-rectangular) | Recursión de shortest-path robusta con solución cerrada exacta | Elegido |
 
-`M_D` se deriva de `computeDynamicMargin` (`cli/src/takt-core/margin.ts`) como una recursión de shortest-path con pesos `-log P(s'|s,a)`: `M_D(P) = -log(max_path Prob(path | P))`. Es monótona por arista (más probabilidad hacia el fallo nunca aumenta M_D) pero no convexa globalmente (mínimo de piezas convexas). Esa monotonicidad, combinada con sa-rectangularidad (`U_t = ∏_{s,a} U_t(s,a)`), permite que `inf_{P∈U_t} M_D(P)` se calcule vía una recursión de Bellman robusta, no una búsqueda combinatoria global. Bajo un presupuesto L1, esa minimización local tiene solución cerrada por un algoritmo greedy (ordenar continuaciones por costo, desplazar masa de probabilidad de las más caras a la más barata hasta el presupuesto ε), reutilizando el mismo metric (L1) para representación, evolución y validez — sin introducir una segunda familia estadística.
+`M_D` se deriva de `computeDynamicMargin` (`cli/src/takt-core/margin.ts`) como una recursión de shortest-path con pesos `-log P(s'|s,a)`: `M_D(P) = -log(max_path Prob(path | P))`. Es monótona por arista (más probabilidad hacia el fallo nunca aumenta M_D) pero no convexa globalmente (mínimo de piezas convexas). Esa monotonicidad, combinada con sa-rectangularidad (`U_t = ∏_{s,a} U_t(s,a)`), permite que `inf_{P∈U_t} M_D(P)` se calcule vía una recursión robusta, no una búsqueda combinatoria global. La forma exacta de esa recursión se resuelve en la sección "Design Refinement" más abajo — no es el algoritmo greedy de robust-MDP estándar, porque `M_D` no es una función de valor basada en expectativa.
 
 Correlación entre estados (`U_t` no rectangular) sería más fiel epistémicamente pero es NP-hard en general (resultado conocido en la literatura de robust MDPs); se documenta como límite explícito (L-G2-001), no se resuelve en esta fase.
+
+---
+
+## Design Refinement (post-approval, pre-implementation)
+
+Al preparar el plan de implementación se detectó una imprecisión en la elección algorítmica original: la sección de arriba y el resumen de arquitectura describían la minimización robusta local como un "algoritmo greedy de sort-and-shift", tomado por analogía de la literatura estándar de robust MDPs (Nilim & El-Ghaoui, Iyengar). Ese algoritmo resuelve el caso robusto de una función de valor **basada en expectativa**:
+
+```
+V(s) = min_a Σ_s' P(s'|s,a) · [cost + V(s')]
+```
+
+`computeDynamicMargin` no tiene esa forma. Es una recursión de **shortest-path**: en cada estado toma el mínimo sobre transiciones individuales, no una suma ponderada por probabilidad:
+
+```
+M_D(s) = min over (a, s') of [ -log P(s'|s,a) + M_D(s') ]
+```
+
+Para esta estructura, `inf` y `min` conmutan exactamente, sin necesidad de redistribuir masa de probabilidad conjuntamente entre candidatos:
+
+```
+inf_{P∈U_t(s,a)} min_{s'} [-log P(s') + M_D^safe(s')]
+    = min_{s'} [-log(sup_{P∈U_t(s,a)} P(s')) + M_D^safe(s')]
+```
+
+Y para una L1-ball, `sup_{P∈U_t(s,a)} P(s')` tiene solución cerrada: mover Δ de masa de probabilidad hacia una coordenada cuesta `2Δ` de presupuesto L1 (Δ agregado ahí, Δ removido en otro lugar para mantener la suma en 1), así que:
+
+```
+P_max(s'|s,a) = min(1, P̂_t(s'|s,a) + ε_t(s,a) / 2)
+
+M_D^safe(s) = min over (a, s') of [ -log(P_max(s'|s,a)) + M_D^safe(s') ]
+```
+
+**Convención congelada (evita un bug de factor 2):** `ε_t(s,a)` en `UncertaintySet` y `τ` en `ValidityMonitor` se definen ambos como distancia **L1 cruda** (`‖P − P̂‖_1 ≤ ε`), no como distancia de variación total (`TV = ½‖P − P̂‖_1`). El factor `/2` en `P_max` ya absorbe esa conversión — si en algún punto el código usara TV en vez de L1 para `ε`, el factor `/2` desaparecería y esto debe tratarse como un cambio de contrato, no un detalle de implementación.
+
+Este refinamiento no cambia el contrato, el invariante de seguridad, los parámetros, `ValidityMonitor`, ni `RECALIBRATE` — solo el algoritmo interno de `RobustMarginEstimator`. Es una mejora, no una debilidad: es la contraparte robusta *exacta* de `computeDynamicMargin` (no una aproximación), permanece arquitectónicamente continua con G1 (una extensión de un solo parámetro del primitivo existente, no una teoría paralela), y da una interpretación epistémica más limpia al caso sin observaciones: `P̂ = 0` da `P_max = ε/2`, no `P_max = 0` — la ausencia de evidencia no colapsa a imposibilidad, solo permanece incierta hasta que la evidencia la contraiga.
 
 ---
 
@@ -57,9 +92,9 @@ DynamicMarginEstimator          RobustMarginEstimator
 Componentes nuevos en `cli/src/runtime/`, todos delegando en `takt-core` para el cálculo subyacente (mismo principio de G1: el runtime no reimplementa la matemática, la envuelve):
 
 ```
-UncertaintySet.ts        — U_t(s,a): radio ε, shrink(n), contains(P), recover()
+UncertaintySet.ts        — U_t(s,a): radio ε (distancia L1 cruda), shrink(n), pMax(s', P̂), recover()
 TransitionEstimator.ts   — mantiene P̂_t (full-history) y P̂_{W,t} (ventana) por conteos
-RobustMarginEstimator.ts — M_D^safe vía recursión de Bellman robusta (algoritmo greedy sobre L1)
+RobustMarginEstimator.ts — M_D^safe vía recursión de shortest-path robusta exacta (ver Design Refinement)
 ValidityMonitor.ts       — calcula Δ_t = ‖P̂_{W,t} − P̂_t‖_1, dispara mismatch
 ```
 
