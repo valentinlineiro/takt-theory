@@ -16,7 +16,7 @@ export function buildGameTDS(): TransitionSystem<F004State, F004Action> {
     transition: (s, a) => {
       if (a.id === 'nominal') return [{ state: nominal, prob: 1.0 }];
       if (a.id === 'push' && s.id === 'nominal')
-        return [{ state: degraded, prob: 0.7 }, { state: failure, prob: 0.3 }];
+        return [{ state: degraded, prob: 1.0 }];
       if (a.id === 'push' && s.id === 'degraded')
         return [{ state: failure, prob: 1.0 }];
       if (a.id === 'push' && s.id === 'failure')
