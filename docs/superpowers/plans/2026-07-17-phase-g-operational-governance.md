@@ -11,7 +11,7 @@
 The interface between the external world and TAKT.
 
 ```typescript
-type Event<S, A> = {
+interface Event<S, A> {
   state: S
   action: A
   timestamp: number
@@ -27,6 +27,36 @@ type GovernanceDecision =
 ```
 
 No architectural scaffolding beyond this. Every component maps to exactly one of these types.
+
+Separación de responsabilidades:
+
+```
+                  Event Stream
+                       |
+                       v
+             TrajectoryMonitor
+                       |
+                       v
+                  Prefix τ:t
+                       |
+              +--------+--------+
+              |                 |
+              v                 v
+
+ DynamicMarginEstimator     AuditPolicy
+              |                 |
+              v                 v
+
+             M_D          MONITOR / INTERVENE
+                                |
+                                v
+
+                         ContractEvaluator
+                                |
+                                v
+
+                         ContractReport
+```
 
 ---
 
@@ -61,9 +91,11 @@ cli/src/runtime/
 
 ### ContractEvaluator
 
-- `evaluate(prefix, decision): ContractReport`
+- `evaluate(decision, outcome): ContractReport`
+- Takes a decision + observed outcome, not the prefix itself
 - Tracks cumulative loss, intervention count, violation events
 - Checks `E[Σ L_t] ≤ ε`
+- Evaluates whether the governance policy worked; does NOT decide how to govern
 
 ---
 
@@ -71,10 +103,12 @@ cli/src/runtime/
 
 | R# | Criterion | How to verify |
 |----|-----------|---------------|
+| R0 | Runtime semantics match formal TDS semantics | Property test: `TrajectoryMonitor` prefix equals formal `τ_{:t}` after every event |
 | R1 | Streaming trajectory produces same M_D as batch evaluation | Unit test: same events, same M_D |
 | R2 | Online auditor makes same decisions as F-004 simulator | Replay F-004 trajectories through runtime API |
 | R3 | F-001–F-004 simulations replayable over runtime API | Integration test: batch → stream adapter |
 | R4 | Adversary can inject events and trigger intervention before failure | Integration test: adversarial event sequence |
+| R5 | Runtime detects governance failure | Two cases: (a) M_D crosses threshold → INTERVENE recorded; (b) no intervention → loss recorded in ContractReport |
 
 ---
 

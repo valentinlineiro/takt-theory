@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Times, 'Times New Roman', serif" font-size="13">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- LEFT PANEL: Static Certification -->
+  <rect x="20" y="10" width="340" height="460" rx="8" fill="#f8f8f8" stroke="#ccc" stroke-width="1.5"/>
+  <text x="190" y="40" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">Static Certification</text>
+
+  <!-- State space box -->
+  <rect x="50" y="60" width="280" height="130" rx="4" fill="#e8f4e8" stroke="#4a7" stroke-width="1.5"/>
+  <text x="190" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#4a7">State Space</text>
+
+  <!-- States -->
+  <rect x="75" y="95" width="60" height="35" rx="4" fill="#fff" stroke="#4a7" stroke-width="1.2"/>
+  <text x="105" y="117" text-anchor="middle" font-size="14" font-style="italic" fill="#333">s₁</text>
+  <text x="145" y="117" text-anchor="middle" font-size="16" fill="#4a7">✓</text>
+
+  <rect x="145" y="95" width="60" height="35" rx="4" fill="#fff" stroke="#4a7" stroke-width="1.2"/>
+  <text x="175" y="117" text-anchor="middle" font-size="14" font-style="italic" fill="#333">s₂</text>
+  <text x="215" y="117" text-anchor="middle" font-size="16" fill="#4a7">✓</text>
+
+  <rect x="215" y="95" width="60" height="35" rx="4" fill="#fff" stroke="#4a7" stroke-width="1.2"/>
+  <text x="245" y="117" text-anchor="middle" font-size="14" font-style="italic" fill="#333">s₃</text>
+  <text x="285" y="117" text-anchor="middle" font-size="16" fill="#4a7">✓</text>
+
+  <text x="190" y="175" text-anchor="middle" font-size="13" fill="#4a7" font-style="italic">all states certified</text>
+
+  <!-- Failure example -->
+  <text x="190" y="215" text-anchor="middle" font-size="11" fill="#666">But a trajectory visiting s₁→s₂→s₃</text>
+  <text x="190" y="233" text-anchor="middle" font-size="11" fill="#666">may diverge from the reference policy</text>
+  <text x="190" y="251" text-anchor="middle" font-size="11" fill="#666">under partial observability.</text>
+
+  <!-- Limitation box -->
+  <rect x="60" y="270" width="260" height="80" rx="4" fill="#fff3e0" stroke="#e8a" stroke-width="1.2"/>
+  <text x="190" y="292" text-anchor="middle" font-size="12" font-weight="bold" fill="#c66">Limitations</text>
+  <text x="80" y="312" font-size="11" fill="#666">• Temporal evolution</text>
+  <text x="80" y="330" font-size="11" fill="#666">• Partial observability</text>
+  <text x="80" y="348" font-size="11" fill="#666">• Model uncertainty</text>
+
+  <!-- Arrow between panels -->
+  <line x1="370" y1="240" x2="425" y2="240" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- RIGHT PANEL: Dynamic Governance -->
+  <rect x="440" y="10" width="340" height="460" rx="8" fill="#f8f8ff" stroke="#88b" stroke-width="1.5"/>
+  <text x="610" y="40" text-anchor="middle" font-size="16" font-weight="bold" fill="#335">Dynamic Governance</text>
+
+  <!-- Trajectory -->
+  <rect x="460" y="60" width="300" height="100" rx="4" fill="#e8f0ff" stroke="#88b" stroke-width="1.5"/>
+  <text x="610" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#447">Trajectory</text>
+
+  <text x="610" y="108" text-anchor="middle" font-size="14" font-style="italic" fill="#333">
+    τ = s₀ → s₁ → s₂ → s₃
+  </text>
+  <text x="610" y="130" text-anchor="middle" font-size="11" fill="#666">
+    observation history O(τ) = (o₀, o₁, o₂, o₃)
+  </text>
+
+  <!-- Arrow down -->
+  <line x1="610" y1="165" x2="610" y2="195" stroke="#88b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Auditor decision block -->
+  <rect x="460" y="195" width="300" height="90" rx="4" fill="#f0e8ff" stroke="#a8f" stroke-width="1.5"/>
+  <text x="610" y="218" text-anchor="middle" font-size="14" font-weight="bold" fill="#639">Auditor Policy</text>
+
+  <text x="610" y="245" text-anchor="middle" font-size="12" fill="#333">
+    Dynamic Margin M_D(τ)
+  </text>
+  <text x="610" y="265" text-anchor="middle" font-size="12" fill="#333">
+    M_D &lt; threshold → Intervene
+  </text>
+
+  <!-- Split arrow -->
+  <line x1="520" y1="290" x2="520" y2="330" stroke="#88b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="700" y1="290" x2="700" y2="330" stroke="#88b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Monitor outcome -->
+  <rect x="460" y="335" width="130" height="50" rx="4" fill="#fff" stroke="#4a7" stroke-width="1.2"/>
+  <text x="525" y="355" text-anchor="middle" font-size="12" fill="#333">Monitor</text>
+  <text x="525" y="373" text-anchor="middle" font-size="10" fill="#666">detect loss</text>
+
+  <!-- Intervene outcome -->
+  <rect x="630" y="335" width="130" height="50" rx="4" fill="#fff" stroke="#c66" stroke-width="1.2"/>
+  <text x="695" y="355" text-anchor="middle" font-size="12" fill="#333">Intervene</text>
+  <text x="695" y="373" text-anchor="middle" font-size="10" fill="#666">prevent loss</text>
+
+  <!-- Outcomes -->
+  <line x1="525" y1="390" x2="525" y2="420" stroke="#4a7" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="695" y1="390" x2="695" y2="420" stroke="#c66" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <text x="525" y="440" text-anchor="middle" font-size="10" fill="#4a7">bounded expected loss</text>
+  <text x="695" y="440" text-anchor="middle" font-size="10" fill="#c66">operational cost</text>
+
+  <!-- Label -->
+  <text x="610" y="478" text-anchor="middle" font-size="11" font-style="italic" fill="#888">The unit of assurance shifts from configuration to execution.</text>
+</svg>

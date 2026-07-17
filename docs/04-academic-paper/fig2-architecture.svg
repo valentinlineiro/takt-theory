@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" font-family="Times, 'Times New Roman', serif" font-size="13">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- Level 1: Physical System -->
+  <rect x="150" y="10" width="300" height="55" rx="6" fill="#e8f4e8" stroke="#4a7" stroke-width="1.5"/>
+  <text x="300" y="32" text-anchor="middle" font-size="14" font-weight="bold" fill="#4a7">Physical System</text>
+  <text x="300" y="52" text-anchor="middle" font-size="11" fill="#555">observed process with probabilistic dynamics</text>
+
+  <line x1="300" y1="67" x2="300" y2="95" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Level 2: TDS -->
+  <rect x="120" y="95" width="360" height="70" rx="6" fill="#e8f0ff" stroke="#88b" stroke-width="1.5"/>
+  <text x="300" y="117" text-anchor="middle" font-size="14" font-weight="bold" fill="#447">Trajectory Decision System (TDS)</text>
+  <text x="300" y="137" text-anchor="middle" font-size="12" font-style="italic" fill="#555">
+    M = (S, A, P, Ω, O)
+  </text>
+  <text x="300" y="155" text-anchor="middle" font-size="11" fill="#555">
+    Trajectory τ = (s₀, a₀, s₁, a₁, …)
+  </text>
+
+  <line x1="300" y1="167" x2="300" y2="195" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Branch: Agent vs Auditor -->
+  <rect x="60" y="195" width="200" height="70" rx="6" fill="#fff3e0" stroke="#e8a" stroke-width="1.5"/>
+  <text x="160" y="217" text-anchor="middle" font-size="14" font-weight="bold" fill="#c66">Agent Policy π</text>
+  <text x="160" y="237" text-anchor="middle" font-size="11" fill="#666">π : Ω* → A</text>
+  <text x="160" y="255" text-anchor="middle" font-size="11" fill="#666">action from observations</text>
+
+  <rect x="340" y="195" width="200" height="70" rx="6" fill="#f0e8ff" stroke="#a8f" stroke-width="1.5"/>
+  <text x="440" y="217" text-anchor="middle" font-size="14" font-weight="bold" fill="#639">Auditor</text>
+  <text x="440" y="237" text-anchor="middle" font-size="11" fill="#666">partial info O(τ)</text>
+  <text x="440" y="255" text-anchor="middle" font-size="11" fill="#666">coverage + consistency</text>
+
+  <line x1="160" y1="267" x2="160" y2="295" stroke="#c66" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="440" y1="267" x2="440" y2="295" stroke="#a8f" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Agent output -->
+  <rect x="70" y="295" width="180" height="45" rx="4" fill="#fff" stroke="#c66" stroke-width="1.2"/>
+  <text x="160" y="315" text-anchor="middle" font-size="12" fill="#c66">Actual Action a_t</text>
+  <text x="160" y="332" text-anchor="middle" font-size="10" fill="#888">generates next state</text>
+
+  <!-- Auditor pipeline -->
+  <rect x="340" y="295" width="200" height="45" rx="4" fill="#fff" stroke="#a8f" stroke-width="1.2"/>
+  <text x="440" y="315" text-anchor="middle" font-size="12" fill="#639">Dynamic Margin M_D</text>
+  <text x="440" y="332" text-anchor="middle" font-size="10" fill="#888">min surprisal to failure</text>
+
+  <line x1="440" y1="342" x2="440" y2="370" stroke="#a8f" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Audit Decision -->
+  <rect x="340" y="370" width="200" height="45" rx="4" fill="#fff" stroke="#a8f" stroke-width="1.2"/>
+  <text x="440" y="390" text-anchor="middle" font-size="12" fill="#639">Monitor / Intervene</text>
+  <text x="440" y="407" text-anchor="middle" font-size="10" fill="#888">M_D &lt; θ → intervene</text>
+
+  <line x1="440" y1="417" x2="300" y2="450" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Contract -->
+  <rect x="120" y="450" width="360" height="55" rx="6" fill="#e8f4e8" stroke="#4a7" stroke-width="1.8"/>
+  <text x="300" y="472" text-anchor="middle" font-size="14" font-weight="bold" fill="#4a7">Dynamic Contract C_v4</text>
+  <text x="300" y="493" text-anchor="middle" font-size="12" font-style="italic" fill="#555">
+    ∃ π_audit : 𝔼[ Σ L_t ] ≤ ε
+  </text>
+
+  <!-- Feedback from contract to auditor -->
+  <path d="M 120 477 L 50 477 L 50 225 L 60 225" fill="none" stroke="#4a7" stroke-width="1" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="35" y="360" text-anchor="middle" font-size="10" fill="#4a7" transform="rotate(-90, 35, 360)">synthesis</text>
+
+  <!-- Labels -->
+  <text x="300" y="570" text-anchor="middle" font-size="12" font-style="italic" fill="#888">Three-layer architecture: system → decision → contract</text>
+</svg>
