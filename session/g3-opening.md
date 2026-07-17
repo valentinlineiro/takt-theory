@@ -2,7 +2,7 @@
 
 **Fecha:** 2026-07-17  
 **Contexto:** Abierta inmediatamente después del cierre de la Consolidación (v1 stable milestone).  
-**Estado:** Brainstorming completado. Contraejemplo pendiente. Sin especificaciones. Sin código.
+**Estado:** Brainstorming completado. Esqueleto del contraejemplo construido. Sin especificaciones. Sin código.
 
 ---
 
@@ -36,12 +36,27 @@ En F, el contraejemplo de ε_U llegó antes que ε_D. En G2, el Asymmetric Margi
 
 ---
 
-## 3. Distinción Fundamental: Verdad vs. Justificación
+## 3. Formulación Abstracta de TAKT
 
-G2 responde: **¿Es seguro actuar?** (corrección bajo el modelo estimado)  
-G3 pregunta: **¿Sigue estando justificado creer que es seguro actuar?**
+El brainstorming de apertura de G3 ha producido una síntesis de los tres niveles que clarifica la unidad del proyecto.
 
-Un gobernador puede seguir diciendo la verdad durante un tiempo después de haber perdido la justificación para afirmarla. Esa grieta no es detectable por ningún mecanismo interno de G2.
+**Operación recurrente de TAKT:**
+
+> Una capa de abstracción elimina diferencias. La seguridad exige que las diferencias eliminadas sean irrelevantes para la propiedad que la capa superior necesita preservar.
+
+La misma estructura aparece en los tres niveles:
+
+| Fase | La abstracción elimina | La pregunta | El predicado |
+|------|------------------------|-------------|-------------|
+| F | `s₁ ∼_R s₂` — estados | ¿las diferencias eliminadas importaban para decidir? | ker(R) ⊆ ker(D) |
+| G2 | `P_true ∼_P̂ P` — mundos dinámicos | ¿la incertidumbre eliminada podía romper la garantía? | M_D(P̂) − β > θ |
+| G3 | `w₁ ∼_{G2} w₂` — configuraciones del gobernador | ¿los mundos eliminados podían invalidar la justificación? | [ŵ]_{G2} ⊆ V(C) |
+
+El objeto cambia. El problema es idéntico.
+
+**Torre reflexiva (no regreso infinito):**
+
+Cada nivel estudia la fiabilidad del mecanismo que estableció el nivel anterior. La torre no crece hacia casos más generales — crece hacia atrás, añadiendo una capa de observación sobre la anterior. Tiene una condición de parada natural: si H₀ es verdadera en G3 ([ŵ]_{G2} ⊆ V(C) siempre), la abstracción ha alcanzado clausura respecto a su propiedad objetivo. No aparece G4 porque no hay pérdida relevante que recuperar.
 
 ---
 
@@ -122,7 +137,48 @@ La dificultad concreta: demostrar que la variación en Π_adv no afecta a M_D, a
 
 ---
 
-## 7. Tres Incógnitas Explícitas
+## 7. Esqueleto Concreto del Hidden Assumption Attack
+
+Este es el primer intento de construir el par (w₁, w₂) con la restricción mínima: sólo varía Π_adv.
+
+### Argumento central
+
+**Observación clave:** La función obs(G2) no depende de Π_adv.
+
+Verificación componente a componente:
+
+| Componente de obs(G2) | Depende de Π_adv? | Razón |
+|----------------------|-------------------|--------|
+| M_D(τ_{:t}) | **No** | M_D = inf{ Σ −log P(s'₁₊₁∣s'ᵢ,a'ᵢ) } — solo depende de P y de la condición de fallo D(τ) ≠ π(O(τ)) |
+| C_h^max(τ_{:t}) | **No** | sup sobre trayectorias bajo P — solo depende de P |
+| Cobertura C(T_audit) | **No** | Equivalencia observacional de prefijos — depende de O, no de Π_adv |
+| Intervención M_D > θ | **No** | Criterio sobre M_D |
+
+Conclusión: obs(G2, P, O, Π_adv⁽¹⁾) = obs(G2, P, O, Π_adv⁽²⁾) para cualquier par Π_adv⁽¹⁾, Π_adv⁽²⁾ con el mismo P y O.
+
+### Dependencia de V(C)
+
+C_v4 está Satisfied iff ∃ política de auditoría que acota pérdida esperada ≤ ε contra **cualquier** adversario en Π_adv^Threat.
+
+Eso sí depende de Π_adv. Si Π_adv⁽²⁾ ⊃ Π_adv⁽¹⁾ (el adversario real puede hacer más de lo asumido), la política de auditoría diseñada para w₁ puede no acotar la pérdida en w₂.
+
+### El par
+
+- **w₁** = (S, A, P, O, Π_adv⁽¹⁾): adversarios sin memoria. C_v4 satisfecho. w₁ ∈ V(C).
+- **w₂** = (S, A, P, O, Π_adv⁽²⁾): adversarios con memoria de profundidad k. Mismos P y O. C_v4 no satisfecho porque la política de auditoría de w₁ no acota la pérdida contra adversarios con memoria. w₂ ∉ V(C).
+- obs(G2, w₁) = obs(G2, w₂): M_D, cobertura, y todas las señales del contrato son idénticas.
+
+### Lo que falta verificar
+
+Este esqueleto es estructuralmente limpio, pero hay una condición que requiere demostración formal:
+
+> Que existe un sistema concreto (S, A, P, O) y un valor k tal que la política óptima para Π_adv⁽¹⁾ sea estrictamente suboptimal contra Π_adv⁽²⁾, con una brecha de pérdida suficiente para que la cota ε se viole.
+
+Si esa condición existe (probable — los juegos con adversarios con memoria pueden ser estrictamente más difíciles que sin memoria), el par es válido y H₁ está establecida. Si no existe dentro del vocabulario de G2, H₀ habrhabría resistido un intento serio.
+
+---
+
+## 8. Tres Incógnitas Explícitas
 
 ### 7.1. Geometría de V(C)
 
