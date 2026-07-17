@@ -153,3 +153,89 @@ describe('ValidityMonitor', () => {
     expect(lenient.isMismatched(s0, a0)).toBe(false);
   });
 });
+
+import { RobustMarginEstimator } from './RobustMarginEstimator.js';
+import { DynamicMarginEstimator } from './DynamicMarginEstimator.js';
+import type { TransitionSystem } from '../takt-core/margin.js';
+import type { TrajectoryPrefix } from '../takt-core/types.js';
+
+describe('RobustMarginEstimator', () => {
+  interface GState { id: string; }
+  interface GAction { id: string; }
+  interface GObs { id: string; }
+
+  const s0: GState = { id: 's0' };
+  const sSafe: GState = { id: 's_safe' };
+  const sFail: GState = { id: 's_fail' };
+  const a0: GAction = { id: 'a0' };
+
+  function buildTDS(pFail: number): TransitionSystem<GState, GAction> {
+    return {
+      states: [s0, sSafe, sFail],
+      actions: [a0],
+      transition: (s) => {
+        if (s.id === 's0') return [
+          { state: sSafe, prob: 1 - pFail },
+          { state: sFail, prob: pFail },
+        ];
+        if (s.id === 's_safe') return [{ state: s0, prob: 1.0 }];
+        if (s.id === 's_fail') return [{ state: sFail, prob: 1.0 }];
+        return [];
+      },
+    };
+  }
+
+  const O = (s: GState): GObs => ({ id: s.id });
+  const D = (_p: TrajectoryPrefix<GState, GAction>): GAction => a0;
+  const π = (obs: GObs[]): GAction => {
+    const last = obs[obs.length - 1];
+    return last.id === 's_fail' ? { id: 'a1' } : { id: 'a0' };
+  };
+
+  it('with zero uncertainty (epsilon=0) and an exact point estimate, matches DynamicMarginEstimator', () => {
+    const trueP = 0.3;
+    const tds = buildTDS(trueP);
+
+    const estimator = new TransitionEstimator<GState, GAction>(20);
+    for (let i = 0; i < 700; i++) estimator.observe(s0, a0, sSafe);
+    for (let i = 0; i < 300; i++) estimator.observe(s0, a0, sFail);
+
+    const uncertainty = new UncertaintySet<GState, GAction>(0);
+    for (let i = 0; i < 1000; i++) uncertainty.observe(s0, a0);
+
+    const robust = new RobustMarginEstimator(tds, estimator, uncertainty, D, π, O);
+    const dynamic = new DynamicMarginEstimator(tds, D, π, O);
+
+    const prefix: TrajectoryPrefix<GState, GAction> = { states: [s0], actions: [] };
+    expect(robust.estimate(prefix)).toBeCloseTo(dynamic.estimate(prefix), 6);
+  });
+
+  it('widening epsilon never increases the margin (robust margin is conservative)', () => {
+    const tds = buildTDS(0.3);
+    const estimator = new TransitionEstimator<GState, GAction>(20);
+    for (let i = 0; i < 700; i++) estimator.observe(s0, a0, sSafe);
+    for (let i = 0; i < 300; i++) estimator.observe(s0, a0, sFail);
+
+    const tightUncertainty = new UncertaintySet<GState, GAction>(0.01);
+    for (let i = 0; i < 1000; i++) tightUncertainty.observe(s0, a0);
+    const wideUncertainty = new UncertaintySet<GState, GAction>(0.6);
+    for (let i = 0; i < 1000; i++) wideUncertainty.observe(s0, a0);
+
+    const prefix: TrajectoryPrefix<GState, GAction> = { states: [s0], actions: [] };
+    const tight = new RobustMarginEstimator(tds, estimator, tightUncertainty, D, π, O).estimate(prefix);
+    const wide = new RobustMarginEstimator(tds, estimator, wideUncertainty, D, π, O).estimate(prefix);
+    expect(wide).toBeLessThanOrEqual(tight);
+  });
+
+  it('an unobserved (s,a) pair still yields a finite margin via the epsilon/2 prior', () => {
+    const tds = buildTDS(0.3);
+    const estimator = new TransitionEstimator<GState, GAction>(20);
+    const uncertainty = new UncertaintySet<GState, GAction>(0.6);
+    const robust = new RobustMarginEstimator(tds, estimator, uncertainty, D, π, O);
+    const prefix: TrajectoryPrefix<GState, GAction> = { states: [s0], actions: [] };
+    const margin = robust.estimate(prefix);
+    expect(margin).toBeGreaterThan(0);
+    expect(margin).toBeLessThan(Infinity);
+    expect(margin).toBeCloseTo(-Math.log(0.3), 6);
+  });
+});
