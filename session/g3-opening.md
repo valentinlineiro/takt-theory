@@ -2,7 +2,7 @@
 
 **Fecha:** 2026-07-17  
 **Contexto:** Abierta inmediatamente después del cierre de la Consolidación (v1 stable milestone).  
-**Estado:** Brainstorming completado. Esqueleto del contraejemplo construido. Sin especificaciones. Sin código.
+**Estado:** H₁ establecida constructivamente (G3-HAA-001). Objeto matemático de G3 por descubrir. Sin especificaciones. Sin código.
 
 ---
 
@@ -212,19 +212,58 @@ Esto es análogo al papel de M_D en G2: un horizonte garantizado antes del cual 
 
 ---
 
-## 9. La Siguiente Acción
+## 9. Estado Actual
 
-**Intentar construir el par (w₁, w₂).**
+**H₁ establecida** mediante G3-HAA-001 (`session/g3-haa-001.md`).
 
-No para confirmar H₁ — para intentar romperla. Si la construcción requiere artificios o supuestos no naturales, H₀ puede resistir. Si la construcción es limpia, el objeto de G3 habrá aparecido solo, definido por la necesidad de explicar por qué ese par existe.
+El contraejemplo demuestra que:
 
-El contraejemplo exitoso de G3 será el documento equivalente a `EpsilonUCounterexample.lean` en F y al experimento F-005 en G2.
+$$\operatorname{Correct}_{G2}(\Gamma) \not\Rightarrow G3\text{-stable}(C, w)$$
+
+La separación no es conceptual: es constructiva. El par $(w_1, w_2)$ existe con parámetros explícitos ($k=10$, $r_{\max}=0.1$, $\varepsilon=0.05$, pérdida esperada $\geq 0.35$).
+
+**Lo que sigue es análogo a lo que ocurrió en F y G2 después de sus contraejemplos:**
+no diseñar el objeto sino dejar que la forma del contraejemplo force su aparición.
 
 ---
 
 ## 10. Referencias
 
+- Contraejemplo G3: [`session/g3-haa-001.md`](./g3-haa-001.md)
 - Invariante central de F: [`Factorization.lean`](../../takt-formal/TaktFormal/Factorization.lean), [`SafetyEquivalence.lean`](../../takt-formal/TaktFormal/SafetyEquivalence.lean)
 - Contraejemplo análogo (ST-004): [`HiddenKernel.lean`](../../takt-formal/TaktFormal/HiddenKernel.lean)
 - Marco de G2 (certificado C_v4): [`docs/04-academic-paper/2026-07-17-takt-v4-draft.md`](../04-academic-paper/2026-07-17-takt-v4-draft.md)
 - Cierre del ciclo v1: [`docs/05-archives/takt-v1-stable-milestone.md`](../05-archives/takt-v1-stable-milestone.md)
+
+---
+
+## 11. Lo Que el Contraejemplo Revela sobre el Objeto Faltante
+
+*Esta sección no define el objeto de G3. Registra lo que la forma del contraejemplo fuerza a observar.*
+
+### La estructura de $\mathcal{W}_{hidden}$
+
+Define el conjunto de mundos epístoméricamente ocultos al gobernador en el estado $w_1$:
+
+$$\mathcal{W}_{hidden}(w_1) = \{w' \in [w_1]_{G2} : w' \notin V(C)\}$$
+
+El contraejemplo HAA-001 demuestra que $\mathcal{W}_{hidden}(w_1) \neq \varnothing$.
+
+Lo que la construcción revela sobre la estructura de ese conjunto:
+
+$\mathcal{W}_{hidden}$ está **ordenado por profundidad de memoria del adversario**:
+- Mundos con $\Pi_{adv}$ de profundidad $k = 0$: todos en $V(C)$ (identiñcos a $w_1$)
+- Mundos con profundidad $k = k_0$: primera aparición de $w' \notin V(C)$
+- Mundos con profundidad $k > k_0$: todos fuera de $V(C)$ (el espacio de amenazas mayor destruye la garantía)
+
+Eso induce una **frontera en profundidad de memoria**: $k_0$ es el mínimo $k$ tal que el certificado falla para algún $w' \in [w_1]_{G2}$ con profundidad $k$.
+
+### Lo que eso sugiere (sin comprometerse)
+
+En F, la necesidad de explicar el contraejemplo de $\varepsilon_U$ forzó la aparición de $\varepsilon_D$ — una distancia en el espacio de decisiones.
+
+En G2, la necesidad de explicar el Asymmetric Margin Effect forzó la aparición de $\beta$ — un offset en el espacio de estimaciones.
+
+Aquí, la necesidad de explicar por qué $\mathcal{W}_{hidden}$ tiene la estructura de frontera que tiene podría forzar la aparición de una cantidad que mida $k_0$ — la profundidad mínima de memoria que rompe el certificado dado el poder de observación de G2.
+
+Esa cantidad no es necesariamente una distancia ni necesariamente depende de la memoria. El contraejemplo solo exige que exista algo que capture dónde está la frontera de $\mathcal{W}_{hidden}$ dentro de $[w]_{G2}$.
