@@ -87,6 +87,24 @@ snapshot sin memoria. La pregunta que importa es si, *incluso con esa
 memoria de trayectoria ya presente*, la distinción terminar/continuar sigue
 sin poder representarse.
 
+## Principio de aislamiento de la variable experimental
+
+El par de trayectorias que se construya en la Aplicación debe cumplir:
+
+> Las dos ejecuciones deben ser indistinguibles respecto a todas las
+> propiedades que $S$ está diseñado para preservar, y diferir únicamente en
+> la propiedad de convergencia.
+
+Si no se impone esta condición, cualquier $S_i$ candidato podría distinguir
+las trayectorias por un motivo colateral (p. ej., composición distinta del
+backlog restante, o cualquier otra dimensión que $S_0$ ya captura), y el
+resultado no diría nada sobre la propiedad bajo prueba. Es el mismo patrón
+metodológico del Teorema de No Inyectividad de G3
+(`session/g3-impossibility-theorem.md`): controlar toda variable salvo la
+que se pone a prueba. Esta restricción es un requisito de construcción del
+par de trayectorias en `model.md`, no una decisión a tomar durante la
+ejecución.
+
 ## Hipótesis
 
 1. **Pérdida en $S_0$.** Dos trayectorias con secuencia de decisiones

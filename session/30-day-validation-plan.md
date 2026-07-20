@@ -26,6 +26,15 @@ fallo de preservación → identificar fibras → refinamiento → verificación
 
 Sin añadir un solo concepto al núcleo. Si funciona, ya no hay una única instancia.
 
+**Instancias de este paso:**
+- `session/g2-core-mapping.md` — mapeo del núcleo a la incertidumbre del
+  modelo de transición ($P^*$ vs. $\hat{P}$). Completado.
+- `experiments/stress-tests/ST-008/` — mapeo del núcleo (vía la extensión
+  G2, `TrajectoryMonitor`) al problema de convergencia del pipeline de
+  `takt`: ¿puede representarse la distinción terminar/continuar sin ampliar
+  el núcleo? Ver `hypothesis.md`. Pendiente (fase de especificación
+  cerrada, ejecución no iniciada).
+
 ## Día 15–21: Primera validación externa
 
 Buscar un problema completamente ajeno a TAKT (ej: análisis estático, compiladores, compresión, representación latente, control, sistemas distribuidos). El objetivo no es resolverlo mejor que el estado del arte — es comprobar si la teoría lo describe.
