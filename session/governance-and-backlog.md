@@ -146,7 +146,32 @@ trayectoria. Objeto distinto del `M(R)` estático de D-001 (véase nota terminol
 
 ---
 
-## 6. Clasificación de Resultados
+## 6. Fase E — Generalización Interna
+
+Esta fase reutiliza el procedimiento existente (sin nuevas primitivas
+teóricas) sobre un segundo problema dentro de TAKT, siguiendo la Etapa 2 de
+`session/roadmap-validation.md`.
+
+### ST-008 — Convergence Gap
+* **Estado:** [ ] Pendiente
+* **Clasificación:** Pendiente — ver `hypothesis.md`: No Gap / Application
+  Representation Gap / Structural Representation Gap.
+* **Objetivo:** Determinar si el pipeline de TAKT (representado vía G2,
+  `TrajectoryMonitor`) puede expresar una condición de aceptación o
+  convergencia, y si la carencia observada pertenece a la representación
+  concreta que usa `takt` en producción o a toda la familia de
+  representaciones locales y acotadas admisibles para el dominio.
+* **Pregunta Clave:** ¿Puede un sistema de decisión autómata-céntrico quedar
+  completamente caracterizado sin definir un conjunto de estados aceptantes
+  o un criterio equivalente de convergencia?
+* **Documentación:** [experiments/stress-tests/ST-008/hypothesis.md](../experiments/stress-tests/ST-008/hypothesis.md)
+* **Enlace al Núcleo Formal:** Pendiente (Aplicación no iniciada). El caso
+  negativo (*Structural Representation Gap*) reutilizaría el patrón de
+  no-inyectividad de [`g3-impossibility-theorem.md`](g3-impossibility-theorem.md).
+
+---
+
+## 7. Clasificación de Resultados
 
 Cada stress-test o caso de estudio documentado deberá concluir etiquetándose bajo una de las siguientes tres categorías:
 
