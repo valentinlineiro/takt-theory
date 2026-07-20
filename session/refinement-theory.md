@@ -1,30 +1,31 @@
 # Teoría de Preservación Estructural
 
 **Núcleo.** Un marco axiomático para la preservación de propiedades bajo
-morfismos. Los objetos primitivos son pares $(\text{estructura}, \preceq)$
-que satisfagan tres axiomas. F, G2 y G3 son instancias.
+morfismos. Los objetos primitivos son pares $(\text{estructura}, \preceq)$.
+F, G2 y G3 son instancias.
 
 ---
 
 ## 1. Axiomas de estructura preservable
 
-Un **tipo de estructura** $\mathcal{T}$ es una familia de conjuntos $S_Y$
-(indexada por conjuntos $Y$) cuyos elementos llamamos **$\mathcal{T}$-estructuras**
-sobre $Y$, junto con una relación $\preceq$ para cada $Y$, que satisfacen:
+Un **tipo de estructura** $\mathcal{T}$ asigna a cada conjunto $Y$ una
+familia $S_Y$ de **$\mathcal{T}$-estructuras** sobre $Y$, junto con una
+relación $\preceq$ para cada $Y$.
 
-**A1 (Pullback).** Para toda función $f: X \to Y$ y toda
-$\mathcal{T}$-estructura $\sigma$ sobre $Y$, existe una
-$\mathcal{T}$-estructura $f^*(\sigma)$ sobre $X$ definida por
-$f^*(\sigma)(x_1, x_2) = \sigma(f(x_1), f(x_2))$.
+**A1 (Pullback).** Para toda $f: X \to Y$ y $\sigma \in S_Y$, existe
+$f^*(\sigma) \in S_X$. Para estructuras **binarias** (equivalencias,
+métricas, órdenes, divergencias), el pullback es puntual:
 
-**A2 (Preorden).** $\preceq$ es un preorden sobre el conjunto de
-$\mathcal{T}$-estructuras sobre cualquier $Y$. Escribimos
-$\sigma_1 \preceq \sigma_2$ cuando $\sigma_1$ es **suficientemente fina**
-respecto a $\sigma_2$ para la preservación (el orden concreto depende
-del tipo).
+$$
+f^*(\sigma)(x_1, x_2) = \sigma(f(x_1), f(x_2))
+$$
 
-**A3 (Monotonía del pullback).** Si $\sigma_1 \preceq \sigma_2$ sobre $Y$,
-entonces $f^*(\sigma_1) \preceq f^*(\sigma_2)$ sobre $X$.
+Para topologías, el pullback es la topología inicial
+$f^*(\tau) = \{f^{-1}(U) \mid U \in \tau\}$.
+
+**A2 (Preorden).** $\preceq$ es un preorden (reflexivo y transitivo)
+sobre $S_Y$ para todo $Y$. $\sigma_1 \preceq \sigma_2$ significa
+"$\sigma_1$ es suficientemente fina para los fines de $\sigma_2$".
 
 ---
 
@@ -33,43 +34,72 @@ entonces $f^*(\sigma_1) \preceq f^*(\sigma_2)$ sobre $X$.
 #### Equivalencias ($\mathcal{T}_{\sim}$, $\subseteq$)
 
 - $S_Y$: relaciones de equivalencia sobre $Y$.
-- $\sigma_1 \preceq \sigma_2 \iff \sigma_1 \subseteq \sigma_2$ (más fina,
-  clases más pequeñas).
-- **A1:** $f^*(\sim)$ es la equivalencia $x_1 \sim_f x_2 \iff f(x_1) \sim f(x_2)$.
+- $\sigma_1 \preceq \sigma_2 \iff \sigma_1 \subseteq \sigma_2$.
+- **A1:** $f^*(\sim)$ es $x_1 \sim_f x_2 \iff f(x_1) \sim f(x_2)$.
 - **A2:** La inclusión es un orden parcial, luego preorden.
-- **A3:** Si $\sim_1 \subseteq \sim_2$, entonces $f^*(\sim_1) \subseteq f^*(\sim_2)$.
 
 #### Pseudométricas ($\mathcal{T}_d$, $\leq_k$)
 
-- $S_Y$: pseudométricas sobre $Y$ (distancias simétricas, $d(y,y)=0$,
-  desigualdad triangular).
+- $S_Y$: pseudométricas sobre $Y$.
 - $\sigma_1 \preceq \sigma_2 \iff \exists k > 0: d_2 \leq k \cdot d_1$
-  (dominación Lipschitz: $d_1$ acota a $d_2$).
-- **A1:** $f^*(d)(x_1, x_2) = d(f(x_1), f(x_2))$ es una pseudométrica.
+  (dominación Lipschitz).
+- **A1:** $f^*(d)(x_1, x_2) = d(f(x_1), f(x_2))$ es pseudométrica.
 - **A2:** La dominación Lipschitz es un preorden.
-- **A3:** Si $d_2 \leq k \cdot d_1$ sobre $Y$, entonces
-  $f^*(d_2) \leq k \cdot f^*(d_1)$ sobre $X$ (porque la desigualdad se
-  preserva punto a punto al componer con $f$).
 
 #### Preórdenes ($\mathcal{T}_\leq$, $\Rightarrow$)
 
 - $S_Y$: preórdenes sobre $Y$.
-- $\sigma_1 \preceq \sigma_2 \iff (y_1 \leq_1 y_2 \implies y_1 \leq_2 y_2)$
-  (monotonía: el orden de $\sigma_1$ implica el de $\sigma_2$).
-- **A1, A2, A3:** Se verifican análogamente.
+- $\sigma_1 \preceq \sigma_2 \iff (y_1 \leq_1 y_2 \implies y_1 \leq_2 y_2)$.
+- **A1, A2:** Análogas.
 
 #### Topologías ($\mathcal{T}_\tau$, $\supseteq$)
 
 - $S_Y$: topologías sobre $Y$.
-- $\sigma_1 \preceq \sigma_2 \iff \tau_1 \supseteq \tau_2$
-  ($\tau_1$ es más fina que $\tau_2$).
+- $\sigma_1 \preceq \sigma_2 \iff \tau_1 \supseteq \tau_2$.
 - **A1:** $f^*(\tau) = \{f^{-1}(U) \mid U \in \tau\}$ (topología inicial).
-- **A2:** La inclusión inversa de topologías es un orden parcial.
-- **A3:** Si $\tau_1 \supseteq \tau_2$, entonces $f^*(\tau_1) \supseteq f^*(\tau_2)$.
+  Notar: no es puntual sino por preimagen.
+- **A2:** Inclusión inversa, orden parcial.
 
 ---
 
-## 2. Morfismo y estructura inducida
+## 2. Minimalidad de los axiomas
+
+**A3 es derivable.** Para toda instancia binaria (equivalencias, métricas,
+órdenes, divergencias), A3 se sigue de A1 porque $\preceq$ se define
+puntualmente. Si $\sigma_1 \preceq \sigma_2$ sobre $Y$, entonces para
+todo $x_1, x_2$:
+
+$$
+f^*(\sigma_1)(x_1, x_2) = \sigma_1(f(x_1), f(x_2)) \preceq \sigma_2(f(x_1), f(x_2)) = f^*(\sigma_2)(x_1, x_2)
+$$
+
+Para topologías, A3 también se sigue de la definición de pullback por
+preimagen: $\tau_1 \supseteq \tau_2$ implica $f^*(\tau_1) \supseteq f^*(\tau_2)$.
+A3 no es un axioma independiente sino una consecuencia de A1 y la
+definición de $\preceq$ para cada tipo.
+
+**A1 es necesario.** Sin un mecanismo de pullback, no hay conexión entre
+$\mathcal{C}: X \to Y$ y la estructura sobre $X$. En particular, el
+principio de factorización (sección 4) depende de que
+$\sigma_\mathcal{C}(x_1, x_2) = \sigma(y, y)$ cuando
+$\mathcal{C}(x_1) = \mathcal{C}(x_2) = y$, lo que requiere el pullback
+puntual. Sin A1, las fibras no son un límite absoluto y la teoría pierde
+su resultado central.
+
+**A2 es necesario.** Sin transitividad, los refinamientos no componen:
+si $\mathcal{C}_1$ refina $\mathcal{C}_2$ y $\mathcal{C}_2$ refina
+$\mathcal{C}_3$, no podría concluirse que $\mathcal{C}_1$ preserva todo
+lo que $\mathcal{C}_3$ preserva. Sin reflexividad, el refinamiento trivial
+$\mathcal{C}' = \mathcal{C}$ no garantizaría $\sigma_\mathcal{C} \preceq
+\sigma_\mathcal{C}$.
+
+**Núcleo mínimo:** A1 (pullback puntual) + A2 (transitividad). A3 es
+derivable. La reflexividad en A2 es prescindible si se exige por separado
+para el refinamiento trivial, pero es más simple incluirla.
+
+---
+
+## 3. Morfismo y estructura inducida
 
 Un **morfismo** $\mathcal{C}: X \to Y$, junto con una $\mathcal{T}$-estructura
 $\sigma$ sobre $Y$, induce $\sigma_\mathcal{C} = \mathcal{C}^*(\sigma)$ sobre
@@ -81,7 +111,7 @@ sobre $Z$, induce $\tau_\Phi = \Phi^*(\tau)$ sobre $X$.
 
 ---
 
-## 3. Preservación
+## 4. Preservación
 
 Decimos que $\mathcal{C}$ **preserva** $\Phi$ (dadas $\sigma, \tau$) si:
 
@@ -94,7 +124,7 @@ suficientemente fina para capturar las distinciones que $\Phi$ requiere.
 
 ---
 
-## 4. Principio de factorización
+## 5. Principio de factorización
 
 Para todo $\mathcal{C}: X \to Y$, si $\mathcal{C}(x_1) = \mathcal{C}(x_2)$
 entonces $\sigma_\mathcal{C}(x_1, x_2) = \sigma(y, y)$ para toda
@@ -105,7 +135,7 @@ reflexividad, todo el espacio). La fibra $\mathcal{C}^{-1}(y)$ es un
 
 ---
 
-## 5. Refinamiento
+## 6. Refinamiento
 
 Un **refinamiento** de $\mathcal{C}: X \to Y$ es $(\mathcal{C}', \phi)$
 con $\mathcal{C}': X \to Y'$ y $\phi: Y' \to Y$ tales que:
@@ -124,13 +154,14 @@ $$
 
 *Demostración de 2.* $\sigma_\mathcal{C} = \mathcal{C}^*(\sigma) =
 (\phi \circ \mathcal{C}')^*(\sigma) = \mathcal{C}'^*(\phi^*(\sigma))$.
-Por A3, $\phi^*(\sigma) \preceq \sigma'$ implica
+Por monotonía del pullback (derivable de A1; véase §2),
+$\phi^*(\sigma) \preceq \sigma'$ implica
 $\mathcal{C}'^*(\phi^*(\sigma)) \preceq \mathcal{C}'^*(\sigma')$,
 luego $\sigma_\mathcal{C} \preceq \sigma'_{\mathcal{C}'}$. ∎
 
 ---
 
-## 6. Teorema de caracterización (versión axiomática)
+## 7. Teoremas de caracterización
 
 **Teorema (alcance del refinamiento).** Sea $\mathcal{C}: X \to Y$ y
 $(\mathcal{C}', \phi)$ un refinamiento con $\mathcal{C} = \phi \circ
@@ -186,7 +217,7 @@ ambos tipos.
 
 ---
 
-## 7. Aplicaciones
+## 8. Aplicaciones
 
 | Fase | $\mathcal{T}$ | $\preceq$ | Morfismo | $\Phi$ | Condición |
 |------|--------------|-----------|----------|--------|-----------|
