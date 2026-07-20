@@ -328,3 +328,12 @@ El repositorio contiene exactamente lo que debe contener en este momento: el fal
 
 La cuarta pregunta tiene consecuencias inmediatas: si la frontera depende del certificado, el objeto de G3 será relativo al contrato; si depende del mecanismo, el objeto será intrínseco al gobernador. Esa distinción determina si G3 produce un nuevo contrato o un nuevo tipo de gobernador.
 
+**Resultado del experimento conceptual (ejecutado sobre HAA-001):**
+
+- **Experimento A — Fijar $C_{v4}$, enriquecer $\Gamma$:** Si $\Gamma$ puede observar una señal que distingue $\Pi_{adv}^{(1)}$ de $\Pi_{adv}^{(2)}$, entonces $\operatorname{obs}_{G2}(w_1) \neq \operatorname{obs}_{G2}(w_2)$ y el par desaparece. La separación se elimina enriqueciendo el mecanismo.
+
+- **Experimento B — Fijar $\Gamma$, enriquecer $C_{v4}$:** Si $C_{v4}$ exige cobertura de $\Pi_{adv}^{real}$ en lugar de $\Pi_{adv}^{Threat}$, entonces $w_1$ tampoco satisface el certificado enriquecido. La separación se desplaza pero no desaparece — solo transforma la pregunta en "¿cómo sabe $\Gamma$ cuál es $\Pi_{adv}^{real}$?"
+
+**Conclusión:** La responsabilidad en HAA-001 es observacional — recae sobre la capacidad de $\Gamma$, no sobre la declaración de $C_{v4}$. Pero el objeto de G3 no es propiedadde $\Gamma$ sola ni de $C$ sola: es la relación entre $\ker(\operatorname{obs}_{G2})$ (lo que $\Gamma$ trata como equivalente) y $V(C)$ (lo que $C$ requiere para ser válido). Igual que en F el objeto no era $R$ ni $D$ sino la relación $\ker(R) \subseteq \ker(D)$, el objeto de G3 es esa correspondencia — actualmente rota.
+
+
