@@ -79,3 +79,25 @@ TAKT: "what to do with it" — $\pi^*(y)$ chooses action based on proxy quality 
 - `session/falsification-experiments.md` — three experiments
 - `session/experiment-composition-chains.md`
 - `session/experimentum-crucis-completion.md`
+
+## M1 completion
+
+M1 design transferred to takt repo (PR #251, #252). CARD-331 through CARD-335
+implemented, merged, 337 tests passing.
+
+**ADR-001:** Proxy contract must gate any refinement planner (M2). G1–G3
+deferred past M2.
+
+**CARD-336** (Backlog): M1 Operational Validation — 4 experiments confirming
+proxy geometry before M2 opens.
+
+## Active cards
+
+| Card | Status | Title |
+|------|--------|-------|
+| CARD-331 | ✅ Merged | Port runtime from takt-theory |
+| CARD-332 | ✅ Merged | ConservativeProxy interfaces |
+| CARD-333 | ✅ Merged | RealStructure (ℝ meet-semilattice) |
+| CARD-334 | ✅ Merged | RealMeetProxy + wiring |
+| CARD-335 | ✅ Merged | SPT tests |
+| CARD-336 | 🃏 Backlog | M1 Operational Validation |
