@@ -37,7 +37,24 @@ El pullback **hereda el tipo de estructura** (equivalencia→equivalencia, métr
 
 ---
 
-## 3. Las fases de TAKT como elección de estructura
+## 3. Principio de invariancia por factorización
+
+Sea $\mathcal{C}: X \to Y$ cualquier contracción. Para $x_1, x_2 \in X$ con $\mathcal{C}(x_1) = \mathcal{C}(x_2)$, toda estructura $S$ sobre $Y$ (métrica, divergencia, orden, topología) induce $S_\mathcal{C}(x_1, x_2) = 0$.
+
+*Demostración.* $S_\mathcal{C}(x_1, x_2) = S(\mathcal{C}(x_1), \mathcal{C}(x_2)) = S(y, y) = 0$. ∎
+
+**La fibra $\mathcal{C}^{-1}(y)$ es un límite absoluto.** Cambiar $S$ (nivel 1) no refina la partición. Refinar requiere cambiar $\mathcal{C}$ (nivel 2).
+
+### Dos niveles
+
+| Nivel | Acción | ¿Refina partición? |
+|-------|--------|-------------------|
+| 1 | Cambiar estructura sobre $Y$ | No — fibras invariantes |
+| 2 | Cambiar $\mathcal{C}$ misma | Sí — nuevas distinciones |
+
+---
+
+## 4. Las fases de TAKT como elección de estructura
 
 ### Fase F: $R: S \to Z$
 
@@ -73,36 +90,37 @@ El pullback **hereda el tipo de estructura** (equivalencia→equivalencia, métr
 
 ---
 
-## 4. El experimentum crucis reformulado
+## 4. Resultado del experimentum crucis (nivel 1)
 
-Ya no es "buscar una señal $s^*$".
+**Ninguna estructura sobre $\mathcal{D}(Y)$ puede resolver HAA-001.**
 
-Es:
-
-> **¿Existe alguna estructura sobre $\mathcal{D}(Y)$ cuyo pullback a $\Pi$ satisfaga la condición de preservación?**
-
-Es decir, probar estructuras candidatas:
+La razón es inmediata por el principio de factorización (sección 3): $F_\Gamma(\pi_1) = F_\Gamma(\pi_2)$ en prefijos seguros. Toda estructura $S$ sobre $\mathcal{D}(Y)$ induce $S_{F_\Gamma}(\pi_1, \pi_2) = 0$.
 
 | Estructura en $\mathcal{D}(Y)$ | Pullback a $\Pi$ | ¿Separa $\pi_1$ de $\pi_2$? |
 |------------------------------|-----------------|---------------------------|
-| Igualdad (actual) | $\sim_\Gamma$ | No — $F_\Gamma(\pi_1) = F_\Gamma(\pi_2)$ |
-| TV distancia | $d_{\text{TV}}(\pi, \pi')$ | Depende — $\|F_\Gamma(\pi_1) - F_\Gamma(\pi_2)\|_{\text{TV}} = 0$ sobre $\mathcal{T}_{\text{safe}}$ |
-| Wasserstein | $W(\pi, \pi')$ | ? |
-| KL divergencia | $D_{\text{KL}}(\pi \| \pi')$ | ? |
-| Jensen-Shannon | $D_{\text{JS}}(\pi, \pi')$ | ? |
-| $f$-divergencia | $D_f(\pi, \pi')$ | ? |
+| Igualdad (actual) | $\sim_\Gamma$ | No |
+| TV | $d_{\text{TV}}$ | No |
+| Wasserstein | $W$ | No |
+| KL | $D_{\text{KL}}$ | No |
+| Jensen-Shannon | $D_{\text{JS}}$ | No |
 
-Para cada estructura $S$ sobre $\mathcal{D}(Y)$, el pullback es $S_{F_\Gamma}(\pi, \pi') = S(F_\Gamma(\pi), F_\Gamma(\pi'))$. La pregunta es si $S_{F_\Gamma}$ preserva la distinción entre $\pi_1$ y $\pi_2$.
+*Tests:* 17/17 passing en `experimentum-crucis-structures.test.ts`.
 
 ---
 
-## 5. Consecuencias
+## 5. Consecuencia (nivel 2): reformulación del experimentum crucis
 
-### Si alguna estructura funciona
+El resultado negativo fuerza la pregunta al nivel 2:
 
-G3 puede resolverse cambiando la estructura inducida. El objeto de G3 es esa estructura elegida — análogo a elegir la métrica correcta en G2.
+> **¿Qué contracción $\Gamma'$ refina $F_\Gamma$ lo suficiente para que $\sim_{\Gamma'} \subseteq \sim_V$?**
 
-### Si ninguna estructura funciona
+Caminos posibles:
+- **Memoria:** $F_{\Gamma'}$ considera secuencias de observaciones, no solo el estado actual
+- **Sondeos activos:** acciones de prueba que revelan intención adversaria
+- **Auditorías activas:** intervenciones que modifican la trayectoria para obtener información
+- **Observación experimental:** $O$ más rica (ej: acciones observables, contadores de pasos)
+- **Pipeline extendido:** $F_\Gamma$ como composición de $O$, $P$, $D$, protocolo de auditoría
+- **Consulta causal:** preguntas contrafactuales sobre trayectorias alternativas
 
-El problema es del operador $F_\Gamma$ mismo, no de la estructura elegida sobre su codominio. Esto sería un resultado negativo fuerte: la no inyectividad de $F_\Gamma$ es irreducible — ninguna métrica sobre $\mathcal{D}(Y)$ puede distinguir $\pi_1$ de $\pi_2$ porque sus distribuciones son idénticas en la región relevante. Eso demostraría que el límite es del observador, no de la métrica.
+El experimentum crucis original (buscar $s^*$) es exactamente esta búsqueda entre $\Gamma'$ candidatos — y ahora sabemos que opera en el nivel correcto.
 

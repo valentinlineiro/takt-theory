@@ -1,59 +1,72 @@
-# Experimentum Crucis: Structures on D(Y)
+# Principio de Invariancia por Factorización
 
-**Result:** Negative — no structure on $\mathcal{D}(Y)$ can resolve HAA-001.
+**Hallazgo:** Las fibras de cualquier contracción $\mathcal{C}: X \to Y$ son un límite absoluto — ninguna estructura post-hoc sobre $Y$ puede refinar la partición que $\mathcal{C}$ induce en $X$.
 
-**Date:** 2026-07-20  
-**Status:** Complete  
-**Tests:** 17/17 passing in `experimentum-crucis-structures.test.ts`
+**Caso concreto:** $F_\Gamma: \Pi \to \mathcal{D}(Y)$ en HAA-001 — ninguna distancia/divergencia sobre $\mathcal{D}(Y)$ distingue $\pi_1$ de $\pi_2$ en prefijos seguros.
+
+**Tests:** 17/17 passing en `experimentum-crucis-structures.test.ts`
 
 ---
 
-## Question
-
-> ¿Existe alguna estructura sobre $\mathcal{D}(Y)$ cuya estructura inducida sobre $\Pi$ satisfaga la condición de preservación?
-
-Buscamos una distancia/divergencia TV, KL, JS, Wasserstein sobre el codominio de $F_\Gamma: \Pi \to \mathcal{D}(Y)$ que distinga $\pi_1$ de $\pi_2$ en los prefijos seguros.
-
-## Resultado
+## 1. Resultado concreto (HAA-001)
 
 | Distancia | ¿Separa $\pi_1$ de $\pi_2$ en prefijo seguro? | ¿Cuándo detecta? |
 |-----------|-----------------------------------------------|------------------|
 | Igualdad (actual) | No | Nunca |
-| TV | No | $t=4$ (tras la pérdida) |
-| KL | No | $t=4$ (tras la pérdida) |
-| JS | No | $t=4$ (tras la pérdida) |
-| Wasserstein | No | $t=4$ (tras la pérdida) |
-
-## Interpretación
+| TV | No | $t=4$ (tras pérdida) |
+| KL | No | $t=4$ (tras pérdida) |
+| JS | No | $t=4$ (tras pérdida) |
+| Wasserstein | No | $t=4$ (tras pérdida) |
 
 Para $\pi_{\text{est}} = \text{siempre-esperar}$ y $\pi_{\text{adv}} = \text{esperar 3, luego atacar}$:
 
-- Prefijos $t=0,1,2,3$: ambas políticas producen estado `idle` → observación `{phase:'idle'}` → las distribuciones son **idénticas** en $t \leq 3$.
-- Prefijo $t=4$: $\pi_{\text{adv}}$ ya atacó en llamada 4 → estado `fail` → TV=1, pero la pérdida ocurrió en $t=3\to t=4$.
+- Prefijos $t=0,1,2,3$: ambas producen estado `idle` → observación `{phase:'idle'}` → distribuciones idénticas.
+- Prefijo $t=4$: $\pi_{\text{adv}}$ atacó en llamada 4 → estado `fail` → detección, pero la pérdida ya ocurrió.
 
-**El límite es $F_\Gamma$ mismo** — la función de observación $O_{\text{ha}}$ es demasiado gruesa. El codominio de $F_\Gamma$ produce distribuciones idénticas para ambas políticas, por lo que ninguna estructura sobre $\mathcal{D}(Y)$ puede distinguirlas.
+---
 
-## Comparación
+## 2. Principio general
 
-| Atacante | Detección por TV | ¿Útil? |
-|----------|-----------------|--------|
-| $\pi_{\text{attackNow}}$ (inmediato) | $t=1$ | Sí — antes de pérdida |
-| $\pi_{\text{attackAt(3)}}$ (paciente) | $t=4$ | No — después de pérdida |
-| $\pi_{\text{attackAt(k)}}$ (paciente) | $t=k+1$ | No — coincide con pérdida |
+Sea $\mathcal{C}: X \to Y$ cualquier contracción. Sean $x_1, x_2 \in X$ con $\mathcal{C}(x_1) = \mathcal{C}(x_2)$. Entonces para cualquier estructura $S$ definida sobre $Y$ (métrica, divergencia, orden, topología, etc.):
 
-## Implicación
+$$
+S(\mathcal{C}(x_1), \mathcal{C}(x_2)) = 0 \quad \text{(o equivalentes si } S \text{ es métrica/divergencia)}
+$$
 
-El experimentum crucis original (buscar $s^*$ que refine $\sim_\Gamma$) no puede resolverse cambiando la estructura métrica sobre $\mathcal{D}(Y)$. Requiere cambiar $F_\Gamma$ mismo — es decir, enriquecer la función de observación $O$.
+*Demostración.* Si $\mathcal{C}(x_1) = \mathcal{C}(x_2) = y$, entonces $S(\mathcal{C}(x_1), \mathcal{C}(x_2)) = S(y, y) = 0$ para toda métrica, divergencia, o estructura que respete la identidad. Para cualquier función $g: Y \to Z$, $g(\mathcal{C}(x_1)) = g(\mathcal{C}(x_2))$. ∎
 
-Si $O$ observara acciones en lugar de solo estados, $\pi_1$ y $\pi_2$ serían distinguibles desde $t=1$: $\pi_1$ produce `attack`, $\pi_2$ produce `wait`. La estructura sobre $\mathcal{D}(Y)$ no es el cuello de botella — es el operador de observación.
+**Corolario (invariancia por factorización).** Una vez fijada $\mathcal{C}: X \to Y$, la fibra $\mathcal{C}^{-1}(y) \subseteq X$ es un límite absoluto. Ninguna estructura añadida exclusivamente sobre $Y$ puede distinguir elementos en la misma fibra. Cualquier refinamiento requiere cambiar $\mathcal{C}$.
 
-## Teorema
+---
 
-**Teorema (irreductibilidad de $F_\Gamma$ bajo $O_{\text{ha}}$).** Sea $\pi_1, \pi_2 \in \Pi$ dos políticas que coinciden en los primeros $k$ pasos (producen la misma secuencia de estados). Sea $O: S \to Y$ una función de observación determinista. Entonces para toda distancia $d$ sobre $\mathcal{D}(Y)$, $d(F_\Gamma(\pi_1), F_\Gamma(\pi_2)) = 0$ para todo prefijo $t \leq k$.
+## 3. Los dos niveles de acción
 
-*Demostración.* Para $t \leq k$, ambos producen la misma secuencia de estados $s_0, \ldots, s_t$ mediante $\pi_1$ y $\pi_2$. Como $O$ es determinista, $F_\Gamma(\pi_1)(t) = \delta_{O(s_t)} = F_\Gamma(\pi_2)(t)$. Por tanto toda distancia sobre distribuciones es cero en prefijos $t \leq k$. ∎
+| Nivel | Qué cambia | ¿Rompe fibras existentes? | Ejemplo en G3 |
+|-------|-----------|---------------------------|---------------|
+| 1 | Estructura sobre codominio $Y$ | No | TV, KL, JS sobre $\mathcal{D}(Y)$ |
+| 2 | La contracción $\mathcal{C}$ misma | Sí | Refinar $\Gamma$: memoria, sondeos, auditorías activas, consultas, $O$ |
 
-**Corolario.** La preservación $\sim_\Gamma \subseteq \sim_V$ falla para toda estructura sobre $\mathcal{D}(Y)$ si:
-- $O$ es determinista, y
-- el adversario puede permanecer en estados indistinguibles durante $k$ pasos, y
-- la pérdida ocurre en el paso $k+1$.
+El experimentum crucis original (buscar $s^*$) opera en el **nivel 2** — busca refinar $F_\Gamma$, no la estructura sobre su codominio.
+
+Los caminos para refinar $F_\Gamma$ incluyen:
+
+- **Memoria:** $F_{\Gamma'}(\pi) = \text{distribución de observaciones con ventana } w > 1$
+- **Sondeos activos:** $F_{\Gamma'}$ incluye acciones de prueba que revelan intención
+- **Auditorías activas:** intervenciones que modifican la trayectoria para obtener información
+- **Consulta causal:** preguntas contrafactuales ("¿qué pasaría si...?")
+- **Observación experimental:** cambiar $O$ para ver más variables
+- **Pipeline extendido:** añadir $P$, $D$, o el protocolo de auditoría como componentes de $F_\Gamma$
+
+---
+
+## 4. Implicación para TAKT
+
+El principio de invariancia por factorización no es un resultado sobre $\mathcal{D}(Y)$ ni sobre G3. Es un resultado sobre **toda contracción**. Esto significa:
+
+1. **Fase F:** $\sim_R \subseteq \sim_D$ es una condición sobre la relación entre $R$ y $D$ — si $R(s_1) = R(s_2)$ pero $D(s_1) \neq D(s_2)$, ninguna estructura sobre $Z$ puede salvar la brecha. Hay que cambiar $R$ o $D$.
+
+2. **Fase G2:** Si $\text{est}(P_1) = \text{est}(P_2)$ (misma estimación puntual para modelos distintos), ninguna métrica sobre matrices de transición puede distinguirlos. La cota $\beta$ opera sobre el error de estimación, no sobre la estructura del codominio.
+
+3. **Fase G3:** $F_\Gamma(\pi_1) = F_\Gamma(\pi_2)$ en prefijos seguros es un problema de $\Gamma$, no de $\mathcal{D}(Y)$.
+
+**Unificación:** Las tres fases comparten el mismo principio estructural — el límite de toda contracción está en sus fibras, y ninguna post-estructura sobre el codominio puede refinarlas. La diferencia entre fases está en **qué tipo de contracción eligen**, no en cómo operan sobre su codominio.
