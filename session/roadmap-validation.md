@@ -73,3 +73,11 @@ Cada etapa reduce el riesgo de la siguiente. No invertir en posicionamiento si a
 > No requiere modificar los axiomas ni introducir conceptos fundamentales nuevos.
 
 Si una aplicación obliga a cambiar el núcleo, no valida la teoría existente — contribuye a construir otra más amplia.
+
+**Evidence Index (métrica interna de progreso).**
+
+$$
+\text{EI} = \frac{\text{Dominios explicados sin ampliar el núcleo}}{\text{Total de dominios estudiados}}
+$$
+
+No es una medida científica en sí, pero permite seguir la evolución: un EI que crece indica que el núcleo tiene alcance genuino; un EI que se estabiliza indica que se han encontrado sus límites.
