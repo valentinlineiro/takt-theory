@@ -110,7 +110,7 @@ La razón es inmediata por el principio de factorización (sección 3): $F_\Gamm
 
 ## 5. Consecuencia (nivel 2): reformulación del experimentum crucis
 
-El resultado negativo fuerza la pregunta al nivel 2:
+El teorema de imposibilidad elimina completamente el espacio de búsqueda del nivel 1. En consecuencia, cualquier solución debe pertenecer al nivel 2:
 
 > **¿Qué contracción $\Gamma'$ refina $F_\Gamma$ lo suficiente para que $\sim_{\Gamma'} \subseteq \sim_V$?**
 
