@@ -99,24 +99,59 @@ not have.
 
 ### 2.4 Does it work for finite lattices?
 
-Yes, by the **rank function**: every finite lattice has a monotone
-rank function r: L → ℕ (length of maximal chain from ⊥ to x). This
-is unique for distributive lattices (Birkhoff's representation), but
-not for arbitrary finite lattices where chains may differ.
+**Only if the lattice is graded** (all maximal chains between the
+same elements have the same length). For graded lattices, the rank
+function r: L → ℕ is unique and monotone.
 
-### 2.5 Assessment
+For **non-graded** finite lattices (where chains between ⊥ and x may
+have different lengths), no canonical rank exists. A valuation must
+be chosen externally — e.g., cost, capability level, or some
+problem-specific numeric attribute.
 
-| Criterion | L = ℝ | L = ℙ(U) | Finite lattice |
-|-----------|-------|-----------|----------------|
-| Existence of valuation | ✅ value(x)=x | ✅ μ(S) or |S| | ✅ rank function |
+This is not a deficiency of the valuation approach; it reflects the
+fact that "magnitude" is not intrinsic to the order for non-graded
+structures.
+
+### 2.5 The linearity assumption
+
+The valuation approach reduces all operations to ℝ via `v: L → ℝ`.
+But EVSI computes:
+
+```
+v(E[Φ^↓ after refinement]) − v(Φ^↓(y)) − cost
+```
+
+This requires:
+
+```
+v(E[Φ]) = E[v(Φ)]   i.e.,   v(Σ pᵢ × xᵢ) = Σ pᵢ × v(xᵢ)
+```
+
+This is **not free**. It requires v to be **affine** with respect to
+convex combinations — equivalently, v must be a linear functional on
+the convex hull of L. For ℝ with v(x) = x, this holds trivially.
+For ℙ(U) with measure μ, this holds because μ is additive.
+
+For arbitrary L, this cannot be assumed. Any `Valuation<L>` intended
+for EVSI must also satisfy this linearity condition. This rules out,
+for example, valuations based on non-additive measures or arbitrary
+monotone functions.
+
+### 2.6 Assessment
+
+| Criterion | L = ℝ | L = ℙ(U) | Graded finite lattice |
+|-----------|-------|-----------|----------------------|
+| Existence of valuation | ✅ v(x)=x | ✅ μ(S) or |S| | ✅ rank function |
+| Affine (v(E) = E(v)) | ✅ (identity) | ✅ (measure additive) | ✅ (rank additive?) |
 | Order preservation | ✅ | ✅ (if μ monotone) | ✅ |
 | Uniqueness | ✅ (only one) | ❌ (multiple measures) | ⚠️ (unique for distributive) |
 
 **Verdict: Works, but at a cost.** The valuation is not uniquely
-determined by the order in general. This means EVSI depends on which
+determined by the order in general, and the linearity requirement
+(v affine) is an additional constraint. EVSI depends on which
 valuation you pick, not just on Φ^↓ and the refinement outcomes.
 The ℝ-only pipeline avoids this because there is exactly one
-monotone embedding of ℝ into ℝ: the identity.
+affine monotone embedding of ℝ into ℝ: the identity.
 
 ---
 
@@ -184,109 +219,148 @@ structure (measure, convexity, vector space).
 
 ---
 
-## 4. Candidate: No generalisation exists
+## 4. Question of minimality: what weaker structures might suffice?
 
-Given the analysis above:
+The preceding analysis shows that **Valuation<L> is a working
+solution**. But this does not prove it is the **minimal** solution.
+Minimality requires showing that all strictly weaker structures
+fail. This section is open: the candidates below are plausible
+weaker algebras that have not been ruled out.
 
-| Operation | ℝ | ℙ(U) | Finite lattice |
-|-----------|---|------|----------------|
-| `weightedSum` → L | ✅ | ❌ | ❌ |
-| `diff` → number | ✅ | ⚠️ (via measure) | ⚠️ (via rank) |
-| `geq` against ℝ threshold | ✅ | ⚠️ (via measure) | ⚠️ (via rank) |
+### 4.1 Candidate: Ordinal EVSI (no magnitudes)
 
-`weightedSum` (expectation of outcomes) is the blocking operation.
-It cannot be defined on sets or lattices without embedding into a
-vector space or using a valuation.
+Instead of `E[Φ^↓] − Φ^↓`, compare outcomes ordinally:
 
-### 4.1 Argument for fundamental ℝ-specificity
+```
+outcome ∈ {better, worse, same}
+```
 
-EVSI is an **information-theoretic** quantity. It measures the
-expected reduction in uncertainty from acquiring information.
-Information theory is built on ℝ — entropy, mutual information,
-expected value — because these quantities are fundamentally
-arithmetic (they involve summation, products, and logarithms over
-probability distributions).
+This only requires `OrderedStructure<L>` (already proven for M1).
+Cost would be handled as a budget constraint, not as arithmetic
+subtraction. EVSI becomes discrete: does refinement improve the
+guarantee, yes or no?
 
-If EVSI could be defined on arbitrary partially ordered sets without
-reference to ℝ, it would mean that information value is independent
-of magnitude — which contradicts decision theory's basic result that
-utility is real-valued (von Neumann–Morgenstern).
+**Open question:** Does this preserve enough information for useful
+decisions? The current quantitative EVSI can distinguish "barely
+better" from "much better" — ordinal EVSI cannot.
 
-### 4.2 Argument against (i.e., why it might still generalise)
+### 4.2 Candidate: Affine functional (partial embedding)
 
-Not all refinements need full EVSI. A weaker planner could use:
+Instead of a full valuation `v: L → ℝ`, define an affine functional
+only on the convex hull of outcome distributions:
 
-- **Order comparison only:** "Does refinement C' produce a Φ^↓
-  that is not worse than the current Φ^↓?" (leq-based, no arithmetic)
-- **Discrete EVSI:** Only consider whether the outcome is "better,"
-  "worse," or "same" — a trinary decision, not a numeric one.
+```typescript
+interface AffineExpectation<L> {
+  expected(dist: {value: L; prob: number}[]): number;
+}
+```
 
-These weaker planners would be generic over any OrderedStructure<L>
-but would lose the quantitative cost-benefit tradeoff that EVSI
-provides. That's acceptable — the question is whether it answers
-the user's need.
+No need to embed all of L — only the outcomes that appear in
+refinement distributions. This is a strictly weaker requirement
+than a global valuation.
+
+**Open question:** How often does the planner encounter new L values
+not seen in training data? If outcome distributions are finite and
+known, this may suffice. If not, a global valuation is needed.
+
+### 4.3 Candidate: Partial homomorphism
+
+Extend `OrderedStructure<L>` with a monoid structure for differences:
+
+```typescript
+interface DifferenceStructure<L> extends OrderedStructure<L> {
+  diff(a: L, b: L): L;   // difference lives in L, not ℝ
+  zero: L;                // diff(a, a) = zero
+}
+```
+
+EVSI would compute `E[diff(Φ^↓ after, Φ^↓)]` and compare against
+cost (which would also need to embed into L). This avoids ℝ entirely
+but requires L to have a group-like structure.
+
+**Open question:** What natural L have this structure? ℝ does
+(diff = subtraction). ℙ(U) does not (set difference is not signed).
+Finite lattices do not (no inverse).
+
+### 4.4 What this means
+
+None of these weaker candidates is ruled out by the analysis so far.
+Each has its own limitations, and each may fail for specific L.
+But proving minimality requires showing they all fail.
+
+**The current result is:** Valuation<L> is the most general working
+solution found so far. Whether a strictly weaker solution exists
+remains an open question.
 
 ---
 
-## 5. Conclusion
+## 5. Established result and open questions
 
-### 5.1 Theoretical verdict
+### 5.1 What is settled
 
-**No generalisation of EVSI exists** that preserves its quantitative
-cost-benefit semantics for arbitrary L. The blocking operation is
-`weightedSum` (expected value over outcomes), which requires either:
+The analysis confirms a structural boundary that was previously only
+suspected:
 
-- An embedding `v: L → ℝ` (Valuation approach), or
-- A vector space / convex structure on L (not available for ℙ(U) or
-  general finite lattices).
+| Claim | Status |
+|-------|--------|
+| `OrderedStructure<L>` is insufficient for EVSI | ✅ Confirmed. EVSI needs weighted combination and signed difference, not just order. |
+| A quantitative planner needs a notion of **magnitude** beyond order | ✅ Confirmed. Arithmetic (Σ, −, ≥) cannot be derived from order alone. |
+| `Valuation<L>` is a working solution for ℝ, ℙ(U), and graded lattices | ✅ Confirmed. Embedding L → ℝ supports all three required operations. |
+| The linearity condition v(E[Φ]) = E[v(Φ)] is required | ✅ Identified. v must be affine, not just monotone. |
 
-The Valuation approach works for all three L but introduces a
-non-unique choice of valuation for ℙ(U) and non-distributive
-lattices. This means EVSI is not uniquely determined by Φ^↓ alone —
-it depends on how you measure the domain.
+### 5.2 What remains open
 
-### 5.2 Practical recommendation
+| Question | Status |
+|----------|--------|
+| Is `Valuation<L>` the **minimal** structure? | ❌ Open. Ordinal EVSI, affine functionals, and difference structures (see §4) have not been ruled out. |
+| Do any of the weaker candidates preserve enough information for useful decisions? | ❌ Open. The trade-off between generality and expressiveness is not settled. |
+| Does every practically relevant L admit a **canonical** affine valuation? | ❌ Open. ℝ does (identity), ℙ(U) does not (multiple measures), graded distributive lattices do (rank). Non-graded lattices are open. |
 
-**Adopt the Valuation approach** and accept that EVSI depends on a
-choice of measure/valuation for non-ℝ domains. This is not a
-deficiency — it reflects the fact that "how much better" is not
-intrinsic to the order but requires a magnitude.
+### 5.3 Leading candidate: Valuation<L>
 
-Implementation:
+Despite the open questions, `Valuation<L>` is the leading candidate
+because it is the simplest structure known to work for all three
+target domains (ℝ, ℙ(U), finite lattices) while supporting the full
+quantitative semantics of EVSI.
+
+Implementation for the runtime (if adopted):
 
 ```typescript
 interface Valuation<L> {
+  /** Embed L into ℝ for EVSI arithmetic.
+   *  Must be affine: v(Σ pᵢ × xᵢ) = Σ pᵢ × v(xᵢ). */
   value(x: L): number;
 }
 
-// ℝ: valuation is identity
+// ℝ: valuation is identity (trivially affine)
 class RealValuation implements Valuation<number> {
   value(x: number): number { return x; }
 }
 
-// ℙ(U): valuation is measure (must be provided by caller)
+// ℙ(U): valuation is measure (affine if measure is additive)
 class MeasureValuation implements Valuation<Set<string>> {
   constructor(private measure: (s: Set<string>) => number) {}
   value(x: Set<string>): number { return this.measure(x); }
 }
 
-// Finite lattice: valuation is rank function
+// Graded lattice: valuation is rank function
 class RankValuation<L> implements Valuation<L> {
   constructor(private rank: (x: L) => number) {}
   value(x: L): number { return this.rank(x); }
 }
 ```
 
-Then `RefinementPlanner` and `GovernancePolicy` are parameterised
-by `Valuation<L>` instead of hardcoded `number`:
+### 5.4 If Valuation is adopted
+
+`RefinementPlanner` and `GovernancePolicy` become parameterised
+by `Valuation<L>`:
 
 ```typescript
 class RefinementPlanner<L> {
   constructor(private valuation: Valuation<L>) {}
   select(current: L, candidates: RefinementOption<L>[]): RefinementDecision {
-    // EVSI operates on valuation.value(x) ∈ ℝ
     const currentValue = this.valuation.value(current);
-    // ...
+    // EVSI operates on ℝ via valuation.value
   }
 }
 
@@ -298,38 +372,22 @@ class GovernancePolicy<L> {
   ) {}
   decide(input: GovernanceInput<L>): GovernanceAction {
     const sufficient = this.valuation.value(input.proxy.lowerBound) >= this.guaranteeThreshold;
-    // ...
   }
 }
 ```
 
-### 5.3 Open sub-question
+The ℝ coupling is **factorized to a single point** (the Valuation
+interface) rather than eliminated. This is not a compromise — it
+reflects the fact that magnitude for EVSI requires ℝ arithmetic.
 
-Is there a canonical valuation for each L that is "natural" (i.e.,
-determined by the structure of L rather than by caller choice)?
+### 5.5 Recommendation
 
-- ℝ: ✅ `value(x) = x` — uniquely determined by the order.
-- ℙ(U): ❌ No canonical measure — measure must be chosen.
-  However, the measure may be determined by the problem domain
-  (e.g., probability measure, counting measure).
-- Finite distributive lattices: ✅ Rank function is unique.
-- Finite non-distributive lattices: ❌ Rank depends on chain chosen.
-  But in practice, the lattice structure usually determines a
-  natural valuation (e.g., cost, size, capability level).
+Depending on the project's next goal:
 
-### 5.4 What this means for the runtime
-
-The ℝ coupling is **not eliminable** — it is pushed to a single
-point (the Valuation interface) rather than eliminated. This is
-the right outcome: the ℝ coupling reflects a real mathematical
-requirement (magnitude for EVSI), not an implementation accident.
-
-The current runtime can become generic by:
-
-1. Adding `Valuation<L>` interface (one file, ~10 lines).
-2. Extracting `RealValuation` from the current hardcoded ℝ code
-   (pure refactor, no behavioural change).
-3. Parameterising `RefinementPlanner` and `GovernancePolicy` with
-   `Valuation<L>` (generic, testable).
-4. Adding `MeasureValuation` and `RankValuation` as new instances
-   (new proxy domains).
+- **If the goal is to build generic proxy instances now:** adopt
+  `Valuation<L>` as the interface, implement `RealValuation` as a
+  refactor, and defer the minimality question. This is a practical
+  choice that works.
+- **If the goal is to settle the minimality question:** design and
+  test the weaker candidates from §4 against ℝ, ℙ(U), and finite
+  lattices before committing to any implementation.
