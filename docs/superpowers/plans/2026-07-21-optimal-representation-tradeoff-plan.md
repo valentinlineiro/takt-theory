@@ -82,7 +82,51 @@ Run: `git add takt-formal/TaktFormal.lean takt-formal/TaktFormal/Representation/
 
 ---
 
+### Task 1.5: Quotient Order Sanity (Preorder properties modulo equivalence)
+
+**Files:**
+- Modify: `takt-formal/TaktFormal/Representation/KernelEquivalence.lean`
+
+- [ ] **Step 1: Implement preorder lemmas in KernelEquivalence.lean**
+
+Write the following theorems inside `KernelEquivalence.lean` (within namespace `KernelEquivalence`):
+
+```lean
+/-- Reflexividad del orden cociente. -/
+theorem refinement_quot_refl (R : S → Z1) : refinement R R :=
+  subset_refl
+
+/-- Transitividad del orden cociente. -/
+theorem refinement_quot_trans {R1 : S → Z1} {R2 : S → Z2} {R3 : S → Z3}
+    (h1 : refinement R1 R2) (h2 : refinement R2 R3) : refinement R1 R3 :=
+  fun x y hk => h1 x y (h2 x y hk)
+
+/-- Independencia del representante para refinamiento a izquierda. -/
+theorem refinement_well_defined_left {R1 R1' : S → Z1} {R2 : S → Z2}
+    (he : kernelEquiv R1 R1') (h : refinement R1 R2) : refinement R1' R2 := by
+  dsimp [refinement] at *
+  exact subset_trans h he.1
+
+/-- Independencia del representante para refinamiento a derecha. -/
+theorem refinement_well_defined_right {R1 : S → Z1} {R2 R2' : S → Z2}
+    (he : kernelEquiv R2 R2') (h : refinement R1 R2) : refinement R1 R2' := by
+  dsimp [refinement] at *
+  exact subset_trans he.2 h
+```
+
+- [ ] **Step 2: Run lake build to verify it compiles**
+
+Run: `lake build` in `takt-formal` directory.
+Expected: Build succeeds.
+
+- [ ] **Step 3: Commit**
+
+Run: `git commit -am "proof(Fase IV): add Task 1.5 Quotient order sanity checks"`
+
+---
+
 ### Task 2: Formalize Uniqueness Modulo Equivalence
+
 
 **Files:**
 - Create: `takt-formal/TaktFormal/Optimality/Uniqueness.lean`
