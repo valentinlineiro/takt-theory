@@ -6,7 +6,7 @@ import TaktFormal.Cost.Monotonicity
 open Kernel
 
 /-- Teorema de Coincidencia (Theorem 2.1): Bajo C0, R_min es un óptimo global de costes. -/
-theorem coincidence_theorem {S A C L : Type} [PartialOrder L]
+theorem coincidence_theorem {S A C L : Type} [CostPartialOrder L]
     (K : C → S → S → Prop) (C_D : C → Prop) (D : S → A)
     (hK_equiv : ∀ c, Equivalence (K c)) (hA0 : Axiom0 K C_D D)
     (c : {Z : Type} → (S → Z) → L) (hc0 : C0 c)
