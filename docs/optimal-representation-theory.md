@@ -59,27 +59,37 @@ Identificamos los siguientes axiomas candidatos sobre la función de coste $c$ y
 3. **Completitud y Existencia de Meets (C1):**
    El codominio de costes $(L, \sqsubseteq_L)$ admite ínfimos (meets) sobre cualquier subconjunto no vacío.
 
-### 2.3 Taxonomía del Coste: Intrínsecos vs Extrínsecos
+### 2.3 Taxonomía del Coste Conceptual: Intrínsecos vs Extrínsecos
 
-Para comprender por qué y cuándo se rompe la monotonicidad del coste, clasificamos las funciones de coste en dos familias fundamentales:
+Para comprender intuitivamente por qué y cuándo se rompe la monotonicidad del coste, es útil clasificar conceptualmente las funciones de coste en dos familias. Esta clasificación no es un axioma matemático rígido ni una descomposición universal obligatoria, sino un **modelo conceptual de instancia** altamente representativo para el diseño práctico:
 
 1. **Costes Intrínsecos ($c_{\text{intr}}$):**
    * **Definición:** Aquellos costes que dependen únicamente de la representación $R$ en sí misma (su estructura de datos, tamaño o huella física).
-   * **Ejemplos:** Memoria de almacenamiento, tamaño en bits del código $Z$, ancho de banda para transferir la representación, coste computacional estático de compresión.
-   * **Comportamiento:** Tienden a ser **monótonos** respecto al refinamiento ($R_1 \sqsubseteq R_2 \implies c_{\text{intr}}(R_1) \leq c_{\text{intr}}(R_2)$). Representar menos detalles (colapsar estados) siempre reduce o mantiene el coste intrínseco.
+   * **Ejemplos:** Memoria de almacenamiento, tamaño en bits del código $Z$, ancho de banda de serialización, etc.
+   * **Comportamiento:** Tienden a ser **monótonos** respecto al refinamiento ($R_1 \sqsubseteq R_2 \implies c_{\text{intr}}(R_1) \leq c_{\text{intr}}(R_2)$).
 
 2. **Costes Extrínsecos ($c_{\text{extr}}$):**
-   * **Definición:** Aquellos costes que dependen de la interacción de la representación con el entorno o de su uso en tareas operacionales aguas abajo.
-   * **Ejemplos:** Coste de colisión (complejidad temporal de búsqueda), riesgo de seguridad (pérdida de robustez ante ruido o shift distributivo), coste de mantenimiento o explicabilidad.
-   * **Comportamiento:** Tienden a ser **no monótonos** (rompen la monotonicidad). Con frecuencia, representaciones más gruesas (con menos detalles) incrementan el coste extrínseco por colisión o por la necesidad de añadir buffers de seguridad.
+   * **Definición:** Aquellos costes que dependen de la interacción de la representación con el entorno o de su uso operacional.
+   * **Ejemplos:** Coste de colisión temporal en búsquedas, penalizaciones por riesgo de robustez o explicabilidad.
+   * **Comportamiento:** Tienden a ser **no monótonos** (rompen la monotonicidad).
 
-La función de coste global se descompone habitualmente en:
+En muchas aplicaciones prácticas, el coste se modela de forma aditiva como $c(R) = c_{\text{intr}}(R) + c_{\text{extr}}(R)$, donde la tensión entre ambas componentes da origen al trade-off de optimalidad.
 
-$$
-c(R) = c_{\text{intr}}(R) + c_{\text{extr}}(R)
-$$
+### 2.4 Clasificación Ortogonal: Dependencia de Información
 
-donde la tensión entre la monotonicidad de $c_{\text{intr}}$ y la no monotonicidad de $c_{\text{extr}}$ es el motor del trade-off de la optimalidad.
+Una clasificación estrictamente matemática y ortogonal a la compatibilidad con el orden se define por la **firma de información** que requiere la función de coste para ser computada. Esto nos permite estructurar las funciones de coste en tres categorías fundamentales según sus dependencias lógicas:
+
+1. **Costes Dependientes de la Representación: $c(R)$**
+   * **Requisito:** Solo necesitan conocer la estructura de la representación $R$ (por ejemplo, el tamaño de sus fibras o su cardinalidad $|Z|$).
+   * **Ejemplo:** $c_{\text{mem}}(R)$ o la latencia de codificación intrínseca del canal de comunicación.
+
+2. **Costes Dependientes de la Representación y la Decisión: $c(R, D)$**
+   * **Requisito:** Requieren conocer la estructura de $R$ en relación directa con la decisión a tomar (por ejemplo, cómo se posiciona la frontera de decisión en relación con las particiones de la representación).
+   * **Ejemplo:** Latencia operacional de la decisión factorizada o el coste de colisión relativo a la frontera de decisión (donde fusionar estados a ambos lados de la frontera causa un alto coste).
+
+3. **Costes Dependientes de la Representación, la Decisión y el Entorno: $c(R, D, E)$**
+   * **Requisito:** Requieren, además de la representación y la decisión, un modelo o distribución de probabilidad del entorno $E$ (por ejemplo, para evaluar la probabilidad de ruido o el impacto de un cambio en la distribución).
+   * **Ejemplo:** El riesgo operacional bajo *distribution shift* o el coste esperado ante dinámicas inciertas del entorno (donde un mayor refinamiento actúa como un margen de seguridad robusto).
 
 ---
 
