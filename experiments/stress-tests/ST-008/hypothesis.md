@@ -50,7 +50,7 @@ experimento para evitar esa trivialidad, distinguiendo explícitamente entre
   prioridad, dependencias, tamaño) — sin ningún campo de objetivo,
   distancia-a-meta, o impacto acumulado. Se elige esta y no un snapshot sin
   memoria como línea base; ver justificación más abajo.
-- **$S_1, S_2, \dots$ (enriquecidas).** Representaciones candidatas que
+- **$R_1, R_2, \dots$ (enriquecidas).** Representaciones candidatas que
   siguen siendo locales, finitas y compatibles con el dominio — p. ej.
   $S_0$ aumentada con un escalar de "distancia declarada al objetivo" bajo
   una `OrderedStructure<L>` (reutilizando la misma abstracción que M1 usa
@@ -62,17 +62,15 @@ experimento para evitar esa trivialidad, distinguiendo explícitamente entre
 resultados sea inequívoca, la familia admisible se restringe a
 representaciones que cumplen ambas condiciones:
 
-- **Local:** computable a partir de información disponible en el paso actual
-  del pipeline (el prefijo de trayectoria observado hasta ese instante), sin
-  necesitar lookahead sobre tarjetas futuras ni acceso a información fuera
-  del dominio del pipeline (p. ej., sin oráculo externo que revele el
-  objetivo real).
+- **Local:** $R_i: \mathcal{S} \to \mathcal{Z}_i$ — función del estado
+  observable del pipeline (kanban_state + prefijo de trayectoria $\tau_{:t}$),
+  sin lookahead ni acceso a $W$.
 - **Acotada:** de tamaño fijo — no crece sin límite con la longitud de la
   trayectoria ni con el tamaño del backlog (excluye, por ejemplo, "la
   historia completa de todas las tarjetas procesadas" como representación
   candidata).
 
-Toda $S_i$ que no cumpla ambas condiciones queda fuera del alcance de este
+Toda $R_i$ que no cumpla ambas condiciones queda fuera del alcance de este
 experimento — su existencia no contaría como *Application Representation
 Gap* ni la refutaría.
 
@@ -95,7 +93,7 @@ El par de trayectorias que se construya en la Aplicación debe cumplir:
 > propiedades que $S$ está diseñado para preservar, y diferir únicamente en
 > la propiedad de convergencia.
 
-Si no se impone esta condición, cualquier $S_i$ candidato podría distinguir
+Si no se impone esta condición, cualquier $R_i$ candidato podría distinguir
 las trayectorias por un motivo colateral (p. ej., composición distinta del
 backlog restante, o cualquier otra dimensión que $S_0$ ya captura), y el
 resultado no diría nada sobre la propiedad bajo prueba. Es el mismo patrón
@@ -117,7 +115,7 @@ ejecución.
    relativa facilidad — no es el resultado interesante del experimento, es
    la motivación para exigir la prueba sobre la familia completa.
 
-2. **Existencia de al menos un $S_i$ suficiente.** Se predice que existe al
+2. **Existencia de al menos un $R_i$ suficiente.** Se predice que existe al
    menos una representación enriquecida, local y acotada — candidata natural:
    $S_0$ + un valor escalar de distancia-a-objetivo bajo un orden total — que
    restaura la distinción, i.e. bajo la cual $\ker(R_i) \subseteq \ker(D)$
@@ -128,7 +126,7 @@ ejecución.
    respete la estructura de orden requerida) es parte de lo que debe
    justificarse en la Aplicación — no se da por supuesta aquí.
 
-3. **No unicidad del contraejemplo.** Si se encuentra un $S_i$ suficiente,
+3. **No unicidad del contraejemplo.** Si se encuentra un $R_i$ suficiente,
    debe verificarse que no es un caso aislado construido ad hoc, sino un
    miembro representativo de una clase de soluciones locales/acotadas
    razonables — de lo contrario, el resultado A sería anecdótico y no
@@ -143,7 +141,7 @@ excluyentes y colectivamente exhaustivas:
 - **No Gap.** $S_0$ ya preserva la propiedad (refutaría la Hipótesis 1;
   poco probable dado el schema actual, pero debe descartarse formalmente).
 - **Application Representation Gap.** $S_0$ pierde la propiedad, pero existe
-  al menos un $S_i$ dentro de la familia admisible que la preserva. La
+  al menos un $R_i$ dentro de la familia admisible que la preserva. La
   consecuencia es una recomendación para la capa de aplicación (`takt`) —
   enriquecer su representación de estado — no una extensión de SPT.
 - **Structural Representation Gap.** Para toda representación local y
@@ -164,15 +162,15 @@ Este stress-test se considerará terminado y exitoso cuando:
    enriquecidas pero locales y acotadas $\{S_1, S_2, \dots\}$, no un único
    ejemplo ad hoc.
 4. Se demuestre (idealmente en Lean 4, siguiendo el patrón de ST-001–007) si
-   existe al menos un $S_i$ que preserve la propiedad, o si ninguno puede
+   existe al menos un $R_i$ que preserve la propiedad, o si ninguno puede
    hacerlo. Para el caso negativo (*Structural Representation Gap*), la
    demostración no puede ser por enumeración —la familia admisible es
    potencialmente infinita— y debe seguir el patrón de no-inyectividad de
    `session/g3-impossibility-theorem.md`: construir dos trayectorias
-   concretas, ambas dentro del dominio del pipeline, que todo $S_i$ local y
+   concretas, ambas dentro del dominio del pipeline, que todo $R_i$ local y
    acotado observe como idénticas pese a requerir decisiones distintas
    ("terminar" vs. "continuar"). Un único par de trayectorias así construido,
-   junto con el argumento de por qué ninguna $S_i$ admisible puede
+   junto con el argumento de por qué ninguna $R_i$ admisible puede
    separarlas, basta como demostración — igual que el corolario de G3 no
    requiere enumerar todas las políticas.
 5. El resultado quede clasificado formalmente bajo una de las tres etiquetas

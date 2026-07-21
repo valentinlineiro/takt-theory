@@ -17,7 +17,7 @@ a la convergencia. Esta hipótesis se considera establecida por la
 construcción de `model.md` §2–3; su verificación es un control de que el
 experimento está bien construido, no el resultado que se busca.
 
-**H₂.** Existe al menos una representación $S_i \in \mathcal{F}$, local
+**H₂.** Existe al menos una representación $R_i \in \mathcal{F}$, local
 y acotada, que sí preserva la distinción: $\ker(R_i) \subseteq \ker(D)$
 respecto a la convergencia.
 
@@ -158,7 +158,7 @@ anteriores tenía.
 
 ## 3. Criterio de minimalidad
 
-El experimento no busca "cualquier $S_i$ que funcione." Busca el **más
+El experimento no busca "cualquier $R_i$ que funcione." Busca el **más
 pequeño** (en capacidad representacional) que lo haga. Esto es importante
 porque:
 
@@ -178,8 +178,8 @@ un bit es más pequeño que un escalar ordinal no porque ocupe menos memoria
 | Condición | Resultado | Acción |
 |-----------|-----------|--------|
 | $S_0$ preserva la convergencia | **No Gap** | El experimento termina. No se evalúan más candidatos. |
-| Existe $S_i \in \mathcal{F}$ con $\ker(R_i) \subseteq \ker(D)$ | **Application Representation Gap** | Se registra el candidato mínimo encontrado. Se documenta qué capacidad adicional fue necesaria. |
-| Para todo $S_i \in \mathcal{F}$, $\ker(R_i) \not\subseteq \ker(D)$ | **Structural Representation Gap** | Se demuestra por argumento de no-inyectividad (patrón G3) que ninguna representación local y acotada puede preservar la convergencia. |
+| Existe $R_i \in \mathcal{F}$ con $\ker(R_i) \subseteq \ker(D)$ | **Application Representation Gap** | Se registra el candidato mínimo encontrado. Se documenta qué capacidad adicional fue necesaria. |
+| Para todo $R_i \in \mathcal{F}$, $\ker(R_i) \not\subseteq \ker(D)$ | **Structural Representation Gap** | Se demuestra por argumento de no-inyectividad (patrón G3) que ninguna representación local y acotada puede preservar la convergencia. |
 
 La búsqueda termina en cuanto se encuentra una representación suficiente
 (o se demuestra que ninguna puede serlo). No se exige probar todos los

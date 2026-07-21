@@ -259,20 +259,22 @@ ST-008 sería un No Gap y el experimento terminaría aquí.
 
 ---
 
-## 4. Familia admisible $S_i$
+## 4. Familia admisible $R_i$
 
 ### 4.1 Definición de la familia
 
 La familia admisible $\mathcal{F}$ consiste en toda representación
-$S_i: \mathcal{S} \to \mathcal{Z}_i$ que cumpla ambas condiciones:
+$R_i: \mathcal{S} \to \mathcal{Z}_i$ que cumpla ambas condiciones:
 
-**Local.** $S_i(s_t)$ es computable a partir únicamente de:
-- el estado actual del kanban en $t$ (la proyección de tarjetas),
-- el prefijo de trayectoria $\tau_{:t}$ observado hasta $t$,
-- información accesible localmente en $t$ (sin lookahead a tarjetas
-  futuras ni acceso al objetivo real del mundo externo).
+**Local.** $R_i(s_t)$ es computable a partir de la información disponible
+en el paso $t$ del pipeline: el estado actual del kanban (proyección de
+todas las tarjetas a sus campos) y el prefijo de trayectoria $\tau_{:t}$
+observado hasta $t$. Sin lookahead a tarjetas futuras ni acceso a
+información fuera del dominio del pipeline (p. ej., sin oráculo externo
+que revele el objetivo real). Es decir, $R_i$ es función únicamente de
+$\mathcal{S}$.
 
-**Acotada.** $|S_i(s_t)|$ no crece sin límite con $t$ ni con el tamaño
+**Acotada.** $|R_i(s_t)|$ no crece sin límite con $t$ ni con el tamaño
 del backlog. La representación tiene cardinalidad máxima fija.
 
 La elección del primer candidato a evaluar dentro de $\mathcal{F}$, y
