@@ -156,3 +156,122 @@ La teoría tiene dos componentes casi ortogonales:
 4. **El mapa permite extensiones seguras**: si alguien añade una
    nueva consecuencia, puede determinar inmediatamente qué axiomas
    debe verificar.
+
+---
+
+## Dependency DAG
+
+```
+Definitions (C, K_c, C_R, C_D, G, K_D, ⊑, ℛ_suf)
+     │
+     ├──────────────────┐
+     ▼                  ▼
+    T3                 T4           Capability Theory
+     │                  │
+     └──────┬───────────┘
+            │
+            ▼
+      (Capability Algebra)
+
+A0 (Contract Coherence)
+ │
+ ├──► T1
+ │      │
+ │      ├──► T2
+ │      │
+ │      └──► T5           Structural Sufficiency
+ │
+A1 (Arbitrary meets)
+ │
+ └──► T6 (requires A0 + A1)     Representation Generalization
+
+
+───── Consequences ─────
+
+T3 ──────────► C1 (EVSI stopping criterion)
+ │
+ └────────────► C2 (runtime gap is exact)
+
+T1 + A0 ─────► C3 (ContractVerifier ≡ safety condition)
+
+T5 ──────────► C4 (enrichment = kernel refinement)
+
+T6 ──────────► C5 (per-structure A1 verification needed)
+```
+
+Las tres capas de teoría son independientes en el sentido de
+dependencias: Capability Theory no necesita A0 ni A1; Structural
+Sufficiency añade A0; Representation Generalization añade A0 + A1.
+Cada capa hereda las anteriores y añade sus axiomas específicos.
+
+---
+
+## Análisis Estratificado de la Teoría
+
+Esta sección detalla el propósito de dividir la teoría en tres capas de abstracción lógica, respondiendo de forma explícita a la pregunta: **¿Qué aporta cada capa que la anterior no puede demostrar?**
+
+### 1. Capability Theory
+
+**Objeto de estudio**
+El espacio de capacidades y la estructura de gaps entre representaciones, independientemente de cualquier decisión concreta y de su suficiencia o seguridad.
+
+**Hipótesis**
+Ninguna hipótesis o axioma adicional más allá de las definiciones del espacio de capacidades $\mathcal{C}$ y la relación de refinamiento $\sqsubseteq$.
+
+**Resultados**
+* Teoremas: [T3](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L57) (Correspondencia del gap) y [T4](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L58) (Monotonicidad del refinamiento).
+* Consecuencias: [C1](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L102) (Criterio de parada para el planificador EVSI) y [C2](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L103) (El gap medido en runtime es exacto y no un mero heurístico).
+
+**Pregunta que responde**
+> ¿Cómo se estructuran y se comportan las capacidades y sus gaps bajo el refinamiento?
+
+*Nota:* Esta capa describe puramente la estructura interna del espacio de información de las representaciones. No puede responder cuándo una decisión es segura o suficiente para ser ejecutada bajo una representación dada.
+
+---
+
+### 2. Structural Sufficiency
+
+**Objeto de estudio**
+La relación de preservación exacta entre una decisión concreta del mundo real y el espacio de capacidades provistas por la representación.
+
+**Nuevo axioma**
+* **A0 (Contract Coherence):** $\ker(D) = \bigcap_{c \in C_D} K_c$. La semántica de la decisión real coincide exactamente con la intersección de sus capacidades requeridas.
+
+**Resultados nuevos**
+* Teoremas: [T1](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L55) (Caracterización de suficiencia), [T2](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L56) (Estructura de upset y existencia de mínimo único), y [T5](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L59) (Punto fijo de la suficiencia / del enriquecimiento).
+* Consecuencias: [C3](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L104) (Equivalencia formal entre la condición del ContractVerifier en runtime y la seguridad teórica) y [C4](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L105) (La planificación de enriquecimiento equivale al refinamiento ordenado del núcleo hacia $K_D$).
+
+**Pregunta nueva**
+> ¿Bajo qué condiciones precisas una representación preserva exactamente la semántica de una decisión real?
+
+*Nota:* Conecta el álgebra de la Capa 1 con las garantías operacionales de preservación del Canonical Core. Sin A0, la teoría de capacidades y la semántica de las decisiones permanecen desacopladas.
+
+---
+
+### 3. Representation Generalization
+
+**Objeto de estudio**
+La extensión y validez de la caracterización de suficiencia a clases de estructuras matemáticas más complejas y continuas (más allá de las relaciones de equivalencia discretas).
+
+**Nuevo axioma**
+* **A1 (Arbitrary meets):** El retículo de la estructura formal del tipo $\mathcal{T}$ admite ínfimos (meets) sobre familias arbitrarias (no solo finitas) de estructuras.
+
+**Resultados nuevos**
+* Teoremas: [T6](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L60) (Generalización de suficiencia a estructuras binarias monotónicas).
+* Consecuencias: [C5](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L106) (Criterio para extender la teoría a preórdenes y pseudométricas mediante la verificación de A1 para la estructura concreta).
+
+**Pregunta nueva**
+> ¿Qué parte de la teoría de suficiencia y preservación depende críticamente de trabajar con relaciones de equivalencia?
+
+*Nota:* Esta capa identifica las condiciones bajo las cuales la caracterización de suficiencia puede extenderse más allá de las relaciones de equivalencia, demostrando que no depende necesariamente de particiones y equivalencias discretas.
+
+---
+
+## Filosofía del Diseño Lógico: Extensión Conservativa
+
+La arquitectura de la teoría TAKT sigue el principio de **extensión conservativa**. Desde una perspectiva de diseño lógico y matemático:
+
+1. **Invariabilidad de los teoremas base:** Los nuevos axiomas únicamente amplían el conjunto de resultados demostrables; no alteran la validez de los resultados obtenidos en capas inferiores. Añadir el axioma de coherencia **A0** no restringe ni modifica los teoremas de la Capa 1 ([T3](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L57), [T4](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L58)). Del mismo modo, introducir **A1** en la Capa 3 no altera los teoremas de suficiencia de la Capa 2 ([T1](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L55), [T2](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L56), [T5](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L59)).
+2. **Ampliación del dominio de aplicación:** Cada axioma añadido actúa exclusivamente como un puente de generalización o conexión semántica. El paso de Capa 1 a Capa 2 formaliza el puente con las decisiones concretas. El paso de Capa 2 a Capa 3 amplía el dominio matemático de aplicación desde relaciones de equivalencia discretas hasta espacios continuos y métricas.
+
+Este diseño permite que la formalización sea modular y robusta, permitiendo que nuevas extensiones se incorporen sin revisar las demostraciones pertenecientes a capas inferiores.
