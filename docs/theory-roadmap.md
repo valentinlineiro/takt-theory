@@ -1,6 +1,58 @@
 # Theory Roadmap
 
 > The four phases of representation theory in TAKT.
+>
+> **Status:** Foundational version frozen. No new theoretical fronts
+> open before CARD-356/357/358 are implemented and their operational
+> semantics are stable.
+
+## Three invariants for the implementation phase
+
+These invariants constrain CARD-356/357/358 and must not be violated:
+
+### Invariant 1 — Capability is not a label
+
+A capability must be a property derived from evidence, not a declared
+tag:
+
+```
+R ⊢ c    (representation R provides evidence for capability c)
+```
+
+not:
+
+```
+c ∈ R.capabilities    (capability as arbitrary metadata)
+```
+
+This prevents a system that merely claims to have a capability without
+demonstrable evidence.
+
+### Invariant 2 — Enrichment does not bypass the gate
+
+Enrichment produces a representation candidate, not an automatic
+guarantee. The chain must remain:
+
+```
+R → E(R) → Verify → Execute
+```
+
+Never:
+
+```
+R → E(R) → Execute
+```
+
+### Invariant 3 — Sufficiency is relative to the contract
+
+There is no absolute `R_sufficient`. There is only:
+
+```
+R_sufficient(D)
+```
+
+A representation may be sufficient for decision `D₁` and insufficient
+for `D₂`. This becomes critical as the CapabilityModel grows.
 
 ## Structure
 
