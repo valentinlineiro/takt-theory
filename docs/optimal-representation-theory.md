@@ -56,7 +56,7 @@ $$
 
 donde $(L, \sqsubseteq_L)$ es un poset. En la mayoría de las instancias, $(L, \sqsubseteq_L)$ será $(\mathbb{R}_{\geq 0}, \leq)$.
 
-**Working Hypothesis C0 (Cost Monotonicity).** Si $R_1 \sqsubseteq R_2$ ($R_1$ es más gruesa, es decir, hace menos distinciones y tiene mayor núcleo), entonces:
+**Working Hypothesis 2.2 (C0 - Cost Monotonicity).** Si $R_1 \sqsubseteq R_2$ ($R_1$ es más gruesa, es decir, hace menos distinciones y tiene mayor núcleo), entonces:
 
 $$
 c(R_1) \sqsubseteq_L c(R_2)
@@ -64,13 +64,13 @@ $$
 
 *Intuición:* Añadir distinciones a una representación (refinarla) nunca reduce el coste; a lo sumo lo incrementa o lo mantiene igual. La representación mínima suficiente $R_{\text{min}}$ representa el coste mínimo teórico necesario para preservar la decisión de manera exacta.
 
-**Working Hypothesis C0' (Strict Monotonicity).** Si $\ker(R_2) \subset \ker(R_1)$ (refinamiento estricto), entonces $c(R_1) \sqsubset_L c(R_2)$.
+**Working Hypothesis 2.3 (C0' - Strict Monotonicity).** Si $\ker(R_2) \subset \ker(R_1)$ (refinamiento estricto), entonces $c(R_1) \sqsubset_L c(R_2)$.
 
-**Working Hypothesis C1 (Completeness and Existence of Meets).** El codominio de costes $(L, \sqsubseteq_L)$ admite ínfimos (meets) sobre cualquier subconjunto no vacío.
+**Working Hypothesis 2.4 (C1 - Completeness and Existence of Meets).** El codominio de costes $(L, \sqsubseteq_L)$ admite ínfimos (meets) sobre cualquier subconjunto no vacío.
 
 #### 2.1 Taxonomy: Intrínsecos vs Extrínsecos
 
-Para comprender intuitivamente por qué y cuándo se rompe la monotonicidad del coste, es útil clasificar conceptualmente las funciones de coste en dos familias. Esta clasificación no es un axioma matemático rígido ni una descomposición universal obligatoria, sino un **modelo conceptual de instancia** altamente de referencia:
+Para comprender intuitivamente por qué y cuándo se rompe la monotonicidad del coste, es útil clasificar conceptualmente las funciones de coste en dos familias. Esta clasificación no es un axioma matemático rígido ni una descomposición universal obligatoria, sino un **modelo conceptual de instancia** altamente representativo para el diseño práctico:
 
 1.  **Costes Intrínsecos ($c_{\text{intr}}$):**
     *   **Definición:** Aquellos costes que dependen únicamente de la representación $R$ en sí misma (su estructura de datos, tamaño o huella física).
@@ -114,24 +114,24 @@ Al cruzar de forma ortogonal la compatibilidad con el orden (Regímenes I y II) 
 
 ### 3. Existence of Optimal Representations
 
-Partimos de la clausura de ST-015, lo que nos da un conjunto de representaciones suficientes $\mathcal{R}_{\text{sufficient}}(D)$ con un elemento mínimo único $R_{\min}$, y una función de coste $c: \mathcal{R}_{\text{sufficient}}(D) \to L$ donde $(L, \le)$ es un poset de costes.
+Partimos de la clausura de ST-015, lo que nos da un conjunto de representaciones suficientes $\mathcal{R}_{\text{sufficient}}(D)$ con un elemento mínimo único $R_{\min}$, y una función de coste $c: \mathcal{R}_{\text{sufficient}}(D) \to L$ donde $(L, \sqsubseteq_L)$ es un poset de costes.
 
 **Definition 3.1 (Optimal Representation).** Sea $R \in \mathcal{R}_{\text{sufficient}}(D)$. Diremos que $R$ es óptima si:
 
 $$
-\forall R' \in \mathcal{R}_{\text{sufficient}}(D), \qquad c(R) \le c(R')
+\forall R' \in \mathcal{R}_{\text{sufficient}}(D), \qquad c(R) \sqsubseteq_L c(R')
 $$
 
 *No existence is assumed.*
 
-**Open Problem 3.2 (Pregunta D1).** ¿Qué propiedades deben satisfacer $(\mathcal{R}_{\text{sufficient}}(D), \sqsubseteq)$ y $(L, \le)$ para garantizar que exista al menos una representación óptima?
+**Open Problem 3.2 (Pregunta D1).** ¿Qué propiedades deben satisfacer $(\mathcal{R}_{\text{sufficient}}(D), \sqsubseteq)$ y $(L, \sqsubseteq_L)$ para garantizar que exista al menos una representación óptima?
 
 #### 3.1 Possible Proof Outcomes
 
 Al intentar demostrar la existencia usando únicamente las hipótesis de trabajo **C0** y **C1**, identificamos tres posibles caminos o resultados:
 
 *   **Possible Proof Outcome 3.3 (Scenario A - Success):** La demostración se completa con éxito. En este caso, **C0** y **C1** eran suficientes para garantizar la existencia.
-*   **Possible Proof Outcome 3.4 (Scenario B - Failure in L):** La prueba falla debido a la falta de estructura en $(L, \le)$ (por ejemplo, porque el poset de costes no tiene elementos mínimos o ínfimos en el subconjunto de costes realizables). El problema reside en la estructura de costes.
+*   **Possible Proof Outcome 3.4 (Scenario B - Failure in L):** La prueba falla debido a la falta de estructura en $(L, \sqsubseteq_L)$ (por ejemplo, porque el poset de costes no tiene elementos mínimos o ínfimos en el subconjunto de costes realizables). El problema reside en la estructura de costes.
 *   **Possible Proof Outcome 3.5 (Scenario C - Failure in Domain):** La prueba falla debido a que el conjunto $\mathcal{R}_{\text{sufficient}}(D)$ es demasiado grande o complejo (por ejemplo, en dominios continuos sin compacidad o condiciones noetherianas). El problema reside en el dominio de las representaciones.
 
 ---
@@ -148,9 +148,9 @@ Al intentar demostrar la existencia usando únicamente las hipótesis de trabajo
 *Demostración (Esquema).* Supongamos que existe $R' \in \mathcal{R}_{\text{sufficient}}(D)$ tal que $\ker(R') \neq \ker(R_{\text{min}})$. Como $R_{\text{min}}$ es el mínimo de las suficientes, tenemos que $\ker(R') \subset \ker(R_{\text{min}})$ estrictamente.
 Por estricta monotonicidad del coste (**C0'**):
 $$
-c(R_{\text{min}}) < c(R')
+c(R_{\text{min}}) \sqsubset_L c(R')
 $$
-Por lo tanto, ninguna representación strictly más fina que $R_{\text{min}}$ puede ser un mínimo de coste. Dado que el upset $\mathcal{R}_{\text{sufficient}}(D)$ está acotado por abajo por $R_{\text{min}}$, esta es la única representación que minimiza el coste. ∎
+Por lo tanto, ninguna representación estrictamente más fina que $R_{\text{min}}$ puede ser un mínimo de coste. Dado que el upset $\mathcal{R}_{\text{sufficient}}(D)$ está acotado por abajo por $R_{\text{min}}$, esta es la única representación que minimiza el coste. ∎
 
 ---
 
@@ -171,12 +171,12 @@ $$
 *Demostración.* Para toda $R \in \mathcal{R}_{\text{sufficient}}(D)$, se tiene $\ker(R) \subseteq \ker(R_{\min}) = K_D$, lo que por definición de nuestro orden de refinamiento significa que $R_{\min} \sqsubseteq R$ ($R_{\min}$ es más gruesa o igual que $R$).
 1. Por el axioma de monotonicidad del coste (**C0**):
    $$
-   R_{\min} \sqsubseteq R \implies c(R_{\min}) \leq c(R)
+   R_{\min} \sqsubseteq R \implies c(R_{\min}) \sqsubseteq_L c(R)
    $$
    Por lo tanto, $c(R_{\min})$ es una cota inferior global del coste sobre todo el espacio de representaciones suficientes. Como $R_{\min}$ pertenece a dicho espacio, es un mínimo global.
 2. Si además se cumple la monotonicidad estricta (**C0'**), para cualquier $R \neq R_{\min}$ (es decir, $R$ es estrictamente más fina, $R_{\min} \sqsubset R$), tenemos:
    $$
-   c(R_{\min}) < c(R)
+   c(R_{\min}) \sqsubset_L c(R)
    $$
    Lo que excluye a cualquier otra representación suficiente de ser un óptimo, garantizando la unicidad: $R^* = R_{\min}$. ∎
 
@@ -220,7 +220,7 @@ graph TD
 *   **Implicación:** La teoría de optimalidad en este régimen no añade nuevos grados de libertad teóricos, solo valida mecánicamente a $R_{\min}$ como la mejor opción de diseño.
 
 ##### Régimen II — Costes Incompatibles con el Orden
-*   **Condición:** $\exists R_1 \sqsubseteq R_2$ tal que $c(R_1) > c(R_2)$. Se rompe la compatibilidad (típicamente debido a la influencia de costes extrínsecos como colisiones o seguridad).
+*   **Condición:** $\exists R_1 \sqsubseteq R_2$ tal que $c(R_2) \sqsubset_L c(R_1)$ (o son incomparables). Se rompe la compatibilidad (típicamente debido a la influencia de costes extrínsecos como colisiones o seguridad).
 *   **Resultado:** Nace una tensión fundamental entre *representar menos* (reducir coste intrínseco) y *pagar menos* (reducir coste extrínseco). El óptimo $R^*$ difiere de $R_{\min}$, existiendo un trade-off computable.
 *   **Implicación:** Este es el verdadero núcleo científico de la Fase IV, donde se requiere formalizar la **Teoría de Compromiso (Trade-off)** y la **Optimalidad Robusta**.
 
@@ -260,7 +260,7 @@ $$
 **Research Question 8.1 (Independence of Information Signature).** ¿Los teoremas de existencia y unicidad dependen únicamente de las propiedades algebraicas del orden del poset de representaciones y del poset de costes (e.g., **C0/C1** y **C0'**)? ¿O la firma informacional del coste ($c(R)$, $c(R, D)$, $c(R, D, E)$) introduce nuevas clases cualitativas de optimalidad que no pueden reducirse a relaciones de orden?
 *   *Hipótesis:* Si la firma de información no altera las demostraciones abstractas, las tres categorías de dependencia son descriptivas (taxonomía para clasificar instancias) y no estructurales para los teoremas de existencia/unicidad.
 
-**Research Question 8.2 (Realizability and Matrix Collapse).** ¿Are all 6 cells of the realizability matrix mathematically possible, or do hidden structural restrictions make some cells impossible or redundant?
+**Research Question 8.2 (Realizability and Matrix Collapse).** Are all 6 cells of the realizability matrix mathematically possible, or do hidden structural restrictions make some cells impossible or redundant?
 *   *Pregunta:* ¿Puede existir un coste compatible con el orden (Régimen I) que dependa del entorno $E$ de manera no trivial sin inducir colisiones o riesgos que eventualmente rompan la compatibilidad?
 
 **Research Question 8.3 (Reduction of Regime II to Regime I).** ¿Puede el Régimen II (costes incompatibles con el orden) reducirse formalmente a una perturbación o una "métrica de distancia" sobre el Régimen I? ¿O requiere un conjunto completamente nuevo de axiomas topológicos o de retículos continuos (e.g., condiciones de Scott)?
