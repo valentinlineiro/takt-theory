@@ -93,13 +93,65 @@ Por lo tanto, ninguna representación estrictamente más fina que $R_{\text{min}
 
 ---
 
-## 5. Etapa 4 — Composición de Óptimos
+## 5. El Teorema de Coincidencia: ¿Es $R_{\min}$ siempre el óptimo $R^*$?
+
+La relación entre la representación mínima suficiente $R_{\min}$ (la frontera de suficiencia del teorema de suficiencia estructural ST-015) y la representación óptima $R^*$ (de la teoría de optimización de la Fase IV) es el puente conceptual clave entre ambas fases.
+
+### 5.1 Teorema de Coincidencia bajo Costes Monótonos
+
+Si la función de coste $c$ es monótona respecto al refinamiento (**C0**), entonces la representación mínima suficiente es siempre un óptimo global:
+
+$$
+R_{\min} \in \arg\min_{R \in \mathcal{R}_{\text{sufficient}}(D)} c(R)
+$$
+
+Y si $c$ es estrictamente monótona (**C0'**), entonces $R_{\min}$ es el **único** óptimo global de coste:
+
+$$
+R^* = R_{\min}
+$$
+
+*Demostración.* Para toda $R \in \mathcal{R}_{\text{sufficient}}(D)$, se tiene $\ker(R) \subseteq \ker(R_{\min}) = K_D$, lo que por definición de nuestro orden de refinamiento significa que $R_{\min} \sqsubseteq R$ ($R_{\min}$ es más gruesa o igual que $R$).
+1. Por el axioma de monotonicidad del coste (**C0**):
+   $$
+   R_{\min} \sqsubseteq R \implies c(R_{\min}) \leq c(R)
+   $$
+   Por lo tanto, $c(R_{\min})$ es una cota inferior global del coste sobre todo el espacio de representaciones suficientes. Como $R_{\min}$ pertenece a dicho espacio, es un mínimo global.
+2. Si además se cumple la monotonicidad estricta (**C0'**), para cualquier $R \neq R_{\min}$ (es decir, $R$ es estrictamente más fina, $R_{\min} \sqsubset R$), tenemos:
+   $$
+   c(R_{\min}) < c(R)
+   $$
+   Lo que excluye a cualquier otra representación suficiente de ser un óptimo, garantizando la unicidad: $R^* = R_{\min}$. ∎
+
+### 5.2 Cuando el óptimo diverge del mínimo ($R^* \neq R_{\min}$)
+
+Existen escenarios prácticos y teóricos muy claros en los que la función de coste $c$ **no** es monótona con respecto al refinamiento, provocando que una representación estrictamente más rica/fina sea preferible al mínimo suficiente ($R_{\min} \sqsubset R^*$).
+
+#### A. Costes Operacionales de Colisión y Complejidad
+Si una representación colapsa estados de manera muy agresiva (como lo hace $R_{\min}$ al ser el máximo colapso compatible con la decisión), puede inducir una alta probabilidad de colisiones o degradar la eficiencia de algoritmos de búsqueda o indexación posteriores en el runtime.
+Si el coste total se modela como:
+$$
+c(R) = c_{\text{storage}}(R) + c_{\text{processing}}(R)
+$$
+Donde $c_{\text{storage}}$ aumenta con el refinamiento pero $c_{\text{processing}}$ disminuye (al haber menos colisiones), la función de coste total no es monótona. El óptimo $R^*$ se encontrará en un punto intermedio de compromiso (trade-off) estrictamente más fino que $R_{\min}$.
+
+#### B. Costes de Margen y Riesgo de Seguridad (Robustez)
+En sistemas sujetos a ruido o distribución shift, operar exactamente en el límite de la suficiencia teórica ($R_{\min}$) reduce a cero el margen de seguridad de la decisión.
+Si definimos una función de penalización por riesgo que disminuye a medida que la representación es más rica/fina (ya que un mayor refinamiento permite verificar un margen de seguridad más amplio $\Delta > 0$ en el runtime):
+$$
+c_{\text{safety}}(R) = f(\text{margin}(R))
+$$
+donde $f$ es decreciente con el margen, entonces el óptimo de coste combinado $c(R) = c_{\text{compute}}(R) + c_{\text{safety}}(R)$ favorecerá representaciones con mayor nivel de detalle que $R_{\min}$ para actuar como un "colchón" o buffer ante la incertidumbre.
+
+---
+
+## 6. Etapa 4 — Composición de Óptimos
 
 Una de las preguntas clave de la Fase IV es la composicionalidad de la optimalidad:
 
 > Si $R_1^*$ es óptima para la decisión $D_1$ y $R_2^*$ es óptima para la decisión $D_2$, ¿en qué condiciones el join $R_1^* \vee R_2^*$ (la representación que hace ambas distinciones) es óptimo para la decisión conjunta $D_1 \times D_2$?
 
-### 5.1 Conjetura de Composición
+### 6.1 Conjetura de Composición
 
 Si la función de coste es aditiva o subaditiva respecto al join de representaciones:
 
@@ -111,7 +163,7 @@ entonces la optimalidad composicional se preserva bajo cotas superiores. Esto co
 
 ---
 
-## 6. Etapa 5 — Instancias Concretas de Coste
+## 7. Etapa 5 — Instancias Concretas de Coste
 
 Una vez desarrollada la teoría abstracta, se instanciarán los siguientes modelos de coste específicos:
 
