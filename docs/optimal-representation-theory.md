@@ -75,7 +75,7 @@ Para comprender intuitivamente por qué y cuándo se rompe la monotonicidad del 
 1.  **Costes Intrínsecos ($c_{\text{intr}}$):**
     *   **Definición:** Aquellos costes que dependen únicamente de la representación $R$ en sí misma (su estructura de datos, tamaño o huella física).
     *   **Ejemplos:** Memoria de almacenamiento, tamaño en bits del código $Z$, ancho de banda de serialización, etc.
-    *   **Comportamiento:** Tienden a ser **monótonos** respecto al refinamiento ($R_1 \sqsubseteq R_2 \implies c_{\text{intr}}(R_1) \leq c_{\text{intr}}(R_2)$).
+    *   **Comportamiento:** Tienden a ser **monótonos** respecto al refinamiento ($R_1 \sqsubseteq R_2 \implies c_{\text{intr}}(R_1) \sqsubseteq_L c_{\text{intr}}(R_2)$).
 
 2.  **Costes Extrínsecos ($c_{\text{extr}}$):**
     *   **Definición:** Aquellos costes que dependen de la interacción de la representación con el entorno o de su uso operacional.
@@ -260,7 +260,7 @@ $$
 **Research Question 8.1 (Independence of Information Signature).** ¿Los teoremas de existencia y unicidad dependen únicamente de las propiedades algebraicas del orden del poset de representaciones y del poset de costes (e.g., **C0/C1** y **C0'**)? ¿O la firma informacional del coste ($c(R)$, $c(R, D)$, $c(R, D, E)$) introduce nuevas clases cualitativas de optimalidad que no pueden reducirse a relaciones de orden?
 *   *Hipótesis:* Si la firma de información no altera las demostraciones abstractas, las tres categorías de dependencia son descriptivas (taxonomía para clasificar instancias) y no estructurales para los teoremas de existencia/unicidad.
 
-**Research Question 8.2 (Realizability and Matrix Collapse).** Are all 6 cells of the realizability matrix mathematically possible, or do hidden structural restrictions make some cells impossible or redundant?
+**Research Question 8.2 (Realizability and Matrix Collapse).** ¿Son realizables matemáticamente las 6 celdas de la matriz de realizabilidad, o existen restricciones estructurales ocultas que provocan que alguna celda sea imposible o redundante?
 *   *Pregunta:* ¿Puede existir un coste compatible con el orden (Régimen I) que dependa del entorno $E$ de manera no trivial sin inducir colisiones o riesgos que eventualmente rompan la compatibilidad?
 
 **Research Question 8.3 (Reduction of Regime II to Regime I).** ¿Puede el Régimen II (costes incompatibles con el orden) reducirse formalmente a una perturbación o una "métrica de distancia" sobre el Régimen I? ¿O requiere un conjunto completamente nuevo de axiomas topológicos o de retículos continuos (e.g., condiciones de Scott)?
@@ -269,14 +269,14 @@ $$
 
 ---
 
-## Epilogue: Methodological Principle
+## Epílogo: Principio Metodológico
 
-### Principle of Reactive Axiomatization
+### Principio de Axiomatización Reactiva
 
-New axioms or assumptions are introduced only when a proof attempt fails for a demonstrable mathematical reason. 
+Se introducen nuevos axiomas o hipótesis de trabajo únicamente cuando el intento de demostración falla por una razón matemática demostrable.
 
-Consequently, the evolution of the theory follows the sequence:
-1. Formulate the weakest possible theorem/definitions;
-2. Attempt the proof;
-3. Identify the minimal obstruction;
-4. Introduce only the weakest hypothesis/axiom required to remove it.
+En consecuencia, la evolución de la teoría sigue la secuencia:
+1. Formular las definiciones y el teorema más débil posible;
+2. Intentar la demostración;
+3. Identificar la obstrucción mínima;
+4. Introducir únicamente la hipótesis o axioma más débil necesario para eliminar dicha obstrucción.
