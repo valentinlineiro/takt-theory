@@ -2,9 +2,10 @@
 
 > The four phases of representation theory in TAKT.
 >
-> **Status:** Foundational version frozen. No new theoretical fronts
-> open before CARD-356/357/358 are implemented and their operational
-> semantics are stable.
+> **Status:** Foundational theory complete. Three phases closed
+> (Impossibility, Recovery, Characterization). Phase IV (Optimization)
+> is future work. Theory is frozen as foundational version with no
+> new theoretical fronts open.
 
 ## Three invariants for the implementation phase
 
@@ -59,7 +60,7 @@ for `D₂`. This becomes critical as the CapabilityModel grows.
 ```
 Phase I:  Impossibility   → ST-008: what representations lose
 Phase II: Recovery        → CARD-356/357/358: how to regain lost capabilities
-Phase III: Characterization → ST-015: the minimum sufficient representation
+Phase III: Characterization → ST-015: the minimum sufficient representation (Complete)
 Phase IV: Optimization    → Future: which sufficient representation is optimal
 ```
 
@@ -123,27 +124,28 @@ Transforms a resolvable gap into an optimization problem.
 
 **ST-015 (Structural Sufficiency Theorem)**
 
-Given a decision class `D` and an observable class `O`, does there
-exist a minimal representation `R_min` such that:
-
 ```
-ker(R_min) ⊆ ker(D)  ∧  R_min = f(O)
-```
+ℛ_sufficient(D) = { R : ker(R) ⊆ K_D }
 
-And critically:
-
-```
-∀ R' ≺ R_min: ker(R') ⊈ ker(D)
+where K_D = ⋂_{c∈C_D} K_c
 ```
 
-That is: `R_min` works, and every strictly smaller representation fails.
-This makes sufficiency a boundary, not an arbitrary point.
+The sufficient set is characterized by the **capability kernel** `K_D`,
+the intersection of the equivalence relations induced by each required
+capability. The set has a unique minimum `R_min` with `ker(R_min) = K_D`.
+Every representation finer than `R_min` is sufficient; every coarser
+representation is insufficient.
 
-The question is no longer *can a representation fail* (ST-008), but
-*what is the exact boundary between insufficient and sufficient?*
+Six theorems established:
+1. Characterization — sufficiency as `ker(R) ⊆ K_D`
+2. Upset and unique minimum — `ℛ_sufficient(D)` has minimum `R_min`
+3. Gap correspondence — `G(D,R) = { c ∈ C_D : ker(R) ⊈ K_c }`
+4. Monotonicity — refinement never increases the gap
+5. Fixed point — `K_D` is the fixed point of enrichment
+6. Generalization — extends to any binary monotonic structure type
 
-**Status:** Future — requires stable operational semantics for
-"capability", "evidence", and "sufficiency" from CARD-356/357/358.
+**Status:** Complete. Caracterización completa, demostración formal
+(6 teoremas).
 
 ---
 
@@ -161,21 +163,21 @@ cost? Where `∆Guarantee / ∆Cost → 0` marks the saturation point.
 ## The full chain
 
 ```
-ST-008 → impossibility boundary
+ST-008 → impossibility boundary (∃ D,R: ker(R) ⊈ ker(D))
    ↓
 ContractVerifier → G(D,R) detected
    ↓
-CapabilityModel → space 𝒞 defined
+CapabilityModel → space 𝒞 defined, K_c per capability
    ↓
 Enrichment Providers → ℰ_known constructed
    ↓
-EVSI Planner → E* selected
+EVSI Planner → E* selected: closure_ℰ(R₀) → K_D
    ↓
 executeDecision → D runs only if G(D,R') = ∅
    ↓
-ST-015 → sufficiency boundary
+ST-015 → sufficiency boundary (ℛ_sufficient = {R: ker(R) ⊆ K_D})
    ↓
-Optimal Representation → cost-effective ceiling
+Optimal Representation → cost-effective ceiling (Future)
 ```
 
 ## Loss and recovery — a unified view
@@ -198,7 +200,7 @@ The roadmap adds the positive half:
 | CARD-356 | Structure of what can be preserved |
 | CARD-357 | Transformations that restore lost capabilities |
 | CARD-358 | Optimal recovery path |
-| ST-015 | Minimal preservation boundary |
+| ST-015 | Minimal preservation boundary — `ker(R) ⊆ K_D` |
 
 Every step is a consequence of the previous one. The theory is not a
 collection of results — it is a single argument about what
@@ -225,8 +227,8 @@ But these are sets, not a single path. The correct picture:
 
 ST-008 defines `ℛ_insufficient` — the forbidden zone.
 CARD-356/357/358 navigate within `ℛ_sufficient`.
-ST-015 characterizes the boundary `∂ℛ_sufficient`.
-Optimal Representation selects within `ℛ_sufficient` under cost.
+ST-015 characterizes the boundary `∂ℛ_sufficient = {R: ker(R) = K_D}`.
+Optimal Representation selects within `ℛ_sufficient` under cost (Future).
 
 There may be many sufficient representations for the same decision.
 The theory does not prescribe a single correct one — it provides the
