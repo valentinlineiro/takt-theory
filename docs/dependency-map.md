@@ -2,6 +2,9 @@
 
 > Dependencies between axioms, definitions, theorems, and consequences
 > in ST-015 (Structural Sufficiency Theorem) and its supporting framework.
+>
+> **Versión:** 1.0 (Congelada post-certificación)
+> **Estado:** Núcleo fundacional de ST-015 (Capability Theory + Structural Sufficiency) verificado mecánicamente en Lean 4.
 
 ---
 
@@ -50,14 +53,16 @@ definiciones o de axiomas sobre la existencia de los objetos.
 
 ### Dependencias
 
-| Teorema | Enunciado | Definiciones usadas | A0 | A1 |
-|---------|-----------|---------------------|:--:|:--:|
-| T1 | Caracterización: $R \in \mathcal{R}_{sufficient}(D) \iff \ker(R) \subseteq K_D$ | $\mathcal{R}_{sufficient}$, $\ker$, $K_D$ | ✓ | ✗ |
-| T2 | Mínimo único: $\mathcal{R}_{sufficient}(D)$ es upset con mínimo $R_{min}$ | $\sqsubseteq$, $\mathcal{R}_{sufficient}$, $K_D$ | ✓ | ✗ |
-| T3 | Correspondencia: $G(D,R) = \{ c \in C_D : \ker(R) \not\subseteq K_c \}$ | $G(D,R)$, $C_D$, $C_R$, $K_c$ | ✗ | ✗ |
-| T4 | Monotonicidad: $R_1 \sqsubseteq R_2 \implies G(D,R_1) \subseteq G(D,R_2)$ | $\sqsubseteq$, $G(D,R)$, $K_c$ | ✗ | ✗ |
-| T5 | Punto fijo: $\ker(R) = K_D \implies R$ mínima suficiente | $K_D$, $\mathcal{R}_{sufficient}$, $\sqsubseteq$ | ✓ | ✗ |
-| T6 | Generalización: $\sigma_R \preceq \sigma_D$ para estructuras binarias | $\sigma_R$, $\sigma_c$, $\sigma_D$, $\preceq$ | ✓ | ✓ |
+| Teorema | Enunciado | Definiciones usadas | A0 | A1 | Estado Lean |
+|---------|-----------|---------------------|:--:|:--:|:-----------:|
+| T1 | Caracterización: $R \in \mathcal{R}_{sufficient}(D) \iff \ker(R) \subseteq K_D$ | $\mathcal{R}_{sufficient}$, $\ker$, $K_D$ | ✓ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean#L84-L92)) |
+| T2 | Mínimo único: $\mathcal{R}_{sufficient}(D)$ es upset con mínimo $R_{min}$ | $\sqsubseteq$, $\mathcal{R}_{sufficient}$, $K_D$ | ✓ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean#L94-L153)) |
+| T3 | Correspondencia: $G(D,R) = \{ c \in C_D : \ker(R) \not\subseteq K_c \}$ | $G(D,R)$, $C_D$, $C_R$, $K_c$ | ✗ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean#L25-L29)) |
+| T4 | Monotonicidad: $R_1 \sqsubseteq R_2 \implies G(D,R_1) \subseteq G(D,R_2)$ | $\sqsubseteq$, $G(D,R)$, $K_c$ | ✗ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean#L31-L41)) |
+| T5 | Punto fijo: $\ker(R) = K_D \implies R$ mínima suficiente | $K_D$, $\mathcal{R}_{sufficient}$, $\sqsubseteq$ | ✓ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean#L155-L170)) |
+| T6 | Generalización: $\sigma_R \preceq \sigma_D$ para estructuras binarias | $\sigma_R$, $\sigma_c$, $\sigma_D$, $\preceq$ | ✓ | ✓ | Pendiente (Capa Representation Generalization) |
+
+> **Nota.** La columna "Estado Lean" indica el alcance de la certificación mecánica de la versión 1.0. La ausencia de certificación no implica invalidez matemática, sino que el resultado pertenece a una capa posterior del programa de formalización.
 
 ### Justificación
 
