@@ -49,6 +49,8 @@ variable (K : C → S → S → Prop)
 variable (C_D : C → Prop)
 variable (D : S → A)
 
+namespace TaktQuot
+
 inductive EqvGen {α : Type} (r : α → α → Prop) : α → α → Prop where
   | rel   : ∀ (x y : α), r x y → EqvGen r x y
   | refl  : ∀ (x : α), EqvGen r x x
@@ -71,6 +73,16 @@ theorem quot_exact {α : Type} {r : α → α → Prop} {x y : α} (h : Quot.mk 
   have h_refl : eqv_lift r x (Quot.mk r x) := EqvGen.refl x
   rw [h_lift] at h_refl
   exact h_refl
+
+-- Helper lemma to project EqvGen to an equivalence relation.
+theorem eqvGen_of_equiv {α : Type} {r : α → α → Prop} (heqv : Equivalence r) {x y : α} (h : EqvGen r x y) : r x y := by
+  induction h with
+  | rel a b hr => exact hr
+  | refl a => exact heqv.refl a
+  | symm a b _ ih => exact heqv.symm ih
+  | trans a b c _ _ ih1 ih2 => exact heqv.trans ih1 ih2
+
+end TaktQuot
 
 -- Núcleo de capacidad K_D.
 def K_D (x y : S) : Prop :=
@@ -113,14 +125,6 @@ theorem K_D_trans (hK_equiv : ∀ c, Equivalence (K c)) {x y z : S} (h1 : K_D K 
 theorem K_D_equivalence (hK_equiv : ∀ c, Equivalence (K c)) : Equivalence (K_D K C_D) :=
   ⟨K_D_refl K C_D hK_equiv, K_D_symm K C_D hK_equiv, K_D_trans K C_D hK_equiv⟩
 
--- Helper lemma to project EqvGen to K_D when it is an equivalence relation.
-theorem eqvGen_of_equiv {α : Type} {r : α → α → Prop} (heqv : Equivalence r) {x y : α} (h : EqvGen r x y) : r x y := by
-  induction h with
-  | rel a b hr => exact hr
-  | refl a => exact heqv.refl a
-  | symm a b _ ih => exact heqv.symm ih
-  | trans a b c _ _ ih1 ih2 => exact heqv.trans ih1 ih2
-
 -- R_min cociente
 def R_min (_hK_equiv : ∀ c, Equivalence (K c)) (s : S) : Quot (K_D K C_D) :=
   Quot.mk (K_D K C_D) s
@@ -130,9 +134,9 @@ theorem kernel_R_min_eq_K_D (hK_equiv : ∀ c, Equivalence (K c)) (x y : S) :
   constructor
   · intro h
     dsimp [R_min, kernel] at h
-    have hg := quot_exact h
+    have hg := TaktQuot.quot_exact h
     have heqv : Equivalence (K_D K C_D) := K_D_equivalence K C_D hK_equiv
-    exact eqvGen_of_equiv heqv hg
+    exact TaktQuot.eqvGen_of_equiv heqv hg
   · intro h
     dsimp [R_min, kernel]
     exact Quot.sound h
