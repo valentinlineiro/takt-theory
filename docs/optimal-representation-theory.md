@@ -59,6 +59,28 @@ Identificamos los siguientes axiomas candidatos sobre la función de coste $c$ y
 3. **Completitud y Existencia de Meets (C1):**
    El codominio de costes $(L, \sqsubseteq_L)$ admite ínfimos (meets) sobre cualquier subconjunto no vacío.
 
+### 2.3 Taxonomía del Coste: Intrínsecos vs Extrínsecos
+
+Para comprender por qué y cuándo se rompe la monotonicidad del coste, clasificamos las funciones de coste en dos familias fundamentales:
+
+1. **Costes Intrínsecos ($c_{\text{intr}}$):**
+   * **Definición:** Aquellos costes que dependen únicamente de la representación $R$ en sí misma (su estructura de datos, tamaño o huella física).
+   * **Ejemplos:** Memoria de almacenamiento, tamaño en bits del código $Z$, ancho de banda para transferir la representación, coste computacional estático de compresión.
+   * **Comportamiento:** Tienden a ser **monótonos** respecto al refinamiento ($R_1 \sqsubseteq R_2 \implies c_{\text{intr}}(R_1) \leq c_{\text{intr}}(R_2)$). Representar menos detalles (colapsar estados) siempre reduce o mantiene el coste intrínseco.
+
+2. **Costes Extrínsecos ($c_{\text{extr}}$):**
+   * **Definición:** Aquellos costes que dependen de la interacción de la representación con el entorno o de su uso en tareas operacionales aguas abajo.
+   * **Ejemplos:** Coste de colisión (complejidad temporal de búsqueda), riesgo de seguridad (pérdida de robustez ante ruido o shift distributivo), coste de mantenimiento o explicabilidad.
+   * **Comportamiento:** Tienden a ser **no monótonos** (rompen la monotonicidad). Con frecuencia, representaciones más gruesas (con menos detalles) incrementan el coste extrínseco por colisión o por la necesidad de añadir buffers de seguridad.
+
+La función de coste global se descompone habitualmente en:
+
+$$
+c(R) = c_{\text{intr}}(R) + c_{\text{extr}}(R)
+$$
+
+donde la tensión entre la monotonicidad de $c_{\text{intr}}$ y la no monotonicidad de $c_{\text{extr}}$ es el motor del trade-off de la optimalidad.
+
 ---
 
 ## 3. Etapa 2 — Existencia de la Representación Óptima
@@ -142,6 +164,30 @@ $$
 c_{\text{safety}}(R) = f(\text{margin}(R))
 $$
 donde $f$ es decreciente con el margen, entonces el óptimo de coste combinado $c(R) = c_{\text{compute}}(R) + c_{\text{safety}}(R)$ favorecerá representaciones con mayor nivel de detalle que $R_{\min}$ para actuar como un "colchón" o buffer ante la incertidumbre.
+
+### 5.3 Bifurcación Conceptual de la Fase IV: Regímenes I y II
+
+El Teorema de Coincidencia y la taxonomía de costes revelan una bifurcación estructural en el programa de investigación de la Fase IV:
+
+```mermaid
+graph TD
+    A["Teoría del Coste (Cost Theory)"] --> B["Régimen I: Costes Compatibles"]
+    A --> C["Régimen II: Costes Incompatibles"]
+    B --> D["Coincidencia (R* = R_min)"]
+    D --> E["Colapsa a ST-015"]
+    C --> F["Teoría de Compromiso (Trade-off)"]
+    F --> G["Optimalidad Robusta (Margen e Incertidumbre)"]
+```
+
+#### Régimen I — Costes Compatibles con el Orden
+* **Condición:** $R_1 \sqsubseteq R_2 \implies c(R_1) \sqsubseteq_L c(R_2)$. El orden de costes se alinea con el orden de refinamiento.
+* **Resultado:** La optimización colapsa a la teoría de suficiencia estructural (ST-015): la representación mínima suficiente $R_{\min}$ es automáticamente el óptimo $R^*$.
+* **Implicación:** La teoría de optimalidad en este régimen no añade nuevos grados de libertad teóricos, solo valida mecánicamente a $R_{\min}$ como la mejor opción de diseño.
+
+#### Régimen II — Costes Incompatibles con el Orden
+* **Condición:** $\exists R_1 \sqsubseteq R_2$ tal que $c(R_1) > c(R_2)$. Se rompe la compatibilidad (típicamente debido a la influencia de costes extrínsecos como colisiones o seguridad).
+* **Resultado:** Nace una tensión fundamental entre *representar menos* (reducir coste intrínseco) y *pagar menos* (reducir coste extrínseco). El óptimo $R^*$ difiere de $R_{\min}$, existiendo un trade-off computable.
+* **Implicación:** Este es el verdadero núcleo científico de la Fase IV, donde se requiere formalizar la **Teoría de Compromiso (Trade-off)** y la **Optimalidad Robusta**.
 
 ---
 
