@@ -2,7 +2,7 @@
 
 **Date:** 2026-07-21
 **Author:** Antigravity AI
-**Status:** Under Review (User Approved Conceptual Design)
+**Status:** Approved (User Approved Conceptual Design with Refinements)
 
 ---
 
@@ -17,7 +17,7 @@ Restructure [optimal-representation-theory.md](file:///home/valentin/code/takt-t
 The revised document will be organized into three distinct parts:
 
 1.  **Part I — Established Framework**:
-    *   Definitions, working axioms, and problems that are mathematically well-formulated and accepted for the current stage.
+    *   Definitions, working hypotheses, and problems that are mathematically well-formulated and accepted for the current stage.
     *   The existence of an optimal representation is treated as an **Open Problem**, not a proven theorem.
 2.  **Part II — Conditional Developments**:
     *   Theorems and consequences that are logically valid *if and only if* an existence theorem holds.
@@ -35,11 +35,11 @@ We introduce an explicit taxonomy of mathematical blocks to be used throughout t
 | Status | Meaning |
 | :--- | :--- |
 | **Definition** | Established terminology and concepts. |
-| **Working Axiom** | Axiom assumed for the current level of investigation. |
+| **Working Hypothesis** | Hypothesis assumed for the current level of investigation. |
 | **Open Problem** | A mathematical question with no known proof yet. |
 | **Conditional Theorem** | A theorem that is valid assuming unresolved results (e.g., existence). |
 | **Research Question** | An open inquiry that may alter the architecture of the theory. |
-| **Research Outcome** | A potential endpoint or classification of research paths. |
+| **Possible Proof Outcome** | A potential endpoint or classification of research paths for a proof attempt. |
 | **Example** | An illustrative instance. |
 
 ---
@@ -50,7 +50,7 @@ We introduce an explicit taxonomy of mathematical blocks to be used throughout t
 *   **Section 1 (Context and Motivation)**: Retains general context.
 *   **Section 2 (Cost Theory)**:
     *   Defines the Cost Function.
-    *   Labels axioms as **Working Axioms** (e.g., **Working Axiom 2.2 (C0 - Cost Monotonicity)**).
+    *   Labels hypotheses as **Working Hypotheses** (e.g., **Working Hypothesis 2.2 (C0 - Cost Monotonicity)**).
     *   Includes the Taxonomy (Intrinsic/Extrinsic) and Information Signature Classification.
     *   Includes the Realizability Matrix.
 *   **Section 3 (Existence of Optimal Representations)**:
@@ -61,10 +61,10 @@ We introduce an explicit taxonomy of mathematical blocks to be used throughout t
         *No existence is assumed.*
     *   **Open Problem 3.2 (Pregunta D1)**:
         Under which assumptions on $(\mathcal{R}_{\text{sufficient}}(D), \sqsubseteq)$ and $(L, \le)$ does an optimal representation exist?
-    *   **Research Outcomes (Scenarios A/B/C)**:
-        *   *Research Outcome 3.3 (Scenario A - Success)*: C0 and C1 are sufficient.
-        *   *Research Outcome 3.4 (Scenario B - Failure in L)*: Poset of costs $L$ lacks minimums.
-        *   *Research Outcome 3.5 (Scenario C - Failure in Domain)*: $\mathcal{R}_{\text{sufficient}}(D)$ is too large.
+    *   **Possible Proof Outcomes (Scenarios A/B/C)**:
+        *   *Possible Proof Outcome 3.3 (Scenario A - Success)*: C0 and C1 are sufficient.
+        *   *Possible Proof Outcome 3.4 (Scenario B - Failure in L)*: Poset of costs $L$ lacks minimums.
+        *   *Possible Proof Outcome 3.5 (Scenario C - Failure in Domain)*: $\mathcal{R}_{\text{sufficient}}(D)$ is too large.
 
 ### Part II: Conditional Developments
 *   Prefaced by the conditional disclaimer.
@@ -81,3 +81,17 @@ We introduce an explicit taxonomy of mathematical blocks to be used throughout t
 ### Part III: Research Agenda
 *   **Section 8 (Distillation Questions)**:
     *   **Research Question 8.1** to **8.4** covering signature independence, matrix collapse, Regime II reduction, and axiom sufficiency (including Scott/Noether conditions).
+
+---
+
+## 5. Epilogue: Methodological Principle
+
+### Principle of Reactive Axiomatization
+
+New axioms or assumptions are introduced only when a proof attempt fails for a demonstrable mathematical reason. 
+
+Consequently, the evolution of the theory follows the sequence:
+1. Formulate the weakest possible theorem/definitions;
+2. Attempt the proof;
+3. Identify the minimal obstruction;
+4. Introduce only the weakest hypothesis/axiom required to remove it.
