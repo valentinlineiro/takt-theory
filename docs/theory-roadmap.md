@@ -78,6 +78,15 @@ exist a minimal representation `R_min` such that:
 ker(R_min) ⊆ ker(D)  ∧  R_min = f(O)
 ```
 
+And critically:
+
+```
+∀ R' ≺ R_min: ker(R') ⊈ ker(D)
+```
+
+That is: `R_min` works, and every strictly smaller representation fails.
+This makes sufficiency a boundary, not an arbitrary point.
+
 The question is no longer *can a representation fail* (ST-008), but
 *what is the exact boundary between insufficient and sufficient?*
 
@@ -117,7 +126,56 @@ ST-015 → sufficiency boundary
 Optimal Representation → cost-effective ceiling
 ```
 
+## Loss and recovery — a unified view
+
+The earlier ST results can be seen as special cases of preservation
+failure:
+
+| Result | What it characterizes |
+|---|---|
+| ST-002 | Loss of semantic alignment in policy composition |
+| ST-004 | Loss from uncovered fibres in representation |
+| ST-005 | Distributed drift — error accumulation across steps |
+| ST-006 | Loss of decision margin |
+| ST-008 | Inevitable loss under contraction — no local bounded R preserves decisions depending on W |
+
+The roadmap adds the positive half:
+
+| Result | What it characterizes |
+|---|---|
+| CARD-356 | Structure of what can be preserved |
+| CARD-357 | Transformations that restore lost capabilities |
+| CARD-358 | Optimal recovery path |
+| ST-015 | Minimal preservation boundary |
+
 Every step is a consequence of the previous one. The theory is not a
 collection of results — it is a single argument about what
 representations can preserve, how to detect when they do not, how to
 recover, and how to know when recovery is complete.
+
+---
+
+## Representation spaces (not points)
+
+The phases above use a linear progression:
+
+```
+R_insufficient → R_sufficient → R_optimal
+```
+
+But these are sets, not a single path. The correct picture:
+
+```
+ℛ_insufficient = { R : ker(R) ⊈ ker(D) }
+ℛ_sufficient  = { R : ker(R) ⊆ ker(D) }
+ℛ_optimal     ⊆ ℛ_sufficient
+```
+
+ST-008 defines `ℛ_insufficient` — the forbidden zone.
+CARD-356/357/358 navigate within `ℛ_sufficient`.
+ST-015 characterizes the boundary `∂ℛ_sufficient`.
+Optimal Representation selects within `ℛ_sufficient` under cost.
+
+There may be many sufficient representations for the same decision.
+The theory does not prescribe a single correct one — it provides the
+structure to find, compare, and select among them.
