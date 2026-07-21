@@ -152,4 +152,22 @@ theorem R_min_is_minimum (hK_equiv : ∀ c, Equivalence (K c)) (hA0 : Axiom0 K C
   have hKD : K_D K C_D x y := (T1_characterization K C_D D R hA0).mp h_sufficient x y hker
   exact (kernel_R_min_eq_K_D K C_D hK_equiv x y).mpr hKD
 
+-- T5: Punto fijo de la suficiencia.
+-- Si kernel R = K_D, entonces R es suficiente, y cualquier R' estrictamente más gruesa
+-- (kernelSubset R R' y ¬ kernelSubset R' R) no es suficiente.
+theorem T5_fixed_point (_hK_equiv : ∀ c, Equivalence (K c)) (hA0 : Axiom0 K C_D D)
+    (R : S → Z) (hR_eq : ∀ x y, kernel R x y ↔ K_D K C_D x y) :
+    kernelSubset R D ∧ ∀ (Z' : Type) (R' : S → Z'), (kernelSubset R R' ∧ ¬ kernelSubset R' R) → ¬ kernelSubset R' D := by
+  constructor
+  · intro x y hker
+    have hKD := (hR_eq x y).mp hker
+    exact (hA0 x y).mpr hKD
+  · intro Z' R' ⟨h_coarser, h_not_finer⟩ h_sufficient'
+    apply h_not_finer
+    intro x y hker'
+    have hD := h_sufficient' x y hker'
+    have hKD := (hA0 x y).mp hD
+    exact (hR_eq x y).mpr hKD
+
 end StructuralSufficiency
+
