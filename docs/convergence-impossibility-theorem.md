@@ -1,6 +1,6 @@
 # Convergence Impossibility Theorem
 
-> Las representaciones locales y acotadas no pueden detectar convergencia
+> Las representaciones locales y acotadas ($R: \mathcal{S} \to \mathcal{Z}$) no pueden detectar convergencia
 > cuando esta depende de información externa al estado observable.
 
 ---

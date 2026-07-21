@@ -64,7 +64,7 @@ Cada elemento de la arquitectura teórica de TAKT responde a un límite o modo d
 | **Cobertura de Fibras ($C(T, S)$)** | **ST-004** (Hidden Kernel Attack) | Un conjunto de test $T \subset S$ incompleto permite la supervivencia silenciosa de colisiones del kernel fuera del test. |
 | **Política Dinámica ($\pi_A \to \pi'_A$)** | **ST-005** (Deriva Distribuida) | Un desplazamiento en la política de un nodo externo destruye la seguridad decisional de los nodos acoplados. |
 | **Margen Decisional ($M(R)$)** | **ST-006** (Deriva Temporal Lenta) | Perturbaciones infinitesimales acumuladas destruyen repentinamente la seguridad sin disparar alertas incrementales locales. |
-| **Límite de Representaciones Locales** | **ST-008** (Convergence Gap) | Ninguna representación local y acotada ($R: \mathcal{S} \to \mathcal{Z}$) puede preservar decisiones que dependan de información externa ($W$) no contenida en $\mathcal{S}$. Demostración por teorema de imposibilidad (ver Convergence Impossibility Theorem). |
+| **Límite de Representaciones Locales y Acotadas** | **ST-008** (Convergence Gap) | Ninguna representación local y acotada ($R: \mathcal{S} \to \mathcal{Z}$) puede preservar decisiones que dependan de información externa ($W$) no contenida en $\mathcal{S}$. Demostración por teorema de imposibilidad (ver Convergence Impossibility Theorem). |
 
 ---
 
