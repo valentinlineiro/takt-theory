@@ -243,3 +243,24 @@ Una vez desarrollada la teoría abstracta, se instanciarán los siguientes model
    $$
    c(R) = w_1 c_{\text{lat}}(R) + w_2 c_{\text{mem}}(R)
    $$
+
+---
+
+## 8. Preguntas de Destilación: En Busca del Núcleo Irreducible
+
+Con el establecimiento de la arquitectura conceptual de la Fase IV, entramos en una fase metodológica **contractiva**. El objetivo es destilar el marco axiomático para identificar qué propiedades sobreviven a los teoremas y qué complejidad es verdaderamente irreducible:
+
+1. **Independencia de la Firma Informacional:**
+   * ¿Los teoremas de existencia y unicidad dependen únicamente de las propiedades algebraicas del orden del poset de representaciones y del poset de costes (e.g., **C0/C1** y **C0'**)? ¿O la firma informacional del coste ($c(R)$, $c(R, D)$, $c(R, D, E)$) introduce nuevas clases cualitativas de optimalidad que no pueden reducirse a relaciones de orden?
+   * *Hipótesis:* Si la firma de información no altera las demostraciones abstractas, las tres categorías de dependencia son descriptivas (taxonomía para clasificar instancias) y no estructurales para los teoremas de existencia/unicidad.
+
+2. **Realizabilidad y Colapso de la Matriz:**
+   * ¿Son realizables matemáticamente las 6 celdas de la matriz de realizabilidad, o existen restricciones estructurales ocultas que provocan que alguna celda sea imposible o redundante?
+   * Por ejemplo, ¿puede existir un coste compatible con el orden (Régimen I) que dependa del entorno $E$ de manera no trivial sin inducir colisiones o riesgos que eventualmente rompan la compatibilidad?
+
+3. **Reducción del Régimen II al Régimen I:**
+   * ¿Puede el Régimen II (costes incompatibles con el orden) reducirse formalmente a una perturbación o una "métrica de distancia" sobre el Régimen I? ¿O requiere un conjunto completamente nuevo de axiomas topológicos o de retículos continuos (e.g., condiciones de Scott)?
+
+4. **Suficiencia de los Axiomas Fundacionales:**
+   * ¿Es la monotonicidad del coste (**C0**) y la completitud del poset de costes (**C1**) suficiente para demostrar la existencia de la representación óptima $R^*$ en cualquier caso práctico, o se requerirán axiomas de finitud (e.g., cadenas descendentes finitas / propiedades noetherianas en los kernels) al operar sobre espacios de estados infinitos?
+
