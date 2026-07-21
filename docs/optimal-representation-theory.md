@@ -91,7 +91,20 @@ Una clasificación estrictamente matemática y ortogonal a la compatibilidad con
    * **Requisito:** Requieren, además de la representación y la decisión, un modelo o distribución de probabilidad del entorno $E$ (por ejemplo, para evaluar la probabilidad de ruido o el impacto de un cambio en la distribución).
    * **Ejemplo:** El riesgo operacional bajo *distribution shift* o el coste esperado ante dinámicas inciertas del entorno (donde un mayor refinamiento actúa como un margen de seguridad robusto).
 
+### 2.5 Matriz Conceptual de Realizabilidad
+
+Al cruzar de forma ortogonal la compatibilidad con el orden (Regímenes I y II) y la dependencia de información, obtenemos una matriz conceptual de realizabilidad. Identificamos ejemplos naturales para cada una de las celdas, demostrando que todos los cuadrantes son físicamente realizables y teóricamente significativos:
+
+| Dependencia de Información | Compatible (Régimen I — $R_{\min}$ es óptimo) | Incompatible (Régimen II — Trade-off activo) |
+| :--- | :--- | :--- |
+| **$c(R)$** <br>*(Representación)* | **Coste de almacenamiento base:** <br>El número de bits requeridos para codificar $Z$. A mayor refinamiento, mayor tamaño y mayor coste. | **Coste de alineación con hardware:** <br>El coste de memoria física donde tamaños de código potencias de dos (16 bits) son más eficientes que no potencias de dos (17 bits). |
+| **$c(R, D)$** <br>*(Decisión)* | **Latencia de evaluación secuencial:** <br>A mayor refinamiento, mayor árbol de decisión y mayor tiempo de cómputo secuencial en el runtime. | **Coste de colisión en la frontera:** <br>Colapsar estados a ambos lados de la frontera de decisión genera errores de clasificación (alto coste). El refinamiento reduce este coste. |
+| **$c(R, D, E)$** <br>*(Entorno)* | **Coste de adquisición de sensores:** <br>Refinar la representación requiere consultar más sensores del entorno $E$, lo que incrementa el coste esperado de la telemetría. | **Riesgo de seguridad ante ruido:** <br>Una representación muy gruesa reduce el margen ante el ruido del entorno $E$, aumentando la probabilidad de fallos. El refinamiento mitiga este coste extrínseco. |
+
+Esta matriz conceptual sirve como mapa de navegación para la Fase IV: permite clasificar inmediatamente cualquier problema práctico de optimización en función de los datos que requiere y el comportamiento matemático que induce.
+
 ---
+
 
 ## 3. Etapa 2 — Existencia de la Representación Óptima
 
