@@ -18,6 +18,7 @@ import TaktFormal.RT002
 import TaktFormal.RT003
 import TaktFormal.RT004
 import TaktFormal.StructuralSufficiency -- ST-015 Structural Sufficiency Theorem
+import TaktFormal.Representation.Order
 
 
 
