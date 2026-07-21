@@ -17,6 +17,7 @@ import TaktFormal.RT001
 import TaktFormal.RT002
 import TaktFormal.RT003
 import TaktFormal.RT004
+import TaktFormal.StructuralSufficiency
 
 
 
