@@ -22,6 +22,7 @@ import TaktFormal.Representation.Order
 import TaktFormal.Representation.KernelEquivalence
 import TaktFormal.Cost.Poset
 import TaktFormal.Cost.Monotonicity
+import TaktFormal.Cost.Classes
 import TaktFormal.Optimality.Coincidence
 import TaktFormal.Optimality.Existence
 import TaktFormal.Optimality.Uniqueness
