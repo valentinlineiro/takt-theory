@@ -8,9 +8,7 @@ import TaktFormal.Optimality.Existence
 
 open Kernel
 
-/-- Coste invariante bajo equivalencia de núcleos. -/
-def CostInvariant {S L : Type} [CostPartialOrder L] (c : {Z : Type} → (S → Z) → L) : Prop :=
-  ∀ {Z1 Z2 : Type} (R1 : S → Z1) (R2 : S → Z2), kernelEquiv R1 R2 → c R1 = c R2
+
 
 /-- Teorema 3.1 (Unicidad Modulo Equivalencia): Bajo C0', el óptimo R* es equivalente en su núcleo a R_min. -/
 theorem optimal_uniqueness_mod_equiv {S A C L : Type} [CostPartialOrder L]

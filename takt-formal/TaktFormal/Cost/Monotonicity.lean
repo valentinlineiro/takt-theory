@@ -1,4 +1,5 @@
 import TaktFormal.Representation.Order
+import TaktFormal.Representation.KernelEquivalence
 import TaktFormal.Cost.Poset
 
 open Kernel
@@ -10,3 +11,7 @@ def C0 {S L : Type} [CostPartialOrder L] (c : {Z : Type} → (S → Z) → L) : 
 /-- Hipótesis 2.3 (C0' - Strict Monotonicity): refinamiento estricto -> incremento estricto de coste. -/
 def C0' {S L : Type} [CostPartialOrder L] (c : {Z : Type} → (S → Z) → L) : Prop :=
   ∀ {Z1 Z2 : Type} (R1 : S → Z1) (R2 : S → Z2), (kernelSubset R2 R1 ∧ ¬ kernelSubset R1 R2) → c R1 < c R2
+
+/-- Coste invariante bajo equivalencia de núcleos. -/
+def CostInvariant {S L : Type} [CostPartialOrder L] (c : {Z : Type} → (S → Z) → L) : Prop :=
+  ∀ {Z1 Z2 : Type} (R1 : S → Z1) (R2 : S → Z2), kernelEquiv R1 R2 → c R1 = c R2

@@ -2,7 +2,7 @@ import TaktFormal.Representation.Order
 import TaktFormal.Representation.KernelEquivalence
 import TaktFormal.Cost.Poset
 import TaktFormal.Cost.Monotonicity
-import TaktFormal.Optimality.Uniqueness
+
 
 open Kernel
 
