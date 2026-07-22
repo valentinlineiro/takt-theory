@@ -53,6 +53,7 @@ import TaktFormal.Optimality.Uniqueness
 import TaktFormal.Tradeoff.Counterexamples
 import TaktFormal.Tradeoff.Stability
 import TaktFormal.Landscape.Basic
+import TaktFormal.Landscape.Cover
 
 
 
