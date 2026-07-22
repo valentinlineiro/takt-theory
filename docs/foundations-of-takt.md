@@ -29,36 +29,117 @@ Tradeoff (Estabilidad)
 
 ---
 
-## 2. Definiciones Fundacionales
+## 2. Diagrama de Dependencias Matemáticas
 
-### 2.1 Refinamiento Representacional ($\sqsubseteq$)
-Sean $R_1 : S \to Z_1$ y $R_2 : S \to Z_2$ dos representaciones. Definimos la relación de refinamiento como:
+La construcción formal de TAKT fluye de manera acíclica de la siguiente manera:
 
-$$
-R_1 \sqsubseteq R_2 \iff \ker(R_2) \subseteq \ker(R_1)
-$$
-
-*   **Semántica:** $R_2$ es al menos tan fina como $R_1$. Cualquier punto distinguido por $R_1$ es también distinguido por $R_2$. El orden de refinamiento es un preorden sobre el espacio de representaciones $\mathcal{R}$.
-
-### 2.2 Equivalencia de Núcleos ($\sim_{\ker}$)
-Dos representaciones $R_1$ y $R_2$ son equivalentes en su núcleo si inducen la misma partición sobre el estado $S$:
-
-$$
-R_1 \sim_{\ker} R_2 \iff \ker(R_1) = \ker(R_2)
-$$
-
-*   **Orden en el Cociente:** El refinamiento $\sqsubseteq$ es una relación de orden parcial (antisimétrica) bien definida sobre el conjunto cociente de clases de equivalencia de información $\mathcal{R}/\sim_{\ker}$.
-
-### 2.3 Suficiencia Estructural ($\mathcal{R}_{\text{sufficient}}$)
-Dada una función de decisión $D : S \to A$, una representación $R$ es suficiente para $D$ si:
-
-$$
-R \in \mathcal{R}_{\text{sufficient}}(D) \iff \ker(R) \subseteq \ker(D)
-$$
+```text
+  Representation (S)
+          │
+          ▼
+     Kernel (ker)
+          │
+          ▼
+   Refinement (⊑)
+          │
+          ▼
+Kernel Quotient (~ker)
+          │
+          ▼
+Structural Sufficiency
+          │
+          ▼
+Minimal Representation (R_min)
+          │
+          ▼
+    Cost Morphisms
+          │
+          ▼
+   Optimality (R*)
+          │
+          ▼
+   Distortion (Δ(c))
+          │
+          ▼
+   Stability (R_min <= R* + ε)
+```
 
 ---
 
-## 3. Las Hipótesis de Trabajo y sus Roles Lógicos
+## 3. Definiciones Fundacionales y Estratificación de Objetos
+
+Separamos estrictamente la ontología de los objetos según existan de forma absoluta o aparezcan de forma condicionada a un problema decisional.
+
+### 3.1 Objetos Fundamentales (Absolutos)
+
+*   **Estado ($S$):** El espacio de estados del sistema.
+*   **Representación ($R: S \to Z$):** Función que asigna a cada estado una codificación en un codominio abstracto $Z$.
+*   **Kernel ($\ker(R)$):** Relación de equivalencia inducida por las fibras de $R$: $x \sim_{\ker(R)} y \iff R(x) = R(y)$.
+*   **Refinamiento ($\sqsubseteq$):** Relación de orden que compara la finura de información:
+    
+    $$
+    R_1 \sqsubseteq R_2 \iff \ker(R_2) \subseteq \ker(R_1)
+    $$
+    
+*   **Equivalencia de Núcleos ($\sim_{\ker}$):** Relación donde dos representaciones inducen exactamente la misma partición del estado:
+    
+    $$
+    R_1 \sim_{\ker} R_2 \iff \ker(R_1) = \ker(R_2)
+    $$
+    
+    El refinamiento $\sqsubseteq$ es una relación de orden parcial (antisimétrica) bien definida sobre el conjunto cociente de clases de equivalencia de información $\mathcal{R}/\sim_{\ker}$.
+
+### 3.2 Objetos Derivados (Condicionados)
+
+*   **Función de Decisión ($D : S \to A$):** Mapeo de estados a acciones del tomador de decisiones.
+*   **Representaciones Suficientes ($\mathcal{R}_{\text{sufficient}}$):** Conjunto de codificaciones que no destruyen la capacidad de decisión:
+    
+    $$
+    R \in \mathcal{R}_{\text{sufficient}}(D) \iff \ker(R) \subseteq \ker(D)
+    $$
+    
+*   **Función de Coste ($c : \{Z : Type\} \to (S \to Z) \to L$):** Funcional que asigna un valor a cada representación representable en un poset de costes $(L, \sqsubseteq_L)$.
+*   **Representación Óptima ($R^*$):** Representación suficiente que minimiza la función de coste:
+    
+    $$
+    R^* \in \arg\min_{R \in \mathcal{R}_{\text{sufficient}}(D)} c(R)
+    $$
+
+---
+
+## 4. Cambio de Perspectiva: Dualidad Representación-Coste
+
+Hasta la caracterización de ST-015, el objeto central de estudio era algebraico e informacional: la representación suficientemente mínima $R_{\min}$. 
+
+A partir de la Fase IV, el foco se desplaza hacia el espacio de funcionales de coste $\mathcal{C} = \{c : \mathcal{R}_{\text{sufficient}}(D) \to L\}$. Esta transición altera la naturaleza de la investigación: la teoría deja de clasificar únicamente representaciones y pasa a estudiar la interacción de la geometría del coste con la geometría del espacio de particiones de la información.
+
+### Resumen de Aportes por Hitos
+
+| Fase | Objeto Clave | Pregunta Principal | Aporte Principal |
+| :--- | :--- | :--- | :--- |
+| **ST-008** | $R$ | ¿Es posible mantener la capacidad de decisión bajo contracción? | Límite estructural de representación. |
+| **ST-015** | $K_D$ | ¿Cuál es la representación suficiente más pequeña posible? | Existencia y unicidad de $R_{\min} = S/K_D$. |
+| **Fase IV** | $c$ | ¿Cuándo coincide el mínimo estructural con el económico? | Optimalidad en Régimen I ($R_{\min} = R^*$) y Divergencia en Régimen II ($R^* \neq R_{\min}$). |
+| **Fase V** | $\Delta(c)$ | ¿Cuánto puede alejarse el óptimo del mínimo si falla C0? | Estabilidad Cuantitativa ($c(R_{\min}) \leq c(R^*) + \epsilon$). |
+
+---
+
+## 5. Metateorema: Principio de Separación de TAKT
+
+La coherencia de la arquitectura formal de TAKT descansa sobre un principio matemático implícito:
+
+$$
+\boxed{\text{Información} \quad \perp \quad \text{Preferencia}}
+$$
+
+*   La **estructura representacional** determina la existencia del mínimo, la comparación entre representaciones y la suficiencia (frontera informacional).
+*   La **estructura del coste** determina únicamente cuál de las representaciones suficientes es preferible.
+
+Ambos mundos se mantienen completamente independientes excepto a través del morfismo de coste $c : \mathcal{R} \to L$. Este principio es el que permite que la arquitectura matemática y la base de código en Lean 4 se mantengan estrictamente acíclicas y desacopladas.
+
+---
+
+## 6. Las Hipótesis de Trabajo y sus Roles Lógicos
 
 Cada hipótesis introducida en TAKT cumple un rol restrictivo o caracterizador, justificado por la minimalidad de sus obstrucciones:
 
@@ -73,39 +154,39 @@ Cada hipótesis introducida en TAKT cumple un rol restrictivo o caracterizador, 
 
 ---
 
-## 4. Teoremas Certificados
+## 7. Teoremas Certificados
 
 El núcleo de TAKT cuenta con las siguientes certificaciones formales completadas en Lean 4:
 
-### 4.1 Teorema de Suficiencia Mínima (ST-015)
+### 7.1 Teorema de Suficiencia Mínima (ST-015)
 Existe una única (salvo $\sim_{\ker}$) representación mínima suficiente $R_{\min} = S/K_D$ tal que:
 
 $$
 \forall R \in \mathcal{R}_{\text{sufficient}}(D), \quad R_{\min} \sqsubseteq R
 $$
 
-### 4.2 Teorema de Coincidencia (Régimen I)
+### 7.2 Teorema de Coincidencia (Régimen I)
 Bajo la hipótesis de compatibilidad de costes C0, la representación mínima suficiente $R_{\min}$ es un óptimo global:
 
 $$
 \forall R \in \mathcal{R}_{\text{sufficient}}(D), \quad c(R_{\min}) \sqsubseteq_L c(R)
 $$
 
-### 4.3 Teorema de Unicidad Modulo Equivalencia
+### 7.3 Teorema de Unicidad Modulo Equivalencia
 Bajo estricta monotonía (C0'), cualquier representación óptima suficiente $R^*$ es equivalente en núcleo a $R_{\min}$:
 
 $$
 R^* \sim_{\ker} R_{\min}
 $$
 
-### 4.4 Teorema de Estabilidad Cuantitativa
+### 7.4 Teorema de Estabilidad Cuantitativa
 Dada una función de coste $c$ con distorsión global de orden $\Delta(c) \leq \epsilon$, el coste de cualquier representación óptima $R^*$ está acotado por:
 
 $$
 c(R_{\min}) \leq c(R^*) + \epsilon
 $$
 
-### 4.5 Teorema de Divergencia (Régimen II)
+### 7.5 Teorema de Divergencia (Régimen II)
 Existe un modelo minimal certificado de 3 estados ($S = \{a, b, c\}$) donde, al no cumplirse C0, la representación mínima suficiente no es óptima:
 
 $$
@@ -114,28 +195,13 @@ $$
 
 ---
 
-## 5. El Paisaje Lógico Global
+## 8. Próxima Frontera de Investigación: Volume II — Geometry of Cost Morphisms
 
-La teoría unificada de TAKT organiza el comportamiento de los sistemas decisionales en función del parámetro de distorsión $\Delta(c)$:
+La consolidación de Foundations delimita la transición desde un catálogo de teoremas de construcción hacia una teoría sistemática de clasificación. La siguiente frontera se organiza en torno a las siguientes áreas del espacio de costes:
 
-```
-           Δ(c) = 0 (Régimen I)
-                    │
-                    ▼
-           R* ~ker R_min (Coincidencia)
-                    │
-                    ▼
-          Optimalidad = Suficiencia
-                    │
-                    ▼
-   0 < Δ(c) <= ε (Casi-Monotonicidad / Clase B)
-                    │
-                    ▼
-      c(R_min) <= c(R*) + ε (Estabilidad)
-                    │
-                    ▼
-           Δ(c) >> 0 (Régimen II Puro)
-                    │
-                    ▼
-           R* ≠ R_min (Trade-offs / Margen)
-```
+1.  **Global Distortion Metrics:** Propiedades analíticas y algebraicas del invariante global $\Delta(c)$.
+2.  **Local Distortion Fields:** Definición de campos de distorsión local $\Delta_c(R)$ para cartografiar "capas de estabilidad" y "fronteras de trade-off".
+3.  **Stability Regions:** Demostración de regiones del retículo de representaciones donde la contracción de la información permanece robusta.
+4.  **Classification Theorems:** Estructuración de familias de costes que colapsan o estabilizan el óptimo.
+5.  **Algorithmic Consequences:** Viabilidad de algoritmos greedy o de optimización exacta sobre retículos según las clases de coste.
+6.  **Information Theory Bridging:** Conexiones formales con la pérdida de información de Shannon y la teoría estadística de decisiones.
