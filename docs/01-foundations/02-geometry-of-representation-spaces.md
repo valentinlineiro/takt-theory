@@ -108,7 +108,7 @@ where $[R_1] \sqsubset [R_2] \iff ([R_1] \sqsubseteq [R_2] \land [R_2] \not\sqsu
 
 ## 4. Cost Morphisms
 
-We define three canonical morphisms on the space of cost functionals $\mathcal{C} = \{ c : \mathcal{R} \to L \}$. These morphisms extract distinct categories of structure from a cost functional.
+A cost functional $c$ is a single evaluation function. To analyze its structure, we do not define three separate cost functions; rather, we define three canonical **morphisms** (or structural projections) acting on the space of cost functionals $\mathcal{C} = \{ c : \mathcal{R} \to L \}$. These morphisms extract distinct algebraic, ordinal, and geometric structures from the *same* underlying cost functional evaluation.
 
 ```
                   Cost Functionals Space (C)
@@ -230,15 +230,15 @@ The general preorder-based geometry outlined here is specialized in the executio
 ## 7. Stability Theory and Epistemological Alignment
 
 ### 7.1 Stability Theory
-Stability theory analyzes the behavior of optimal representations under cost functional perturbations. 
+Stability theory analyzes the behavior of optimal representations under cost functional perturbations.
 
-**Theorem 7.1 (Stability Bounds).** Let $c$ be a cost functional valued in $\mathbb{R}_{\geq 0}$ with global distortion $\Delta(c) \leq \epsilon$. For any optimal representation $R^*$ and the minimal sufficient representation $R_{\min}$, the following bound holds:
+**Proposition 7.1 (Stability Bounds).** Let $c$ be a cost functional valued in $\mathbb{R}_{\geq 0}$ with global distortion $\Delta(c) \leq \epsilon$. For any optimal representation $R^*$ and the minimal sufficient representation $R_{\min}$, the following bound holds:
 
 $$
 c(R^*) \geq c(R_{\min}) - \epsilon
 $$
 
-*Proof:*
+*Derivation:*
 1. By Volume I, $R_{\min}$ is the unique minimum of the sufficient upset $\mathcal{R}_{\text{sufficient}}(D)$, implying $R_{\min} \sqsubseteq R^*$.
 2. By definition of global distortion $\Delta(c)$:
    $$c(R_{\min}) - c(R^*) \leq \delta(c)(R_{\min}, R^*) \leq \Delta(c) \leq \epsilon$$
@@ -246,9 +246,13 @@ $$
    $$c(R^*) \geq c(R_{\min}) - \epsilon$$
    $\blacksquare$
 
-This theorem guarantees that if the non-monotonic distortion of a cost functional is bounded by $\epsilon$, the operational penalty of using the structurally simple $R_{\min}$ instead of the absolute optimum $R^*$ is acotated by $\epsilon$.
+This proposition establishes that if the non-monotonic distortion of a cost functional is bounded by $\epsilon$, the operational penalty of using the structurally simple $R_{\min}$ instead of the absolute optimum $R^*$ is bounded by $\epsilon$.
 
 ### 7.2 Epistemological Alignment: Volume I vs. Volume II
+
+To prevent conceptual confusion, Volume I and Volume II must be understood as distinct layers of the same decision theory:
+*   **Volume I** characterizes representational sufficiency for decisions (identifying the information boundary $K_D$ and the minimal sufficient partition $R_{\min}$).
+*   **Volume II** studies the induced geometry over the space of representations when cost functionals are applied (mapping the landscape, evaluating trade-offs, and finding the optimal $R^*$).
 
 The transition between the two volumes represents a progression from logical structure to geometric evaluation:
 
