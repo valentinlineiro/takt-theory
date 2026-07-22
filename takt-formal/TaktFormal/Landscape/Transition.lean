@@ -6,7 +6,7 @@ structure TransitionSystem (X : Type) where
   to : X → X → Prop
 
 /-- A Trajectory in a transition system: a sequence of transitions. -/
-inductive Trajectory {X : Type} (T : TransitionSystem X) : List X → Prop where
+inductive Trajectory {X : Type} (T : TransitionSystem X) : List X → Type where
   | nil : Trajectory T []
   | single : ∀ x, Trajectory T [x]
   | step : ∀ x y rest, T.to x y → Trajectory T (y :: rest) → Trajectory T (x :: y :: rest)
