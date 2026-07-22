@@ -23,13 +23,17 @@ $$
 \Phi(c) = \arg\min_{R \in \mathcal{R}_{\text{sufficient}}(D)} c(R)
 $$
 
-Este morfismo mapea cada coste al subconjunto de representaciones suficientes que minimizan dicho coste.
+Este morfismo mapea cada coste al subconjunto de representaciones suficientes que minimizan dicho coste. La equivalencia decisional ($\equiv_{\text{opt}}$) surge de forma natural como el kernel de esta aplicación:
+
+$$
+c_1 \equiv_{\text{opt}} c_2 \iff \Phi(c_1) = \Phi(c_2)
+$$
 
 ---
 
-## 2. Jerarquía de Equivalencias (Kernels de Coste)
+## 2. Hipótesis de Diseño: Jerarquía de Equivalencias (Kernels de Coste)
 
-La geometría de los costes no se describe con un único cociente, sino con una jerarquía de kernels según la finura de información que se desee conservar:
+Para modelar la geometría de costes proponemos, como hipótesis de diseño e investigación, una jerarquía de kernels según la finura de información que se desee conservar. La demostración de la existencia de las aplicaciones $\Psi$ y $\Theta$ cuyos kernels inducen estas relaciones es el objetivo inmediato de ST-020:
 
 ```
                Costs Space (C)
@@ -47,40 +51,38 @@ La geometría de los costes no se describe con un único cociente, sino con una 
              [same distortion field]
 ```
 
-### 2.1 Equivalencia Decisional ($\equiv_{\text{opt}}$)
-Definida como el kernel del morfismo canónico $\Phi$:
+### 2.1 Equivalencia Estructural/Ordinal ($\equiv_{\text{geom}}$)
+Definida preliminarmente como la preservación de toda la estructura de orden inducida por la función de coste sobre el retículo de representaciones:
 
 $$
-c_1 \equiv_{\text{opt}} c_2 \iff \Phi(c_1) = \Phi(c_2)
+c_1 \equiv_{\text{geom}} c_2 \iff \left( \forall R_i, R_j \in \mathcal{R}_{\text{sufficient}}(D), \quad c_1(R_i) \sqsubseteq_L c_1(R_j) \iff c_2(R_i) \sqsubseteq_L c_2(j) \right)
 $$
 
-*   Dos costes son equivalentes decisionalmente si inducen exactamente el mismo conjunto de óptimos.
+*   **Hipótesis de Morfismo $\Psi$:** Se conjetura que $\equiv_{\text{geom}}$ es el kernel de una aplicación $\Psi : \mathcal{C} \to \text{Ord}(\mathcal{R}_{\text{sufficient}})$ que asigna a cada coste el orden ordinal que induce en el dominio.
 
-### 2.2 Equivalencia Estructural/Ordinal ($\equiv_{\text{geom}}$)
-Definida como la preservación de toda la estructura de orden inducida por la función de coste sobre el retículo de representaciones:
-
-$$
-c_1 \equiv_{\text{geom}} c_2 \iff \left( \forall R_i, R_j \in \mathcal{R}_{\text{sufficient}}(D), \quad c_1(R_i) \sqsubseteq_L c_1(R_j) \iff c_2(R_i) \sqsubseteq_L c_2(R_j) \right)
-$$
-
-*   Esta equivalencia es estrictamente más fina que $\equiv_{\text{opt}}$. Preserva el "paisaje" completo del coste, lo que es crítico para el diseño de algoritmos de optimización.
-
-### 2.3 Equivalencia de Estabilidad ($\equiv_{\text{stab}}$)
+### 2.2 Equivalencia de Estabilidad ($\equiv_{\text{stab}}$)
 Definida como la coincidencia de los campos de distorsión local:
 
 $$
 c_1 \equiv_{\text{stab}} c_2 \iff \Delta_{c_1}(R) = \Delta_{c_2}(R) \quad (\forall R)
 $$
 
-*   Dos costes son equivalentes bajo estabilidad si reaccionan de igual manera cuantitativa ante las perturbaciones de la monotonicidad en cada región del retículo.
+*   **Hipótesis de Morfismo $\Theta$:** Se conjetura que $\equiv_{\text{stab}}$ es el kernel de una aplicación $\Theta : \mathcal{C} \to \text{Fields}(\mathcal{R}_{\text{sufficient}})$ que asigna a cada coste su campo local de distorsión cuantitativa.
 
 ---
 
-## 3. Hoja de Ruta Científica: Volumen II
+## 3. Programa de Investigación: ST-020 — The Fundamental Morphisms of Cost
 
-Establecemos el programa de investigación estructurado en torno a esta jerarquía de kernels:
+El objetivo preciso de ST-020 es **identificar y demostrar la existencia de los morfismos canónicos del espacio de costes cuyos kernels inducen las equivalencias fundamentales del Volumen II**, estructurándose en tres pasos:
 
-1.  **ST-020 — The Fundamental Morphisms of Cost:** Formalización del morfismo canónico $\Phi(c)$ y demostración de las inclusiones de los tres kernels ($\equiv_{\text{stab}} \subseteq\ \equiv_{\text{geom}} \subseteq\ \equiv_{\text{opt}}$).
-2.  **ST-021 — Local Distortion Field:** Mapeo de la distorsión como un campo local $\Delta_c([R])$ para identificar singularidades en el retículo.
-3.  **ST-022 — Bounded Stability Regions:** Teoremas que acotan la variabilidad de la clase $[R^*]_{\sim_{\ker}}$ bajo perturbaciones del coste.
-4.  **Algorithmic and Information Theory Consequences:** Complejidad y computabilidad según el kernel estructural $\equiv_{\text{geom}}$ y submodularidad en particiones.
+1.  **Construcción de los Morfismos:** Definir formalmente $\Phi$ y demostrar si las aplicaciones conjeturadas $\Psi$ y $\Theta$ son funciones bien definidas sobre el espacio de costes $\mathcal{C}$.
+2.  **Caracterización de los Kernels:** Demostrar que las relaciones de equivalencia propuestas son equivalencias algebraicas y probar que coinciden exactamente con las fibras (kernels) de dichos morfismos.
+3.  **Propiedades Universales:** Estudiar si estos cocientes $\mathcal{C}/\!\equiv$ satisfacen alguna propiedad universal de factorización o minimalidad respecto a la preservación de la información de preferencia.
+
+---
+
+## 4. Motivación Conceptual: La Doblada de Observación
+
+Mantenemos como motivación conceptual (sin asunciones formales de dualidad rigurosa) la intuición de la jerarquía de observación:
+*   En **Volumen I**, la representación $R$ es un *observador de primer orden* (observa el espacio de estados $S$).
+*   En **Volumen II**, el coste $c$ actúa como un *observador de segundo orden* (observa el comportamiento de las representaciones en el espacio $\mathcal{R}$).
