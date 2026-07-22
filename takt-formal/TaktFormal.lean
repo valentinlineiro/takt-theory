@@ -21,6 +21,7 @@ import TaktFormal.StructuralSufficiency -- ST-015 Structural Sufficiency Theorem
 import TaktFormal.Representation.Preorder
 import TaktFormal.Representation.Order
 import TaktFormal.Representation.KernelEquivalence
+import TaktFormal.Cost.Functional
 import TaktFormal.Cost.Poset
 import TaktFormal.Cost.Monotonicity
 import TaktFormal.Cost.Classes
