@@ -54,6 +54,7 @@ import TaktFormal.Tradeoff.Counterexamples
 import TaktFormal.Tradeoff.Stability
 import TaktFormal.Landscape.Basic
 import TaktFormal.Landscape.Cover
+import TaktFormal.Landscape.Graph
 
 
 
