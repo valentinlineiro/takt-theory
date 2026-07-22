@@ -36,6 +36,10 @@ import TaktFormal.Kernel.Decision
 import TaktFormal.Kernel.Ordinal
 import TaktFormal.Kernel.Distortion
 import TaktFormal.Kernel.Quotient
+import TaktFormal.Geometry.KernelRelations
+import TaktFormal.Geometry.Factorization
+import TaktFormal.Geometry.QuotientMaps
+import TaktFormal.Geometry.SufficiencyBridge
 import TaktFormal.Optimality.Coincidence
 import TaktFormal.Optimality.Existence
 import TaktFormal.Optimality.Uniqueness
