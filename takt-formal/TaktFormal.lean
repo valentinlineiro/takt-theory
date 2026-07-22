@@ -40,6 +40,9 @@ import TaktFormal.Geometry.KernelRelations
 import TaktFormal.Geometry.Factorization
 import TaktFormal.Geometry.QuotientMaps
 import TaktFormal.Geometry.SufficiencyBridge
+import TaktFormal.Stability.Basic
+import TaktFormal.Stability.KernelPreservation
+import TaktFormal.Stability.OptimaInvariance
 import TaktFormal.Optimality.Coincidence
 import TaktFormal.Optimality.Existence
 import TaktFormal.Optimality.Uniqueness
