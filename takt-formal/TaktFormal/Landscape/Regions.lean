@@ -2,7 +2,7 @@ import TaktFormal.Landscape.Graph
 
 namespace DecisionalRegion
 
-variable {D : Type} (L : AbstractLandscape) (Phi : L.R.Rep → D) (eqv : D → D → Prop) (heqv : Equivalence eqv)
+variable {D : Type} (L : AbstractLandscape) (Phi : L.R.Rep → D) (eqv : D → D → Prop)
 
 /-- Decisional Path: a path in the LandscapeGraph where every step is between decisionally equivalent nodes.
     This defines the connected components of the decisional equivalence classes. -/
