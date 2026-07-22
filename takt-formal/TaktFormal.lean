@@ -56,6 +56,7 @@ import TaktFormal.Landscape.Basic
 import TaktFormal.Landscape.Cover
 import TaktFormal.Landscape.Graph
 import TaktFormal.Landscape.Regions
+import TaktFormal.Landscape.Boundaries
 
 
 
