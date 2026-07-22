@@ -60,6 +60,7 @@ import TaktFormal.Landscape.Regions
 import TaktFormal.Landscape.Boundaries
 import TaktFormal.Landscape.Stability
 import TaktFormal.Landscape.PathCost
+import TaktFormal.Landscape.SearchProblem
 
 
 
