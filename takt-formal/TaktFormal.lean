@@ -27,6 +27,10 @@ import TaktFormal.Cost.Poset
 import TaktFormal.Cost.Monotonicity
 import TaktFormal.Cost.Classes
 import TaktFormal.Cost.Distortion
+import TaktFormal.Morphism.Basic
+import TaktFormal.Morphism.Decision
+import TaktFormal.Morphism.Ordinal
+import TaktFormal.Morphism.Distortion
 import TaktFormal.Optimality.Coincidence
 import TaktFormal.Optimality.Existence
 import TaktFormal.Optimality.Uniqueness
