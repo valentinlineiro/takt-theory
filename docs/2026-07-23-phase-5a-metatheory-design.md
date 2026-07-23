@@ -17,7 +17,20 @@ La **Fase V-A (Metateoría de TAKT)** realiza un cambio de nivel de abstracción
 
 ---
 
-## 2. Los Cuatro Bloques Metateóricos
+## 2. Nivelación Formal: Axiomas, Definiciones y Teoremas
+
+Para eliminar cualquier ambigüedad en la metateoría, se establece la distinción estricta entre tres niveles de enunciados:
+
+1. **Axiomas Primitivos ($A_{\text{min}} = \{A_1, A_2, A_3\}$):** Supuestos fundamentales irreductibles sobre la estructura del espacio de detectores y su evolución.
+2. **Definiciones Operacionales:** Construcciones sobre el estado primitivo ($\delta(D)$, $EVSI(E)$, $Gov_\epsilon(D)$, etc.).
+3. **Teoremas Derivados:** Proposiciones demostradas a partir de los axiomas primitivos y las definiciones (Teorema de Parada EVSI, Teorema de Cota de Regret, Teorema de Conservatividad).
+
+> [!IMPORTANT]
+> **Aclaración Metateórica:** El Teorema de Parada Racional EVSI (anteriormente denominado A₄) y el Teorema de Cota Superior de Regret (anteriormente A₅) **no son axiomas**, sino **teoremas derivados** de la base mínima $A_{\text{min}}$.
+
+---
+
+## 3. Los Cuatro Bloques Metateóricos
 
 ```text
                      Phase V-A: Metatheory of TAKT
@@ -26,88 +39,128 @@ La **Fase V-A (Metateoría de TAKT)** realiza un cambio de nivel de abstracción
       ▼                ▼                       ▼                ▼
 Block V-A.1       Block V-A.2             Block V-A.3      Block V-A.4
 Conservativity    Axiom Independence      Minimality       Redundancy
+(Embedding ι)     (Model Strategy)        (Basis Contract) (Dual Structure)
 ```
 
 ---
 
-### Bloque V-A.1 — Teorema de Conservatividad
+### Bloque V-A.1 — Teorema de Embedding Conservativo
 
 #### Definición Formal
 Sea $T_{\text{core}} = Theory_{\text{I–III}}$ la teoría de suficiencia de representación (ST-008, ST-015) y $T_{\text{IV-C}} = Theory_{\text{IV-C}}$ la extensión de gobernanza convergente.
 
-#### Teorema V-A.1 (Conservatividad Estructural)
-$T_{\text{IV-C}}$ es una extensión **estrictamente conservativa** de $T_{\text{core}}$. Es decir:
-1. Ninguna proposición demostrable en $T_{\text{core}}$ se invalida en $T_{\text{IV-C}}$.
-2. Para todo detector perfecto $D$ tal que $\delta(D) = 0$ y $\epsilon = 0$, el predicado de $\epsilon$-gobernanza $Gov_\epsilon(D)$ colapsa isomórficamente a la condición de suficiencia estructural de ST-015:
+#### Teorema V-A.1 (Embedding Conservativo General)
+Existe un morfismo/monomorfismo conservativo $\iota: T_{\text{core}} \hookrightarrow T_{\text{IV-C}}$ tal que:
+1. Para toda proposición $P$ formulada en el lenguaje de $T_{\text{core}}$, se cumple $T_{\text{IV-C}} \vdash \iota(P) \iff T_{\text{core}} \vdash P$.
+2. **Corolario de Colapso en el Límite:** Para todo detector $D$ con $\delta(D) = 0$ y $\epsilon = 0$, el predicado $Gov_0(D)$ en $T_{\text{IV-C}}$ es isomórfico a la suficiencia de representación de ST-015:
    $$Gov_0(D) \iff \text{ker}(R) \subseteq K_D$$
 
-#### Prueba esperada en Lean 4
-`TaktFormal/Metatheory/Conservativity.lean`: Demostrar la equivalencia bi-direccional en el límite $\delta = 0, \epsilon = 0$.
+#### Prueba en Lean 4
+`TaktFormal/Metatheory/Conservativity.lean`: Construcción formal del embedding $\iota$ y prueba del teorema de conservatividad de teorías.
 
 ---
 
-### Bloque V-A.2 — Independencia de Axiomas
+### Bloque V-A.2 — Independencia de Axiomas (Estrategia de Modelos)
 
-Se evalúa la independencia lógica de los 5 axiomas centrales introducidos en la Fase IV-C.1:
+Se demuestra la independencia de los 3 axiomas primitivos:
 
-1. **Axioma 1 (Alcanzabilidad de Detectores):** $(\mathcal{G}_D, \Phi)$ forma un espacio de transición con objeto inicial $D_{\text{alg}}$ y límite $D_{\text{top}}$.
-2. **Axioma 2 (Reducción Monótona de Distancia):** $d_{\rightarrow}(\Phi(D, E), D_{\text{top}}) \le d_{\rightarrow}(D, D_{\text{top}})$.
-3. **Axioma 3 (Homomorfismo de Acción Monoidal):** $\Phi(D, E_2 \circ E_1) = \Phi(\Phi(D, E_1), E_2)$.
-4. **Axioma 4 (Parada Racional EVSI):** $EVSI(E) \le Cost(E) \implies \text{STOP}$.
-5. **Axioma 5 (Cota Superior de Regreso/Loss):** $Gov_\epsilon(D) \implies Regret(D) \le \epsilon$.
+* **Axioma 1 (Alcanzabilidad de Detectores):** $(\mathcal{G}_D, \Phi)$ forma un espacio de transición con objeto inicial $D_{\text{alg}}$ y límite $D_{\text{top}}$.
+* **Axioma 2 (Reducción Monótona de Distancia):** $d_{\rightarrow}(\Phi(D, E), D_{\text{top}}) \le d_{\rightarrow}(D, D_{\text{top}})$.
+* **Axioma 3 (Homomorfismo de Acción Monoidal):** $\Phi(D, E_2 \circ E_1) = \Phi(\Phi(D, E_1), E_2)$.
 
-#### Teorema V-A.2 (Independencia Axiomática)
-Para cada axioma $A_i \in \{A_1, A_2, A_3, A_4, A_5\}$, existe un modelo matemático $\mathcal{M}_i$ en el que todos los axiomas $\{A_j : j \neq i\}$ son válidos pero $A_i$ es falso.
+#### Estrategia Metodológica de Independencia
+Para cada axioma $A_i \in \{A_1, A_2, A_3\}$, se construye un modelo algebraico/geométrico explícito $\mathcal{M}_i$ tal que:
+1. $\mathcal{M}_i \models \{A_j : j \neq i\}$ (los demás axiomas se satisfacen).
+2. $\mathcal{M}_i \not\models A_i$ ($A_i$ es falso en $\mathcal{M}_i$).
+3. Aparece un estado/comportamiento imposible en la teoría completa (demostrando la no-redundancia del axioma).
 
-#### Prueba esperada en Lean 4
-`TaktFormal/Metatheory/Independence.lean`: Construcción explícita de los 5 contraejemplos/modelos independientes en Lean 4.
+#### Prueba en Lean 4
+`TaktFormal/Metatheory/Independence.lean`: Definición de las 3 estructuras de modelos $\mathcal{M}_1, \mathcal{M}_2, \mathcal{M}_3$ en Lean 4.
 
 ---
 
-### Bloque V-A.3 — Minimalidad Axiomática ($A_{\text{min}}$)
-
-#### Definición
-Un conjunto de axiomas $A$ es **mínimo** para TAKT si $A \models T_{\text{TAKT}}$ y ningún subconjunto propio $A' \subset A$ satisface $A' \models T_{\text{TAKT}}$.
+### Bloque V-A.3 — Minimalidad Axiomática y Contrato de Extensión
 
 #### Teorema V-A.3 (Base Mínima de Gobernanza)
-El conjunto mínimo generador $A_{\text{min}}$ consta de exactamente 3 axiomas:
-$$A_{\text{min}} = \{ A_1 \text{ (Evolución)}, A_2 \text{ (Geometría Monótona)}, A_3 \text{ (Álgebra de Enriquecimiento)} \}$$
-Los axiomas $A_4$ (Parada EVSI) y $A_5$ (Regret Bound) son **teoremas derivados** de $A_{\text{min}}$ bajo las definiciones de costo aditivo y topología de distancia dual $(d_{\rightarrow}, d_{\equiv})$.
+El conjunto $A_{\text{min}} = \{A_1, A_2, A_3\}$ es una **base axiomática mínima** para la Teoría TAKT:
+1. $A_{\text{min}} \models T_{\text{TAKT}}$.
+2. Ningún subconjunto propio de $A_{\text{min}}$ genera la teoría.
+3. El **Teorema de Parada EVSI** y el **Teorema de Cota de Regret** son consecuencias formales deducidas estrictamente de $A_{\text{min}}$ bajo costos aditivos y la estructura dual de distancia.
 
-#### Prueba esperada in Lean 4
-`TaktFormal/Metatheory/Minimality.lean`: Demostración en Lean 4 de que $A_4$ y $A_5$ se deducen formalmente de $A_1, A_2, A_3$.
+#### Contrato para Futuras Extensiones (Volumen V)
+> **Principio de Minimalidad Axiomática:** Toda futura extensión en las Fases V-B a V-E deberá apoyarse exclusivamente en $A_{\text{min}} = \{A_1, A_2, A_3\}$ o justificar explícitamente y demostrar la necesidad de incorporar un nuevo axioma primitivo.
 
----
-
-### Bloque V-A.4 — Eliminación de Redundancia y Compactación
-
-#### Propósito
-Auditar la totalidad de definiciones, métricas secundarias y lemmas de soporte acumulados en Fases I a IV-C para reducir el tamaño conceptual del núcleo sin perder expresividad.
-
-#### Acciones Metateóricas:
-1. Unificar las distancias intermedias de la Fase IV-C.2 en el par ordenado dúal $(d_{\rightarrow}, d_{\equiv})$.
-2. Demostrar la equivalencia formal entre la brecha de capacidad $G(D, R)$ y la distancia de perfección $\delta(D)$.
-3. Reducir la firma de `computeDynamicMargin` a la evaluación sobre el Kernel $K_D$.
+#### Prueba en Lean 4
+`TaktFormal/Metatheory/Minimality.lean`: Deducción formal de los teoremas de parada y regret a partir de $A_{\text{min}}$.
 
 ---
 
-## 3. Plan de Mecanización en Lean 4
+### Bloque V-A.4 — Redundancia y Derivación Funcional
 
-El trabajo formal de la Fase V-A se ubicará en la nueva carpeta `takt-formal/TaktFormal/Metatheory/`:
+#### Justificación Estructural (Estructura Dual $(d_{\rightarrow}, d_{\equiv})$)
+La compactación del núcleo alrededor de la distancia dual no es una simplificación estética, sino la demostración de una propiedad estructural:
+
+> **Teorema V-A.4 (Generación Funcional Dual):** Todas las métricas de gobernanza, distancias de perfección $\delta(D)$, brechas de capacidad $G(D, R)$ y márgenes dinámicos $M_D$ son obtenibles **funcionalmente** como proyecciones de la distancia dual $(d_{\rightarrow}, d_{\equiv})$.
+
+---
+
+## 4. Mapa Estructural de Resultados del Núcleo
+
+El siguiente mapa representa las dependencias lógicas deduvisibles entre los resultados centrales de TAKT:
 
 ```text
-takt-formal/TaktFormal/Metatheory/
-├── Basic.lean           -- Estructura formal de la Metateoría y firmas de axiomas
-├── Conservativity.lean  -- Teorema V-A.1 (Conservatividad IV-C ↦ I–III)
-├── Independence.lean    -- Teorema V-A.2 (Modelos independientes para A1..A5)
-└── Minimality.lean      -- Teorema V-A.3 (Deducción de A4 y A5 desde A_min)
+           ┌───────────────────────────────────────────────┐
+           │ Axiomas Primitivos A_min = { A₁, A₂, A₃ }     │
+           └───────────────────────┬───────────────────────┘
+                                   │ (Imprescindible)
+                                   ▼
+           ┌───────────────────────────────────────────────┐
+           │ Suficiencia de Representación ker(R) ⊆ K_D    │ (ST-015)
+           └───────────────────────┬───────────────────────┘
+                                   │ (Imprescindible)
+                                   ▼
+           ┌───────────────────────────────────────────────┐
+           │ Estructura Dual de Distancia (d_→, d_≡)        │ (IV-C.2)
+           └───────────────────────┬───────────────────────┘
+                                   │ (Derivación Funcional)
+           ┌───────────────────────┴───────────────────────┐
+           ▼                                               ▼
+┌───────────────────────────────┐               ┌───────────────────────────────┐
+│ Distancia de Perfección δ(D)  │               │ Acción Monoidal E_2 ∘ E_1     │ (IV-C.3)
+└──────────────┬────────────────┘               └──────────────┬────────────────┘
+               │                                               │
+               └───────────────────────┬───────────────────────┘
+                                       │ (Derivable)
+                                       ▼
+               ┌───────────────────────────────────────────────┐
+               │ Teorema de Parada Racional EVSI π*             │ (IV-C.4)
+               └───────────────────────┬───────────────────────┘
+                                       │ (Derivable)
+                                       ▼
+               ┌───────────────────────────────────────────────┐
+               │ Teorema de Cota Superior de Regret / Gov_ε    │ (IV-C.5)
+               └───────────────────────────────────────────────┘
 ```
 
 ---
 
-## 4. Criterio de Finalización
+## 5. Plan de Mecanización en Lean 4
 
-La Fase V-A se considerará cerrada cuando:
-1. La especificación en este documento sea revisada y aprobada.
-2. Los 3 módulos de Lean 4 (`Conservativity.lean`, `Independence.lean`, `Minimality.lean`) compilen limpiamente sin advertencias y con **0 `sorry`s**.
-3. Se actualice `docs/theory-roadmap.md` reflejando el cierre metateórico de la Fase V-A.
+El trabajo formal de la Fase V-A se ubicará en `takt-formal/TaktFormal/Metatheory/`:
+
+```text
+takt-formal/TaktFormal/Metatheory/
+├── Basic.lean           -- Estructura formal de A_min = {A1, A2, A3} y definiciones
+├── Conservativity.lean  -- Teorema V-A.1 (Embedding conservativo ι: T_core ↪ T_IV-C)
+├── Independence.lean    -- Teorema V-A.2 (Modelos independientes M1, M2, M3)
+└── Minimality.lean      -- Teorema V-A.3 (Deducción formal de Parada EVSI y Regret Bound)
+```
+
+---
+
+## 6. Criterios de Aceptación y Finalización
+
+La Fase V-A se considerará completamente cerrada cuando:
+1. Este documento de especificación sea aprobado.
+2. Los 4 módulos en Lean 4 compilen cleanly sin advertencias y con **0 `sorry`s**.
+3. Se valide formalmente que ninguna extensión del Volumen V viola el **Principio de Minimalidad Axiomática**.
