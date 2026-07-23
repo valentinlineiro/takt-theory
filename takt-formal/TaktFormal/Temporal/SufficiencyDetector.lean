@@ -93,6 +93,28 @@ def DetectorDominance (D1 D2 : List X → Bool) : Prop :=
 def DetectorEquivalence (D1 D2 : List X → Bool) : Prop :=
   DetectorDominance D1 D2 ∧ DetectorDominance D2 D1
 
+/-- Strict Detector Dominance: D1 strictly dominates D2 (D1 ≺ D2)
+    iff D1 dominates D2 (D1 ⪯ D2) but D2 does NOT dominate D1. -/
+def StrictDetectorDominance (D1 D2 : List X → Bool) : Prop :=
+  DetectorDominance D1 D2 ∧ ¬ DetectorDominance D2 D1
+
+/-- Definition: Governance Gap of an Executable Detector D_alg relative to Perfect Detector D_top.
+    A Governance Gap exists iff D_top strictly dominates D_alg. -/
+def HasGovernanceGap (D_top D_alg : List X → Bool) : Prop :=
+  StrictDetectorDominance D_top D_alg
+
+/-- Theorem: Governance Gap Criterion.
+    If D_top dominates D_alg and there exists a trace prefix where D_top triggers true but D_alg triggers false,
+    then D_top strictly dominates D_alg (a Governance Gap Δ_gov > 0 exists). -/
+theorem governance_gap_criterion (D_top D_alg : List X → Bool)
+    (h_dom : DetectorDominance D_top D_alg) (h_diff : ∃ trace : List X, D_top trace = true ∧ D_alg trace = false) :
+    HasGovernanceGap D_top D_alg := by
+  refine ⟨h_dom, λ h_alg_dom => ?_⟩
+  rcases h_diff with ⟨trace, h_top, h_alg⟩
+  have h_alg_true := h_alg_dom trace h_top
+  rw [h_alg] at h_alg_true
+  contradiction
+
 /-- Theorem: Reflexivity of Detector Dominance. -/
 theorem detector_dominance_refl (D : List X → Bool) :
     DetectorDominance D D :=
