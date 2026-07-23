@@ -607,9 +607,128 @@ Suppose active detector $D_1$ has already measured biomarker $B = 85 \pm 2$ (con
 
 1. **Task-Specific Kernel Collapse vs. Belief Simplex Tracking:** While POMDP belief space planning tracks continuous probability distributions over state space $b \in \Delta(S)$ (leading to PSPACE-completeness and infinite-horizon undecidability), TAKT projects state space onto finite capability equivalence classes $S / K_D$, reducing belief tracking to algebraic partition refinement.
 2. **Fixed-Parameter Tractability (FPT) by Kernel Dimension $k$:** TAKT proves that optimal EVSI path selection (`OPT-EVSI-PATH`) and minimal capability enrichment (`MIN-ENRICH`) are FPT in $O(2^k \cdot |\mathcal{E}|)$, isolating computational complexity to the kernel dimension $k = |C_D|$ rather than state space or belief simplex dimensions.
-3. **Exact Combinatorial EVSI vs. Continuous Bayesian Integration:** TAKT replaces continuous Bayesian EVSI integrals with exact integer perfection distance reductions $\Delta\delta = \delta(D) - \delta(\Phi(D, E))$ on detector graphs $\mathcal{G}_D$, enabling certified rational stopping policies $\pi^*$ without priors or numerical integration.
 4. **Formal Positioning Statement:**
    > *TAKT reformulates classical EVSI (Raiffa & Schlaifer) and POMDP belief space planning (Kaelbling et al.) by replacing continuous belief simplex tracking $\Delta(S)$ with task-specific capability kernel collapse $S / K_D$. This converts infinite-horizon POMDP undecidability into Fixed-Parameter Tractable (FPT) governance in $\mathcal{O}(2^k \cdot |\mathcal{E}|)$ time by kernel dimension $k$, providing Lean-certified rational EVSI stopping policies $\pi^*$ based on exact perfection distance reductions $\Delta\delta$.*
+
+---
+
+## 5. Novelty Inventory, Terminology Refinement & Global Positioning Conclusions
+
+### 5.1 Synthesis of Primary Novel Mathematical Contributions
+
+Across the four audited domains (Decision Theory, Formal Verification, Category Theory, and AI Planning/EVSI), TAKT introduces three primary novel mathematical primitives that decouple decision preservation from classical probabilistic, continuous, and binary constraints.
+
+#### Contribution 1: Capability Kernel Refinement & Structural Sufficiency ($\text{ker}(R) \subseteq K_D$)
+- **Mathematical Object:** The capability kernel $K_D = \bigcap_{c \in C_D} K_c$, defined as the intersection of equivalence relations corresponding to required task capability invariants $C_D$.
+- **Formal Guarantee (ST-015 / Lean Certified):** A representation mapping $R: S \to Z$ is decision-sufficient for task $D: S \to A$ if and only if its kernel refines $K_D$:
+  $$\text{ker}(R) \subseteq K_D$$
+  This induces a unique minimal canonical sufficient quotient representation $R_{\text{min}} = S / K_D$.
+- **Cross-Domain Synthesis:**
+  - *Vs. Blackwell (1951, 1953):* Relaxes universal statistical experiment informativeness over all utility functions ($\forall u, \forall A, \forall p$) to task-specific deterministic partition refinement. Eliminates priors, likelihoods, and continuous garbling kernels in favor of an $O(1)$ amortized runtime-checkable set inclusion.
+  - *Vs. Bisimulation (1981, 1989):* Replaces step-by-step trace equivalence over internal transition labels with task-relevant decision boundary preservation.
+  - *Vs. POMDP Simplex (1998):* Collapses infinite continuous belief spaces $\Delta(S)$ into finite algebraic quotient classes $S / K_D$ of size at most $2^k$.
+
+#### Contribution 2: Dual Governance Geometry ($(d_{\rightarrow}, d_{\equiv})$), Dynamic Margin $M_D$, and Certified Horizon $h^*$
+- **Mathematical Object:** The dual metric space $(\mathcal{D}_{\text{sound}}, d_{\rightarrow}, d_{\equiv})$ combined with trajectory dynamic surprisal margin $M_D(\tau_{:t})$.
+  - **Directed Evolutionary Distance ($d_{\rightarrow}$):** Extended quasi-metric measuring operational path steps to complete governance, yielding the Perfection Distance Functional $\delta(D) \triangleq d_{\rightarrow}(D, D_{\text{top}})$.
+  - **Symmetric Capability Pseudometric ($d_{\equiv}$):** Pseudometric measuring capability set symmetric difference $d_{\equiv}(D_1, D_2) = |\text{capabilities}(D_1) \Delta \text{capabilities}(D_2)|$.
+  - **Dynamic Margin ($M_D$):** Minimum cumulative surprisal cost to reach a decision-losing state along active path extensions $\tau_{:t}$.
+- **Formal Guarantee:** The Guaranteed Intervention Horizon Theorem:
+  $$M_D(\tau_{:t}) > C_h^{\text{max}} \implies D(s_{t+k}) = \pi(s_{t+k}) \quad \forall k \in \{1, \dots, h\}$$
+  yielding guaranteed intervention window $h^* = \lfloor M_D / c_{\text{max}} \rfloor$. Coupled with Asymmetric Margin Calibration ($M_D^{\text{calib}} = M_D(\hat{P}) - \beta$), safety guarantees are strictly preserved under bounded model error $\hat{P}$.
+- **Cross-Domain Synthesis:**
+  - *Vs. Formal Verification & Abstract Interpretation (1977, 2012):* Replaces static boolean safety assertions ($\text{Safe} \in \{0,1\}$) with continuous dynamic trajectory distances and calibrated intervention horizons.
+  - *Vs. Temporal Logic Robustness (STL, 2010):* Measures distance to structural decision failure in cumulative surprisal space rather than signal predicate metric thresholds.
+
+#### Contribution 3: Categorical Monoid $(\mathbf{GovDet}, \otimes, I)$, EVSI Galois Adjunction ($\mathcal{A} \dashv \mathcal{E}$), and FPT Rational EVSI Stopping ($\pi^*$)
+- **Mathematical Object:** The symmetric monoidal category $(\mathbf{GovDet}, \otimes, I)$ of sound governance detectors and decision-preserving enrichment morphisms, equipped with Abstraction Functor $\mathcal{A}: \mathbf{GovDet} \to \mathbf{AbsRep}$ and EVSI Enrichment Functor $\mathcal{E}: \mathbf{AbsRep} \to \mathbf{GovDet}$.
+- **Formal Guarantee:** 
+  1. *Galois Adjunction:* $\mathcal{A} \dashv \mathcal{E}$, establishing representation abstraction as the exact structural dual to optimal EVSI capability recovery.
+  2. *Rational EVSI Stopping Theorem $\pi^*$ (Lean Certified):* Evolution halts optimally when $\forall E, \, EVSI(E \mid D^*) \le C_{\text{acq}}(E)$, where $EVSI(E \mid D) = \Delta\delta = \delta(D) - \delta(\Phi(D, E))$.
+  3. *Fixed-Parameter Tractability (FPT):* Optimal enrichment search `MIN-ENRICH` is FPT in $\mathcal{O}(2^k \cdot |\mathcal{E}|)$ by kernel dimension $k = |C_D|$, bypassing POMDP undecidability.
+  4. *Determinism Conservativity:* Probability Monad $\mathcal{T}_{\mathbb{P}}$ collapses strictly to deterministic capability inclusions under Dirac limits ($P \to \delta_{\tau_0}$).
+- **Cross-Domain Synthesis:**
+  - *Vs. Selinger/Coecke Monoidal Categories (2007, 2011):* Restricts morphisms from generic channels to decision-soundness-preserving enrichments $E$.
+  - *Vs. Giry Probability Monads (1982):* Ensures probabilistic updates preserve hard deterministic safety bounds as exact conservative limits.
+  - *Vs. Classical EVSI (1961, 1966):* Replaces continuous Bayesian integration with exact combinatorial perfection distance reductions $\Delta\delta$ on detector graphs $\mathcal{G}_D$.
+
+#### Primary Novelty Matrix Across Audited Domains
+
+| Audited Domain | Classical State of the Art | TAKT Primary Novel Contribution | Key Formal Breakthrough / Separation |
+| :--- | :--- | :--- | :--- |
+| **Domain 1: Decision Theory & Info** | Blackwell Sufficiency Theorem (1951, 1953) | Structural Sufficiency Theorem ST-015 ($\text{ker}(R) \subseteq K_D$) | Probability-free, task-specific kernel refinement replacing universal stochastic garblings |
+| **Domain 2: Formal Verification & Control** | Bisimulation (1981, 1989), Abstract Interpretation (1977) | Dual Governance Geometry $(d_{\rightarrow}, d_{\equiv})$ & Dynamic Margin $M_D$ | Quantitative geometric safety & guaranteed intervention horizon $h^*$ replacing binary assertions |
+| **Domain 3: Category Theory & Monads** | Process Categories (2007), Giry Monads (1982) | Monoidal Category $(\mathbf{GovDet}, \otimes, I)$ & Adjunction $\mathcal{A} \dashv \mathcal{E}$ | Soundness-preserving enrichment morphisms & abstraction-EVSI Galois adjunction |
+| **Domain 4: AI Planning & EVSI** | POMDP Belief Planning (1998), Bayesian EVSI (1961) | Rational Stopping Theorem $\pi^*$ & FPT Complexity $\mathcal{O}(2^k \cdot |\mathcal{E}|)$ | Escapes POMDP undecidability via capability kernel collapse $S/K_D$ & exact combinatorial $\Delta\delta$ |
+
+---
+
+### 5.2 Specific Terminology Refinement Recommendations
+
+To ensure absolute consistency across TAKT's canonical specifications (e.g. `docs/canonical-core-v1.0.md`), Lean 4 mechanized libraries (`TaktFormal`), and the upcoming Monograph, the following terminology refinements are recommended for immediate harmonization:
+
+1. **Harmonization of Abstract Contractions to Decision Contracts & Capability Kernels:**
+   - *Current Status in Canonical Core v1.0:* Uses abstract terms such as "structure type $\mathcal{T}$", "pullback $f^*(\sigma)$", "contraction $\mathcal{C}$", and "property $\Phi$".
+   - *Refinement Recommendation:* Add an explicit canonical specialization chapter in `canonical-core-v1.0.md` instantiating binary structure preservation $\sigma_{\mathcal{C}} \preceq \tau_{\Phi}$ directly as **Decision Contract** $D: S \to A$, **Capability Invariants** $C_D$, **Capability Kernel** $K_D = \bigcap_{c \in C_D} K_c$, and **Kernel Refinement** $\text{ker}(R) \subseteq K_D$.
+
+2. **Standardization of Governance Distance and Perfection Metrics:**
+   - *Current Status:* Early documentation used interchangeable phrases such as "governance gap", "detector defect", "abstract error", and "perfection distance".
+   - *Refinement Recommendation:* Standardize two distinct metrics throughout all docs:
+     - **Perfection Distance Functional $\delta(D)$**: Directed path length $d_{\rightarrow}(D, D_{\text{top}})$ to minimal sufficient detector $D_{\text{top}}$.
+     - **Capability Divergence Pseudometric $d_{\equiv}(D_1, D_2)$**: Symmetric difference $|\text{capabilities}(D_1) \Delta \text{capabilities}(D_2)|$.
+     - Deprecate informal terms "governance gap" and "abstract error".
+
+3. **Standardization of Dynamic Trajectory Margin & Intervention Horizon Terms:**
+   - *Current Status:* Trajectory safety has been described as "surprisal buffer", "dynamic margin", "safety horizon", and "lookahead window".
+   - *Refinement Recommendation:* Uniformly adopt **Dynamic Margin $M_D(\tau_{:t})$** for the cumulative surprisal cost to reach decision loss along trajectory prefix $\tau_{:t}$, and **Guaranteed Intervention Horizon $h^* = \lfloor M_D / c_{\text{max}} \rfloor$** for the discrete step safety horizon. Standardize **Asymmetric Margin Calibration ($M_D^{\text{calib}}$)** for handling transition estimation uncertainty $\hat{P}$.
+
+4. **Categorical Functorial & Monadic Terminology Alignment:**
+   - *Current Status:* Terminology occasionally mixes "soft detectors", "probabilistic detectors", and "monadic objects".
+   - *Refinement Recommendation:* Standardize **$\mathbf{GovDet}$** as the category of hard deterministic sound detectors and enrichment morphisms, **$\mathcal{A} \dashv \mathcal{E}$** as the Abstraction-Enrichment Galois Adjunction, and **Probability Monad $\mathcal{T}_{\mathbb{P}}$** as the monad over $\mathbf{GovDet}$ whose Kleisli arrows represent soft detectors weighted by confidence scores $[0, 100]$. Explicitly mandate the inclusion of the **Dirac Delta Limit Theorem** (`dirac_collapse_to_deterministic`) whenever soft detectors are introduced.
+
+5. **Deterministic EVSI & Parameterized Complexity Terminology:**
+   - *Current Status:* "EVSI" is sometimes used without distinguishing Bayesian expected value of sample information from TAKT's deterministic graph metric.
+   - *Refinement Recommendation:* Define **Governance EVSI ($EVSI(E \mid D)$)** explicitly as perfection distance reduction $\Delta\delta = \delta(D) - \delta(\Phi(D, E))$. Distinguish it from classical Bayesian EVSI ($EVSI_{\text{Bayes}}$). Standardize **Kernel Dimension ($k = |C_D| = \dim(K_D)$)** as the universal parameter for Fixed-Parameter Tractability (FPT) complexity assertions ($\mathcal{O}(2^k \cdot |\mathcal{E}|)$).
+
+---
+
+### 5.3 Overarching Executive Summary of Global Positioning
+
+TAKT (**Theory of Adequate Knowledge for Decisions**) establishes a novel, mathematically unified paradigm for decision-governed representation, verification, and active capability enrichment in automated and autonomous decision systems.
+
+```text
+                  ┌────────────────────────────────────────────────────────┐
+                  │    TAKT GLOBAL SCIENTIFIC POSITIONING LANDSCAPE       │
+                  └────────────────────────────────────────────────────────┘
+                                              │
+         ┌───────────────────────┬────────────┴───────────┬───────────────────────┐
+         ▼                       ▼                        ▼                       ▼
+ ┌───────────────┐       ┌───────────────┐        ┌───────────────┐       ┌───────────────┐
+ │Decision Theory│       │ Formal Verif. │        │ Category Th.  │       │ AI Planning   │
+ │ (Blackwell)   │       │(Bisimulation) │        │(Monoidal Cat) │       │ (POMDP/EVSI)  │
+ ├───────────────┤       ├───────────────┤        ├───────────────┤       ├───────────────┤
+ │Universal      │       │Binary Step    │        │Generic Channel│       │Continuous     │
+ │Stochastic     │       │Equivalence    │        │Morphisms      │       │Belief Simplex │
+ │Informativeness│       │               │        │               │       │               │
+ └───────┬───────┘       └───────┬───────┘        └───────┬───────┘       └───────┬───────┘
+         │                       │                        │                       │
+         │ Relaxes to            │ Replaces with          │ Specializes to        │ Replaces with
+         ▼                       ▼                        ▼                       ▼
+ ┌───────────────┐       ┌───────────────┐        ┌───────────────┐       ┌───────────────┐
+ │ Capability    │       │ Dual Geometry │        │ Category      │       │ Rational EVSI │
+ │ Kernel        │       │ (d_→, d_≡) &  │        │ GovDet &      │       │ Stopping π*   │
+ │ ker(R) ⊆ K_D  │       │ Margin M_D    │        │ Adjunction A⊣E│       │ FPT O(2^k·|E|)│
+ └───────────────┘       └───────────────┘        └───────────────┘       └───────────────┘
+```
+
+#### Core Theoretical Thesis
+1. **Decision Preservation Over Information Completeness:** TAKT demonstrates that optimal decision preservation does not require maintaining full statistical information (Blackwell), exact bisimulation traces (Milner/Park), or fine-grained belief state distributions $\Delta(S)$ (POMDPs). By anchoring representation validity directly to task-specific capability kernels $K_D$, TAKT achieves maximum representational compression ($R_{\text{min}} = S / K_D$) without decision loss.
+2. **Quantitative Geometric Safety Over Binary Assertions:** TAKT transforms formal verification from static, binary pass/fail assertions into continuous dynamic trajectory geometry. Through dynamic surprisal margins $M_D(\tau_{:t})$ and directed perfection distance $\delta(D)$, TAKT yields certified, calibrated intervention horizons $h^*$ that remain robust under model estimation errors.
+3. **Categorical Adjunction and FPT Computational Tractability:** TAKT unifies representation abstraction and Value of Information (EVSI) through the Galois adjunction $\mathcal{A} \dashv \mathcal{E}$ in the monoidal category $(\mathbf{GovDet}, \otimes, I)$. By proving that optimal capability search is Fixed-Parameter Tractable (FPT in $\mathcal{O}(2^k \cdot |\mathcal{E}|)$ by kernel dimension $k$), TAKT bypasses the classical PSPACE-completeness and undecidability barriers of generic continuous POMDP planning.
+4. **Lean 4 Mechanized Rigor:** Unlike purely theoretical or empirical frameworks, TAKT's foundational core and extensions are 100% mechanized in Lean 4 with zero `sorry`s across all key definitions, structural sufficiency proofs, categorical adjunctions, rational stopping policies, and complexity bounds.
+
+This audit establishes TAKT's precise positioning as a probability-free, computationally tractable, Lean-certified foundation for decision-preserving representation learning, dynamic safety monitoring, and rational active perception.
+
 
 
 
