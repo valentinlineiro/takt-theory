@@ -196,6 +196,17 @@ Establishes composition theory for interacting governed systems across 5 sub-mod
 
 **Status:** Complete — formalized and verified in Lean 4 (190 jobs verified cleanly with 0 `sorry`s). Re-exported via `TaktFormal.Composition`.
 
+**Phase V-C: Categorical Unification ($\mathbf{GovDet}$)** (Complete - Formalized & Mechanized in Lean 4)
+
+Establishes canonical category-theoretic unification across 5 sub-modules:
+1. **Category $\mathbf{GovDet}$ (`Categorical/Basic.lean`):** Objects, morphisms, composition, identity, and associativity/identity category laws.
+2. **Monoidal Structure (`Categorical/Monoidal.lean`):** Symmetric monoidal category $(\mathbf{GovDet}, \otimes, I)$ using parallel tensor operator.
+3. **Functors (`Categorical/Functor.lean`):** Representation functor $\mathcal{F}_{\text{Rep}}$ and decision functor $\mathcal{F}_{\text{Dec}}$ preserving sufficiency.
+4. **Adjunctions (`Categorical/Adjunction.lean`):** Canonical Abstraction-Enrichment adjunction $\mathcal{A} \dashv \mathcal{E}$.
+5. **Limits (`Categorical/Limits.lean`):** Categorical products matching parallel tensor and pullback minimum combined detectors.
+
+**Status:** Complete — formalized and verified in Lean 4 (202 jobs verified cleanly with 0 `sorry`s). Re-exported via `TaktFormal.Categorical`.
+
 ---
 
 ## The full chain
