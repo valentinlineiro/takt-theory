@@ -73,6 +73,7 @@ import TaktFormal.Temporal.TemporalSufficiency
 import TaktFormal.Temporal.PrefixObserver
 import TaktFormal.Temporal.SufficiencyDetector
 import TaktFormal.DetectorEvolution
+import TaktFormal.GovernanceGeometry
 
 
 
