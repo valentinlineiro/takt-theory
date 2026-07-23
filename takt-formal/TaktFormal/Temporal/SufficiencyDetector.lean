@@ -11,6 +11,26 @@ variable {X Y Z : Type}
 def IsSoundSufficiencyDetector (sys : DeterministicSystem X) (P : StateStream X → Y) (D : List X → Bool) : Prop :=
   ∀ (K : Nat) (x0 : X), D (trace_prefix sys x0 K) = true → IsPrefixSufficient sys P K
 
+/-- Complete Sufficiency Detector:
+    A detector D is Complete if prefix sufficiency IsPrefixSufficient sys P K guarantees
+    that D(trace_prefix sys x0 K) = true. -/
+def IsCompleteSufficiencyDetector (sys : DeterministicSystem X) (P : StateStream X → Y) (D : List X → Bool) : Prop :=
+  ∀ (K : Nat) (x0 : X), IsPrefixSufficient sys P K → D (trace_prefix sys x0 K) = true
+
+/-- Perfect Sufficiency Detector:
+    A detector D is Perfect if it is both Sound and Complete:
+    D(trace_prefix sys x0 K) = true ↔ IsPrefixSufficient sys P K. -/
+def IsPerfectSufficiencyDetector (sys : DeterministicSystem X) (P : StateStream X → Y) (D : List X → Bool) : Prop :=
+  IsSoundSufficiencyDetector sys P D ∧ IsCompleteSufficiencyDetector sys P D
+
+/-- Perfect Detector Equivalence Theorem:
+    A Perfect Sufficiency Detector D triggers D(trace_prefix sys x0 K) = true
+    if and only if the prefix observer sigma_K has reached full temporal sufficiency. -/
+theorem perfect_detector_equivalence (sys : DeterministicSystem X) (P : StateStream X → Y)
+    (D : List X → Bool) (h_perfect : IsPerfectSufficiencyDetector sys P D) (K : Nat) (x0 : X) :
+    D (trace_prefix sys x0 K) = true ↔ IsPrefixSufficient sys P K :=
+  ⟨λ h => h_perfect.1 K x0 h, λ h => h_perfect.2 K x0 h⟩
+
 /-- Theorem: Sound Detector Governance Guarantee.
     If D is a sound sufficiency detector, then any execution where D(trace_prefix) = true
     is guaranteed to have reached full temporal sufficiency, allowing safe zero-redundancy stopping. -/
