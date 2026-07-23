@@ -187,4 +187,14 @@ theorem detector_union_assoc (D1 D2 D3 : List X → Bool) :
   dsimp [detector_union]
   cases D1 trace <;> cases D2 trace <;> cases D3 trace <;> rfl
 
+/-- Theorem: Top Detector Maximum Property.
+    A Perfect Sufficiency Detector D_top (Sound and Complete) dominates ANY sound detector D in the governance semilattice. -/
+theorem detector_top_is_maximum (sys : DeterministicSystem X) (P : StateStream X → Y)
+    (D_top : List X → Bool) (h_perfect : IsPerfectSufficiencyDetector sys P D_top)
+    (D : List X → Bool) (h_sound : IsSoundSufficiencyDetector sys P D) :
+    ∀ (K : Nat) (x0 : X), D (trace_prefix sys x0 K) = true → D_top (trace_prefix sys x0 K) = true := by
+  intro K x0 h_trigger
+  have h_suff : IsPrefixSufficient sys P K := h_sound K x0 h_trigger
+  exact h_perfect.2 K x0 h_suff
+
 end Temporal
