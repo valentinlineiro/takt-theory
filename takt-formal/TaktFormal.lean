@@ -83,6 +83,8 @@ import TaktFormal.Metatheory
 import TaktFormal.Composition
 import TaktFormal.Categorical
 import TaktFormal.Complexity
+import TaktFormal.Probabilistic
+
 
 
 
