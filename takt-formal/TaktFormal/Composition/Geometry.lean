@@ -17,7 +17,7 @@ variable {C1 C2 : Type}
 /-- Theorem V-B.3.1: Parallel Perfection Distance Bound --/
 theorem delta_parallel_bound (delta1 delta2 : Nat) :
     delta1 + delta2 ≤ delta1 + delta2 := by
-  rfl
+  omega
 
 /-- Theorem V-B.3.2: Central Governance Transmission Theorem --/
 theorem governance_transmission_theorem (d1 : Detector C1) (d2 : Detector C2) (eps1 eps2 : Nat)
