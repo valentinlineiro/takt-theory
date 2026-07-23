@@ -75,6 +75,7 @@ import TaktFormal.Temporal.SufficiencyDetector
 import TaktFormal.DetectorEvolution
 import TaktFormal.GovernanceGeometry
 import TaktFormal.EnrichmentAlgebra
+import TaktFormal.CostOptimization
 
 
 
