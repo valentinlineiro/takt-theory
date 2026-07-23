@@ -49,4 +49,36 @@ theorem static_observation_temporal_insufficiency_separation
     rw [h2, h1]
   exact h_diff_outcome h3.symm
 
+/-- Temporal Kernel Equivalence Relation:
+    Two initial states x1 and x2 are temporally equivalent under dynamics sys and outcome P
+    iff they yield identical dynamic trajectory outcomes. -/
+def TemporalEquivalence (sys : DeterministicSystem X) (P : StateStream X → Y) (x1 x2 : X) : Prop :=
+  P (generated_trajectory sys x1) = P (generated_trajectory sys x2)
+
+/-- Reflexivity of Temporal Equivalence. -/
+theorem temporal_equivalence_refl (sys : DeterministicSystem X) (P : StateStream X → Y) (x : X) :
+    TemporalEquivalence sys P x x := rfl
+
+/-- Symmetry of Temporal Equivalence. -/
+theorem temporal_equivalence_symm (sys : DeterministicSystem X) (P : StateStream X → Y) (x1 x2 : X)
+    (h : TemporalEquivalence sys P x1 x2) : TemporalEquivalence sys P x2 x1 := h.symm
+
+/-- Transitivity of Temporal Equivalence. -/
+theorem temporal_equivalence_trans (sys : DeterministicSystem X) (P : StateStream X → Y) (x1 x2 x3 : X)
+    (h12 : TemporalEquivalence sys P x1 x2) (h23 : TemporalEquivalence sys P x2 x3) :
+    TemporalEquivalence sys P x1 x3 := h12.trans h23
+
+/-- Minimal Temporal Observer: Maps an initial state x to its trajectory outcome P(tau_x). -/
+def canonical_temporal_observer (sys : DeterministicSystem X) (P : StateStream X → Y) : X → Y :=
+  P ∘ generated_trajectory sys
+
+/-- Theorem: The Canonical Temporal Observer is Minimal Sufficient for the Dynamic Trajectory Outcome. -/
+theorem canonical_temporal_observer_is_minimal_sufficient (sys : DeterministicSystem X) (P : StateStream X → Y) :
+    Information.IsMinimalSufficient (canonical_temporal_observer sys P) (P ∘ generated_trajectory sys) := by
+  constructor
+  · exact ⟨id, λ _ => rfl⟩
+  · intro Z_other f_other h_suff
+    rcases h_suff with ⟨h_map, h_eq⟩
+    exact ⟨h_map, λ x => h_eq x⟩
+
 end Temporal
