@@ -81,6 +81,8 @@ import TaktFormal.RuntimeConvergence
 import TaktFormal.ImpossibilityLimits
 import TaktFormal.Metatheory
 import TaktFormal.Composition
+import TaktFormal.Categorical
+
 
 
 

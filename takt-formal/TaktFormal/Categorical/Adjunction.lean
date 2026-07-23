@@ -1,7 +1,7 @@
 import TaktFormal.Categorical.Basic
 import TaktFormal.Categorical.Functor
 
-/--
+/-!
 Module: TaktFormal.Categorical.Adjunction
 Depends on: TaktFormal.Categorical.Basic, TaktFormal.Categorical.Functor
 Exports: AbstractionFunctor, EnrichmentFunctor, adjunction_hom_iso

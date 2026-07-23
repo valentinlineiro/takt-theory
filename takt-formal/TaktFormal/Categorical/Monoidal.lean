@@ -1,7 +1,7 @@
 import TaktFormal.Categorical.Basic
 import TaktFormal.Composition.Basic
 
-/--
+/-!
 Module: TaktFormal.Categorical.Monoidal
 Depends on: TaktFormal.Categorical.Basic, TaktFormal.Composition.Basic
 Exports: tensor_detector, monoidal_assoc, monoidal_unit_left

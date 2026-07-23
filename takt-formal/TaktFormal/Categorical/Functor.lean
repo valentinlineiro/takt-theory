@@ -1,7 +1,7 @@
 import TaktFormal.Categorical.Basic
 import TaktFormal.StructuralSufficiency
 
-/--
+/-!
 Module: TaktFormal.Categorical.Functor
 Depends on: TaktFormal.Categorical.Basic, TaktFormal.StructuralSufficiency
 Exports: F_Rep, F_Dec, functor_id, functor_comp
@@ -31,7 +31,7 @@ theorem functor_comp (d : Detector C) (e1 e2 : Enrichment C) (he1 : ValidEnrichm
     F_Dec (phi (phi d e1) e2) = F_Dec d := by
   dsimp [F_Dec, phi, ValidEnrichment] at *
   rw [he1, he2]
-  exact Bool.and_true (d.isSound && true)
+  simp
 
 end Functor
 end Categorical

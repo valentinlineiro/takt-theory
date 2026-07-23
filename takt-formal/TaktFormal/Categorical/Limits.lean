@@ -1,11 +1,11 @@
-/--
+import TaktFormal.Categorical.Basic
+import TaktFormal.Categorical.Monoidal
+
+/-!
 Module: TaktFormal.Categorical.Limits
 Depends on: TaktFormal.Categorical.Basic, TaktFormal.Categorical.Monoidal
 Exports: CategoricalProduct, product_universal_property
 -/
-
-import TaktFormal.Categorical.Basic
-import TaktFormal.Categorical.Monoidal
 
 namespace TaktFormal
 namespace Categorical
