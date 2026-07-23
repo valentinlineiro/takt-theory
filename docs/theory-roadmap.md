@@ -149,14 +149,21 @@ Six theorems established:
 
 ---
 
-## Phase IV — Optimization
+## Phase IV — Governed Convergence Theory & Optimization
 
-**Optimal Representation Theorem** (future, unnamed)
+**Phase IV-C: Governed Convergence Theory** (Complete - Formalized & Mechanized in Lean 4)
 
-Among all sufficient representations, which is minimal under global
-cost? Where `∆Guarantee / ∆Cost → 0` marks the saturation point.
+Establishes the complete formal theory of transition from executable detectors $D_{\text{alg}}$ to ideal limit governance $D_{\text{top}}$ across 7 closed sub-phases:
 
-**Status:** Future — requires ST-015 and EVSI maturity.
+1. **IV-C.1 (Detector Evolution):** Space $(\mathcal{G}_D, \Phi)$, 5 core invariants, Theorem 5.1 Abstract Reachability (`DetectorEvolution.lean`).
+2. **IV-C.2 (Governance Geometry):** Dual distance structure ($d_{\rightarrow}, d_{\equiv}$), perfection distance $\delta(D)$, Theorem 3.2 Monotonic Distance Reduction (`GovernanceGeometry.lean`).
+3. **IV-C.3 (Enrichment Algebra):** Monoid $(\mathcal{E}, \circ, \vee_E)$, Action Homomorphism $\Phi(D, E_2 \circ E_1) = \Phi(\Phi(D, E_1), E_2)$ (`EnrichmentAlgebra.lean`).
+4. **IV-C.4 (Cost Optimization):** Trajectory cost $C(\pi)$, Governance EVSI, $\pi^*$ optimal path, Rational EVSI Stopping Theorem (`CostOptimization.lean`).
+5. **IV-C.5 (Approximate Governance):** $\epsilon$-Governance predicate $Gov_{\epsilon}(D)$, saturation bound $\epsilon^*$, decision regret upper bound $\epsilon$ (`ApproximateGovernance.lean`).
+6. **IV-C.6 (Runtime Convergence):** Online prefix trace verifier, runtime soundness preservation invariant over event streams (`RuntimeConvergence.lean`).
+7. **IV-C.7 (Impossibility & Limits):** Unreachability frontiers, non-approximability barriers, soundness barriers (`ImpossibilityLimits.lean`).
+
+**Status:** Complete — all 7 sub-phases formalized in Lean 4 (168 jobs verified cleanly with 0 `sorry`s). Derived runtime CARDS (CARD-359 through CARD-365) generated for implementation.
 
 ---
 
