@@ -130,4 +130,25 @@ theorem detector_union_dominates_right (D1 D2 : List X → Bool) :
   dsimp [detector_union]
   rw [h2, Bool.or_true]
 
+/-- Theorem: Detector Union Idempotence (D ∨ D = D). -/
+theorem detector_union_idempotent (D : List X → Bool) :
+    detector_union D D = D := by
+  funext trace
+  dsimp [detector_union]
+  cases D trace <;> rfl
+
+/-- Theorem: Detector Union Commutativity (D1 ∨ D2 = D2 ∨ D1). -/
+theorem detector_union_comm (D1 D2 : List X → Bool) :
+    detector_union D1 D2 = detector_union D2 D1 := by
+  funext trace
+  dsimp [detector_union]
+  cases D1 trace <;> cases D2 trace <;> rfl
+
+/-- Theorem: Detector Union Associativity ((D1 ∨ D2) ∨ D3 = D1 ∨ (D2 ∨ D3)). -/
+theorem detector_union_assoc (D1 D2 D3 : List X → Bool) :
+    detector_union (detector_union D1 D2) D3 = detector_union D1 (detector_union D2 D3) := by
+  funext trace
+  dsimp [detector_union]
+  cases D1 trace <;> cases D2 trace <;> cases D3 trace <;> rfl
+
 end Temporal
