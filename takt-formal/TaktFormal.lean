@@ -85,6 +85,8 @@ import TaktFormal.Categorical
 import TaktFormal.Complexity.Problems
 import TaktFormal.Complexity.Decidability
 import TaktFormal.Complexity.Reductions
+import TaktFormal.Complexity.Parameterized
+
 
 
 
