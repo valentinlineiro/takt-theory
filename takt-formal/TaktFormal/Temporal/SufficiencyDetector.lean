@@ -88,6 +88,28 @@ theorem cycle_detector_soundness_contract [DecidableEq X]
 def DetectorDominance (D1 D2 : List X → Bool) : Prop :=
   ∀ trace : List X, D2 trace = true → D1 trace = true
 
+/-- Detector Equivalence Relation: Two detectors D1 and D2 are operationally equivalent
+    iff D1 dominates D2 and D2 dominates D1. -/
+def DetectorEquivalence (D1 D2 : List X → Bool) : Prop :=
+  DetectorDominance D1 D2 ∧ DetectorDominance D2 D1
+
+/-- Theorem: Reflexivity of Detector Dominance. -/
+theorem detector_dominance_refl (D : List X → Bool) :
+    DetectorDominance D D :=
+  λ _ h => h
+
+/-- Theorem: Transitivity of Detector Dominance. -/
+theorem detector_dominance_trans (D1 D2 D3 : List X → Bool)
+    (h12 : DetectorDominance D1 D2) (h23 : DetectorDominance D2 D3) :
+    DetectorDominance D1 D3 :=
+  λ trace h3 => h12 trace (h23 trace h3)
+
+/-- Theorem: Antisymmetry / Equivalence of Detector Dominance. -/
+theorem detector_dominance_antisymm (D1 D2 : List X → Bool)
+    (h12 : DetectorDominance D1 D2) (h21 : DetectorDominance D2 D1) :
+    DetectorEquivalence D1 D2 :=
+  ⟨h12, h21⟩
+
 /-- Theorem: Dominant Sound Detector Friction Reduction.
     If D1 dominates D2 and both are sound detectors, then D1 triggers stopping
     with less than or equal redundant friction compared to D2. -/
