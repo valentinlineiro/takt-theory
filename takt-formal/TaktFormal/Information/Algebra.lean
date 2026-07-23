@@ -43,4 +43,23 @@ theorem minimal_sufficiency_uniqueness (f1 : X → Z1) (f2 : X → Z2) (P : X �
     (h1 : IsMinimalSufficient f1 P) (h2 : IsMinimalSufficient f2 P) : EquivInfo f1 f2 :=
   ⟨h1.2 Z2 f2 h2.1, h2.2 Z1 f1 h1.1⟩
 
+/-- Product transformation bounds f1 from above in information preorder: f1 ≤_info (f1 × f2). -/
+theorem product_refines_left (f1 : X → Z1) (f2 : X → Z2) :
+    RefinesInfo f1 (ProductTransformation f1 f2) :=
+  ⟨Prod.fst, λ _ => rfl⟩
+
+/-- Product transformation bounds f2 from above in information preorder: f2 ≤_info (f1 × f2). -/
+theorem product_refines_right (f1 : X → Z1) (f2 : X → Z2) :
+    RefinesInfo f2 (ProductTransformation f1 f2) :=
+  ⟨Prod.snd, λ _ => rfl⟩
+
+/-- Universal Property of Information Join: ProductTransformation is the Least Upper Bound (Supremum / Join)
+    in the Information Preorder. -/
+theorem product_is_information_join (f1 : X → Z1) (f2 : X → Z2) (g : X → Z3)
+    (h1 : RefinesInfo f1 g) (h2 : RefinesInfo f2 g) :
+    RefinesInfo (ProductTransformation f1 f2) g := by
+  rcases h1 with ⟨h1_map, h1_eq⟩
+  rcases h2 with ⟨h2_map, h2_eq⟩
+  exact ⟨λ z3 => (h1_map z3, h2_map z3), λ x => by dsimp [ProductTransformation]; rw [h1_eq x, h2_eq x]⟩
+
 end Information
