@@ -115,6 +115,41 @@ theorem governance_gap_criterion (D_top D_alg : List X → Bool)
   rw [h_alg] at h_alg_true
   contradiction
 
+/-- Theorem: Perfect Governance Observability Partition Equivalence over Trace Prefixes.
+    An executable detector D_alg achieves Zero Governance Gap over all trace prefixes relative to D_top
+    if and only if D_alg is a Perfect Sufficiency Detector (both Sound and Complete). -/
+theorem perfect_governance_prefix_equivalence (sys : DeterministicSystem X) (P : StateStream X → Y)
+    (D_top D_alg : List X → Bool) (h_perfect_top : IsPerfectSufficiencyDetector sys P D_top) :
+    (∀ (K : Nat) (x0 : X), D_top (trace_prefix sys x0 K) = D_alg (trace_prefix sys x0 K)) ↔
+    IsPerfectSufficiencyDetector sys P D_alg := by
+  constructor
+  · intro h_eq
+    constructor
+    · intro K x0 h_alg
+      rw [← h_eq K x0] at h_alg
+      exact h_perfect_top.1 K x0 h_alg
+    · intro K x0 h_suff
+      have h_top := h_perfect_top.2 K x0 h_suff
+      rw [h_eq K x0] at h_top
+      exact h_top
+  · intro h_perfect_alg
+    intro K x0
+    have h1 := perfect_detector_equivalence sys P D_top h_perfect_top K x0
+    have h2 := perfect_detector_equivalence sys P D_alg h_perfect_alg K x0
+    cases h_top : D_top (trace_prefix sys x0 K)
+    · have h_not_suff : ¬ IsPrefixSufficient sys P K := by
+        intro h_s
+        have h_t := h1.2 h_s
+        rw [h_top] at h_t
+        contradiction
+      cases h_a : D_alg (trace_prefix sys x0 K)
+      · rfl
+      · have h_s := h2.1 h_a
+        contradiction
+    · have h_s : IsPrefixSufficient sys P K := h1.1 h_top
+      have h_a := h2.2 h_s
+      rw [h_a]
+
 /-- Theorem: Reflexivity of Detector Dominance. -/
 theorem detector_dominance_refl (D : List X → Bool) :
     DetectorDominance D D :=
