@@ -152,6 +152,20 @@ theorem detector_union_dominates_right (D1 D2 : List X → Bool) :
   dsimp [detector_union]
   rw [h2, Bool.or_true]
 
+/-- Theorem: Detector Union Supremum (LUB) Least Upper Bound Property.
+    If detector D dominates both D1 and D2 (D ⪯ D1 and D ⪯ D2),
+    then D dominates their union (D ⪯ D1 ∨ D2). -/
+theorem detector_union_lub (D D1 D2 : List X → Bool)
+    (h1 : DetectorDominance D D1) (h2 : DetectorDominance D D2) :
+    DetectorDominance D (detector_union D1 D2) := by
+  intro trace h_union
+  dsimp [detector_union] at h_union
+  cases h_d1 : D1 trace
+  · rw [h_d1, Bool.false_or] at h_union
+    exact h2 trace h_union
+  · rw [h_d1] at h_union
+    exact h1 trace h_d1
+
 /-- Theorem: Detector Union Idempotence (D ∨ D = D). -/
 theorem detector_union_idempotent (D : List X → Bool) :
     detector_union D D = D := by
