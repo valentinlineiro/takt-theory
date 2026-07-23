@@ -98,4 +98,36 @@ theorem dominant_detector_friction_reduction (sys : DeterministicSystem X) (P : 
     D1 (trace_prefix sys x0 K) = true ∧ IsPrefixSufficient sys P K :=
   ⟨h_dom (trace_prefix sys x0 K) h_trigger2, h_sound1 K x0 (h_dom (trace_prefix sys x0 K) h_trigger2)⟩
 
+/-- Union/Join Detector: Combines two detectors D1 and D2 by taking their boolean OR. -/
+def detector_union (D1 D2 : List X → Bool) : List X → Bool :=
+  λ trace => D1 trace || D2 trace
+
+/-- Theorem: Detector Union Soundness.
+    If D1 and D2 are both sound detectors, then their union D1 ∨ D2 is also a sound detector. -/
+theorem detector_union_is_sound (sys : DeterministicSystem X) (P : StateStream X → Y)
+    (D1 D2 : List X → Bool) (h_sound1 : IsSoundSufficiencyDetector sys P D1)
+    (h_sound2 : IsSoundSufficiencyDetector sys P D2) :
+    IsSoundSufficiencyDetector sys P (detector_union D1 D2) := by
+  intro K x0 h_or
+  dsimp [detector_union] at h_or
+  cases h1 : D1 (trace_prefix sys x0 K)
+  · rw [h1, Bool.false_or] at h_or
+    exact h_sound2 K x0 h_or
+  · rw [h1] at h_or
+    exact h_sound1 K x0 h1
+
+/-- Theorem: Detector Union Dominance over Left Operand. -/
+theorem detector_union_dominates_left (D1 D2 : List X → Bool) :
+    DetectorDominance (detector_union D1 D2) D1 := by
+  intro trace h1
+  dsimp [detector_union]
+  rw [h1, Bool.true_or]
+
+/-- Theorem: Detector Union Dominance over Right Operand. -/
+theorem detector_union_dominates_right (D1 D2 : List X → Bool) :
+    DetectorDominance (detector_union D1 D2) D2 := by
+  intro trace h2
+  dsimp [detector_union]
+  rw [h2, Bool.or_true]
+
 end Temporal
