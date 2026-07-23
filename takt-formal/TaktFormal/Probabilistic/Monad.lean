@@ -1,7 +1,7 @@
 import TaktFormal.Probabilistic.SoftDetector
 import TaktFormal.Categorical.Basic
 
-/--
+/-!
 Module: TaktFormal.Probabilistic.Monad
 Depends on: TaktFormal.Probabilistic.SoftDetector, TaktFormal.Categorical.Basic
 Exports: ProbabilityMonad, monad_unit_law
