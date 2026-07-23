@@ -82,6 +82,9 @@ import TaktFormal.ImpossibilityLimits
 import TaktFormal.Metatheory
 import TaktFormal.Composition
 import TaktFormal.Categorical
+import TaktFormal.Complexity.Problems
+import TaktFormal.Complexity.Decidability
+import TaktFormal.Complexity.Reductions
 
 
 
