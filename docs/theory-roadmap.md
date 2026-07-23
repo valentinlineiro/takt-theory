@@ -175,6 +175,16 @@ Defines the research architecture contract and dependency matrix for the 5 exten
 
 See [extension-roadmap.md](file:///home/valentin/code/takt-theory/docs/extension-roadmap.md) for the full Volume V specification.
 
+**Phase V-A: Metatheory of TAKT** (Complete - Formalized & Mechanized in Lean 4)
+
+Formalizes the internal audit of the TAKT core across 4 sub-modules:
+1. **Conservativity (`Conservativity.lean`):** Conservative theory embedding $\iota: T_{\text{core}} \hookrightarrow T_{\text{IV-C}}$ and ST-015 collapse corollary.
+2. **Independence (`Independence.lean`):** Counterexample models $\mathcal{M}_1, \mathcal{M}_2, \mathcal{M}_3$ proving independence of primitive axioms $A_1, A_2, A_3$.
+3. **Minimality (`Minimality.lean`):** Sufficiency of minimal basis $A_{\text{min}} = \{A_1, A_2, A_3\}$ and formal derivation of Rational Stopping and Regret Bounds.
+4. **Redundancy (`Redundancy.lean`):** Functional metric generation from dual distance $(d_{\rightarrow}, d_{\equiv})$.
+
+**Status:** Complete — formalized and verified in Lean 4 (178 jobs verified cleanly with 0 `sorry`s). Re-exported via `TaktFormal.Metatheory`.
+
 ---
 
 ## The full chain
