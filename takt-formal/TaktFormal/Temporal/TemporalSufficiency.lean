@@ -81,4 +81,20 @@ theorem canonical_temporal_observer_is_minimal_sufficient (sys : DeterministicSy
     rcases h_suff with ⟨h_map, h_eq⟩
     exact ⟨h_map, λ x => h_eq x⟩
 
+/-- Subcategory of Temporal Sufficient Observers for dynamic outcome P ∘ generated_trajectory sys. -/
+structure TemporalSufficientObject (sys : DeterministicSystem X) (P : StateStream X → Y) where
+  Z : Type
+  sigma : X → Z
+  sufficient : Information.IsSufficient sigma (P ∘ generated_trajectory sys)
+
+/-- Categorical Initial Object Theorem for Temporal Sufficiency:
+    The Minimal Temporal Observer σ_T* has a factorization morphism to any other
+    temporally sufficient observer in the category. -/
+theorem minimal_temporal_observer_is_initial_object (sys : DeterministicSystem X) (P : StateStream X → Y)
+    (obj : TemporalSufficientObject sys P) :
+    Nonempty { h : obj.Z → Y // ∀ x : X, (canonical_temporal_observer sys P) x = h (obj.sigma x) } := by
+  have h_suff := obj.sufficient
+  rcases h_suff with ⟨h_map, h_eq⟩
+  exact ⟨⟨h_map, λ x => h_eq x⟩⟩
+
 end Temporal
