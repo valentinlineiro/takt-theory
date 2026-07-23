@@ -185,6 +185,17 @@ Formalizes the internal audit of the TAKT core across 4 sub-modules:
 
 **Status:** Complete — formalized and verified in Lean 4 (178 jobs verified cleanly with 0 `sorry`s). Re-exported via `TaktFormal.Metatheory`.
 
+**Phase V-B: Governed System Composition** (Complete - Formalized & Mechanized in Lean 4)
+
+Establishes composition theory for interacting governed systems across 5 sub-modules:
+1. **Composite Model (`Composition/Basic.lean`):** Parallel composition $S_1 \otimes S_2$ and cascade composition $S_2 \circ S_1$.
+2. **Preservation (`Composition/Preservation.lean`):** Soundness and reachability preservation theorems.
+3. **Geometry (`Composition/Geometry.lean`):** Central Governance Transmission Theorem ($Gov_{\epsilon_1 + \epsilon_2}(S_1 \otimes S_2)$) and perfection distance bounds.
+4. **Optimization (`Composition/Optimization.lean`):** EVSI parallel additivity and cooperative synergy inequality.
+5. **Limits (`Composition/Limits.lean`):** Resolution of local unreachability and Lipschitz cascade bounds.
+
+**Status:** Complete — formalized and verified in Lean 4 (190 jobs verified cleanly with 0 `sorry`s). Re-exported via `TaktFormal.Composition`.
+
 ---
 
 ## The full chain
