@@ -79,6 +79,8 @@ import TaktFormal.CostOptimization
 import TaktFormal.ApproximateGovernance
 import TaktFormal.RuntimeConvergence
 import TaktFormal.ImpossibilityLimits
+import TaktFormal.Metatheory.Conservativity
+import TaktFormal.Metatheory.Independence
 
 
 
