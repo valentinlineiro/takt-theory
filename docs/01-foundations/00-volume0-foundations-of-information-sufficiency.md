@@ -6,11 +6,12 @@
 
 ---
 
-## 0. The Foundational Thesis of TAKT
+## 0. Master Epigraph & Core Thesis
 
-> **Necessary friction is not a primitive parameter or an intrinsic defect. Necessary friction is a derived quantity: it is exactly the communication and computational cost required to transport the minimal sufficient information class $[f_P^*]$ for a target property $P$.**
+> **Every decision requires information. Every information transformation incurs a cost to acquire, store, communicate, and compute. TAKT studies the minimal information necessary to preserve a relevant property and understands friction as the unavoidable cost of transporting that minimal information.**
 
-Excess friction is simply the cost of transporting redundant information above $[f_P^*]$ in the Information Preorder lattice.
+### Foundational Thesis
+Necessary friction is not a primitive parameter or an intrinsic defect. Necessary friction is a derived quantity: it is exactly the communication and computational cost required to transport the minimal sufficient information class $[f_P^*]$ for a target property $P$. Excess friction is simply the cost of transporting redundant information above $[f_P^*]$ in the Information Preorder lattice.
 
 ---
 
@@ -78,16 +79,22 @@ $$P_1 \le_{\text{info}} P_2 \implies [f_{P_1}^*] \le_{\text{info}} [f_{P_2}^*]$$
 
 ---
 
-## 5. Derived Necessary Friction
+## 5. Derived Necessary Friction (Research Program)
 
-Let $C_{\text{trans}}(f)$ be the communication/computational cost required to transport or evaluate transformation $f$.
+**Status:** *Foundational Research Program (Tesis & Programa de Investigación)*
+
+To elevate Derived Friction from a foundational thesis to a fully proved theorem, three formal requirements must be established:
+
+1. **Explicit Cost Model $C_{\text{trans}}(f)$**: Defining cost measure over communication complexity, bits, memory, or execution time.
+2. **Infimum Attainment**: Proving $\inf_{f \in [f_P^*]} C_{\text{trans}}(f)$ is attained in discrete finite domains.
+3. **Equivalence Class Cost Function**: Demonstrating representative-independence or defining cost directly over $[f]_{\sim_{\text{info}}}$.
 
 ### Definition 5.1 (Necessary Friction $\mathcal{F}^*(P)$)
-The **Minimal Necessary Friction** required to satisfy target property $P$ is the infimum cost over the minimal sufficient equivalence class:
+The **Minimal Necessary Friction** required to satisfy target property $P$ is:
 $$\mathcal{F}^*(P) = C_{\text{trans}}([f_P^*]) = \inf_{f \in [f_P^*]} C_{\text{trans}}(f)$$
 
 ### Definition 5.2 (Redundant Friction $\Delta\mathcal{F}(f, P)$)
-For any operational transformation $f \in \uparrow [f_P^*]$, the excess or redundant friction is:
+For any operational transformation $f \in \uparrow [f_P^*]$, excess or redundant friction is:
 $$\Delta\mathcal{F}(f, P) = C_{\text{trans}}(f) - \mathcal{F}^*(P) \ge 0$$
 
 *Conclusion:* Friction is zero-redundant iff $f \in [f_P^*]$. All friction above $\mathcal{F}^*(P)$ stems strictly from transporting redundant information above $[f_P^*]$ in the Information Lattice.
