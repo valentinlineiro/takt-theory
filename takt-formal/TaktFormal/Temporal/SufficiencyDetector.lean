@@ -83,4 +83,19 @@ theorem cycle_detector_soundness_contract [DecidableEq X]
     IsSoundSufficiencyDetector sys P (cycle_detector) :=
   h_sound
 
+/-- Detector Dominance Order: Sound detector D1 dominates D2 (D1 ⪯ D2)
+    if D1 triggers earlier or at the same step as D2 for any trace prefix. -/
+def DetectorDominance (D1 D2 : List X → Bool) : Prop :=
+  ∀ trace : List X, D2 trace = true → D1 trace = true
+
+/-- Theorem: Dominant Sound Detector Friction Reduction.
+    If D1 dominates D2 and both are sound detectors, then D1 triggers stopping
+    with less than or equal redundant friction compared to D2. -/
+theorem dominant_detector_friction_reduction (sys : DeterministicSystem X) (P : StateStream X → Y)
+    (D1 D2 : List X → Bool) (h_sound1 : IsSoundSufficiencyDetector sys P D1)
+    (h_sound2 : IsSoundSufficiencyDetector sys P D2) (h_dom : DetectorDominance D1 D2)
+    (K : Nat) (x0 : X) (h_trigger2 : D2 (trace_prefix sys x0 K) = true) :
+    D1 (trace_prefix sys x0 K) = true ∧ IsPrefixSufficient sys P K :=
+  ⟨h_dom (trace_prefix sys x0 K) h_trigger2, h_sound1 K x0 (h_dom (trace_prefix sys x0 K) h_trigger2)⟩
+
 end Temporal
