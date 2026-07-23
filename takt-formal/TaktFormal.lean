@@ -70,6 +70,8 @@ import TaktFormal.Information.Category
 import TaktFormal.Information.StationaryEmbedding
 import TaktFormal.Temporal.FiniteDynamics
 import TaktFormal.Temporal.TemporalSufficiency
+import TaktFormal.Temporal.PrefixObserver
+
 
 
 
