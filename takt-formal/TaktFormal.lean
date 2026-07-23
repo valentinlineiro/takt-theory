@@ -78,6 +78,7 @@ import TaktFormal.EnrichmentAlgebra
 import TaktFormal.CostOptimization
 import TaktFormal.ApproximateGovernance
 import TaktFormal.RuntimeConvergence
+import TaktFormal.ImpossibilityLimits
 
 
 
