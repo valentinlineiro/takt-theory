@@ -6,11 +6,26 @@
 
 ---
 
-## 1. Filosofía del Volumen V
+## 1. Filosofía del Volumen V y Contrato de Inmutabilidad
 
-El núcleo axiomático de TAKT (Volúmenes I–IV-C) se considera **cerrado y conservado**. 
+El núcleo axiomático de TAKT (Volúmenes I–IV-C) se considera **estrictamente cerrado e inmutable**. 
 
-Las investigaciones del Volumen V no modifican dicho núcleo, sino que estudian extensiones compatibles, demostrando en cada caso si preservan o no las garantías fundamentales.
+Ninguna extensión del Volumen V modifica dicho núcleo; únicamente estudia extensiones compatibles, demostrando en cada caso si preservan o no las garantías fundamentales.
+
+### Contrato de Investigación del Volumen V
+
+Para garantizar el rigor metodológico, toda extensión en el Volumen V debe cumplir cuatro reglas fundamentales:
+
+1. **Inmutabilidad del Baseline:** Los Volúmenes I–IV-C constituyen la verdad inmutable de TAKT. Ninguna propuesta puede alterar o revocar axiomas ni teoremas cerrados en I–IV-C.
+2. **Declaración de Validez de Extensión:** Cada trabajo debe declarar explícitamente:
+   - De qué resultados anteriores depende.
+   - Qué estructuras o axiomas nuevos añade.
+   - Su clasificación estructural (**Conservación**, **Generalización**, **Limitación** o **Equivalencia**).
+3. **Garantía Metodológica de No-Ruptura:** Toda extensión debe acompañarse de una demostración de conservatividad (objeto principal de la Fase V-A) que certifique que no introduce contradicciones con I–IV-C.
+4. **Criterio Estándar de Finalización de Fase:** Toda subfase de investigación se considera completada únicamente cuando cumple el ciclo:
+   $$\text{Especificación Matemática} \longrightarrow \text{Mecanización Lean 4} \longrightarrow \text{Contratos Abstractos} \longrightarrow \text{CARDS (si afecta a Runtime)}$$
+
+---
 
 ### Transición de Naturaleza Teórica e Ingeniería
 
@@ -62,7 +77,7 @@ Todas las proposiciones y teoremas desarrollados en el Volumen V deben clasifica
 | **V-A** | **Metateoría** | Fases I–IV-C | Axiomas 1–5 de IV-C.1, $K_D$, $\mathcal{E}$ | Conservatividad, Minimalidad $A_{\text{min}}$, Independencia |
 | **V-B** | **Composición** | IV-C.1, IV-C.2, IV-C.6 | Espacio $\mathcal{G}_D$, Márgenes $M_D$, Traces $\tau_{:t}$ | Álgebra de sistemas compuestos ($S_1 \otimes S_2$, $S_2 \circ S_1$), transmisión $\epsilon$ |
 | **V-C** | **Unificación Categórica** | V-A, V-B | Monoide $\mathcal{E}$, Distancias $d_{\rightarrow}, d_{\equiv}$ | Categoría Monoidal $\mathbf{GovDet}$, Adjunciones, Límites/Colímites |
-| **V-D** | **Complejidad Computacional**| IV-C.4, V-C | Trajetorias $C(\pi)$, Parada EVSI $\pi^*$ | Clases de complejidad para EVSI y Reachability, no-aproximabilidad |
+| **V-D** | **Complejidad Computacional**| IV-C.4, V-C | Trayectorias $C(\pi)$, Parada EVSI $\pi^*$ | Clases de complejidad para EVSI y Reachability, no-aproximabilidad |
 | **V-E** | **Gobernanza Probabilística** | V-C | Detectores $D_{\text{alg}}$, Margen $M_D$ | Detectores en $[0, 1]$, Mónada probabilística sobre $\mathbf{GovDet}$, EVSI estocástico |
 
 ---
@@ -71,19 +86,21 @@ Todas las proposiciones y teoremas desarrollados en el Volumen V deben clasifica
 
 ### Fase V-0 — Extension Roadmap (Arquitectura)
 * **Objetivo:** Definir el contrato de investigación del Volumen V sin introducir teoremas nuevos.
-* **Función:** Establecer fronteras, clasificaciones de resultados y grafos de dependencias.
+* **Función:** Establecer fronteras, clasificaciones de resultados, cuatro reglas de validez y grafos de dependencias.
 * **Criterio de Éxito:** Documento congelado y aprobado como referencia para V-A a V-E.
 
 ---
 
 ### Fase V-A — Metateoría de TAKT
-* **Problema:** Demostrar propiedades *de la propia teoría* (meta-propiedades), no solo *dentro* de la teoría.
-* **Preguntas Centrales:**
-  * ¿Es la Fase IV-C una extensión estrictamente conservativa respecto a I–III?
-  * ¿Son los 5 invariantes de evolución independientes entre sí?
-  * ¿Existe un conjunto axiomático mínimo $A_{\text{min}}$ tal que $A_{\text{min}} \models \text{TAKT}$?
+* **Objeto de Estudio:** La propia teoría TAKT y su coherencia matemática intrínseca.
+* **Pregunta Central:** *¿Qué propiedades del núcleo son estructuralmente esenciales y cuáles son consecuencia de otras?*
+* **Cuatro Bloques Metateóricos:**
+  1. **Conservatividad:** Demostración formal de que $Theory_{IV-C} \supseteq Theory_{I-III}$ no modifica ningún resultado de I–III.
+  2. **Independencia:** Prueba de independencia lógica para cada axioma central mediante modelos o contraejemplos.
+  3. **Minimalidad:** Identificación del conjunto mínimo de axiomas $A_{\text{min}}$ tal que $A_{\text{min}} \models \text{TAKT}$.
+  4. **Redundancia:** Eliminación de teoremas/definiciones derivadas implícitas para compactar el núcleo conceptual.
 * **Tipos de Resultado:** Conservación, Limitación, Minimalidad.
-* **Criterio de Éxito:** Verificación en Lean 4 de independencia de axiomas y teorema de conservatividad.
+* **Criterio de Éxito:** Demostraciones mecanizadas en Lean 4 de conservatividad e independencia axiomática.
 
 ---
 
