@@ -80,11 +80,7 @@ import TaktFormal.ApproximateGovernance
 import TaktFormal.RuntimeConvergence
 import TaktFormal.ImpossibilityLimits
 import TaktFormal.Metatheory
-import TaktFormal.Composition.Basic
-import TaktFormal.Composition.Preservation
-import TaktFormal.Composition.Geometry
-import TaktFormal.Composition.Optimization
-import TaktFormal.Composition.Limits
+import TaktFormal.Composition
 
 
 
