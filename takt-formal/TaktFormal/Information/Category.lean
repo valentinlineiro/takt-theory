@@ -40,4 +40,19 @@ theorem minimal_sufficient_is_initial_object (P : X → Y) (f_star : X → Z1)
   rcases h_ref with ⟨h_map, h_eq⟩
   exact ⟨⟨h_map, h_eq⟩⟩
 
+/-- Isomorphism in the Sufficient Category between two sufficient objects.
+    Two objects obj1 and obj2 are isomorphic if they refine each other (EquivInfo obj1.f obj2.f). -/
+def SufficientEquivalence (P : X → Y) (obj1 obj2 : SufficientObject X Y P) : Prop :=
+  EquivInfo obj1.f obj2.f
+
+/-- Categorical Uniqueness Theorem:
+    Any two minimal sufficient transformations (as initial objects in SufficientObject)
+    are Isomorphic in the Sufficient Category. -/
+theorem minimal_sufficiency_categorical_uniqueness (P : X → Y)
+    (f1_star : X → Z1) (f2_star : X → Z2)
+    (h1_min : IsMinimalSufficient f1_star P)
+    (h2_min : IsMinimalSufficient f2_star P) :
+    SufficientEquivalence P ⟨Z1, f1_star, h1_min.1⟩ ⟨Z2, f2_star, h2_min.1⟩ :=
+  minimal_sufficiency_uniqueness f1_star f2_star P h1_min h2_min
+
 end Information
