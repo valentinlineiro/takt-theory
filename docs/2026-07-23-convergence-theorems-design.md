@@ -1,28 +1,20 @@
-# Convergence Theory: Logical Map of Results & Mathematical Foundations
+# Convergence Theory: Logical Map of Results & Research Program
 
 **Date:** 2026-07-23  
 **Author:** Antigravity AI & TAKT Core Team  
-**Status:** Frozen Theoretical Specification (Logical Map)
+**Status:** Frozen Theoretical Specification (Logical Map & Research Program)
 
 ---
 
-## 0. Executive Summary & Logical Stratification
+## 0. Executive Summary & Unified Principle
 
-This document establishes the **Logical Map of Results** for TAKT Convergence Theory. To maintain strict scientific rigor before Lean formalization, results are stratified into:
+This document establishes the **Logical Map of Results** for TAKT Convergence Theory.
 
-```text
-Definitions (Primitive & Derived Objects)
-      ↓
-Lemmas (Local Support Properties)
-      ↓
-Theorems (Proven Core Results with Exact Hypotheses)
-      ↓
-Corollaries (Immediate Structural Consequences)
-      ↓
-Observation Sufficiency (Parallel to Volume I Representation Theory)
-      ↓
-Open Conjectures & Research Program
-```
+### The Unified Principle of Information Sufficiency
+> **A transformation of information is sufficient when it preserves exactly the relevant property for a target observer or decision-maker.**
+
+- **Volume I (State Space)**: $R$ is sufficient $\iff D(R) = D(X)$ (preserves optimal decision).
+- **Volume III (Trajectory Space)**: $O$ is sufficient $\iff C(O(\tau)) = C(\tau)$ (preserves dynamic classification).
 
 ---
 
@@ -44,87 +36,113 @@ Let $T = (X, E)$ be a transition system with state space $X$ and transition rela
 ## 2. Supporting Lemmas
 
 ### Lemma 2.1 (Finite Monotone Image Bound)
-If $|X| < \infty$ (A1) and A3 holds, the image set $\Phi(X) \subset \mathbb{R}$ is finite. Any strictly decreasing sequence in $\Phi(X)$ has length at most $|\Phi(X)| \le |X|$.
+- **Minimal Hypotheses:** A1 ($|X| < \infty$), A3 (Weak Monotonicity).
+- **Dependencies:** Def 1.1, Def 1.2.
+- **Runtime Significance:** Guarantees upper bound on trajectory history length.
+- **Status:** `Proven`
+
+*Statement:* The image set $\Phi(X) \subset \mathbb{R}$ is finite. Any strictly decreasing sequence in $\Phi(X)$ has length at most $|\Phi(X)| \le |X|$.
 
 ### Lemma 2.2 (Absorbing State Invariance under Compatibility)
-If $s^*$ is an absorbing state of $T$ (Definition 1.4) and $g$ is $T$-compatible, then $g(s^*) = s^*$.
+- **Minimal Hypotheses:** $s^*$ absorbing state of $T$, $g$ is $T$-compatible.
+- **Dependencies:** Def 1.4, $T$-compatibility.
+- **Runtime Significance:** Guarantees that search cannot leave dead-end termination states.
+- **Status:** `Proven`
+
+*Statement:* If $s^*$ is an absorbing state of $T$ and $g$ is $T$-compatible, then $g(s^*) = s^*$.
 
 ### Lemma 2.3 (DAG Path Length Boundedness)
-If $G_T = (X, E)$ is a Directed Acyclic Graph (DAG) with maximum depth $d = \text{depth}(G_T)$, then any $T$-compatible path contains at most $d+1$ distinct states.
+- **Minimal Hypotheses:** $G_T = (X, E)$ is a DAG, $g$ is $T$-compatible.
+- **Dependencies:** Graph Theory / Transition System definitions.
+- **Runtime Significance:** Bounds search depth on directed acyclic execution spaces.
+- **Status:** `Proven`
+
+*Statement:* If $G_T = (X, E)$ is a DAG with maximum depth $d = \text{depth}(G_T)$, then any $T$-compatible path contains at most $d+1$ distinct states.
 
 ---
 
-## 3. Proven Core Theorems
+## 3. Core Theorems
 
 ### Theorem 3.1 (Finite Strictly Monotone Fixed-Point Convergence)
-**Hypotheses:** Assumptions A1 ($|X| < \infty$), A2 (Deterministic $g$), and A4 (Strict Monotonicity over $\Phi$).  
-**Thesis:** For every initial state $x_0 \in X$, the state stream $x(k) = g^k(x_0)$ converges to a fixed point $s^* \in \text{FixedPoint}(g)$ in at most $|X|$ steps.
+- **Minimal Hypotheses:** A1 ($|X| < \infty$), A2 (Deterministic $g$), A4 (Strict Monotonicity over $\Phi$).
+- **Dependencies:** Lemma 2.1.
+- **Runtime Significance:** Guarantees finite-step termination of gradient-compatible strategies.
+- **Status:** `Proven`
 
-*Proof:* By Lemma 2.1, $\Phi(x(k))$ forms a strictly decreasing sequence in $\Phi(X)$ for all $x(k) \notin \text{FixedPoint}(g)$. Since $\Phi(X)$ is finite, the strictly decreasing sequence must terminate at some step $N \le |X|$ where $\Phi(g(x(N))) = \Phi(x(N))$. By A4, this implies $x(N) \in \text{FixedPoint}(g)$, so $g(x(N)) = x(N) = s^*$. $\blacksquare$
+*Statement & Proof:* For every initial state $x_0 \in X$, the state stream $x(k) = g^k(x_0)$ converges to a fixed point $s^* \in \text{FixedPoint}(g)$ in at most $|X|$ steps. $\Phi(x(k))$ forms a strictly decreasing sequence in $\Phi(X)$ for non-fixed points. Finite image forces termination at $N \le |X|$ where $g(x(N)) = x(N)$. $\blacksquare$
 
 ### Theorem 3.2 (Non-Oscillation under Strict Monotonicity)
-**Hypotheses:** Assumption A4 (Strict Monotonicity over $\Phi$).  
-**Thesis:** No state stream $x(k)$ can exhibit periodic oscillation of period $p \ge 2$.
+- **Minimal Hypotheses:** A4 (Strict Monotonicity over $\Phi$).
+- **Dependencies:** Def 1.2.
+- **Runtime Significance:** Allows classifiers to safely skip cycle-detection when cost is strictly decreasing.
+- **Status:** `Proven`
 
-*Proof:* Assume $x(k+p) = x(k)$ for $p \ge 2$ with distinct states. By A4, $\Phi(x(k+p)) < \Phi(x(k+p-1)) < \dots < \Phi(x(k))$, which yields $\Phi(x(k+p)) < \Phi(x(k))$, contradicting $\Phi(x(k+p)) = \Phi(x(k))$. $\blacksquare$
+*Statement & Proof:* No state stream $x(k)$ can exhibit periodic oscillation of period $p \ge 2$. Strict decrease $\Phi(x(k+p)) < \Phi(x(k))$ contradicts periodic equality $\Phi(x(k+p)) = \Phi(x(k))$. $\blacksquare$
 
 ### Theorem 3.3 (DAG Convergence and Cycle Impossibility)
-**Hypotheses:** The transition graph $G_T = (X, E)$ is a DAG, and $g$ is $T$-compatible.  
-**Thesis:** 
-1. No periodic oscillation of period $p \ge 2$ can exist under $g$.
-2. Every state stream converges to a fixed point in at most $\text{depth}(G_T)$ steps.
+- **Minimal Hypotheses:** $G_T$ is a DAG, $g$ is $T$-compatible.
+- **Dependencies:** Lemma 2.3.
+- **Runtime Significance:** Guarantees convergence on non-cyclic workflows without requiring cost functionals.
+- **Status:** `Proven`
 
-*Proof:* (1) A periodic orbit of period $p \ge 2$ forms a directed cycle in $G_T$, contradicting $G_T$ being a DAG. (2) Follows directly from Lemma 2.3. $\blacksquare$
+*Statement & Proof:* 1. No periodic oscillation of period $p \ge 2$ can exist under $g$. 2. Every state stream converges to a fixed point in at most $\text{depth}(G_T)$ steps. Cycles in $g$ would form cycles in $G_T$, contradicting the DAG hypothesis. $\blacksquare$
 
 ### Theorem 3.4 (Weak Monotonicity Orbit Characterization)
-**Hypotheses:** Assumption A1 ($|X| < \infty$) and A3 (Weak Monotonicity).  
-**Thesis:** A periodic orbit of period $p \ge 2$ exists under $g$ if and only if there exists a subset $C \subseteq X$ such that $\forall x \in C, \Phi(x) = c$ (constant cost) and $g|_C : C \to C$ forms a closed permutation cycle of length $p$.
+- **Minimal Hypotheses:** A1 ($|X| < \infty$), A3 (Weak Monotonicity).
+- **Dependencies:** Lemma 2.1.
+- **Runtime Significance:** Enables `findAttractor` to isolate plateau cycles of constant cost.
+- **Status:** `Proven`
 
-*Proof:* $(\Leftarrow)$ Obvious. $(\Rightarrow)$ If $x(k+p) = x(k)$ under A3, $\Phi(x(k)) \ge \Phi(x(k+1)) \ge \dots \ge \Phi(x(k+p)) = \Phi(x(k))$, forcing equality at every step. Thus all states in the orbit have identical cost $c$. $\blacksquare$
+*Statement & Proof:* A periodic orbit of period $p \ge 2$ exists under $g$ if and only if there exists a subset $C \subseteq X$ such that $\forall x \in C, \Phi(x) = c$ (constant cost) and $g|_C : C \to C$ forms a closed permutation cycle of length $p$. $\blacksquare$
 
 ### Theorem 3.5 (Connected Component Basin Enclosure)
-**Hypotheses:** Let $X = \bigsqcup_{i=1}^m C_i$ be the decomposition of $G_T$ into weakly connected graph components.  
-**Thesis:** For any attractor $A$, its basin of attraction $B_A$ is entirely contained within a single component $C_k$.
+- **Minimal Hypotheses:** $X = \bigsqcup_{i=1}^m C_i$ partition into weakly connected graph components of $G_T$.
+- **Dependencies:** $T$-compatibility.
+- **Runtime Significance:** Enables parallel observers to analyze basins independently across components.
+- **Status:** `Proven`
 
-*Proof:* Transitions in $T$ cannot cross between disconnected components $C_i$ and $C_j$ ($i \neq j$). Thus trajectories initialized in $C_k$ remain in $C_k$. $\blacksquare$
+*Statement & Proof:* For any attractor $A$, its basin of attraction $B_A$ is entirely contained within a single component $C_k$. Transitions cannot cross disconnected components. $\blacksquare$
 
 ---
 
 ## 4. Corollaries
 
 ### Corollary 4.1 (Unique Global Attractor under Strict Gradient Reachability)
-**Hypotheses:** Assumptions A1, A4, $\Phi$ has a unique minimum $s^*$, AND $s^*$ is reachable from all $x \in X$ under $g$.  
-**Thesis:** $\{s^*\}$ is the unique global attractor with basin of attraction $B = X$.
+- **Minimal Hypotheses:** A1, A4, unique minimum $s^*$ of $\Phi$, $s^*$ reachable from all $x \in X$ under $g$.
+- **Dependencies:** Theorem 3.1.
+- **Runtime Significance:** Identifies optimal strategies that globally converge to the unique optimum.
+- **Status:** `Proven`
 
 ### Corollary 4.2 (Absorbing Fixed-Point Trap)
-**Hypotheses:** $s^*$ is an absorbing state of $T$ and $g$ is $T$-compatible.  
-**Thesis:** $s^*$ is a fixed point of $g$, and no trajectory initialized at $s^*$ can leave $s^*$.
+- **Minimal Hypotheses:** $s^*$ absorbing state of $T$, $g$ is $T$-compatible.
+- **Dependencies:** Lemma 2.2.
+- **Runtime Significance:** Ensures observers correctly identify dead-end states as stationary traps.
+- **Status:** `Proven`
 
 ---
 
 ## 5. Observation Sufficiency Theory (Bridge to Volume I)
 
-Parallel to Volume I's **Representational Sufficiency** ($\pi : X \to \bar{X}$ preserving optimal decisions), we establish **Observation Sufficiency** ($\sigma : \text{Trace}(X) \to Y$ preserving dynamic classification).
-
 ### Definition 5.1 (Observation Sufficiency)
-An observation mapping $\sigma : \text{ExecutionTrace}(X) \to Y$ is **sufficient** for a dynamic classifier $P : \text{ExecutionTrace}(X) \to \{\text{True}, \text{False}\}$ if there exists a reduced classifier $P^* : Y \to \{\text{True}, \text{False}\}$ such that:
-$$P(\tau) = P^*(\sigma(\tau)) \quad \forall \tau \in \text{ExecutionTrace}(X)$$
+An observation mapping $\sigma : \text{ExecutionTrace}(X) \to Y$ is **sufficient** for a dynamic classifier $P : \text{ExecutionTrace}(X) \to \{\text{True}, \text{False}\}$ if there exists a reduced classifier $P^* : Y \to \{\text{True}, \text{False}\}$ such that $P(\tau) = P^*(\sigma(\tau))$ for all $\tau$.
 
 ### Definition 5.2 (Information Preorder over Observables)
-For two observables $\sigma_1 : \text{Trace}(X) \to Y_1$ and $\sigma_2 : \text{Trace}(X) \to Y_2$, we say $\sigma_1 \le_{\text{info}} \sigma_2$ ($\sigma_1$ is a refinement/coarser observation of $\sigma_2$) if there exists a factorizing map $h : Y_2 \to Y_1$ such that:
-$$\sigma_1 = h \circ \sigma_2$$
+For two observables $\sigma_1 : \text{Trace}(X) \to Y_1$ and $\sigma_2 : \text{Trace}(X) \to Y_2$, we say $\sigma_1 \le_{\text{info}} \sigma_2$ ($\sigma_1$ is a coarser observation than $\sigma_2$) if there exists a factorizing map $h : Y_2 \to Y_1$ such that $\sigma_1 = h \circ \sigma_2$.
 
-This directly mirrors the **Factorization Theorem of Volume I** ($\pi_1 = h \circ \pi_2$).
+*Symmetry with Volume I:* Mirrors the Factorization Theorem of Volume I ($\pi_1 = h \circ \pi_2$).
 
 ---
 
 ## 6. Open Conjectures & Research Program
 
 ### Conjecture 6.1 (Minimal Observation Sufficiency for Oscillation)
-*Conjecture:* The observation mapping $\sigma_{\text{cycle}}(\tau) = (\text{lastRepeatedState}(\tau), \text{cycleLength}(\tau))$ is minimal (up to information isomorphism $\cong_{\text{info}}$) among all sufficient observables for the oscillation classifier $P_{\text{osc}}$.
+- **Status:** `Open Conjecture`
+- **Goal:** Prove that $\sigma_{\text{cycle}}(\tau) = (\text{lastRepeatedState}(\tau), \text{cycleLength}(\tau))$ is minimal (up to $\cong_{\text{info}}$) among all sufficient observables for oscillation classification.
 
 ### Conjecture 6.2 (Attractor Basin Partitioning)
-*Conjecture:* In any finite transition system $T$, the union of all basins of attraction $\bigcup_i B(A_i)$ forms a dense cover of $X \setminus \text{DivergentStates}$.
+- **Status:** `Open Conjecture`
+- **Goal:** Prove that in any finite transition system $T$, the union of all basins of attraction $\bigcup_i B(A_i)$ forms a dense cover of $X \setminus \text{DivergentStates}$.
 
 ### Conjecture 6.3 (Representational-Dynamic Duality Theorem)
-*Conjecture:* An $M_D$-preserving representational contraction $\pi : X \to \bar{X}$ (Volume I) preserves the dynamic behavior class (Convergent, Oscillatory, Chaotic) of trajectories under $g$.
+- **Status:** `Open Conjecture`
+- **Goal:** Prove that an $M_D$-preserving representational contraction $\pi : X \to \bar{X}$ (Volume I) preserves the dynamic behavior class (Convergent, Oscillatory, Chaotic) of trajectories under $g$.
