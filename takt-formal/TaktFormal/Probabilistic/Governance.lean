@@ -1,11 +1,11 @@
-/--
+import TaktFormal.Probabilistic.SoftDetector
+import TaktFormal.ApproximateGovernance
+
+/-!
 Module: TaktFormal.Probabilistic.Governance
 Depends on: TaktFormal.Probabilistic.SoftDetector, TaktFormal.ApproximateGovernance
 Exports: ProbabilisticGovernance, confidence_monotonicity
 -/
-
-import TaktFormal.Probabilistic.SoftDetector
-import TaktFormal.ApproximateGovernance
 
 namespace TaktFormal
 namespace Probabilistic

@@ -1,10 +1,10 @@
-/--
+import TaktFormal.DetectorEvolution
+
+/-!
 Module: TaktFormal.Probabilistic.SoftDetector
 Depends on: TaktFormal.DetectorEvolution
 Exports: SoftDetector, stochastic_margin
 -/
-
-import TaktFormal.DetectorEvolution
 
 namespace TaktFormal
 namespace Probabilistic
