@@ -34,4 +34,17 @@ theorem prefix_sufficiency_monotonicity (sys : DeterministicSystem X) (P : State
   Information.sufficiency_monotonicity (prefix_observer sys K) (prefix_observer sys (K + 1))
     (P ∘ generated_trajectory sys) (prefix_observer_monotonicity sys K) h_suff
 
+/-- Theorem of Temporal Observation Termination:
+    In any system where a sufficient observation horizon exists, there exists a minimal stopping
+    threshold K_star such that all subsequent observations K ≥ K_star remain fully sufficient. -/
+theorem temporal_observation_termination
+    (sys : DeterministicSystem X) (P : StateStream X → Y)
+    (h_sufficient_exists : ∃ K : Nat, IsPrefixSufficient sys P K) :
+    ∃ K_star : Nat, IsPrefixSufficient sys P K_star ∧ ∀ K : Nat, K ≥ K_star → IsPrefixSufficient sys P K := by
+  rcases h_sufficient_exists with ⟨K_star, h_K_star⟩
+  refine ⟨K_star, h_K_star, λ K h_ge => ?_⟩
+  induction h_ge with
+  | refl => exact h_K_star
+  | step _ ih => exact prefix_sufficiency_monotonicity sys P _ ih
+
 end Temporal
