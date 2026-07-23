@@ -2,7 +2,7 @@ import TaktFormal.Information.Sufficiency
 
 namespace Information
 
-variable {X Y Z Z1 Z2 Z3 : Type}
+variable {X Y Z Z0 Z1 Z2 Z3 : Type}
 
 /-- Information Equivalence (f1 ~_info f2): Transformations f1 and f2 carry
     equivalent informative content if f1 ≤_info f2 and f2 ≤_info f1. -/
@@ -61,5 +61,28 @@ theorem product_is_information_join (f1 : X → Z1) (f2 : X → Z2) (g : X → Z
   rcases h1 with ⟨h1_map, h1_eq⟩
   rcases h2 with ⟨h2_map, h2_eq⟩
   exact ⟨λ z3 => (h1_map z3, h2_map z3), λ x => by dsimp [ProductTransformation]; rw [h1_eq x, h2_eq x]⟩
+
+/-- Top Element of Information Preorder: Identity transformation carries maximum information (f ≤_info id). -/
+theorem info_top (f : X → Z) : RefinesInfo f (id : X → X) :=
+  ⟨f, λ _ => rfl⟩
+
+/-- Bottom Element of Information Preorder: Constant transformation carries minimum information (const ≤_info f). -/
+theorem info_bottom (f : X → Z) (c : Z0) : RefinesInfo (λ (_ : X) => c) f :=
+  ⟨λ _ => c, λ _ => rfl⟩
+
+/-- Join Commutativity up to Information Equivalence: (f1 × f2) ~_info (f2 × f1). -/
+theorem join_comm (f1 : X → Z1) (f2 : X → Z2) :
+    EquivInfo (ProductTransformation f1 f2) (ProductTransformation f2 f1) := by
+  constructor
+  · exact ⟨λ p => (p.2, p.1), λ _ => rfl⟩
+  · exact ⟨λ p => (p.2, p.1), λ _ => rfl⟩
+
+/-- Join Associativity up to Information Equivalence: ((f1 × f2) × f3) ~_info (f1 × (f2 × f3)). -/
+theorem join_assoc (f1 : X → Z1) (f2 : X → Z2) (f3 : X → Z3) :
+    EquivInfo (ProductTransformation (ProductTransformation f1 f2) f3)
+              (ProductTransformation f1 (ProductTransformation f2 f3)) := by
+  constructor
+  · exact ⟨λ p => ((p.1, p.2.1), p.2.2), λ _ => rfl⟩
+  · exact ⟨λ p => (p.1.1, (p.1.2, p.2)), λ _ => rfl⟩
 
 end Information
