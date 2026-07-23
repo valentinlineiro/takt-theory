@@ -1,11 +1,11 @@
-/--
+import TaktFormal.DetectorEvolution
+import TaktFormal.CostOptimization
+
+/-!
 Module: TaktFormal.Complexity.Problems
 Depends on: TaktFormal.DetectorEvolution, TaktFormal.CostOptimization
 Exports: DetReachProblem, OptEvsiPathProblem, MinEnrichProblem
 -/
-
-import TaktFormal.DetectorEvolution
-import TaktFormal.CostOptimization
 
 namespace TaktFormal
 namespace Complexity
