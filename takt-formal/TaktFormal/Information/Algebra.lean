@@ -43,6 +43,21 @@ theorem minimal_sufficiency_uniqueness (f1 : X → Z1) (f2 : X → Z2) (P : X �
     (h1 : IsMinimalSufficient f1 P) (h2 : IsMinimalSufficient f2 P) : EquivInfo f1 f2 :=
   ⟨h1.2 Z2 f2 h2.1, h2.2 Z1 f1 h1.1⟩
 
+/-- Structural Duality Theorem: Monotonicity of Minimal Sufficiency under Property Refinement.
+    If property P1 is refined by P2 (P1 ≤_info P2), then the minimal sufficient transformation
+    f1* for P1 is refined by the minimal sufficient transformation f2* for P2 (f1* ≤_info f2*). -/
+theorem minimal_sufficiency_property_monotonicity {Y1 Y2 : Type}
+    (P1 : X → Y1) (P2 : X → Y2) (f1_star : X → Z1) (f2_star : X → Z2)
+    (h_prop_ref : RefinesInfo P1 P2)
+    (h1_min : IsMinimalSufficient f1_star P1)
+    (h2_min : IsMinimalSufficient f2_star P2) :
+    RefinesInfo f1_star f2_star := by
+  rcases h_prop_ref with ⟨h_prop, h_prop_eq⟩
+  rcases h2_min.1 with ⟨h2_map, h2_eq⟩
+  have h_suff_f2_P1 : IsSufficient f2_star P1 :=
+    ⟨λ z2 => h_prop (h2_map z2), λ x => by rw [h_prop_eq x, h2_eq x]⟩
+  exact h1_min.2 Z2 f2_star h_suff_f2_P1
+
 /-- Product transformation bounds f1 from above in information preorder: f1 ≤_info (f1 × f2). -/
 theorem product_refines_left (f1 : X → Z1) (f2 : X → Z2) :
     RefinesInfo f1 (ProductTransformation f1 f2) :=
