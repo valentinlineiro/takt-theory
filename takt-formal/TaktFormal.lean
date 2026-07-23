@@ -67,6 +67,8 @@ import TaktFormal.Convergence.Stability
 import TaktFormal.Information.Sufficiency
 import TaktFormal.Information.Algebra
 import TaktFormal.Information.Category
+import TaktFormal.Information.StationaryEmbedding
+
 
 
 
