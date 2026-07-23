@@ -12,6 +12,7 @@
 
 - Must compile cleanly with `cd takt-formal && lake build` with 0 `sorry`s and 0 errors.
 - Follow existing TAKT Lean 4 conventions (`namespace TaktFormal`).
+- **Header Documentation Rule:** Every module in `Metatheory/` MUST include an explicit top-level module docstring stating `Module`, `Depends on`, and `Exports`.
 
 ---
 
@@ -21,12 +22,18 @@
 - Create: `takt-formal/TaktFormal/Metatheory/Conservativity.lean`
 
 **Interfaces:**
-- Consumes: `TaktFormal.StructuralSufficiency`, `TaktFormal.ApproximateGovernance`, `TaktFormal.GovernanceGeometry`
+- Consumes: `TaktFormal.StructuralSufficiency`, `TaktFormal.GovernanceGeometry`, `TaktFormal.ApproximateGovernance`
 - Produces: `TaktFormal.Metatheory.Conservativity` (`TheoryEmbedding`, `theory_embedding_conservative`, `collapse_to_structural_sufficiency`)
 
 - [ ] **Step 1: Create `Conservativity.lean` with Lean 4 embedding definition and theorems**
 
 ```lean
+/--
+Module: TaktFormal.Metatheory.Conservativity
+Depends on: TaktFormal.StructuralSufficiency, TaktFormal.GovernanceGeometry, TaktFormal.ApproximateGovernance
+Exports: CoreSufficiency, GovernedState, embedding_iota, theory_embedding_conservative, collapse_to_structural_sufficiency
+-/
+
 import TaktFormal.StructuralSufficiency
 import TaktFormal.GovernanceGeometry
 import TaktFormal.ApproximateGovernance
@@ -96,6 +103,12 @@ git commit -m "feat(formal): add Metatheory/Conservativity.lean proving conserva
 - [ ] **Step 1: Create `Independence.lean` with counterexample models**
 
 ```lean
+/--
+Module: TaktFormal.Metatheory.Independence
+Depends on: TaktFormal.DetectorEvolution, TaktFormal.GovernanceGeometry, TaktFormal.EnrichmentAlgebra
+Exports: Axiom1_Reachability, Axiom2_DistanceMonotonicity, Axiom3_MonoidHomomorphism, model1_independence, model2_independence, model3_independence
+-/
+
 import TaktFormal.DetectorEvolution
 import TaktFormal.GovernanceGeometry
 import TaktFormal.EnrichmentAlgebra
@@ -197,6 +210,12 @@ git commit -m "feat(formal): add Metatheory/Independence.lean proving independen
 - [ ] **Step 1: Create `Minimality.lean` with derived theorems from A_min**
 
 ```lean
+/--
+Module: TaktFormal.Metatheory.Minimality
+Depends on: TaktFormal.CostOptimization, TaktFormal.ApproximateGovernance
+Exports: MinimalBasis, rational_stopping_derived, regret_bound_derived
+-/
+
 import TaktFormal.CostOptimization
 import TaktFormal.ApproximateGovernance
 
@@ -259,6 +278,12 @@ git commit -m "feat(formal): add Metatheory/Minimality.lean deriving EVSI stoppi
 - [ ] **Step 1: Create `Redundancy.lean` proving functional generation**
 
 ```lean
+/--
+Module: TaktFormal.Metatheory.Redundancy
+Depends on: TaktFormal.GovernanceGeometry, TaktFormal.DecisionMargin
+Exports: DualDistance, project_delta, project_margin, dual_distance_functional_generation
+-/
+
 import TaktFormal.GovernanceGeometry
 import TaktFormal.DecisionMargin
 
@@ -305,7 +330,7 @@ git commit -m "feat(formal): add Metatheory/Redundancy.lean proving functional m
 
 **Files:**
 - Create: `takt-formal/TaktFormal/Metatheory.lean`
-- Modify: `takt-formal/TaktFormal.lean:82`
+- Modify: `takt-formal/TaktFormal.lean`
 
 **Interfaces:**
 - Consumes: `TaktFormal.Metatheory.Conservativity`, `TaktFormal.Metatheory.Independence`, `TaktFormal.Metatheory.Minimality`, `TaktFormal.Metatheory.Redundancy`
@@ -314,6 +339,12 @@ git commit -m "feat(formal): add Metatheory/Redundancy.lean proving functional m
 - [ ] **Step 1: Create `Metatheory.lean` re-export module**
 
 ```lean
+/--
+Module: TaktFormal.Metatheory
+Depends on: TaktFormal.Metatheory.Conservativity, TaktFormal.Metatheory.Independence, TaktFormal.Metatheory.Minimality, TaktFormal.Metatheory.Redundancy
+Exports: Re-exports all Phase V-A Metatheory modules
+-/
+
 import TaktFormal.Metatheory.Conservativity
 import TaktFormal.Metatheory.Independence
 import TaktFormal.Metatheory.Minimality
