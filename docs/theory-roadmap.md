@@ -207,6 +207,17 @@ Establishes canonical category-theoretic unification across 5 sub-modules:
 
 **Status:** Complete — formalized and verified in Lean 4 (202 jobs verified cleanly with 0 `sorry`s). Re-exported via `TaktFormal.Categorical`.
 
+**Phase V-D: Computational Complexity Theory** (Complete - Formalized & Mechanized in Lean 4)
+
+Formalizes decision problems, decidability, algorithmic reductions, FPT tractability, and online stream complexity across 5 sub-modules:
+1. **Formal Problems (`Complexity/Problems.lean`):** `DET-REACH`, `OPT-EVSI-PATH`, `GOV-VERIFY`, `MIN-ENRICH`.
+2. **Decidability (`Complexity/Decidability.lean`):** Decidability in finite models vs semi-decidability in infinite spaces.
+3. **Reductions & Hardness (`Complexity/Reductions.lean`):** Polynomial NP verifier check and DAG topological DP bounds.
+4. **Parameterized Complexity (`Complexity/Parameterized.lean`):** Fixed-Parameter Tractable (FPT) $O(2^k \cdot |\mathcal{E}|)$ bound by kernel dimension $k$.
+5. **Runtime Complexity (`Complexity/Runtime.lean`):** Amortized $O(1)$ verification bound for online event streams.
+
+**Status:** Complete — formalized and verified in Lean 4 (214 jobs verified cleanly with 0 `sorry`s). Re-exported via `TaktFormal.Complexity`.
+
 ---
 
 ## The full chain
