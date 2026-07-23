@@ -58,6 +58,27 @@ theorem minimal_sufficiency_property_monotonicity {Y1 Y2 : Type}
     ⟨λ z2 => h_prop (h2_map z2), λ x => by rw [h_prop_eq x, h2_eq x]⟩
   exact h1_min.2 Z2 f2_star h_suff_f2_P1
 
+/-- Theorem: Any transformation f is minimal sufficient for its own canonical self-property f. -/
+theorem self_property_is_minimal_sufficient (f : X → Z) : IsMinimalSufficient f f := by
+  constructor
+  · exact ⟨id, λ _ => rfl⟩
+  · intro Z_other f_other ⟨h, h_eq⟩
+    exact ⟨h, h_eq⟩
+
+/-- Complete Galois Connection Theorem between Property Refinement and Information Preorder:
+    For a minimal sufficient transformation f_star for property P,
+    f_star refines f (f_star ≤_info f) if and only if P refines f (P ≤_info f). -/
+theorem galois_connection_property_information (P : X → Y) (f_star : X → Z1) (f : X → Z2)
+    (h_min : IsMinimalSufficient f_star P) :
+    RefinesInfo f_star f ↔ RefinesInfo P f := by
+  constructor
+  · intro h_ref
+    rcases h_min.1 with ⟨h_suff, h_suff_eq⟩
+    rcases h_ref with ⟨h_map, h_ref_eq⟩
+    exact ⟨λ z2 => h_suff (h_map z2), λ x => by rw [h_suff_eq x, h_ref_eq x]⟩
+  · intro h_ref_P
+    exact h_min.2 Z2 f h_ref_P
+
 /-- Universal Adjunction Equivalence Theorem for Minimal Sufficiency:
     For a minimal sufficient transformation f_star for property P,
     f_star refines f (f_star ≤_info f) if and only if f is sufficient for P. -/
