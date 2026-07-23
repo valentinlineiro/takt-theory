@@ -64,6 +64,8 @@ import TaktFormal.Landscape.SearchProblem
 import TaktFormal.Convergence.InfiniteTrajectory
 import TaktFormal.Convergence.DynamicBehavior
 import TaktFormal.Convergence.Stability
+import TaktFormal.Information.Sufficiency
+
 
 
 
