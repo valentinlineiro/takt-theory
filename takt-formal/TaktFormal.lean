@@ -68,6 +68,8 @@ import TaktFormal.Information.Sufficiency
 import TaktFormal.Information.Algebra
 import TaktFormal.Information.Category
 import TaktFormal.Information.StationaryEmbedding
+import TaktFormal.Temporal.FiniteDynamics
+
 
 
 
