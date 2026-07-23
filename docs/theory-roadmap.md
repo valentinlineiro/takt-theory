@@ -167,6 +167,16 @@ Establishes the complete formal theory of transition from executable detectors $
 
 ---
 
+## Phase V — Extensions & Metatheory (Volume V)
+
+**Phase V-0: Extension Roadmap** (Complete)
+
+Defines the research architecture contract and dependency matrix for the 5 extension tracks (Metatheory, System Composition, Categorical Unification, Computational Complexity, Probabilistic Governance).
+
+See [extension-roadmap.md](file:///home/valentin/code/takt-theory/docs/extension-roadmap.md) for the full Volume V specification.
+
+---
+
 ## The full chain
 
 ```
