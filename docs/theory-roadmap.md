@@ -218,6 +218,19 @@ Formalizes decision problems, decidability, algorithmic reductions, FPT tractabi
 
 **Status:** Complete — formalized and verified in Lean 4 (214 jobs verified cleanly with 0 `sorry`s). Re-exported via `TaktFormal.Complexity`.
 
+**Phase V-E: Probabilistic Governance** (Complete - Formalized & Mechanized in Lean 4)
+
+Establishes probabilistic governance and deterministic conservativity collapse across 5 sub-modules:
+1. **Soft Detectors (`Probabilistic/SoftDetector.lean`):** Soft detectors $D: \tau \to [0,1]$ and stochastic dynamic margin $M_D^\mathbb{P}$.
+2. **Governance (`Probabilistic/Governance.lean`):** $(\epsilon, \alpha)$-Confidence Governance predicate and confidence monotonicity.
+3. **Stochastic EVSI (`Probabilistic/StochasticEVSI.lean`):** Expected EVSI reduction and stochastic rational stopping theorem.
+4. **Probability Monad (`Probabilistic/Monad.lean`):** Probability monad $\mathcal{T}_{\mathbb{P}}$ on $\mathbf{GovDet}$ and monad unit law.
+5. **Conservativity (`Probabilistic/Conservativity.lean`):** Deterministic collapse theorem ($P(\tau) = \delta_{\tau_0} \implies \text{Core I–V-D}$).
+
+**Status:** Complete — formalized and verified in Lean 4 (226 jobs verified cleanly with 0 `sorry`s). Re-exported via `TaktFormal.Probabilistic`.
+
+> **VOLUME V STATUS:** Complete. All 5 extension tracks (Metatheory, System Composition, Categorical Unification, Computational Complexity, Probabilistic Governance) are fully formalized and mechanized in Lean 4.
+
 ---
 
 ## The full chain
