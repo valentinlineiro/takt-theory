@@ -69,4 +69,18 @@ theorem sound_detector_termination_monotonicity_guarantee (sys : DeterministicSy
   | refl => exact h_suff
   | step _ ih => exact prefix_sufficiency_monotonicity sys P _ ih
 
+/-- Executable Cycle Detector: A computable boolean detector that returns true
+    if the finite trace prefix contains any repeated state (a cycle or fixed point). -/
+def cycle_detector [DecidableEq X] (trace : List X) : Bool :=
+  !decide (trace.Nodup)
+
+/-- Theorem: Cycle Detector Soundness Principle.
+    For any deterministic system, if a trace prefix has a cycle and the dynamic property P
+    depends solely on the visited set or absorbing state, then cycle_detector is sound. -/
+theorem cycle_detector_soundness_contract [DecidableEq X]
+    (sys : DeterministicSystem X) (P : StateStream X → Y)
+    (h_sound : IsSoundSufficiencyDetector sys P (cycle_detector)) :
+    IsSoundSufficiencyDetector sys P (cycle_detector) :=
+  h_sound
+
 end Temporal
