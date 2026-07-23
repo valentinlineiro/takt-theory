@@ -58,6 +58,18 @@ theorem minimal_sufficiency_property_monotonicity {Y1 Y2 : Type}
     ⟨λ z2 => h_prop (h2_map z2), λ x => by rw [h_prop_eq x, h2_eq x]⟩
   exact h1_min.2 Z2 f2_star h_suff_f2_P1
 
+/-- Universal Adjunction Equivalence Theorem for Minimal Sufficiency:
+    For a minimal sufficient transformation f_star for property P,
+    f_star refines f (f_star ≤_info f) if and only if f is sufficient for P. -/
+theorem minimal_sufficiency_adjunction_equivalence (P : X → Y) (f_star : X → Z1) (f : X → Z2)
+    (h_min : IsMinimalSufficient f_star P) :
+    RefinesInfo f_star f ↔ IsSufficient f P := by
+  constructor
+  · intro h_ref
+    exact sufficiency_monotonicity f_star f P h_ref h_min.1
+  · intro h_suff
+    exact h_min.2 Z2 f h_suff
+
 /-- Product transformation bounds f1 from above in information preorder: f1 ≤_info (f1 × f2). -/
 theorem product_refines_left (f1 : X → Z1) (f2 : X → Z2) :
     RefinesInfo f1 (ProductTransformation f1 f2) :=
