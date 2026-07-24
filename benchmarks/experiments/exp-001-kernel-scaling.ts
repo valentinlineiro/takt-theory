@@ -6,6 +6,7 @@ import { NaiveRunner } from '../baselines/NaiveRunner.js';
 import { StaticRulesRunner } from '../baselines/StaticRulesRunner.js';
 import { ExhaustiveRunner } from '../baselines/ExhaustiveRunner.js';
 import { POMDPRunner } from '../baselines/POMDPRunner.js';
+import { OvercompressedRunner } from '../baselines/OvercompressedRunner.js';
 import { TaktRunner } from '../takt/TaktRunner.js';
 import type { ScenarioConfig, BenchmarkRunner } from '../interface/BenchmarkRunner.js';
 
@@ -13,7 +14,7 @@ function getGitCommit(): string {
   try {
     return execSync('git rev-parse --short HEAD', { encoding: 'utf-8' }).trim();
   } catch {
-    return 'c580608';
+    return 'b78186e';
   }
 }
 
@@ -34,6 +35,7 @@ export async function runExperiment001(seed = 42): Promise<ExperimentDataset> {
   const runners: BenchmarkRunner[] = [
     new NaiveRunner(),
     new StaticRulesRunner(),
+    new OvercompressedRunner(),
     new ExhaustiveRunner(),
     new POMDPRunner(),
     new TaktRunner()
@@ -58,11 +60,14 @@ export async function runExperiment001(seed = 42): Promise<ExperimentDataset> {
     });
   }
 
+  const protocolPath = 'benchmarks/protocols/exp-001-protocol.md';
+  const commitHash = getGitCommit();
+
   return DatasetWriter.createDataset(
     'EXP-001',
-    'benchmarks/protocols/exp-001-protocol.md',
+    protocolPath,
     config,
-    getGitCommit(),
+    commitHash,
     results
   );
 }
