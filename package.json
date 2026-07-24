@@ -1,0 +1,9 @@
+{
+  "name": "takt-theory",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "bench": "npx tsx benchmarks/cli.ts"
+  }
+}
