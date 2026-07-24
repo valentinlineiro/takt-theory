@@ -1,16 +1,26 @@
-# Auditoría Metodológica Externa Independiente (Julio 2026)
+# Auditoría Metodológica Externa Independiente (Julio 2026) — REV-001
 
 **Fecha de Evaluación:** 2026-07-24  
-**Evaluador:** Auditor Independiente (Modelo / Evaluador de Red-Teaming Metodológico)  
-**Alcance:** Repositorio público `valentinlineiro/takt-theory` (sin asunción de buena fe ni contexto previo).  
-**Estado:** Incorporado como Artefacto del Programa de Investigación (Serie T / Matriz de Seguimiento).
+**Evaluador:** Modelo de IA actuando como revisor independiente basado en la documentación pública del repositorio.  
+**Alcance y Clarificación de Evidencia:**  
+> *Esta revisión fue realizada por un modelo de IA actuando como revisor independiente a partir de la documentación pública del repositorio. No constituye una revisión por pares (peer review por expertos del área) ni una replicación independiente (ejecución empírica por un tercero). Constituye una revisión externa inicial de consistencia metodológica y completitud de evidencia.*
 
 ---
 
-## 1. Informe de Evaluación Recibido (Texto Íntegro)
+## 1. Tipología de Evidencia del Programa TAKT
+
+Para evitar ambigüedades terminológicas, el marco TAKT distingue formalmente tres niveles de evaluación externa:
+
+1. **Revisión Externa Metodológica (ej. REV-001):** Análisis crítico de consistencia y amenazas por un evaluador ajeno al desarrollo.
+2. **Revisión por Pares (Peer Review):** Evaluación formal por pares académicos/expertos del área previa a publicación.
+3. **Replicación Independiente (Serie T):** Ejecución empírica del protocolo y código por un tercero en un dominio nuevo.
+
+---
+
+## 2. Informe de Evaluación Recibido (Texto Íntegro del Revisor)
 
 > ### Resumen Ejecutivo
-> TAKT es una teoría axiomática sobre representaciones que preservan decisiones bajo compresión o abstracción del espacio de estados. El proyecto muestra una madurez metodológica inusualmente alta (declaración explícita de claims y falsación en `CLAIMS.md`, historial no borrable en `VALIDITY-LOG.md`, formalización en Lean 4, sweep estadístico de 1,000 semillas). Sin embargo, existen debilidades estructurales que impiden que las afirmaciones más fuertes estén plenamente justificadas por la evidencia disponible en el repositorio.
+> TAKT es una teoría axiomática sobre representaciones que preservan decisiones bajo compresión o abstracción del espacio de estados. El proyecto muestra una madurez metodológica inusualmente alta (declaración explícita de claims y falsación en `CLAIMS.md`, historial no borrable en `VALIDITY-LOG.md`, formalización en Lean 4, sweep estadístico de 1,000 semillas). Sin embargo, existen debilidades estructurales que impiden que las afirmaciones más fuertes estén plenamente justified por la evidencia disponible en el repositorio.
 >
 > ### Fortalezas Identificadas
 > 1. Declaración explícita de condiciones de falsación (`CLAIMS.md`).
@@ -22,22 +32,19 @@
 
 ---
 
-## 2. Matriz de Seguimiento y Acción Metodológica
+## 3. Matriz de Seguimiento y Acción Metodológica (REV-001)
 
-El programa de investigación TAKT no intenta rebatir defensivamente las observaciones del evaluador, sino que las asimila directamente como dataset empírico para guiar la Serie R y la Serie T:
-
-| ID | Área Auditada | Tipo de Crítica | Clasificación | Plan de Acción / Estado |
-| :--- | :--- | :--- | :--- | :--- |
-| **REV-001** | Runtime TS | Validez de Constructo | **Aceptada** | Reconocimiento de la autoreferencialidad del runtime del autor. Motiva la ejecución prioritaria de la Serie T. |
-| **REV-002** | Replicación | Validez Externa | **Aceptada** | La infraestructura de replicación existe, pero falta el resultado independiente. Direccionado vía **T-001**. |
-| **REV-003** | Formalización Lean 4 | Validez de Conclusión | **Aceptada** | La ausencia de `sorry` es verificable mecánicamente, pero la correspondencia entre enunciados informales y lemas Lean requiere auditoría humana externa antes de publicación formal. |
-| **REV-004** | Escalabilidad $K_D$ | Validez Externa / Complejidad | **Aceptada** | Falta exploración cuantitativa del cómputo de $K_D$ para $|S| \in [10^2, 10^6]$. Se añade como benchmark a la Serie R. |
-| **REV-005** | Dominios STRIPS/Paxos | Validez Externa | **Aceptada con Matices** | Distinción formal: *Independencia del Dominio* (lograda) vs *Independencia del Implementador* (pendiente en T-001). |
-| **REV-006** | Parámetro $\theta_{crit}$ | Conocimiento Tácito | **Pendiente de Verificar** | Auditar la documentación operativa del `REPLICATION_KIT` para garantizar que la estimación de $\theta_{crit}$ sea derivable sin heurísticas orales del autor. |
+| ID | Observación Original del Revisor | Evaluación del Programa | Acción Prevista |
+| :--- | :--- | :--- | :--- |
+| **REV-001** | *"La suite de tests es autoreferencial por diseño. Un test que pasa demuestra que el runtime implementa la teoría como el autor la entiende, no que sea correcta."* | **Aceptada** | Reconocimiento de la autoreferencialidad del runtime del autor. Motiva la ejecución prioritaria de la Serie T. |
+| **REV-002** | *"Ausencia de replicación independiente real. La campaña R1 con 3-5 replicadores externos está planificada pero no ejecutada."* | **Aceptada** | Confirmación de falta de evidencia externa. Se bloquean nuevas revisiones teóricas hasta ejecutar **T-001**. |
+| **REV-003** | *"Los Lean 4 proofs necesitan auditoría independiente. La ausencia de sorry es verificable mecánicamente, pero la correspondencia con teoremas informales requiere revisión humana."* | **Aceptada** | Requisito explícito de auditoría humana experta previa a publicación académica formal. |
+| **REV-004** | *"Escalado no verificado. El cálculo de $K_D$ puede tener complejidad computacional prohibitiva en espacios realistas."* | **Aceptada** | Añadir benchmark de complejidad cuantitativa para $|S| \in [10^2, 10^6]$ en la Serie R. |
+| **REV-005** | *"Los dominios exógenos STRIPS y Paxos son reimplementaciones sintéticas dentro del mismo framework TypeScript."* | **Aceptada con Matices** | Distinción formal: *Independencia del Dominio* (lograda) vs *Independencia del Implementador* (pendiente en T-001). |
+| **REV-006** | *"Posible fuga de conocimiento tácito en la interpretación y calibración de $\theta_{crit}$."* | **Pendiente de Verificar** | Auditar la documentación operativa del `REPLICATION_KIT` para garantizar que la estimación de $\theta_{crit}$ sea derivable sin heurísticas orales del autor. |
 
 ---
 
-## 3. Síntesis Epistemológica
+## 4. Regla de Gobernanza de Revisiones
 
-1. **Ausencia de Refutación Lógica:** La auditoría externa no halló contraejemplos matemáticos ni fallos lógicos en los teoremas formales; la superficie crítica se concentró en la metodología, la transportabilidad y la procedencia de la evidencia.
-2. **Priorización Confirmada:** El informe valida la decisión de detener el desarrollo activo de nuevas características y congelar el protocolo v1.2/R2 para concentrar los esfuerzos en la prueba independiente **T-001**.
+> **Regla de Bloqueo REV:** Queda prohibido abrir una nueva auditoría metodológica (REV-002) hasta que se haya completado y registrado la primera réplica independiente de la Serie T (**T-001**).
