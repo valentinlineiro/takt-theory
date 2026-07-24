@@ -34,8 +34,17 @@ graph TD
 
 ---
 
-## 3. Resultados de Regresión Post-Saneamiento
+## 3. Resultados de Regresión y Delimitación Metodológica
 
+> **Nota de Precisión de Muestreo:**  
+> *En esta ejecución se verificaron cinco observaciones específicas emitidas por el evaluador. Las cinco correspondían a defectos reales del repositorio. No se evaluó la tasa de falsos negativos ni puede extrapolarse este resultado a la precisión general del modelo.*
+
+### Estado del Riesgo
+* **Calidad del Paquete y Código:** Validado mediante la identificación y corrección de defectos reales.
+* **Consistencia Matemática (Lean 4 / ST-015):** Sin incidencias ni contraejemplos observados en esta corrida (226 trabajos Lean 4 compilados con 0 errores y 0 sorrys).
+
+### Regresión Ejecutada
 1. **Validación Criptográfica:** `validation-script.ts` finalizado con éxito (`ALL CRYPTOGRAPHIC DATASET HASHES VERIFIED SUCCESSFULLY`).
 2. **Compilación Lean 4:** `lake build` en `takt-formal/` completó con **0 errores y 0 sorrys** (226 empleos).
 3. **Suite Vitest:** **280/280 tests pasados** en 73 archivos.
+
