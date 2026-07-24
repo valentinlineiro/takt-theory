@@ -1,0 +1,6 @@
+# TAKT v1.1 Official Canonical SHA-256 Dataset Hashes
+# Protocol Baseline: R1 Independent Replication (Seed 42)
+
+79990b58c83cb9d912d663cbe94b384261e34048c7424687f7990ee86843b508  EXP-003-seed-42.json
+3fb7c613476af1f0dcfaf6e69815ca711b6ca423017fe3e26d3e430947e9eba9  EXP-001-seed-42.json
+40cfbc3250dac2d53acda7343d70ad1cbfc986ab6b320866bf492e536f7cd3fa  EXP-001-boundary-meta-audit-seed-42.json

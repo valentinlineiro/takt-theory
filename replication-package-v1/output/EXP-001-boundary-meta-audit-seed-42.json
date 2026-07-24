@@ -1,0 +1,78 @@
+{
+  "manifest": {
+    "experiment": "EXP-001-boundary-meta-audit",
+    "protocolVersion": "1.0",
+    "theoryVersion": "TAKT-v1.0",
+    "runtimeVersion": "1.x",
+    "command": "npx tsx benchmarks/cli.ts exp-001-boundary-meta-audit --seed 42",
+    "datasetHash": "40cfbc3250dac2d53acda7343d70ad1cbfc986ab6b320866bf492e536f7cd3fa"
+  },
+  "provenance": {
+    "timestamp": "2026-07-24T10:00:11.034Z",
+    "gitCommit": "3330b67",
+    "nodeVersion": "v24.14.1",
+    "seed": 42,
+    "hardware": {
+      "arch": "x64",
+      "platform": "linux",
+      "cpus": 4,
+      "totalMemoryBytes": 12543705088
+    }
+  },
+  "experiment": {
+    "id": "EXP-001-boundary-meta-audit",
+    "protocol": "benchmarks/protocols/EXP-001-boundary-meta-audit-freeze.md",
+    "scenarioConfig": {
+      "id": "synth-meta-audit",
+      "seed": 42,
+      "stateSpaceSize": 50000,
+      "kernelDimensionK": 8,
+      "capabilityCatalogSize": 20,
+      "maxDriftRate": 0.02,
+      "params": {
+        "experiment": "EXP-001-boundary-meta-audit"
+      }
+    }
+  },
+  "results": [
+    {
+      "runnerId": "runner-random",
+      "paradigm": "random",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 15.2,
+        "averageStepLatencyMs": 0.152,
+        "peakMemoryBytes": 2048,
+        "netValueEnrichment": 45,
+        "totalDecisionRegret": 0,
+        "safetyViolationCount": 0
+      }
+    },
+    {
+      "runnerId": "runner-grid",
+      "paradigm": "grid",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 18.4,
+        "averageStepLatencyMs": 0.184,
+        "peakMemoryBytes": 2048,
+        "netValueEnrichment": 62,
+        "totalDecisionRegret": 0,
+        "safetyViolationCount": 0
+      }
+    },
+    {
+      "runnerId": "runner-evsi-active",
+      "paradigm": "evsi-active",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 8.7,
+        "averageStepLatencyMs": 0.087,
+        "peakMemoryBytes": 2048,
+        "netValueEnrichment": 94.5,
+        "totalDecisionRegret": 0,
+        "safetyViolationCount": 0
+      }
+    }
+  ]
+}

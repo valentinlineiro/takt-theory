@@ -80,11 +80,22 @@ export class DatasetWriter {
       fs.mkdirSync(outputDirPath, { recursive: true });
     }
 
-    // Compute SHA-256 dataset hash over the content (sans hash field)
+    // Compute SHA-256 dataset hash over canonical results & scenarioConfig (excluding non-deterministic timestamp)
     const contentToHash = JSON.stringify({
-      provenance: dataset.provenance,
+      gitCommit: dataset.provenance.gitCommit,
+      seed: dataset.provenance.seed,
       experiment: dataset.experiment,
-      results: dataset.results
+      results: dataset.results.map(r => ({
+        runnerId: r.runnerId,
+        paradigm: r.paradigm,
+        metrics: {
+          totalSteps: r.metrics.totalSteps,
+          peakMemoryBytes: r.metrics.peakMemoryBytes,
+          netValueEnrichment: r.metrics.netValueEnrichment,
+          totalDecisionRegret: r.metrics.totalDecisionRegret,
+          safetyViolationCount: r.metrics.safetyViolationCount
+        }
+      }))
     });
 
     const datasetHash = crypto.createHash('sha256').update(contentToHash).digest('hex');

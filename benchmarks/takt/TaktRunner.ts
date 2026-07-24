@@ -8,8 +8,10 @@ export class TaktRunner implements BenchmarkRunner {
   private marginMD = 2;
   private maxDriftRate = 0.01;
   private currentHorizon = 0;
+  private kernelK = 4;
 
   public async reset(config: ScenarioConfig): Promise<void> {
+    this.kernelK = config.kernelDimensionK;
     this.progressMeasure = config.kernelDimensionK;
     this.marginMD = 2;
     this.maxDriftRate = config.maxDriftRate;
@@ -22,19 +24,24 @@ export class TaktRunner implements BenchmarkRunner {
     const acquired: string[] = [];
     let acquisitionCost = 0.0;
 
-    // EVSI Rational Stopping Policy: only acquire capability if EVSI(E | D*) > C_acq(E)
+    // EVSI Rational Stopping Policy: acquire capabilities when margin or horizon dictates
     if (this.progressMeasure > 0 && event.stepIndex % (this.currentHorizon + 1) === 0) {
-      // Targeted kernel acquisition
       acquired.push(`kernel_cap_${this.progressMeasure}`);
-      acquisitionCost = 0.8; // Sparse kernel acquisition cost
+      acquisitionCost = 0.8;
       this.progressMeasure = Math.max(0, this.progressMeasure - 1);
     }
+
+    // Compute decision directly from state vector representation R(S) under capability kernel K_D
+    // Evaluates decision rule without reading event.trueDecision oracle
+    const relevantFeatures = event.concreteStateVector.slice(0, Math.ceil(this.kernelK / 2));
+    const featureSum = relevantFeatures.reduce((a, b) => a + b, 0);
+    const actionChosen = featureSum >= Math.ceil(this.kernelK / 2) * 0.5 ? 1 : 0;
 
     const end = performance.now();
 
     return {
       stepIndex: event.stepIndex,
-      actionChosen: event.trueDecision, // Zero decision regret guaranteed under K_D
+      actionChosen, // Decision derived from kernel state abstraction R(S)
       observationsAcquired: acquired,
       acquisitionCostIncurred: acquisitionCost,
       latencyMs: end - start,

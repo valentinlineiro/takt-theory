@@ -1,0 +1,104 @@
+{
+  "manifest": {
+    "experiment": "EXP-004",
+    "protocolVersion": "1.0",
+    "theoryVersion": "TAKT-v1.0",
+    "runtimeVersion": "1.x",
+    "command": "npx tsx benchmarks/cli.ts exp-004 --seed 42",
+    "datasetHash": "b0dee73ebbce1c53d51554d9221182c9d78e22ff2639852431610cc6ebff5e9c"
+  },
+  "provenance": {
+    "timestamp": "2026-07-24T10:00:11.034Z",
+    "gitCommit": "15ded0c",
+    "nodeVersion": "v24.14.1",
+    "seed": 42,
+    "hardware": {
+      "arch": "x64",
+      "platform": "linux",
+      "cpus": 4,
+      "totalMemoryBytes": 12543705088
+    }
+  },
+  "experiment": {
+    "id": "EXP-004",
+    "protocol": "benchmarks/protocols/exp-004-protocol.md",
+    "scenarioConfig": {
+      "id": "synth-drift-horizon",
+      "seed": 42,
+      "stateSpaceSize": 20000,
+      "kernelDimensionK": 4,
+      "capabilityCatalogSize": 10,
+      "maxDriftRate": 0.02,
+      "params": {
+        "experiment": "EXP-004"
+      }
+    }
+  },
+  "results": [
+    {
+      "runnerId": "runner-naive",
+      "paradigm": "naive",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 0.008574999999837019,
+        "averageStepLatencyMs": 0.00008574999999837018,
+        "peakMemoryBytes": 128,
+        "netValueEnrichment": 54,
+        "totalDecisionRegret": 46,
+        "safetyViolationCount": 46
+      }
+    },
+    {
+      "runnerId": "runner-static-rules",
+      "paradigm": "static-rules",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 0.012134000000060041,
+        "averageStepLatencyMs": 0.00012134000000060042,
+        "peakMemoryBytes": 512,
+        "netValueEnrichment": -100,
+        "totalDecisionRegret": 0,
+        "safetyViolationCount": 0
+      }
+    },
+    {
+      "runnerId": "runner-exhaustive",
+      "paradigm": "exhaustive",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 100.04394300000001,
+        "averageStepLatencyMs": 1.0004394300000001,
+        "peakMemoryBytes": 4096,
+        "netValueEnrichment": -300,
+        "totalDecisionRegret": 0,
+        "safetyViolationCount": 0
+      }
+    },
+    {
+      "runnerId": "runner-pomdp",
+      "paradigm": "pomdp",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 214.8440119999999,
+        "averageStepLatencyMs": 2.148440119999999,
+        "peakMemoryBytes": 8192,
+        "netValueEnrichment": -50,
+        "totalDecisionRegret": 0,
+        "safetyViolationCount": 0
+      }
+    },
+    {
+      "runnerId": "runner-takt",
+      "paradigm": "takt",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 0.02522399999998015,
+        "averageStepLatencyMs": 0.0002522399999998015,
+        "peakMemoryBytes": 1024,
+        "netValueEnrichment": 99.2,
+        "totalDecisionRegret": 0,
+        "safetyViolationCount": 0
+      }
+    }
+  ]
+}
