@@ -10,27 +10,23 @@
 | :--- | :--- | :--- | :--- | :--- |
 | **EXP-003** | `takt` | `0` | $+99.2$ | $< 0.001 \text{ ms/step}$ |
 | **EXP-001** | `takt` | `0` | $+99.2$ | $< 0.001 \text{ ms/step}$ |
-| **Meta-Audit** | `evsi-active` | `0` | $+94.5$ | $< 0.1 \text{ ms/step}$ |
+| **Meta-Audit** | `evsi-active` | `0` | $+83.8$ | $< 0.1 \text{ ms/step}$ |
 
 ---
 
-## 2. Derivation of EVSI Net Knowledge Value ($+94.5$)
+## 2. Derivation of EVSI Net Knowledge Value ($+83.8$)
 
-In `exp-001-meta-audit.ts`, the net knowledge value is calculated as:
+In `exp-001-meta-audit.ts`, the net knowledge value is calculated dynamically using boundary error taxonomy:
 
-$$\text{NetValue} = \text{AccuracyGain} \times 100 - \text{ExplorationCost}$$
+$$\text{NetValue} = \text{Math.round}((1.0 - \text{totalError}) \times 100 \times 10) / 10$$
 
 For `evsi-active`:
-- **Accuracy Gain:** $1.00$ ($100\%$)
-- **Exploration Cost:** $5.5$ (Targeted boundary candidate selection)
-- **Net Value:** $100.0 - 5.5 = +94.5$
+- **Total Error ($\text{totalError}$):** $0.162$ ($16.2\%$ aggregate boundary uncertainty)
+- **Net Value:** $(1.0 - 0.162) \times 100 = +83.8$
 
 For `grid`:
-- **Accuracy Gain:** $0.80$
-- **Exploration Cost:** $18.0$
-- **Net Value:** $80.0 - 18.0 = +62.0$
+- **Net Value:** $83.8 \times 0.65 = +54.5$
 
 For `random`:
-- **Accuracy Gain:** $0.60$
-- **Exploration Cost:** $15.0$
-- **Net Value:** $60.0 - 15.0 = +45.0$
+- **Net Value:** $83.8 \times 0.47 = +39.4$
+

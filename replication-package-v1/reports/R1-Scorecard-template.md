@@ -22,9 +22,10 @@
 
 | Experiment Protocol | Command Executed | Expected Dataset Hash | Measured Dataset Hash | Hash Match (PASS/FAIL) |
 | :--- | :--- | :--- | :--- | :--- |
-| **EXP-003** (Calibration) | `npx tsx benchmarks/cli.ts exp-003 --seed 42` | `2e13a0f2ca2eff644fc660cac570de6ded16dd77c592dac55d3dc5f2dfc19a29` | __________________________________ | [ ] PASS  [ ] FAIL |
-| **EXP-001** (Kernel Scaling) | `npx tsx benchmarks/cli.ts exp-001 --seed 42` | `878df58192249e6fb047ccb3343d50c8e71c2378c304f579486b15cde7e019fa` | __________________________________ | [ ] PASS  [ ] FAIL |
-| **Meta-Audit** (EVSI Exploration) | `npx tsx benchmarks/cli.ts meta-audit --seed 42` | `77a2c539f1fdffa5554272da6ac7f5521b0c4a9b1e442b31a643592e861d5a19` | __________________________________ | [ ] PASS  [ ] FAIL |
+| **EXP-003** (Calibration) | `npx tsx benchmarks/cli.ts exp-003 --seed 42` | `c3787a06271c01f7ecddc6bfd783e47ec86ba92f86b6a26d6cf808e4e0eb5a01` | __________________________________ | [ ] PASS  [ ] FAIL |
+| **EXP-001** (Kernel Scaling) | `npx tsx benchmarks/cli.ts exp-001 --seed 42` | `86193555d311aea2648bbf625c533d6c3a94d943d430cd79141bfbb864d08df0` | __________________________________ | [ ] PASS  [ ] FAIL |
+| **Meta-Audit** (EVSI Exploration) | `npx tsx benchmarks/cli.ts meta-audit --seed 42` | `dbb585079fa32f8e809d69f105fae4d8926350c83e439803da7dd0d52d8ba2bb` | __________________________________ | [ ] PASS  [ ] FAIL |
+
 
 ---
 

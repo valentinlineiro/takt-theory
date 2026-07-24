@@ -13,7 +13,9 @@ Este registro contabiliza **todas** las réplicas ejecutadas de la teoría y pro
 | **REV-001** | 2026-07-24 | **Meta** | Evaluador Independiente | Perplexity / Auditor | **Nivel 3** | Red-Team | AUDIT COMPLETE | N/A | [EXTERNAL_METHODOLOGICAL_REVIEW](file:///home/valentin/code/takt-theory/docs/replication/EXTERNAL_METHODOLOGICAL_REVIEW_2026-07.md) |
 | **T-AI-001** | 2026-07-24 | **T-AI** | Protocol Readiness Audit | Independent AI Agent | **Nivel 3** | AI Static Readiness | INCONCLUSIVE (Readiness Audit) | 0 / N/A | `TACIT-004` a `TACIT-006`, [R0'-report](file:///home/valentin/code/takt-theory/experiments/R0-prime/report.md) |
 | **T-AI-002** | 2026-07-24 | **T-AI** | Benchmark Execution & Lean | Gemini 3.6 Flash | **Nivel 3** | AI Empirical Exec | Protocol Failure $\to$ PASS (Fixed) | 0 / 0.2h | [T-AI-002 Raw Report](file:///home/valentin/code/takt-theory/docs/replication/ai/T-AI-002/raw_report.md) |
+| **T-AI-003** | 2026-07-24 | **T-AI** | Protocol Consistency & Stubs | Claude Sonnet | **Nivel 3** | AI Governance Audit | Protocol Failure $\to$ PASS (Fixed) | 0 / 0.2h | [T-AI-003 Raw Report](file:///home/valentin/code/takt-theory/docs/replication/ai/T-AI-003/raw_report.md) |
 | **T-001** | *Pendiente* | **T** | *First Independent Rep.* | Independent Human #1 | **Nivel 3** | Blind | *En espera* | *Por medir* | *Transportabilidad humana inicial* |
+
 
 
 
