@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TaktObservationTrace",
+  "type": "object",
+  "properties": {
+    "step_id": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "timestamp": {
+      "type": "number"
+    },
+    "domain_name": {
+      "type": "string"
+    },
+    "granularity_level": {
+      "type": "string"
+    },
+    "state_hash": {
+      "type": "string"
+    },
+    "observed_state": {
+      "type": "object"
+    },
+    "action_taken": {
+      "type": "string"
+    },
+    "parent_state_hash": {
+      "type": ["string", "null"]
+    }
+  },
+  "required": [
+    "step_id",
+    "timestamp",
+    "domain_name",
+    "granularity_level",
+    "state_hash",
+    "observed_state",
+    "action_taken"
+  ],
+  "additionalProperties": true
+}
