@@ -80,11 +80,11 @@ export class DatasetWriter {
       fs.mkdirSync(outputDirPath, { recursive: true });
     }
 
-    // Compute SHA-256 dataset hash over canonical results & scenarioConfig (excluding non-deterministic timestamp)
+    // Compute SHA-256 dataset hash over canonical results & scenarioConfig (excluding non-deterministic timestamp and volatile gitCommit)
     const contentToHash = JSON.stringify({
-      gitCommit: dataset.provenance.gitCommit,
       seed: dataset.provenance.seed,
       experiment: dataset.experiment,
+
       results: dataset.results.map(r => ({
         runnerId: r.runnerId,
         paradigm: r.paradigm,

@@ -5,11 +5,11 @@
     "theoryVersion": "TAKT-v1.0",
     "runtimeVersion": "1.x",
     "command": "npx tsx benchmarks/cli.ts exp-004 --seed 42",
-    "datasetHash": "5f5d2afb7e67a37272173b412b08768cf2d57f8e222efb2f6d1473b4331eebb2"
+    "datasetHash": "5aa0557491429dc780b1971391407fdec6ec024f6a337e54322d141765c8f39f"
   },
   "provenance": {
-    "timestamp": "2026-07-24T10:10:21.600Z",
-    "gitCommit": "b78186e",
+    "timestamp": "2026-07-24T12:57:17.052Z",
+    "gitCommit": "673d827",
     "nodeVersion": "v24.14.1",
     "seed": 42,
     "hardware": {
@@ -40,8 +40,8 @@
       "paradigm": "naive",
       "metrics": {
         "totalSteps": 100,
-        "totalDurationMs": 0.011786999999969794,
-        "averageStepLatencyMs": 0.00011786999999969794,
+        "totalDurationMs": 0.010115000000098462,
+        "averageStepLatencyMs": 0.00010115000000098462,
         "peakMemoryBytes": 128,
         "netValueEnrichment": 54,
         "totalDecisionRegret": 46,
@@ -53,8 +53,8 @@
       "paradigm": "static-rules",
       "metrics": {
         "totalSteps": 100,
-        "totalDurationMs": 0.01143500000023323,
-        "averageStepLatencyMs": 0.00011435000000233231,
+        "totalDurationMs": 0.013444999999933316,
+        "averageStepLatencyMs": 0.00013444999999933315,
         "peakMemoryBytes": 512,
         "netValueEnrichment": -100,
         "totalDecisionRegret": 0,
@@ -66,8 +66,8 @@
       "paradigm": "exhaustive",
       "metrics": {
         "totalSteps": 100,
-        "totalDurationMs": 100.04168299999975,
-        "averageStepLatencyMs": 1.0004168299999976,
+        "totalDurationMs": 100.04943100000003,
+        "averageStepLatencyMs": 1.0004943100000003,
         "peakMemoryBytes": 4096,
         "netValueEnrichment": -300,
         "totalDecisionRegret": 0,
@@ -79,8 +79,8 @@
       "paradigm": "pomdp",
       "metrics": {
         "totalSteps": 100,
-        "totalDurationMs": 214.36627099999993,
-        "averageStepLatencyMs": 2.143662709999999,
+        "totalDurationMs": 221.88447199999996,
+        "averageStepLatencyMs": 2.2188447199999994,
         "peakMemoryBytes": 8192,
         "netValueEnrichment": -50,
         "totalDecisionRegret": 0,
@@ -92,8 +92,8 @@
       "paradigm": "takt",
       "metrics": {
         "totalSteps": 100,
-        "totalDurationMs": 0.030415999999888754,
-        "averageStepLatencyMs": 0.00030415999999888754,
+        "totalDurationMs": 0.02958900000015774,
+        "averageStepLatencyMs": 0.0002958900000015774,
         "peakMemoryBytes": 1024,
         "netValueEnrichment": 99.2,
         "totalDecisionRegret": 0,

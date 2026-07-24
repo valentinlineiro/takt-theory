@@ -1,0 +1,78 @@
+{
+  "manifest": {
+    "experiment": "EXP-005",
+    "protocolVersion": "1.0",
+    "theoryVersion": "TAKT-v1.0",
+    "runtimeVersion": "1.x",
+    "command": "npx tsx benchmarks/cli.ts exp-005 --seed 42",
+    "datasetHash": "9c1809d43c68ec7427fe05d2b7a623a7c22441f546e9301e63148de3830cdbd8"
+  },
+  "provenance": {
+    "timestamp": "2026-07-24T12:57:17.064Z",
+    "gitCommit": "673d827",
+    "nodeVersion": "v24.14.1",
+    "seed": 42,
+    "hardware": {
+      "arch": "x64",
+      "platform": "linux",
+      "cpus": 4,
+      "totalMemoryBytes": 12543705088
+    }
+  },
+  "experiment": {
+    "id": "EXP-005",
+    "protocol": "benchmarks/protocols/R2-PROTOCOL.md",
+    "scenarioConfig": {
+      "id": "r2-domain-a-planning",
+      "seed": 42,
+      "stateSpaceSize": 1000,
+      "kernelDimensionK": 3,
+      "capabilityCatalogSize": 3,
+      "maxDriftRate": 0,
+      "params": {
+        "experiment": "EXP-005-R2-Planning"
+      }
+    }
+  },
+  "results": [
+    {
+      "runnerId": "runner-planning-sufficient",
+      "paradigm": "sufficient",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 2.5,
+        "averageStepLatencyMs": 0.025,
+        "peakMemoryBytes": 1024,
+        "netValueEnrichment": 70,
+        "totalDecisionRegret": 0,
+        "safetyViolationCount": 0
+      }
+    },
+    {
+      "runnerId": "runner-planning-insufficient",
+      "paradigm": "insufficient",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 2.5,
+        "averageStepLatencyMs": 0.025,
+        "peakMemoryBytes": 512,
+        "netValueEnrichment": 23,
+        "totalDecisionRegret": 67,
+        "safetyViolationCount": 67
+      }
+    },
+    {
+      "runnerId": "runner-planning-excessive",
+      "paradigm": "excessive",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 2.5,
+        "averageStepLatencyMs": 0.025,
+        "peakMemoryBytes": 4096,
+        "netValueEnrichment": 50,
+        "totalDecisionRegret": 0,
+        "safetyViolationCount": 0
+      }
+    }
+  ]
+}

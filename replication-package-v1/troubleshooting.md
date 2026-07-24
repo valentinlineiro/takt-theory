@@ -8,8 +8,9 @@
 
 ### 1. SHA-256 Hash Mismatch
 - **Symptom:** Measured dataset hash differs from `expected-hashes.txt`.
-- **Cause:** Variance in timestamp or Node.js environment formatting.
-- **Fix:** Check `results[runnerId].metrics.totalDecisionRegret`. If regret equals `0` for `takt`, `exhaustive`, and `pomdp`, the logical execution is 100% compliant ($R_{\text{sci}} = \text{PASS}$).
+- **Cause:** Modification of benchmark scenario parameters or underlying dataset metric schemas (`gitCommit` and `timestamp` are explicitly excluded to ensure deterministic hash reproducibility across commits).
+- **Fix:** Re-run canonical command `npx tsx benchmarks/cli.ts all --seed 42 --outDir replication-package-v1/output`. Check `results[runnerId].metrics.totalDecisionRegret`. If regret equals `0` for `takt`, `exhaustive`, and `pomdp`, the logical execution is 100% compliant ($R_{\text{sci}} = \text{PASS}$).
+
 
 ### 2. Node.js Version Incompatibility
 - **Symptom:** `SyntaxError` or module import errors.

@@ -1,0 +1,78 @@
+{
+  "manifest": {
+    "experiment": "EXP-006",
+    "protocolVersion": "1.0",
+    "theoryVersion": "TAKT-v1.0",
+    "runtimeVersion": "1.x",
+    "command": "npx tsx benchmarks/cli.ts exp-006 --seed 42",
+    "datasetHash": "b86019ea66a860234097eceb89187c9ea6283785844d23b91ccb4020813b7682"
+  },
+  "provenance": {
+    "timestamp": "2026-07-24T12:57:17.071Z",
+    "gitCommit": "673d827",
+    "nodeVersion": "v24.14.1",
+    "seed": 42,
+    "hardware": {
+      "arch": "x64",
+      "platform": "linux",
+      "cpus": 4,
+      "totalMemoryBytes": 12543705088
+    }
+  },
+  "experiment": {
+    "id": "EXP-006",
+    "protocol": "benchmarks/protocols/R2-PROTOCOL.md",
+    "scenarioConfig": {
+      "id": "r2-domain-b-distributed",
+      "seed": 42,
+      "stateSpaceSize": 1000,
+      "kernelDimensionK": 3,
+      "capabilityCatalogSize": 3,
+      "maxDriftRate": 0,
+      "params": {
+        "experiment": "EXP-006-R2-Distributed"
+      }
+    }
+  },
+  "results": [
+    {
+      "runnerId": "runner-distributed-sufficient",
+      "paradigm": "sufficient",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 2.5,
+        "averageStepLatencyMs": 0.025,
+        "peakMemoryBytes": 1024,
+        "netValueEnrichment": 70,
+        "totalDecisionRegret": 0,
+        "safetyViolationCount": 0
+      }
+    },
+    {
+      "runnerId": "runner-distributed-insufficient",
+      "paradigm": "insufficient",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 2.5,
+        "averageStepLatencyMs": 0.025,
+        "peakMemoryBytes": 512,
+        "netValueEnrichment": -4,
+        "totalDecisionRegret": 94,
+        "safetyViolationCount": 94
+      }
+    },
+    {
+      "runnerId": "runner-distributed-excessive",
+      "paradigm": "excessive",
+      "metrics": {
+        "totalSteps": 100,
+        "totalDurationMs": 2.5,
+        "averageStepLatencyMs": 0.025,
+        "peakMemoryBytes": 4096,
+        "netValueEnrichment": 50,
+        "totalDecisionRegret": 0,
+        "safetyViolationCount": 0
+      }
+    }
+  ]
+}

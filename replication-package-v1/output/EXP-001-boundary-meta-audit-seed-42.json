@@ -5,11 +5,11 @@
     "theoryVersion": "TAKT-v1.0",
     "runtimeVersion": "1.x",
     "command": "npx tsx benchmarks/cli.ts exp-001-boundary-meta-audit --seed 42",
-    "datasetHash": "c540d2787142cae5b5b51e6616c70704c610cbcf11d9a7994a1242a7119b1539"
+    "datasetHash": "dbb585079fa32f8e809d69f105fae4d8926350c83e439803da7dd0d52d8ba2bb"
   },
   "provenance": {
-    "timestamp": "2026-07-24T10:10:21.604Z",
-    "gitCommit": "b78186e",
+    "timestamp": "2026-07-24T12:57:17.078Z",
+    "gitCommit": "673d827",
     "nodeVersion": "v24.14.1",
     "seed": 42,
     "hardware": {
@@ -43,7 +43,7 @@
         "totalDurationMs": 15.2,
         "averageStepLatencyMs": 0.152,
         "peakMemoryBytes": 2048,
-        "netValueEnrichment": null,
+        "netValueEnrichment": 39.4,
         "totalDecisionRegret": 0,
         "safetyViolationCount": 0
       }
@@ -56,7 +56,7 @@
         "totalDurationMs": 18.4,
         "averageStepLatencyMs": 0.184,
         "peakMemoryBytes": 2048,
-        "netValueEnrichment": null,
+        "netValueEnrichment": 54.5,
         "totalDecisionRegret": 0,
         "safetyViolationCount": 0
       }
@@ -69,7 +69,7 @@
         "totalDurationMs": 8.7,
         "averageStepLatencyMs": 0.087,
         "peakMemoryBytes": 2048,
-        "netValueEnrichment": null,
+        "netValueEnrichment": 83.8,
         "totalDecisionRegret": 0,
         "safetyViolationCount": 0
       }

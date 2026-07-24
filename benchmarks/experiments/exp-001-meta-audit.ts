@@ -24,7 +24,7 @@ export async function runExperimentMetaAudit(seed: number = 42): Promise<Experim
 
   // Dynamically prioritize candidates using EVSI boundary explorer
   const prioritized = BoundaryExplorer.prioritizeCandidates(candidates, []);
-  const topCandidateScore = prioritized[0]?.evsiScore ?? 0.85;
+  const topCandidateScore = prioritized[0]?.evsiPriority ?? 0.85;
 
   // Dynamically compute error taxonomy audit
   const errorAudit = BoundaryExplorer.auditDecomposedError(0.85, topCandidateScore, 0.02, 0.01);
@@ -42,7 +42,8 @@ export async function runExperimentMetaAudit(seed: number = 42): Promise<Experim
   };
 
   // Compute metrics dynamically based on active vs uniform exploration scoring
-  const evsiNetValue = Math.round((1.0 - errorAudit.epsilonTotal) * 100 * 10) / 10;
+  const evsiNetValue = Math.round((1.0 - errorAudit.totalError) * 100 * 10) / 10;
+
   const gridNetValue = Math.round((evsiNetValue * 0.65) * 10) / 10;
   const randomNetValue = Math.round((evsiNetValue * 0.47) * 10) / 10;
 

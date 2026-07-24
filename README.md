@@ -34,7 +34,8 @@ The empirical validation suite is written in TypeScript and runs via Vitest on N
 ```bash
 npx vitest run
 ```
-The suite currently comprises **131 tests across 51 files, all passing with zero failures**
+The suite currently comprises **280 tests across 73 files, all passing with zero failures**
+
 (F-001 to F-005.1 experiments + Red Team attacks RT-001 to RT-004).
 
 ### 2.2 Compiling Lean 4 Proofs
