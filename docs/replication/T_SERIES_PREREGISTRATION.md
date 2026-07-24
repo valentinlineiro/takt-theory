@@ -6,13 +6,18 @@
 
 ---
 
-## 1. Experimentos Pre-Registrados
+### 1. Experimentos Pre-Registrados
 
-### T-001: First Independent Replication
-* **Diseño:** Un único investigador independiente (Nivel 3) implementa un adaptador para un dominio no probado originalmente sin interacción directa con el autor.
-* **Variable Primaria ($V_1$):** Ejecutabilidad del protocolo ($V_1 \in \{ \text{COMPLETED}, \text{ABORTED}, \text{AUTHOR\_INTERVENTION\_REQUIRED} \}$).
+#### Subserie T-AI (Evaluación de Transportabilidad por Agentes de IA)
+* **T-AI-001 a T-AI-00N:** Auditorías/réplicas ejecutadas de forma ciega y sin contexto previo por modelos de IA independientes (ej. Perplexity, Gemini, Claude, ChatGPT) interactuando únicamente con el repositorio público.
+* **Propósito:** Evaluar la suficiencia estática y la interpretabilidad de la documentación antes de la exposición a humanos.
+* **Declaración de Alcance:** La subserie `T-AI` **no sustituye la Serie T Humana** ni constituye evidencia suficiente de transportabilidad social; mide exclusivamente la autocontención del paquete para agentes autónomos.
+
+#### Serie T Humana (Replicación Científica Independiente)
+* **T-001 (First Independent Replication):** Un investigador humano independiente (Nivel 3/4) implementa un adaptador para un dominio no probado originalmente sin interacción con el autor.
+* **Variable Primaria ($V_1$):** Ejecutabilidad del protocolo ($V_1 \in \{ \text{COMPLETED}, \text{INCONCLUSIVE}, \text{PROTOCOL\_FAILURE}, \text{THEORY\_FALSIFICATION} \}$).
 * **Criterio de Éxito de T-001:** $V_1 = \text{COMPLETED}$ con $N_{consults} = 0$.
-* **Criterio de Fracaso de T-001:** Imposibilidad de completar el adaptador o la ejecución de trazas sin soporte directo del autor original.
+
 
 ---
 

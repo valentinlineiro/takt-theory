@@ -11,8 +11,9 @@ Este registro contabiliza **todas** las réplicas ejecutadas de la teoría y pro
 | **R-000** | 2026-07-20 | **R** | AST Refining (Internal) | Autor (Valentin) | **Nivel 0** | Baseline | PASS | N/A | Baseline autor inicial |
 | **R-001** | 2026-07-24 | **R** | Auto-Verification Harness | Kit Auto-Check | **Nivel 0** | Baseline | PASS | 0 / 0.1h | `TACIT-001`, `TACIT-002` |
 | **REV-001** | 2026-07-24 | **Meta** | Evaluador Independiente | Perplexity / Auditor | **Nivel 3** | Red-Team | AUDIT COMPLETE | N/A | [EXTERNAL_METHODOLOGICAL_REVIEW](file:///home/valentin/code/takt-theory/docs/replication/EXTERNAL_METHODOLOGICAL_REVIEW_2026-07.md) |
-| **T-000B** | 2026-07-24 | **T** | Protocol Readiness Audit | Independent Evaluator | **Nivel 3** | Static Readiness | INCONCLUSIVE (Readiness Audit) | 0 / N/A | `TACIT-004` a `TACIT-006`, [R0'-report](file:///home/valentin/code/takt-theory/experiments/R0-prime/report.md) |
-| **T-001** | *Pendiente* | **T** | *First Independent Rep.* | Independent #1 | **Nivel 3** | Blind | *En espera* | *Por medir* | *Transportabilidad inicial* |
+| **T-AI-001** | 2026-07-24 | **T-AI** | Protocol Readiness Audit | Independent AI Agent | **Nivel 3** | AI Static Readiness | INCONCLUSIVE (Readiness Audit) | 0 / N/A | `TACIT-004` a `TACIT-006`, [R0'-report](file:///home/valentin/code/takt-theory/experiments/R0-prime/report.md) |
+| **T-001** | *Pendiente* | **T** | *First Independent Rep.* | Independent Human #1 | **Nivel 3** | Blind | *En espera* | *Por medir* | *Transportabilidad humana inicial* |
+
 
 | **T-002** | *Pendiente* | **T** | *Multi-Replicator Study* | Varios Replicadores | **Nivel 3** | Open | *En espera* | *Por medir* | *Distribución de fricción* |
 | **T-003** | *Pendiente* | **T** | *Public Adoption* | Comunidad Abierta | **Nivel 4** | Spontaneous | *En espera* | *Por medir* | *Adopción autónoma* |
