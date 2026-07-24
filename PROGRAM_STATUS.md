@@ -17,7 +17,8 @@
 | **Adopción Práctica & Uso Continuado** | **Fase Temprana** | En transición desde benchmarks a infraestructura de ejecución en contextos de producción. |
 
 > **Centro de Gravedad Actual:**  
-> *El cuello de botella epistemológico (teoría/axiomas) ha sido superado. El centro de gravedad del programa se desplaza de la formulación teórica a la **ingeniería de infraestructura**, demostrando que la teoría produce sistemas útiles y operativamente medibles fuera de los benchmarks.*
+> *El cuello de botella epistemológico (teoría/axiomas) ha sido superado. El centro de gravedad del programa se desplaza de la formulación teórica a la **ingeniería de infraestructura** (véase [OPERATIONAL_ROADMAP.md](file:///home/valentin/code/takt-theory/docs/OPERATIONAL_ROADMAP.md)), demostrando que la teoría produce sistemas útiles y operativamente medibles fuera de los benchmarks.*
+
 
 
 ---
