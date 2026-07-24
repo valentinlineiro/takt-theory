@@ -8,9 +8,10 @@
 
 | Experiment | Runner | Total Regret | Net Knowledge Value / Enrichment | Latency Target |
 | :--- | :--- | :--- | :--- | :--- |
-| **EXP-003** | `takt` | `0` | $+99.2$ | $< 0.001 \text{ ms/step}$ |
+| **EXP-003** | `takt` | `0` | $+199.2$ | $< 0.001 \text{ ms/step}$ |
 | **EXP-001** | `takt` | `0` | $+99.2$ | $< 0.001 \text{ ms/step}$ |
 | **Meta-Audit** | `evsi-active` | `0` | $+83.8$ | $< 0.1 \text{ ms/step}$ |
+
 
 ---
 
