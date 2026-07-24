@@ -2,6 +2,7 @@ import { runExperiment001 } from './experiments/exp-001-kernel-scaling.js';
 import { runExperiment002 } from './experiments/exp-002-evsi-stopping.js';
 import { runExperiment003 } from './experiments/exp-003-runtime-latency.js';
 import { runExperiment004 } from './experiments/exp-004-drift-horizon.js';
+import { runExperimentMetaAudit } from './experiments/exp-001-meta-audit.js';
 import { DatasetWriter, type ExperimentDataset } from './metrics/DatasetWriter.js';
 
 async function main() {
@@ -32,15 +33,18 @@ async function main() {
     experimentsToRun.push(() => runExperiment003(seed));
   } else if (expArg === 'exp-004' || expArg === 'exp004') {
     experimentsToRun.push(() => runExperiment004(seed));
+  } else if (expArg === 'meta-audit' || expArg === 'meta') {
+    experimentsToRun.push(() => runExperimentMetaAudit(seed));
   } else if (expArg === 'all') {
     experimentsToRun.push(
       () => runExperiment001(seed),
       () => runExperiment002(seed),
       () => runExperiment003(seed),
-      () => runExperiment004(seed)
+      () => runExperiment004(seed),
+      () => runExperimentMetaAudit(seed)
     );
   } else {
-    console.error(`Unknown experiment '${expArg}'. Available options: exp-001, exp-002, exp-003, exp-004, all`);
+    console.error(`Unknown experiment '${expArg}'. Available options: exp-001, exp-002, exp-003, exp-004, meta-audit, all`);
     process.exit(1);
   }
 
