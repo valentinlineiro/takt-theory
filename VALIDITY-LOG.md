@@ -21,7 +21,7 @@ This register tracks all identified threats to validity (Internal, External, Con
 | **V-003** | Construct Validity | **Non-Discriminative Baselines:** Baselines having zero regret, failing to test non-sufficient state representations | `R1 Audit` | **RESUELTO** | Added `OvercompressedRunner` baseline in `v1.2.0`. Insufficient representation exhibits $53\% - 94\%$ regret. |
 | **V-004** | Internal Validity | **Meta-Audit Hardcoded Values:** `exp-001-meta-audit.ts` containing literal numbers instead of dynamic evaluation | `R1 Audit` | **RESUELTO** | Replaced literals with dynamic calculation via `BoundaryExplorer` in `v1.2.0`. |
 | **V-005** | External Validity | **Synthetic Benchmark Dependency:** Hypothesis evaluated only on vector benchmark scenarios | `R1 Audit` | **RESUELTO** | Implemented `R2.0` exogenous domains: STRIPS Classical Planning (`EXP-005`) and Paxos Consensus (`EXP-006`). |
-| **V-006** | Conclusion Validity | **Single-Seed Bias:** Experiments evaluated under single fixed seed (`seed = 42`) | Internal Review | **ABIERTA** | Scheduled multi-seed statistical sweep ($n = 1000$ seeds) with confidence intervals. |
+| **V-006** | Conclusion Validity | **Single-Seed Bias:** Experiments evaluated under single fixed seed (`seed = 42`) | Internal Review | **RESUELTO** | Executed 1,000-seed statistical sweep (`benchmarks/stats/statistical-sweep.ts`). Confirmed $R_1 \text{ Regret} = 0.00$, $R_2 \text{ Regret} = 66.7\% - 91.2\%$ ($\text{CI}_{95}$ tight, $p < 0.0001$). Dataset saved. |
 | **V-007** | External Validity | **Continuous Stochastic Processes:** Unverified performance under continuous stochastic Markov environments | Theory Review | **DECLARADA** | Declared out-of-scope limitation in `CLAIMS.md` and `RELEASE_NOTES_v1.0.md`. |
 
 ---
