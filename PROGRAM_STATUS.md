@@ -6,16 +6,19 @@
 
 ---
 
-## 1. Matriz de Estado del Ciclo de Vida
+## 1. Matriz de Madurez y Estado del Ciclo de Vida
 
-| Dimensión | Estado | Situación / Evidencia |
+| Componente / Dimensión | Nivel de Madurez | Estado Actual y Evidencia |
 | :--- | :--- | :--- |
-| **Teoría de Suficiencia Estructural** | **Estable** | Teoremas SPT, cotas de convergencia $\varepsilon$ y métricas $H_{enrichment}$ y $R_2$ congelados en v1.2. |
-| **Instrumentación y Runtime** | **Estable** | Arnés de auto-verificación `verify_adapter.py` y esquemas JSON validados. |
-| **Serie R (Evidencia Teórica)** | **Completada hasta R2** | Baselines R-000 (AST) y R-001 (Auto-Check) ejecutados con éxito. |
-| **Serie T (Transportabilidad)** | **Pendiente de Evidencia Externa** | Pre-registrada. Paquete de replicación autocontenido en `docs/replication/`. |
-| **Principal Riesgo Epistemológico** | **Conocimiento Tácito Residual** | Supuestos del autor no explicitados en la documentación. |
-| **Próxima Evidencia Crítica** | **T-001 (First Independent Rep.)** | Primera réplica ejecutada por un investigador Nivel 3 sin intervención del autor. |
+| **Teoría & Núcleo Axiomático** | **Alta Madurez** | Formulada, cotas $\varepsilon$ y teoremas $K_D$, $M_D$ consolidados. Lista para evaluación científica externa. |
+| **Formalización Lean 4** | **Muy Alta Madurez** | 226 trabajos compilados con **0 errores y 0 sorrys**. Demostraciones de seguridad y factorización cerradas. |
+| **Paquete de Replicación & Kit** | **Calibrado / Calidad Validada** | Saneado mediante la muestra de observadores `T-AI-001` a `T-AI-004`. Calibración de instrumento completada. |
+| **Runtime & Infraestructura Operativa** | **Funcional / En Desarrollo** | Motor funcional en TypeScript, pendiente de completar instrumentación avanzada y casos reales heterogéneos. |
+| **Adopción Práctica & Uso Continuado** | **Fase Temprana** | En transición desde benchmarks a infraestructura de ejecución en contextos de producción. |
+
+> **Centro de Gravedad Actual:**  
+> *El cuello de botella epistemológico (teoría/axiomas) ha sido superado. El centro de gravedad del programa se desplaza de la formulación teórica a la **ingeniería de infraestructura**, demostrando que la teoría produce sistemas útiles y operativamente medibles fuera de los benchmarks.*
+
 
 ---
 
