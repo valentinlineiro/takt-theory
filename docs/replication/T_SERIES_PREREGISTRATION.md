@@ -38,15 +38,28 @@
 
 ---
 
-## 2. Matriz Tripartita de Resultados (Evaluación de T-001)
+## 2. Taxonomía Pre-Registrada de Clasificación de Resultados (T-001)
 
-El resultado de T-001 o cualquier réplica de la Serie T **nunca se reduce a un juicio binario de éxito/fracaso**, sino que se clasifica explícitamente en tres escenarios con significado epistemológico diferenciado:
+Para evitar clasificaciones *a posteriori*, el resultado de cualquier intento en la Serie T se asigna obligatoriamente a una de las siguientes 4 categorías formales:
 
-| Escenario de Resultado | Significado Metodológico | Tipo de Evidencia Generada | Acción Requerida |
+| Categoría de Resultado | Criterio Metodológico Objetivo | Tipo de Evidencia | Acción Requerida |
 | :--- | :--- | :--- | :--- |
-| **1. El replicador no puede ejecutar el protocolo** | Fallo en la transportabilidad del kit o conocimiento tácito no resuelto. | **Evidencia sobre el Protocolo (Serie T)** | Registrar fricción en `TACIT_AUDIT.md`. No altera la teoría $H_{rep}$. |
-| **2. El protocolo se ejecuta, pero contradice la hipótesis** | El kit funcionó correctamente, pero las trazas violan las cotas teóricas $\varepsilon$ o $R_2$. | **Evidencia sobre la Teoría (Serie R)** | Falsación empírica o acotamiento de fronteras de validez de la teoría. |
-| **3. El protocolo se ejecuta y reproduce el patrón esperado** | El kit fue autocontenido y los datos corroboran las cotas de convergencia. | **Evidencia favorable para Serie T y Serie R** | Registro formal de éxito en transportabilidad y validez de dominio. |
+| **Completed** | El protocolo se ejecutó íntegramente sin interacción con el autor y produjo datos reproducibles e interpretables. | Evidencia Favorable para Serie T | Registrar en `REPLICATION_LOG.md`. |
+| **Inconclusive** | La ejecución no permite concluir por causas puramente externas (ej. limitaciones de sandbox/entorno del replicador). | Datos no concluyentes | Registrar en `REPLICATION_LOG.md` sin alterar la teoría ni el kit. |
+| **Protocol Failure** | El protocolo no pudo completarse debido a ambigüedades, omisiones o defectos del propio kit. | **Evidencia de Falla de Transportabilidad (Serie T)** | Registrar fricción en `TACIT_AUDIT.md`. Diferir corrección a v1.3. |
+| **Theory Falsification Candidate** | El protocolo se ejecutó correctamente y el kit funcionó, pero los datos observados contradicen las cotas teóricas de la Serie R. | **Candidato a Falsación Teórica (Serie R)** | Delimitar formalmente la frontera de invalidez del dominio. |
+
+---
+
+## 3. Código de Conducta del Custodio del Protocolo
+
+A partir de la congelación v1.2-R2, el autor/asistente asume exclusivamente el rol de **Custodio del Protocolo**:
+
+1. **Sin Explicaciones Orales:** Prohibido resolver o explicar fuera de banda lo que la documentación del kit omitió.
+2. **Sin Reinterpretaciones:** Prohibido reclasificar la fricción o discrepancia del replicador como "error de uso".
+3. **Sin Parches en Caliente:** Inmutabilidad absoluta del kit durante la campaña $T\text{-}001$.
+4. **Igualdad de Rigor:** Éxitos y fracasos del protocolo se registran exactamente con el mismo nivel de detalle en `REPLICATION_LOG.md`.
+
 
 ---
 
