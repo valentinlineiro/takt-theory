@@ -40,10 +40,12 @@ graph LR
 
 ## 3. Reglas de Congelación Observacional y Gobernanza
 
-1. **Protocolo Inmutable por Bloque:** El paquete de replicación (`docs/replication/REPLICATION_KIT/`) permanece inalterado hasta completar un bloque de **$N=3$ réplicas independientes** de la Serie T (o 6 meses de observación pública).
-2. **Registro sin Alteración Inmediata:** Cualquier sugerencia o fricción detectada se registra inmediatamente en `TACIT_AUDIT.md`, pero **no modifica el protocolo en curso** para preservar la comparabilidad metrológica entre réplicas.
-3. **Condición de Salida (Versión v1.3):** Tras completar el bloque de $N=3$ réplicas, se analiza en conjunto la evidencia acumulada y se emite la versión v1.3 incorporando exclusivamente mejoras justificadas empíricamente.
-4. **Regla de Bloqueo REV:** **No abrir REV-002 hasta la realización de T-001.** Se prohíbe acumular más revisiones internas o asistidas por IA antes de obtener el primer resultado de replicación independiente externa.
+1. **Readiness Freeze Rule (Tras T-000B):** Tras la finalización de T-000B y la congelación del Kit v1.2-R2, **no se aceptará ninguna modificación al paquete de replicación durante la ejecución de la campaña T-001**. Cualquier incidencia o fricción descubierta por los replicadores se registrará en `TACIT_AUDIT.md` y se diferirá obligatoriamente a una revisión posterior del kit (v1.3).
+2. **Protocolo Inmutable por Bloque:** El paquete de replicación (`docs/replication/REPLICATION_KIT/`) permanece inalterado hasta completar un bloque de **$N=3$ réplicas independientes** de la Serie T (o 6 meses de observación pública).
+3. **Registro sin Alteración Inmediata:** Cualquier sugerencia o fricción detectada se registra inmediatamente en `TACIT_AUDIT.md`, pero **no modifica el protocolo en curso** para preservar la comparabilidad metrológica entre réplicas.
+4. **Condición de Salida (Versión v1.3):** Tras completar el bloque de $N=3$ réplicas, se analiza en conjunto la evidencia acumulada y se emite la versión v1.3 incorporando exclusivamente mejoras justificadas empíricamente.
+5. **Regla de Bloqueo REV:** **No abrir REV-002 hasta la realización de T-001.** Se prohíbe acumular más revisiones internas o asistidas por IA antes de obtener el primer resultado de replicación independiente externa.
+
 
 
 

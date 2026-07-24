@@ -52,8 +52,8 @@ El resultado de T-001 o cualquier réplica de la Serie T **nunca se reduce a un 
 
 ## 3. Política de Congelación y Condición Explícita de Salida
 
-La congelación observacional del protocolo no es un dogma, sino una política experimental regulada por criterios de salida objetivos:
-
-* **Condición de Salida del Bloque:** La versión actual (v1.2-R2) permanecerá congelada hasta completar un bloque de **$N=3$ réplicas independientes de la Serie T** (o un horizonte temporal de 6 meses).
+* **Readiness Freeze Rule (Tras T-000B):** Tras completar la auditoría estática T-000B y aplicar el saneamiento del Kit v1.2-R2, **se prohíbe realizar cualquier modificación o parche en caliente al kit durante la ejecución de T-001**. Toda fricción o fallo detectado por un replicador se registrará estrictamente en `TACIT_AUDIT.md` sin modificar los archivos en curso.
+* **Condición de Salida del Bloque:** La versión actual (v1.2-R2) permanecerá inmutable hasta completar un bloque de **$N=3$ réplicas independientes de la Serie T** (o un horizonte temporal de 6 meses).
 * **Evaluación Conjunta:** Al alcanzar la condición de salida, se realizará un análisis agrupado de todas las entradas de `TACIT_AUDIT.md` y métricas de fricción.
 * **Emisión de Versión (v1.3):** Se publicará una versión revisada del protocolo incorporando **únicamente** aquellas modificaciones justificadas por patrones empíricos observados en múltiples replicadores.
+
