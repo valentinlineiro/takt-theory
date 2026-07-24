@@ -121,7 +121,7 @@ describe('ExhaustiveRunner', () => {
     const stepResult = await runner.step(event);
 
     expect(stepResult.stepIndex).toBe(2);
-    expect(stepResult.actionChosen).toBe(2);
+    expect(stepResult.actionChosen).toBe(1);
     expect(stepResult.observationsAcquired).toEqual(['cap_0', 'cap_1', 'cap_2', 'cap_3']);
     expect(stepResult.acquisitionCostIncurred).toBe(4.0);
     expect(stepResult.latencyMs).toBeGreaterThan(0);

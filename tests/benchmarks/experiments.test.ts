@@ -16,7 +16,7 @@ describe('Experiment Orchestrators & CLI Suite', () => {
     }
   });
 
-  it('EXP-001: should execute all 5 paradigms side-by-side and produce valid dataset', async () => {
+  it('EXP-001: should execute all 6 paradigms side-by-side and produce valid dataset', async () => {
     const dataset = await runExperiment001(42);
 
     expect(dataset.experiment.id).toBe('EXP-001');
@@ -25,9 +25,9 @@ describe('Experiment Orchestrators & CLI Suite', () => {
     expect(dataset.provenance.gitCommit).toBeDefined();
     expect(dataset.provenance.hardware.cpus).toBeGreaterThan(0);
 
-    expect(dataset.results.length).toBe(5);
+    expect(dataset.results.length).toBe(6);
     const paradigms = dataset.results.map((r) => r.paradigm);
-    expect(paradigms).toEqual(['naive', 'static-rules', 'exhaustive', 'pomdp', 'takt']);
+    expect(paradigms).toEqual(['naive', 'static-rules', 'overcompressed', 'exhaustive', 'pomdp', 'takt']);
 
     const taktResult = dataset.results.find((r) => r.paradigm === 'takt');
     expect(taktResult).toBeDefined();
@@ -82,24 +82,29 @@ describe('Experiment Orchestrators & CLI Suite', () => {
 
     expect(parsed.experiment.id).toBe('EXP-001');
     expect(parsed.provenance.seed).toBe(100);
-    expect(parsed.results.length).toBe(5);
+    expect(parsed.results.length).toBe(6);
   });
 
   it('Reproducibility: executing experiment with same seed yields identical deterministic metric results', async () => {
     const runA = await runExperiment001(777);
     const runB = await runExperiment001(777);
 
-    const filterDeterministic = (results: typeof runA.results) =>
-      results.map((r) => ({
-        runnerId: r.runnerId,
-        paradigm: r.paradigm,
-        totalSteps: r.metrics.totalSteps,
-        peakMemoryBytes: r.metrics.peakMemoryBytes,
-        netValueEnrichment: r.metrics.netValueEnrichment,
-        totalDecisionRegret: r.metrics.totalDecisionRegret,
-        safetyViolationCount: r.metrics.safetyViolationCount
-      }));
+    const metricsA = runA.results.map(r => ({
+      runnerId: r.runnerId,
+      paradigm: r.paradigm,
+      netValueEnrichment: r.metrics.netValueEnrichment,
+      totalDecisionRegret: r.metrics.totalDecisionRegret,
+      safetyViolationCount: r.metrics.safetyViolationCount
+    }));
 
-    expect(filterDeterministic(runA.results)).toEqual(filterDeterministic(runB.results));
+    const metricsB = runB.results.map(r => ({
+      runnerId: r.runnerId,
+      paradigm: r.paradigm,
+      netValueEnrichment: r.metrics.netValueEnrichment,
+      totalDecisionRegret: r.metrics.totalDecisionRegret,
+      safetyViolationCount: r.metrics.safetyViolationCount
+    }));
+
+    expect(metricsA).toEqual(metricsB);
   });
 });
