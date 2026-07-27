@@ -1,7 +1,7 @@
 # CARD-465: EXP-004 Component Ablation Runtime Implementation
 
 **Status:** Ready for Implementation  
-**Prerequisite:** ST-016 Design Spec ([docs/superpowers/specs/2026-07-27-st016-runtime-kernel-necessity-design.md](file:///home/valentin/code/takt-theory/docs/superpowers/specs/2026-07-27-st016-runtime-kernel-necessity-design.md)), Lean 4 Proofs ([takt-formal/TaktFormal/RuntimeSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/RuntimeSufficiency.lean)).
+**Prerequisite:** ST-016 Design Spec ([docs/superpowers/specs/2026-07-27-st016-runtime-kernel-necessity-design.md](docs/superpowers/specs/2026-07-27-st016-runtime-kernel-necessity-design.md)), Lean 4 Proofs ([takt-formal/TaktFormal/RuntimeSufficiency.lean](takt-formal/TaktFormal/RuntimeSufficiency.lean)).
 
 ---
 
