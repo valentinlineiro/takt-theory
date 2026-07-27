@@ -6,13 +6,27 @@ echo " TAKT Research Program — Zero-Contact Verification Suite"
 echo " Verification Standard: ST-016 v1.0 Frozen Specification"
 echo "============================================================"
 
-REPORT_DIR="artifacts/verification"
+REPORT_DIR="artifacts/verification/st016-v1.0"
 mkdir -p "${REPORT_DIR}"
 REPORT_FILE="${REPORT_DIR}/st016-v1.0-report.md"
 HASHES_FILE="${REPORT_DIR}/hashes.json"
 ENV_FILE="${REPORT_DIR}/environment.json"
 
 TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+# Cross-platform SHA256 function (Linux sha256sum or macOS shasum / openssl)
+compute_sha256() {
+  local file="$1"
+  if command -v sha256sum >/dev/null 2>&1; then
+    sha256sum "${file}" | cut -d' ' -f1
+  elif command -v shasum >/dev/null 2>&1; then
+    shasum -a 256 "${file}" | cut -d' ' -f1
+  elif command -v openssl >/dev/null 2>&1; then
+    openssl dgst -sha256 "${file}" | awk '{print $NF}'
+  else
+    echo "NO_SHA256_TOOL"
+  fi
+}
 
 echo "[1/5] Verifying Lean 4 Formal Proofs (ST-015 / ST-016)..."
 (cd takt-formal && lake build)
@@ -37,14 +51,16 @@ cat <<EOF > "${ENV_FILE}"
 EOF
 
 # Calculate SHA-256 hashes of frozen specification files
+SPEC_FILE="docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md"
+
 cat <<EOF > "${HASHES_FILE}"
 {
-  "st016_spec": "$(sha256sum docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md | cut -d' ' -f1)",
-  "lean_sufficiency": "$(sha256sum takt-formal/TaktFormal/RuntimeSufficiency.lean | cut -d' ' -f1)",
-  "lean_witness": "$(sha256sum takt-formal/TaktFormal/RuntimeWitness.lean | cut -d' ' -f1)",
-  "ts_temporal_ablation": "$(sha256sum cli/src/runtime/__tests__/ablation/temporal.ablation.test.ts | cut -d' ' -f1)",
-  "ts_uncertainty_ablation": "$(sha256sum cli/src/runtime/__tests__/ablation/uncertainty.ablation.test.ts | cut -d' ' -f1)",
-  "ts_contract_ablation": "$(sha256sum cli/src/runtime/__tests__/ablation/contract.ablation.test.ts | cut -d' ' -f1)"
+  "st016_spec": "$(compute_sha256 "${SPEC_FILE}")",
+  "lean_sufficiency": "$(compute_sha256 takt-formal/TaktFormal/RuntimeSufficiency.lean)",
+  "lean_witness": "$(compute_sha256 takt-formal/TaktFormal/RuntimeWitness.lean)",
+  "ts_temporal_ablation": "$(compute_sha256 cli/src/runtime/__tests__/ablation/temporal.ablation.test.ts)",
+  "ts_uncertainty_ablation": "$(compute_sha256 cli/src/runtime/__tests__/ablation/uncertainty.ablation.test.ts)",
+  "ts_contract_ablation": "$(compute_sha256 cli/src/runtime/__tests__/ablation/contract.ablation.test.ts)"
 }
 EOF
 
@@ -76,8 +92,8 @@ cat <<'EOF' > "${REPORT_FILE}"
 ---
 
 ## Environment & Hash Manifest
-- Environment manifest: `artifacts/verification/environment.json`
-- Hash manifest: `artifacts/verification/hashes.json`
+- Environment manifest: `artifacts/verification/st016-v1.0/environment.json`
+- Hash manifest: `artifacts/verification/st016-v1.0/hashes.json`
 EOF
 
 echo "============================================================"
