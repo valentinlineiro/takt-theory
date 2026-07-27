@@ -111,7 +111,7 @@ Create `docs/cards/CARD-364-runtime-convergence-preservation.md`:
 # CARD-364: Runtime Convergence & Contract Preservation Implementation
 
 **Status:** Backlog / Ready for Implementation  
-**Prerequisite:** Phase IV-C.6 Theory ([2026-07-23-phase-4c6-runtime-convergence-design.md](file:///home/valentin/code/takt-theory/docs/2026-07-23-phase-4c6-runtime-convergence-design.md)), Lean 4 Proofs ([TaktFormal/RuntimeConvergence.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/RuntimeConvergence.lean)).
+**Prerequisite:** Phase IV-C.6 Theory ([2026-07-23-phase-4c6-runtime-convergence-design.md](docs/2026-07-23-phase-4c6-runtime-convergence-design.md)), Lean 4 Proofs ([TaktFormal/RuntimeConvergence.lean](takt-formal/TaktFormal/RuntimeConvergence.lean)).
 
 ## Goal
 Implement the runtime online stream verifiers (`RuntimeConvergence`), incremental event monitors, and empirical evaluation suite derived from Phase IV-C.6.

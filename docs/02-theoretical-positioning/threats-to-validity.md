@@ -9,7 +9,7 @@
 
 ### 1.1 Sesgo de Selección de Benchmarks
 * **Riesgo:** Que los escenarios sintéticos creados en `EXP-001` a `EXP-004` favorezcan artificialmente la estructura de los contratos $D$ y los kernels $K_D$.
-* **Mitigación & Criterio de Falsación:** Inclusión de trazas de ejecución no curadas de agentes LLM heterogéneos ([TraceReader.ts](file:///home/valentin/code/takt-theory/benchmarks/scenarios/llm-traces/TraceReader.ts)) y comparación contra baselines agnósticos (POMDPRunner, Naive, Exhaustive).
+* **Mitigación & Criterio de Falsación:** Inclusión de trazas de ejecución no curadas de agentes LLM heterogéneos ([TraceReader.ts](benchmarks/scenarios/llm-traces/TraceReader.ts)) y comparación contra baselines agnósticos (POMDPRunner, Naive, Exhaustive).
 
 ### 1.2 Representatividad de Trazas de Agentes LLM
 * **Riesgo:** Las trazas de agentes LLM con herramientas representan un subconjunto específico de dinámicas (discretas, no continuas, basadas en llamadas a APIs).
@@ -107,7 +107,7 @@ La primera campaña empírica de `EXP-001` reveló tres amenazas metodológicas 
 
 ## 8. Sesgo de Muestreo Adaptativo (Adaptive Sampling Bias)
 
-Al utilizar el explorador activo basado en EVSI ([boundary-explorer.ts](file:///home/valentin/code/takt-theory/benchmarks/atlas/boundary-explorer.ts)) para guiar la búsqueda de la frontera en el Atlas:
+Al utilizar el explorador activo basado en EVSI ([boundary-explorer.ts](benchmarks/atlas/boundary-explorer.ts)) para guiar la búsqueda de la frontera en el Atlas:
 
 * **Riesgo:** Que el explorador sobre-muestree regiones de alta incertidumbre o sobre-optimice hacia fronteras preconcebidas, ignorando regiones del espacio de fases de apariencia homogénea que contengan anomalías no previstas.
 * **Mitigaciones Exigidas:**

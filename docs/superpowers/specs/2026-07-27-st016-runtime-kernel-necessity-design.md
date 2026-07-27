@@ -67,9 +67,9 @@ $$\text{MinimalRuntime}(M) \iff \text{Sufficient}(M) \land \text{Irreducible}(M)
 
 | Theoretical Capability | Capability Kernel | TypeScript Implementation Component (`cli/src/runtime`) |
 | :--- | :--- | :--- |
-| **ContractSoundness** ($C_{\text{contract}}$) | $K_{\text{contract}}$ | [`ContractEvaluator.ts`](file:///home/valentin/code/takt-theory/cli/src/runtime/ContractEvaluator.ts) |
-| **UncertaintyBound** ($C_{\text{uncertainty}}$) | $K_{\text{uncertainty}}$ | [`RobustMarginEstimator.ts`](file:///home/valentin/code/takt-theory/cli/src/runtime/RobustMarginEstimator.ts) |
-| **TemporalConsistency** ($C_{\text{temporal}}$) | $K_{\text{temporal}}$ | [`TrajectoryMonitor.ts`](file:///home/valentin/code/takt-theory/cli/src/runtime/TrajectoryMonitor.ts) |
+| **ContractSoundness** ($C_{\text{contract}}$) | $K_{\text{contract}}$ | [`ContractEvaluator.ts`](cli/src/runtime/ContractEvaluator.ts) |
+| **UncertaintyBound** ($C_{\text{uncertainty}}$) | $K_{\text{uncertainty}}$ | [`RobustMarginEstimator.ts`](cli/src/runtime/RobustMarginEstimator.ts) |
+| **TemporalConsistency** ($C_{\text{temporal}}$) | $K_{\text{temporal}}$ | [`TrajectoryMonitor.ts`](cli/src/runtime/TrajectoryMonitor.ts) |
 
 ---
 

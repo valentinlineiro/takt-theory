@@ -55,22 +55,22 @@ The following map connects the mathematical concepts of Volume II to their exact
 
 | Mathematical Concept | Lean Module | Main Theorem / Definition | Runtime Counterpart |
 | :--- | :--- | :--- | :--- |
-| **Representation Space** | [Preorder.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Representation/Preorder.lean) | `RepresentationSpace` (Preordered carrier) | `RepresentationSpace` interface |
-| **Information Refinement** | [Refinement.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Representation/Refinement.lean) | `equiv_refinement` (Poset refinement) | `refines` relation |
-| **Cost Functional** | [Functional.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Cost/Functional.lean) | `CostFunctional` & `isMonotone` | `CostMorphism` |
-| **Projection Morphisms** | [Basic.lean (Morphism)](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Morphism/Basic.lean) | `CostDerivedMorphism` | `Morphism` subclasses |
-| **Morphism Kernels** | [Basic.lean (Kernel)](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Kernel/Basic.lean) | `MorphismKernel` equivalence relation | `KernelEquivalence` utility |
-| **Quotient Spaces** | [Quotient.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Kernel/Quotient.lean) | `DecisionalCostQuotient` via `Quotient` | `QuotientSpace` representations |
-| **Kernel Relations** | [KernelRelations.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Geometry/KernelRelations.lean) | `ordinal_kernel_implies_decision_kernel` | $\ker(\Psi) \subseteq \ker(\Phi)$ checks |
-| **Sufficiency Bridge** | [SufficiencyBridge.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Geometry/SufficiencyBridge.lean) | `sufficiency_bridge_matches_vol1` | Volume I/II compliance validation |
-| **Metric Proximity** | [Metric.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Stability/Metric.lean) | `MetricProximity` (Epsilon cost proximity) | Proximity bounds estimation |
-| **Metric Triangle Inequality** | [Distance.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Stability/Distance.lean) | `metric_proximity_triangle` | Distance verification metrics |
-| **Distortion Bounds** | [DistortionBounds.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Stability/DistortionBounds.lean) | `distortion_zero_iff_monotone` | Order distortion bounds |
-| **Stability Theorem** | [StabilityTheorem.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Stability/StabilityTheorem.lean) | `quantitative_stability_theorem` | Stability Margin verifier |
-| **Cover Relation ($\lessdot$)** | [Cover.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Landscape/Cover.lean) | `IsCover` (Covering relation) | Atomic split/merge step |
-| **Landscape Graph** | [Graph.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Landscape/Graph.lean) | `LandscapeGraph` directed structure | `LandscapeGraph` class |
-| **Decisional Regions** | [Regions.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Landscape/Regions.lean) | `DecisionalPath` connected components | `Region` and basin locator |
-| **Decisional Boundaries** | [Boundaries.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Landscape/Boundaries.lean) | `IsDecisionalBoundary` edge relation | `Boundary` verifier |
+| **Representation Space** | [Preorder.lean](takt-formal/TaktFormal/Representation/Preorder.lean) | `RepresentationSpace` (Preordered carrier) | `RepresentationSpace` interface |
+| **Information Refinement** | [Refinement.lean](takt-formal/TaktFormal/Representation/Refinement.lean) | `equiv_refinement` (Poset refinement) | `refines` relation |
+| **Cost Functional** | [Functional.lean](takt-formal/TaktFormal/Cost/Functional.lean) | `CostFunctional` & `isMonotone` | `CostMorphism` |
+| **Projection Morphisms** | [Basic.lean (Morphism)](takt-formal/TaktFormal/Morphism/Basic.lean) | `CostDerivedMorphism` | `Morphism` subclasses |
+| **Morphism Kernels** | [Basic.lean (Kernel)](takt-formal/TaktFormal/Kernel/Basic.lean) | `MorphismKernel` equivalence relation | `KernelEquivalence` utility |
+| **Quotient Spaces** | [Quotient.lean](takt-formal/TaktFormal/Kernel/Quotient.lean) | `DecisionalCostQuotient` via `Quotient` | `QuotientSpace` representations |
+| **Kernel Relations** | [KernelRelations.lean](takt-formal/TaktFormal/Geometry/KernelRelations.lean) | `ordinal_kernel_implies_decision_kernel` | $\ker(\Psi) \subseteq \ker(\Phi)$ checks |
+| **Sufficiency Bridge** | [SufficiencyBridge.lean](takt-formal/TaktFormal/Geometry/SufficiencyBridge.lean) | `sufficiency_bridge_matches_vol1` | Volume I/II compliance validation |
+| **Metric Proximity** | [Metric.lean](takt-formal/TaktFormal/Stability/Metric.lean) | `MetricProximity` (Epsilon cost proximity) | Proximity bounds estimation |
+| **Metric Triangle Inequality** | [Distance.lean](takt-formal/TaktFormal/Stability/Distance.lean) | `metric_proximity_triangle` | Distance verification metrics |
+| **Distortion Bounds** | [DistortionBounds.lean](takt-formal/TaktFormal/Stability/DistortionBounds.lean) | `distortion_zero_iff_monotone` | Order distortion bounds |
+| **Stability Theorem** | [StabilityTheorem.lean](takt-formal/TaktFormal/Stability/StabilityTheorem.lean) | `quantitative_stability_theorem` | Stability Margin verifier |
+| **Cover Relation ($\lessdot$)** | [Cover.lean](takt-formal/TaktFormal/Landscape/Cover.lean) | `IsCover` (Covering relation) | Atomic split/merge step |
+| **Landscape Graph** | [Graph.lean](takt-formal/TaktFormal/Landscape/Graph.lean) | `LandscapeGraph` directed structure | `LandscapeGraph` class |
+| **Decisional Regions** | [Regions.lean](takt-formal/TaktFormal/Landscape/Regions.lean) | `DecisionalPath` connected components | `Region` and basin locator |
+| **Decisional Boundaries** | [Boundaries.lean](takt-formal/TaktFormal/Landscape/Boundaries.lean) | `IsDecisionalBoundary` edge relation | `Boundary` verifier |
 
 ---
 

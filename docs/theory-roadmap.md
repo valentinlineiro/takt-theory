@@ -173,7 +173,7 @@ Establishes the complete formal theory of transition from executable detectors $
 
 Defines the research architecture contract and dependency matrix for the 5 extension tracks (Metatheory, System Composition, Categorical Unification, Computational Complexity, Probabilistic Governance).
 
-See [extension-roadmap.md](file:///home/valentin/code/takt-theory/docs/extension-roadmap.md) for the full Volume V specification.
+See [extension-roadmap.md](docs/extension-roadmap.md) for the full Volume V specification.
 
 **Phase V-A: Metatheory of TAKT** (Complete - Formalized & Mechanized in Lean 4)
 

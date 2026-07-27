@@ -3,7 +3,7 @@
 **Date:** 2026-07-23  
 **Author:** TAKT Core Team & Antigravity AI  
 **Status:** Theoretical Design Specification (Fase IV-C.4)  
-**Prerequisites:** Phase IV-C.1 Detector Evolution Theory ([2026-07-23-phase-4c-governed-convergence-design.md](file:///home/valentin/code/takt-theory/docs/2026-07-23-phase-4c-governed-convergence-design.md)), Phase IV-C.2 Governance Geometry Theory ([2026-07-23-phase-4c2-governance-geometry-design.md](file:///home/valentin/code/takt-theory/docs/2026-07-23-phase-4c2-governance-geometry-design.md)), Phase IV-C.3 Enrichment Algebra Theory ([2026-07-23-phase-4c3-enrichment-algebra-design.md](file:///home/valentin/code/takt-theory/docs/2026-07-23-phase-4c3-enrichment-algebra-design.md)), `TaktFormal/EnrichmentAlgebra.lean`.
+**Prerequisites:** Phase IV-C.1 Detector Evolution Theory ([2026-07-23-phase-4c-governed-convergence-design.md](docs/2026-07-23-phase-4c-governed-convergence-design.md)), Phase IV-C.2 Governance Geometry Theory ([2026-07-23-phase-4c2-governance-geometry-design.md](docs/2026-07-23-phase-4c2-governance-geometry-design.md)), Phase IV-C.3 Enrichment Algebra Theory ([2026-07-23-phase-4c3-enrichment-algebra-design.md](docs/2026-07-23-phase-4c3-enrichment-algebra-design.md)), `TaktFormal/EnrichmentAlgebra.lean`.
 
 ---
 

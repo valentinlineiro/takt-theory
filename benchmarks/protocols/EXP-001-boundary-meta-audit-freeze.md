@@ -41,6 +41,6 @@ Active EVSI sampling achieves a faster reduction in Atlas classification uncerta
 
 ## 4. Auditable Action Rules
 
-- **If $\epsilon_{\text{model}} \uparrow$ (High Model Error):** Recalibrate EVSI acquisition weights in [boundary-explorer.ts](file:///home/valentin/code/takt-theory/benchmarks/atlas/boundary-explorer.ts).
+- **If $\epsilon_{\text{model}} \uparrow$ (High Model Error):** Recalibrate EVSI acquisition weights in [boundary-explorer.ts](benchmarks/atlas/boundary-explorer.ts).
 - **If $\epsilon_{\text{exec}} \uparrow$ (High Execution Noise):** Isolate hardware benchmarking process and pin CPU affinity.
-- **If $\epsilon_{\text{interpret}} \uparrow$ (High Interpretation Error):** Refine classification thresholds in [boundary-estimator.ts](file:///home/valentin/code/takt-theory/benchmarks/atlas/boundary-estimator.ts).
+- **If $\epsilon_{\text{interpret}} \uparrow$ (High Interpretation Error):** Refine classification thresholds in [boundary-estimator.ts](benchmarks/atlas/boundary-estimator.ts).

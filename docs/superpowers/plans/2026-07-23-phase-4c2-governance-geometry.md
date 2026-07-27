@@ -106,7 +106,7 @@ Create `docs/cards/CARD-360-governance-geometry-runtime.md`:
 # CARD-360: Governance Geometry Runtime Implementation
 
 **Status:** Backlog / Ready for Implementation  
-**Prerequisite:** Phase IV-C.2 Theory ([2026-07-23-phase-4c2-governance-geometry-design.md](file:///home/valentin/code/takt-theory/docs/2026-07-23-phase-4c2-governance-geometry-design.md)), Lean 4 Proofs ([TaktFormal/GovernanceGeometry.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/GovernanceGeometry.lean)).
+**Prerequisite:** Phase IV-C.2 Theory ([2026-07-23-phase-4c2-governance-geometry-design.md](docs/2026-07-23-phase-4c2-governance-geometry-design.md)), Lean 4 Proofs ([TaktFormal/GovernanceGeometry.lean](takt-formal/TaktFormal/GovernanceGeometry.lean)).
 
 ## Goal
 Implement the runtime governance geometry metrics ($d_{\rightarrow}, d_{\equiv}, \delta(D)$) and empirical evaluation suite derived from Phase IV-C.2.

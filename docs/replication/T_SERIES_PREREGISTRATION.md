@@ -9,7 +9,7 @@
 ### 1. Experimentos Pre-Registrados
 
 #### Subserie T-AI (Evaluación de Transportabilidad por Agentes de IA)
-* **T-AI-001 a T-AI-00N:** Auditorías/réplicas ejecutadas de forma ciega y sin contexto previo por modelos de IA independientes (ej. Perplexity, Gemini, Claude, ChatGPT) interactuando únicamente con el repositorio público según el protocolo en [T_AI_CAMPAIGN_PROTOCOL.md](file:///home/valentin/code/takt-theory/docs/replication/T_AI_CAMPAIGN_PROTOCOL.md).
+* **T-AI-001 a T-AI-00N:** Auditorías/réplicas ejecutadas de forma ciega y sin contexto previo por modelos de IA independientes (ej. Perplexity, Gemini, Claude, ChatGPT) interactuando únicamente con el repositorio público según el protocolo en [T_AI_CAMPAIGN_PROTOCOL.md](docs/replication/T_AI_CAMPAIGN_PROTOCOL.md).
 * **Propósito:** Evaluar la suficiencia estática y la interpretabilidad de la documentación antes de la exposición a humanos.
 * **Declaración de Alcance:** La subserie `T-AI` **no sustituye la Serie T Humana** ni constituye evidencia suficiente de transportabilidad social; mide exclusivamente la autocontención del paquete para agentes autónomos.
 

@@ -4,7 +4,7 @@
 
 **Goal:** Certify the core theorems of ST-015 (Capability Theory and Structural Sufficiency) in Lean 4 by creating a modular and self-contained proof file.
 
-**Architecture:** We will create [takt-formal/TaktFormal/StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean) which depends only on the core [Kernel.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Kernel.lean) definitions. The theorems will be proven using basic Lean 4 quotient types and logic without external libraries.
+**Architecture:** We will create [takt-formal/TaktFormal/StructuralSufficiency.lean](takt-formal/TaktFormal/StructuralSufficiency.lean) which depends only on the core [Kernel.lean](takt-formal/TaktFormal/Kernel.lean) definitions. The theorems will be proven using basic Lean 4 quotient types and logic without external libraries.
 
 **Tech Stack:** Lean 4 (Lake build system)
 
@@ -18,10 +18,10 @@
 ### Task 1: Fundamental Capability Theory Definitions
 
 **Files:**
-* Create: [takt-formal/TaktFormal/StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean)
+* Create: [takt-formal/TaktFormal/StructuralSufficiency.lean](takt-formal/TaktFormal/StructuralSufficiency.lean)
 
 **Interfaces:**
-* Consumes: `kernel` and `kernelSubset` from [takt-formal/TaktFormal/Kernel.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/Kernel.lean)
+* Consumes: `kernel` and `kernelSubset` from [takt-formal/TaktFormal/Kernel.lean](takt-formal/TaktFormal/Kernel.lean)
 * Produces: `provides`, `C_R`, and `G` definitions for representation capability assessment.
 
 - [ ] **Step 1: Write definitions in StructuralSufficiency.lean**
@@ -62,7 +62,7 @@
 ### Task 2: Certifying Teoremas T3 and T4 (Capability Theory)
 
 **Files:**
-* Modify: [takt-formal/TaktFormal/StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean)
+* Modify: [takt-formal/TaktFormal/StructuralSufficiency.lean](takt-formal/TaktFormal/StructuralSufficiency.lean)
 
 **Interfaces:**
 * Consumes: `G`, `provides`, and `C_R` definitions.
@@ -99,7 +99,7 @@
 ### Task 3: Axioma A0 and Sufficiency Theorems T1 and T2
 
 **Files:**
-* Modify: [takt-formal/TaktFormal/StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean)
+* Modify: [takt-formal/TaktFormal/StructuralSufficiency.lean](takt-formal/TaktFormal/StructuralSufficiency.lean)
 
 **Interfaces:**
 * Consumes: `provides`, `kernelSubset`
@@ -190,7 +190,7 @@
 ### Task 4: Certifying Teorema T5 (Punto Fijo de la Suficiencia)
 
 **Files:**
-* Modify: [takt-formal/TaktFormal/StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean)
+* Modify: [takt-formal/TaktFormal/StructuralSufficiency.lean](takt-formal/TaktFormal/StructuralSufficiency.lean)
 
 **Interfaces:**
 * Consumes: `kernelSubset`, `Axiom0`, `K_D`, `T1_characterization`
@@ -227,14 +227,14 @@
 ### Task 5: Main Module Integration and Final Verification
 
 **Files:**
-* Modify: [takt-formal/TaktFormal.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal.lean)
+* Modify: [takt-formal/TaktFormal.lean](takt-formal/TaktFormal.lean)
 
 **Interfaces:**
 * Consumes: `TaktFormal.StructuralSufficiency`
 * Produces: Clean lake build containing all proofs.
 
 - [ ] **Step 1: Add import to TaktFormal.lean**
-  Modify [takt-formal/TaktFormal.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal.lean) to import `TaktFormal.StructuralSufficiency`.
+  Modify [takt-formal/TaktFormal.lean](takt-formal/TaktFormal.lean) to import `TaktFormal.StructuralSufficiency`.
   ```diff
   --- a/takt-formal/TaktFormal.lean
   +++ b/takt-formal/TaktFormal.lean

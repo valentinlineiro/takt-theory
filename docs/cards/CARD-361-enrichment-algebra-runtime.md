@@ -1,7 +1,7 @@
 # CARD-361: Enrichment Algebra Runtime Implementation
 
 **Status:** Backlog / Ready for Implementation  
-**Prerequisite:** Phase IV-C.3 Theory ([2026-07-23-phase-4c3-enrichment-algebra-design.md](file:///home/valentin/code/takt-theory/docs/2026-07-23-phase-4c3-enrichment-algebra-design.md)), Lean 4 Proofs ([TaktFormal/EnrichmentAlgebra.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/EnrichmentAlgebra.lean)).
+**Prerequisite:** Phase IV-C.3 Theory ([2026-07-23-phase-4c3-enrichment-algebra-design.md](docs/2026-07-23-phase-4c3-enrichment-algebra-design.md)), Lean 4 Proofs ([TaktFormal/EnrichmentAlgebra.lean](takt-formal/TaktFormal/EnrichmentAlgebra.lean)).
 
 ---
 

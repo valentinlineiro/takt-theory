@@ -8,7 +8,7 @@
 
 ## 1. Goal
 
-Restructure [optimal-representation-theory.md](file:///home/valentin/code/takt-theory/docs/optimal-representation-theory.md) to reflect the exact epistemological status of the theorems, axioms, and open questions of Phase IV, Stage 2. The document must align with the discipline used in ST-015: defining the minimal object of study first and posing the weakest possible existence question as an open problem before stating or assuming theorems.
+Restructure [optimal-representation-theory.md](docs/optimal-representation-theory.md) to reflect the exact epistemological status of the theorems, axioms, and open questions of Phase IV, Stage 2. The document must align with the discipline used in ST-015: defining the minimal object of study first and posing the weakest possible existence question as an open problem before stating or assuming theorems.
 
 ---
 

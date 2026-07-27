@@ -111,7 +111,7 @@ Create `docs/cards/CARD-362-cost-optimization-runtime.md`:
 # CARD-362: Cost Optimization & EVSI Runtime Implementation
 
 **Status:** Backlog / Ready for Implementation  
-**Prerequisite:** Phase IV-C.4 Theory ([2026-07-23-phase-4c4-cost-optimization-design.md](file:///home/valentin/code/takt-theory/docs/2026-07-23-phase-4c4-cost-optimization-design.md)), Lean 4 Proofs ([TaktFormal/CostOptimization.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/CostOptimization.lean)).
+**Prerequisite:** Phase IV-C.4 Theory ([2026-07-23-phase-4c4-cost-optimization-design.md](docs/2026-07-23-phase-4c4-cost-optimization-design.md)), Lean 4 Proofs ([TaktFormal/CostOptimization.lean](takt-formal/TaktFormal/CostOptimization.lean)).
 
 ## Goal
 Implement the runtime cost optimizer (`CostOptimization`), EVSI planner, rational stopping evaluator, and empirical evaluation suite derived from Phase IV-C.4.
