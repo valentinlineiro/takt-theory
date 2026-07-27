@@ -1,6 +1,6 @@
 # TAKT Runtime Conformance Declaration
 
-**Generated Date:** 2026-07-27T15:50:39Z  
+**Generated Date:** 2026-07-27T16:00:21Z  
 **Normative Standard:** ST-016 v1.0.0 (FROZEN)  
 **Manifest:** [`theory-manifest.yml`](file:///home/valentin/code/takt-theory/theory-manifest.yml)  
 
