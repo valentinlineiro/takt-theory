@@ -31,6 +31,7 @@ jobs:
         with:
           lake-package-directory: takt-formal
           build: 'false'
+          use-github-cache: 'true'
 
       - name: Bootstrap Environment
         run: ./scripts/bootstrap.sh
