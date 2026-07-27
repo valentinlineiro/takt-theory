@@ -2,3 +2,4 @@ node_modules/
 .repowise/
 benchmarks/datasets/
 benchmarks/test-datasets/
+.takt/
