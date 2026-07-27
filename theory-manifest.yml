@@ -1,0 +1,46 @@
+standard: ST-016
+name: Runtime Kernel Necessity & Minimal Sufficiency
+version: 1.0.0
+status: frozen
+
+theoretical_dependencies:
+  - standard: ST-015
+    version: 1.0.0
+    status: frozen
+
+formalization:
+  lean_version: "leanprover/lean4:v4.32.0"
+  modules:
+    - name: TaktFormal.StructuralSufficiency
+      file: takt-formal/TaktFormal/StructuralSufficiency.lean
+    - name: TaktFormal.RuntimeSufficiency
+      file: takt-formal/TaktFormal/RuntimeSufficiency.lean
+    - name: TaktFormal.RuntimeWitness
+      file: takt-formal/TaktFormal/RuntimeWitness.lean
+
+normative_specifications:
+  - title: ST-016 Normative Runtime Specification
+    file: docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md
+
+conformance_reference_implementation:
+  language: TypeScript
+  runtime_path: cli/src/runtime
+  capabilities:
+    ContractSoundness:
+      component: ContractEvaluator.ts
+      lean_module: RuntimeSufficiency
+      ablation_test: cli/src/runtime/__tests__/ablation/contract.ablation.test.ts
+    UncertaintyBound:
+      component: RobustMarginEstimator.ts
+      lean_module: RuntimeSufficiency
+      ablation_test: cli/src/runtime/__tests__/ablation/uncertainty.ablation.test.ts
+    TemporalConsistency:
+      component: TrajectoryMonitor.ts
+      lean_module: RuntimeSufficiency
+      ablation_test: cli/src/runtime/__tests__/ablation/temporal.ablation.test.ts
+
+verification:
+  bootstrap_script: scripts/bootstrap.sh
+  verify_script: scripts/verify.sh
+  ci_workflow: .github/workflows/verify.yml
+  report_path: artifacts/verification/st016-v1.0/st016-v1.0-report.md
