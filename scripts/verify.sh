@@ -34,7 +34,6 @@ if [ ! -f "theory-manifest.yml" ]; then
     exit 1
 fi
 
-# Verify referenced files exist
 for file in "takt-formal/TaktFormal/StructuralSufficiency.lean" \
             "takt-formal/TaktFormal/RuntimeSufficiency.lean" \
             "takt-formal/TaktFormal/RuntimeWitness.lean" \
@@ -93,7 +92,7 @@ cat <<EOF > "${CONFORMANCE_FILE}"
 
 **Generated Date:** ${TIMESTAMP}  
 **Normative Standard:** ST-016 v1.0.0 (FROZEN)  
-**Manifest:** [\`theory-manifest.yml\`](file:///home/valentin/code/takt-theory/theory-manifest.yml)  
+**Manifest:** [\`theory-manifest.yml\`](theory-manifest.yml)  
 
 ---
 
