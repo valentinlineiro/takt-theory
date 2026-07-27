@@ -1,10 +1,23 @@
-import Mathlib.Data.Set.Basic
-
 namespace TaktFormal.RuntimeSufficiency
 
 universe u v
 
+def Set (α : Type u) := α → Prop
+
+instance : Membership α (Set α) where
+  mem s x := s x
+
+instance : SDiff (Set α) where
+  sdiff s1 s2 := fun x => s1 x ∧ ¬ s2 x
+
+instance : Singleton α (Set α) where
+  singleton x := fun y => y = x
+
+instance : Insert α (Set α) where
+  insert x s := fun y => y = x ∨ s y
+
 variable {α : Type u} {δ : Type v}
+
 
 /-- Abstract theoretical runtime capabilities --/
 inductive RuntimeCapability
