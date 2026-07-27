@@ -79,6 +79,7 @@ import TaktFormal.CostOptimization
 import TaktFormal.ApproximateGovernance
 import TaktFormal.RuntimeConvergence
 import TaktFormal.RuntimeSufficiency
+import TaktFormal.RuntimeWitness
 import TaktFormal.ImpossibilityLimits
 import TaktFormal.Metatheory
 import TaktFormal.Composition
