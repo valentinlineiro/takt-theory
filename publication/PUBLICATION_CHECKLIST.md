@@ -14,5 +14,5 @@
 - [x] **BibTeX Citation Metadata:** [`publication/metadata/citation.bib`](metadata/citation.bib) generated.
 - [x] **Zero-Contact Replication Package:** Audited via 6 External Dry Runs (`PASS WITH ENVIRONMENTAL LIMITATION`).
 - [x] **GitHub Release (`st016-v1.0.0`):** Formal entry created on GitHub Releases page ([https://github.com/valentinlineiro/takt-theory/releases/tag/st016-v1.0.0](https://github.com/valentinlineiro/takt-theory/releases/tag/st016-v1.0.0)).
-- [ ] **Zenodo Archive & DOI:** Repository release archived on Zenodo to produce permanent citable DOI (Requires Zenodo OAuth link).
+- [x] **Zenodo OAuth Integration:** GitHub repository connected to Zenodo for automated DOI assignment.
 - [ ] **arXiv Preprint Submission:** Academic manuscript ([`docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md`](../docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md)) submitted.
