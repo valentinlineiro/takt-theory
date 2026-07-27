@@ -1,46 +1,72 @@
-standard: ST-016
-name: Runtime Kernel Necessity & Minimal Sufficiency
-version: 1.0.0
-status: frozen
+manifest:
+  schema: "1.0"
+  standard: "ST-016"
+  version: "1.0.0"
+  status: "frozen"
+  generated: "2026-07-27"
 
 theoretical_dependencies:
-  - standard: ST-015
-    version: 1.0.0
-    status: frozen
+  - id: "ST-015"
+    version: "1.0.0"
+    status: "frozen"
 
 formalization:
   lean_version: "leanprover/lean4:v4.32.0"
   modules:
-    - name: TaktFormal.StructuralSufficiency
-      file: takt-formal/TaktFormal/StructuralSufficiency.lean
-    - name: TaktFormal.RuntimeSufficiency
-      file: takt-formal/TaktFormal/RuntimeSufficiency.lean
-    - name: TaktFormal.RuntimeWitness
-      file: takt-formal/TaktFormal/RuntimeWitness.lean
+    - id: "LEAN-STRUCTURAL-SUFFICIENCY"
+      name: "TaktFormal.StructuralSufficiency"
+      file: "takt-formal/TaktFormal/StructuralSufficiency.lean"
+    - id: "LEAN-RUNTIME-SUFFICIENCY"
+      name: "TaktFormal.RuntimeSufficiency"
+      file: "takt-formal/TaktFormal/RuntimeSufficiency.lean"
+    - id: "LEAN-RUNTIME-WITNESS"
+      name: "TaktFormal.RuntimeWitness"
+      file: "takt-formal/TaktFormal/RuntimeWitness.lean"
 
 normative_specifications:
-  - title: ST-016 Normative Runtime Specification
-    file: docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md
+  - id: "SPEC-ST016"
+    title: "ST-016 Normative Runtime Specification"
+    file: "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md"
 
-conformance_reference_implementation:
-  language: TypeScript
-  runtime_path: cli/src/runtime
-  capabilities:
-    ContractSoundness:
-      component: ContractEvaluator.ts
-      lean_module: RuntimeSufficiency
-      ablation_test: cli/src/runtime/__tests__/ablation/contract.ablation.test.ts
-    UncertaintyBound:
-      component: RobustMarginEstimator.ts
-      lean_module: RuntimeSufficiency
-      ablation_test: cli/src/runtime/__tests__/ablation/uncertainty.ablation.test.ts
-    TemporalConsistency:
-      component: TrajectoryMonitor.ts
-      lean_module: RuntimeSufficiency
-      ablation_test: cli/src/runtime/__tests__/ablation/temporal.ablation.test.ts
+capabilities:
+  - id: "KD-CONTRACT"
+    name: "ContractSoundness"
+    kernel: "K_contract"
+    responsibility: "Domain invariant and safety contract verification"
+    reference_implementation:
+      component: "ContractEvaluator.ts"
+      file: "cli/src/runtime/ContractEvaluator.ts"
+    lean_module: "TaktFormal.RuntimeSufficiency"
+    ablation_test: "cli/src/runtime/__tests__/ablation/contract.ablation.test.ts"
+
+  - id: "KD-UNCERTAINTY"
+    name: "UncertaintyBound"
+    kernel: "K_uncertainty"
+    responsibility: "Dynamic margin estimation under residual ambiguity"
+    reference_implementation:
+      component: "RobustMarginEstimator.ts"
+      file: "cli/src/runtime/RobustMarginEstimator.ts"
+    lean_module: "TaktFormal.RuntimeSufficiency"
+    ablation_test: "cli/src/runtime/__tests__/ablation/uncertainty.ablation.test.ts"
+
+  - id: "KD-TEMPORAL"
+    name: "TemporalConsistency"
+    kernel: "K_temporal"
+    responsibility: "History-dependent trajectory prefix monitoring"
+    reference_implementation:
+      component: "TrajectoryMonitor.ts"
+      file: "cli/src/runtime/TrajectoryMonitor.ts"
+    lean_module: "TaktFormal.RuntimeSufficiency"
+    ablation_test: "cli/src/runtime/__tests__/ablation/temporal.ablation.test.ts"
+
+implementations:
+  typescript:
+    name: "TypeScript Reference Implementation"
+    runtime_path: "cli/src/runtime"
+    conformance_status: "conforming"
 
 verification:
-  bootstrap_script: scripts/bootstrap.sh
-  verify_script: scripts/verify.sh
-  ci_workflow: .github/workflows/verify.yml
-  report_path: artifacts/verification/st016-v1.0/st016-v1.0-report.md
+  bootstrap_script: "scripts/bootstrap.sh"
+  verify_script: "scripts/verify.sh"
+  ci_workflow: ".github/workflows/verify.yml"
+  report_path: "artifacts/verification/st016-v1.0/st016-v1.0-report.md"
