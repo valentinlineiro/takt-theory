@@ -10,43 +10,48 @@ This repository consolidates the theoretical foundations, Lean 4 formal proofs, 
 
 The project is semantic, functional, and organized as follows:
 
-* **/docs/** — Core theoretical knowledge
-  * `01-foundations/` — Axiomatic introduction, v3.0 formal specification, and reference guide
+* **/docs/** — Core theoretical knowledge & specifications
+  * `superpowers/specs/` — Normative specifications (ST-016 Runtime Kernel Specification)
+  * `01-foundations/` — Axiomatic introduction, formal specifications, and reference guides
   * `02-theoretical-positioning/` — Positioning audits comparing TAKT to Blackwell sufficiency, bisimulation, etc.
-  * `03-design-contracts/` — Operational contract definitions (D-001 Margin, D-002 Coverage, D-003 Dynamic Contracts)
-  * `04-academic-paper/` — Academic paper drafts and bibliography. Includes **paper v4** (`2026-07-17-takt-v4-draft.md`), which introduces trajectory-based dynamic governance, the dynamic margin M_D, the guaranteed intervention horizon, and the asymmetric margin effect.
+  * `03-design-contracts/` — Operational contract definitions
+  * `04-academic-paper/` — Academic paper drafts and bibliography
   * `05-archives/` — Historical phase freezes, revisions, and precursor formalisms
-* **/experiments/** — Reproducible empirical evidence
-  * `stress-tests/` — Target-risk stress tests (ST-001 to ST-007) validating failure boundaries
-  * `case-studies/` — Concrete case studies (CASE-001 to CASE-005) showing runtime performance
-  * `computational-batches/` — The 24 sequential batch runs (batch-001 to batch-024) mapping the Pareto frontier
+* **/artifacts/verification/** — Versioned verification reports, SHA-256 manifests, and environment metadata
 * **/takt-formal/** — Canonical Lean 4 verification package
-  * `TaktFormal/` — Lean 4 source files demonstrating proofs of safety equivalence, factorization, dynamic contracts, and Red Team attacks (RT-001 to RT-004)
-* **/cli/** — TypeScript evaluation engine running batch analysis
-* **/session/** — Historical session records (novelty audit, governance backlog)
+  * `TaktFormal/` — Lean 4 source files demonstrating proofs of safety equivalence, factorization, dynamic contracts, and ST-016 Runtime Sufficiency & Witness elevation
+* **/cli/** — TypeScript evaluation engine running batch analysis & EXP-004 ablation suite
+* **`theory-manifest.yml`** — Normative specification manifest mapping theoretical capabilities to Lean 4 modules and runtime components
 
 ---
 
-## 2. Validation & Reproduction
+## 2. Zero-Contact Reproduction & Verification
 
-### 2.1 Running the Evaluation Suite
-The empirical validation suite is written in TypeScript and runs via Vitest on Node:
+To execute the automated zero-contact verification suite (ST-016 v1.0 standard):
+
+```bash
+./scripts/bootstrap.sh && ./scripts/verify.sh
+```
+
+This single command pipeline automatically:
+1. Validates Node.js and auto-provisions Lean 4 (`elan` / `lake`) if missing.
+2. Builds the Lean 4 formal proof package with **0 errors and 0 `sorry`s** (230 build jobs).
+3. Executes the Vitest test suite (**283 tests across 76 files, 100% passing**).
+4. Generates EXP-004 component ablation witnesses for $C_{\text{contract}}$, $C_{\text{uncertainty}}$, and $C_{\text{temporal}}$.
+5. Verifies SHA-256 artifact hashes and generates [`CONFORMANCE.md`](CONFORMANCE.md) and [`artifacts/verification/st016-v1.0/st016-v1.0-report.md`](artifacts/verification/st016-v1.0/st016-v1.0-report.md).
+
+### 2.1 Independent TypeScript Test Run
 ```bash
 npx vitest run
 ```
-The suite currently comprises **280 tests across 73 files, all passing with zero failures**
 
-(F-001 to F-005.1 experiments + Red Team attacks RT-001 to RT-004).
-
-### 2.2 Compiling Lean 4 Proofs
-To verify the mathematical proofs, build the Lean 4 core project:
+### 2.2 Independent Lean 4 Build
 ```bash
 cd takt-formal
 lake build
 ```
-This compilation runs with zero external dependencies and completes with no errors or unresolved sorrys.
 
 ---
 
-## 3. Historical Precursors
-* `docs/05-archives/omega-formalism-v0.1.md` — Precursor to the current observability framework, outlining the transition from EVSI to governed representational contraction.
+## 3. Scientific Program Status
+See [`SCIENTIFIC_STATUS.md`](SCIENTIFIC_STATUS.md) for the active research matrix and frozen theoretical standards.
