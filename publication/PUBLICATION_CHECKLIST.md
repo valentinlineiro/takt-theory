@@ -2,6 +2,7 @@
 
 **Standard Baseline:** ST-016 v1.0.0 (`st016-v1.0.0` / `fca31f0`)  
 **Publication Record:** [`PUBLICATION_STATUS.md`](../PUBLICATION_STATUS.md)  
+**GitHub Release:** [st016-v1.0.0 Release](https://github.com/valentinlineiro/takt-theory/releases/tag/st016-v1.0.0)  
 
 ---
 
@@ -12,6 +13,6 @@
 - [x] **Scientific Closure Report:** [`docs/superpowers/specs/2026-07-27-st016-closure-report.md`](../docs/superpowers/specs/2026-07-27-st016-closure-report.md) committed.
 - [x] **BibTeX Citation Metadata:** [`publication/metadata/citation.bib`](metadata/citation.bib) generated.
 - [x] **Zero-Contact Replication Package:** Audited via 6 External Dry Runs (`PASS WITH ENVIRONMENTAL LIMITATION`).
-- [ ] **GitHub Release (`st016-v1.0.0`):** Formal entry created on GitHub Releases page.
-- [ ] **Zenodo Archive & DOI:** Repository release archived to produce permanent citable DOI.
+- [x] **GitHub Release (`st016-v1.0.0`):** Formal entry created on GitHub Releases page ([https://github.com/valentinlineiro/takt-theory/releases/tag/st016-v1.0.0](https://github.com/valentinlineiro/takt-theory/releases/tag/st016-v1.0.0)).
+- [ ] **Zenodo Archive & DOI:** Repository release archived on Zenodo to produce permanent citable DOI (Requires Zenodo OAuth link).
 - [ ] **arXiv Preprint Submission:** Academic manuscript ([`docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md`](../docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md)) submitted.
