@@ -5,7 +5,7 @@
 **Identificador de Evaluación:** T-AI-002  
 **Nivel de Independencia:** Nivel 3 (AI Agent Autonomous Execution)  
 **Clasificación Registrada Inicialmente:** Protocol Failure  
-**Matriz de Verificación y Cadena Causal:** [verification_matrix.md](file:///home/valentin/code/takt-theory/docs/replication/ai/T-AI-002/verification_matrix.md)  
+**Matriz de Verificación y Cadena Causal:** [verification_matrix.md](docs/replication/ai/T-AI-002/verification_matrix.md)  
 
 > **Declaración Metodológica de Alcance:**  
 > *Gemini 3.6 Flash formuló observaciones que, tras verificación independiente contra el código fuente, llevaron a identificar y corregir varios defectos del paquete de replicación. Esta ejecución demuestra la utilidad del proceso observacional para el saneamiento de empaquetado, pero no constituye evidencia suficiente de transportabilidad social ni de validez teórica.*

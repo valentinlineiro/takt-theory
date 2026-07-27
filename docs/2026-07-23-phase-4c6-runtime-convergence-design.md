@@ -3,7 +3,7 @@
 **Date:** 2026-07-23  
 **Author:** TAKT Core Team & Antigravity AI  
 **Status:** Theoretical Design Specification (Fase IV-C.6)  
-**Prerequisites:** Phases IV-C.1 through IV-C.5 Theoretical Specifications ([2026-07-23-phase-4c5-approximate-governance-design.md](file:///home/valentin/code/takt-theory/docs/2026-07-23-phase-4c5-approximate-governance-design.md)), `TaktFormal/ApproximateGovernance.lean`.
+**Prerequisites:** Phases IV-C.1 through IV-C.5 Theoretical Specifications ([2026-07-23-phase-4c5-approximate-governance-design.md](docs/2026-07-23-phase-4c5-approximate-governance-design.md)), `TaktFormal/ApproximateGovernance.lean`.
 
 ---
 

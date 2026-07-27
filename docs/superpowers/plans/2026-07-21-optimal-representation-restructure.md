@@ -55,7 +55,7 @@ Prepare the restructured version of `docs/optimal-representation-theory.md` inco
 
 ### 1. Context and Motivation
 
-Habiendo certificado y congelado el núcleo fundacional de la suficiencia en [docs/dependency-map.md](file:///home/valentin/code/takt-theory/docs/dependency-map.md), sabemos que para toda decisión $D$ con contrato coherente ($A0$) existe un conjunto bien definido de representaciones aceptables:
+Habiendo certificado y congelado el núcleo fundacional de la suficiencia en [docs/dependency-map.md](docs/dependency-map.md), sabemos que para toda decisión $D$ con contrato coherente ($A0$) existe un conjunto bien definido de representaciones aceptables:
 
 $$
 \mathcal{R}_{\text{sufficient}}(D) = \{ R : \ker(R) \subseteq K_D \}

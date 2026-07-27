@@ -17,7 +17,7 @@
 | **Adopción Práctica & Uso Continuado** | **Fase Temprana** | En transición desde benchmarks a infraestructura de ejecución en contextos de producción. |
 
 > **Centro de Gravedad Actual:**  
-> *El cuello de botella epistemológico (teoría/axiomas) ha sido superado. El centro de gravedad del programa se desplaza de la formulación teórica a la **ingeniería de infraestructura** (véase [OPERATIONAL_ROADMAP.md](file:///home/valentin/code/takt-theory/docs/OPERATIONAL_ROADMAP.md)), demostrando que la teoría produce sistemas útiles y operativamente medibles fuera de los benchmarks.*
+> *El cuello de botella epistemológico (teoría/axiomas) ha sido superado. El centro de gravedad del programa se desplaza de la formulación teórica a la **ingeniería de infraestructura** (véase [OPERATIONAL_ROADMAP.md](docs/OPERATIONAL_ROADMAP.md)), demostrando que la teoría produce sistemas útiles y operativamente medibles fuera de los benchmarks.*
 
 
 
@@ -59,7 +59,7 @@ graph LR
 
 Si eres un investigador o desarrollador interesado en probar TAKT de forma independiente:
 
-1. Lee la especificación inmutable en [REPLICATION_SPEC.md](file:///home/valentin/code/takt-theory/docs/replication/REPLICATION_SPEC.md).
-2. Consulta la pre-registración de la Serie T en [T_SERIES_PREREGISTRATION.md](file:///home/valentin/code/takt-theory/docs/replication/T_SERIES_PREREGISTRATION.md).
-3. Sigue las instrucciones operativas en [REPLICATION_KIT/README.md](file:///home/valentin/code/takt-theory/docs/replication/REPLICATION_KIT/README.md).
-4. Registra los resultados utilizando la plantilla en [REPLICATION_REPORT_TEMPLATE.md](file:///home/valentin/code/takt-theory/docs/replication/REPLICATION_REPORT_TEMPLATE.md).
+1. Lee la especificación inmutable en [REPLICATION_SPEC.md](docs/replication/REPLICATION_SPEC.md).
+2. Consulta la pre-registración de la Serie T en [T_SERIES_PREREGISTRATION.md](docs/replication/T_SERIES_PREREGISTRATION.md).
+3. Sigue las instrucciones operativas en [REPLICATION_KIT/README.md](docs/replication/REPLICATION_KIT/README.md).
+4. Registra los resultados utilizando la plantilla en [REPLICATION_REPORT_TEMPLATE.md](docs/replication/REPLICATION_REPORT_TEMPLATE.md).

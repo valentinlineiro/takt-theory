@@ -30,7 +30,7 @@ graph TD
 | **TAI-003-03** | `expected-results.md` net values desalineados de la salida real del CLI. | Gobernanza | **Confirmada (Doc Drift)** | Valores actualizados a $+83.8$, $+54.5$, $+39.4$ con la derivación dinámica exacta. |
 | **TAI-003-04** | Flag `--adapter` en `verify_adapter.py` no ejecutaba prueba real. | Stub / Kit | **Confirmada (Incompleto)** | Implementada la verificación dinámica del contrato `TaktAdapter` en `verify_adapter.py`. |
 | **TAI-003-05** | Flag `--validate-results` no calculaba $H_{enrichment}$, SPT, $\varepsilon_{obs}$, $R_2$. | Stub / Kit | **Confirmada (Incompleto)** | Implementado el motor numérico en `verify_adapter.py` y generación de `summary_metrics.json`. |
-| **TAI-003-06** | Ausencia de un adaptador de referencia concreto. | Ejemplos | **Confirmada (Ausencia)** | Creado [reference_adapter.py](file:///home/valentin/code/takt-theory/docs/replication/REPLICATION_KIT/examples/reference_adapter.py). |
+| **TAI-003-06** | Ausencia de un adaptador de referencia concreto. | Ejemplos | **Confirmada (Ausencia)** | Creado [reference_adapter.py](docs/replication/REPLICATION_KIT/examples/reference_adapter.py). |
 
 ---
 

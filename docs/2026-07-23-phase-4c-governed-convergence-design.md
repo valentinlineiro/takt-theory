@@ -3,7 +3,7 @@
 **Date:** 2026-07-23  
 **Author:** TAKT Core Team & Antigravity AI  
 **Status:** Theoretical Design Specification (Fase IV-C.1 - Refined)  
-**Prerequisites:** Phase IV Foundational Spec ([theory-roadmap.md](file:///home/valentin/code/takt-theory/docs/theory-roadmap.md)), Governed Enrichment Framework ([governed-enrichment-framework.md](file:///home/valentin/code/takt-theory/docs/governed-enrichment-framework.md)), ST-015 Structural Sufficiency Theorem, ST-008 Impossibility Theorem.
+**Prerequisites:** Phase IV Foundational Spec ([theory-roadmap.md](docs/theory-roadmap.md)), Governed Enrichment Framework ([governed-enrichment-framework.md](docs/governed-enrichment-framework.md)), ST-015 Structural Sufficiency Theorem, ST-008 Impossibility Theorem.
 
 ---
 
@@ -74,7 +74,7 @@ Every valid evolution operator in Phase IV-C.1 must satisfy five foundational in
 | **5** | **Progress Measure** | $\mu(\Phi(D, E)) < \mu(D)$ (for $E \neq E_{\text{id}}$ and progress) | Guarantees non-cyclic evolution toward convergence. |
 
 #### 3.2.1 Governance Monotonicity Invariant ($D \preceq \Phi(D, E)$)
-Let $\preceq$ be the capability semilattice ordering from Phase IV-B ([governed-enrichment-framework.md](file:///home/valentin/code/takt-theory/docs/governed-enrichment-framework.md)). Evolution satisfies monotonicity:
+Let $\preceq$ be the capability semilattice ordering from Phase IV-B ([governed-enrichment-framework.md](docs/governed-enrichment-framework.md)). Evolution satisfies monotonicity:
 $$\forall D \in \mathcal{D}_{\text{sound}}, E \in \mathcal{E} : D \preceq \Phi(D, E)$$
 This guarantees a monotonic refinement chain: $D_0 \preceq D_1 \preceq \dots \preceq D_n \equiv_{\text{gov}} D_{\text{top}}$.
 

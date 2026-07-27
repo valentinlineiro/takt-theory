@@ -4,10 +4,10 @@ Bienvenido al **Kit de Replicación Operativa de TAKT**. Este directorio contien
 
 ## Estructura del Kit
 
-1. [01-environment.md](file:///home/valentin/code/takt-theory/docs/replication/REPLICATION_KIT/01-environment.md) — Requisitos del sistema y configuración del entorno.
-2. [02-adapter-contract.md](file:///home/valentin/code/takt-theory/docs/replication/REPLICATION_KIT/02-adapter-contract.md) — Especificación técnica del contrato de adaptador TAKT.
-3. [03-running-experiments.md](file:///home/valentin/code/takt-theory/docs/replication/REPLICATION_KIT/03-running-experiments.md) — Protocolo de ejecución y recolección de trazas.
-4. [04-validating-results.md](file:///home/valentin/code/takt-theory/docs/replication/REPLICATION_KIT/04-validating-results.md) — Validación de resultados y generación del informe.
+1. [01-environment.md](docs/replication/REPLICATION_KIT/01-environment.md) — Requisitos del sistema y configuración del entorno.
+2. [02-adapter-contract.md](docs/replication/REPLICATION_KIT/02-adapter-contract.md) — Especificación técnica del contrato de adaptador TAKT.
+3. [03-running-experiments.md](docs/replication/REPLICATION_KIT/03-running-experiments.md) — Protocolo de ejecución y recolección de trazas.
+4. [04-validating-results.md](docs/replication/REPLICATION_KIT/04-validating-results.md) — Validación de resultados y generación del informe.
 
 ## Herramientas de Verificación
 * `schemas/observation_trace.json` — Esquema JSON formal para validar trazas emitidas.

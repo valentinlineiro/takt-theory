@@ -3,7 +3,7 @@
 > **Protocol Status:** Active Sampling Preregistration Freeze (v1.0)  
 > **Theory Baseline:** TAKT-v1.0 Frozen Core  
 > **Instrument Baseline:** Calibrated (`EXP-003-baseline` Verified)  
-> **Exploration Strategy:** EVSI Active Boundary Search ([boundary-explorer.ts](file:///home/valentin/code/takt-theory/benchmarks/atlas/boundary-explorer.ts))
+> **Exploration Strategy:** EVSI Active Boundary Search ([boundary-explorer.ts](benchmarks/atlas/boundary-explorer.ts))
 
 ---
 

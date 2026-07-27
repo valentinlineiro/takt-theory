@@ -52,7 +52,7 @@ This section bridges the transition system to local structural changes.
     $$N(x) := N^+(x) \cup N^-(x)$$
 
 ### 3.2 Canonical Instantiation: Representation Landscapes
-Let $(\mathcal{R}, \sqsubseteq, c)$ be a representation landscape where $\mathcal{R}$ is the space of partition-equivalent representations and $\lessdot$ is the cover relation defined in [docs/01-foundations/03-landscape-theory.md](file:///home/valentin/code/takt-theory/docs/01-foundations/03-landscape-theory.md). 
+Let $(\mathcal{R}, \sqsubseteq, c)$ be a representation landscape where $\mathcal{R}$ is the space of partition-equivalent representations and $\lessdot$ is the cover relation defined in [docs/01-foundations/03-landscape-theory.md](docs/01-foundations/03-landscape-theory.md). 
 We instantiate the transition system by setting $X := \mathcal{R}$.
 
 *   **Canonical Cover Transition Relation ($\to_{\lessdot}$):** We define the canonical relation on representations as:

@@ -114,7 +114,7 @@ Create `docs/cards/CARD-365-impossibility-limits-runtime.md`:
 # CARD-365: Impossibility & Limits Runtime Implementation
 
 **Status:** Backlog / Ready for Implementation  
-**Prerequisite:** Phase IV-C.7 Theory ([2026-07-23-phase-4c7-impossibility-limits-design.md](file:///home/valentin/code/takt-theory/docs/2026-07-23-phase-4c7-impossibility-limits-design.md)), Lean 4 Proofs ([TaktFormal/ImpossibilityLimits.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/ImpossibilityLimits.lean)).
+**Prerequisite:** Phase IV-C.7 Theory ([2026-07-23-phase-4c7-impossibility-limits-design.md](docs/2026-07-23-phase-4c7-impossibility-limits-design.md)), Lean 4 Proofs ([TaktFormal/ImpossibilityLimits.lean](takt-formal/TaktFormal/ImpossibilityLimits.lean)).
 
 ## Goal
 Implement the runtime impossibility evaluators (`ImpossibilityLimits`), non-approximability detectors, and empirical evaluation suite derived from Phase IV-C.7.

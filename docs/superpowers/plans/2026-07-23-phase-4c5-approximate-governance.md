@@ -110,7 +110,7 @@ Create `docs/cards/CARD-363-approximate-governance-runtime.md`:
 # CARD-363: Approximate Governance Runtime Implementation
 
 **Status:** Backlog / Ready for Implementation  
-**Prerequisite:** Phase IV-C.5 Theory ([2026-07-23-phase-4c5-approximate-governance-design.md](file:///home/valentin/code/takt-theory/docs/2026-07-23-phase-4c5-approximate-governance-design.md)), Lean 4 Proofs ([TaktFormal/ApproximateGovernance.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/ApproximateGovernance.lean)).
+**Prerequisite:** Phase IV-C.5 Theory ([2026-07-23-phase-4c5-approximate-governance-design.md](docs/2026-07-23-phase-4c5-approximate-governance-design.md)), Lean 4 Proofs ([TaktFormal/ApproximateGovernance.lean](takt-formal/TaktFormal/ApproximateGovernance.lean)).
 
 ## Goal
 Implement the runtime $\epsilon$-governance verifier (`EpsilonGovernance`), saturation bound solver $\epsilon^*$, and empirical evaluation suite derived from Phase IV-C.5.

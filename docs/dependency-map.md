@@ -55,11 +55,11 @@ definiciones o de axiomas sobre la existencia de los objetos.
 
 | Teorema | Enunciado | Definiciones usadas | A0 | A1 | Estado Lean |
 |---------|-----------|---------------------|:--:|:--:|:-----------:|
-| T1 | Caracterización: $R \in \mathcal{R}_{sufficient}(D) \iff \ker(R) \subseteq K_D$ | $\mathcal{R}_{sufficient}$, $\ker$, $K_D$ | ✓ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean#L84-L92)) |
-| T2 | Mínimo único: $\mathcal{R}_{sufficient}(D)$ es upset con mínimo $R_{min}$ | $\sqsubseteq$, $\mathcal{R}_{sufficient}$, $K_D$ | ✓ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean#L94-L153)) |
-| T3 | Correspondencia: $G(D,R) = \{ c \in C_D : \ker(R) \not\subseteq K_c \}$ | $G(D,R)$, $C_D$, $C_R$, $K_c$ | ✗ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean#L25-L29)) |
-| T4 | Monotonicidad: $R_1 \sqsubseteq R_2 \implies G(D,R_1) \subseteq G(D,R_2)$ | $\sqsubseteq$, $G(D,R)$, $K_c$ | ✗ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean#L31-L41)) |
-| T5 | Punto fijo: $\ker(R) = K_D \implies R$ mínima suficiente | $K_D$, $\mathcal{R}_{sufficient}$, $\sqsubseteq$ | ✓ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](file:///home/valentin/code/takt-theory/takt-formal/TaktFormal/StructuralSufficiency.lean#L155-L170)) |
+| T1 | Caracterización: $R \in \mathcal{R}_{sufficient}(D) \iff \ker(R) \subseteq K_D$ | $\mathcal{R}_{sufficient}$, $\ker$, $K_D$ | ✓ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](takt-formal/TaktFormal/StructuralSufficiency.lean#L84-L92)) |
+| T2 | Mínimo único: $\mathcal{R}_{sufficient}(D)$ es upset con mínimo $R_{min}$ | $\sqsubseteq$, $\mathcal{R}_{sufficient}$, $K_D$ | ✓ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](takt-formal/TaktFormal/StructuralSufficiency.lean#L94-L153)) |
+| T3 | Correspondencia: $G(D,R) = \{ c \in C_D : \ker(R) \not\subseteq K_c \}$ | $G(D,R)$, $C_D$, $C_R$, $K_c$ | ✗ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](takt-formal/TaktFormal/StructuralSufficiency.lean#L25-L29)) |
+| T4 | Monotonicidad: $R_1 \sqsubseteq R_2 \implies G(D,R_1) \subseteq G(D,R_2)$ | $\sqsubseteq$, $G(D,R)$, $K_c$ | ✗ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](takt-formal/TaktFormal/StructuralSufficiency.lean#L31-L41)) |
+| T5 | Punto fijo: $\ker(R) = K_D \implies R$ mínima suficiente | $K_D$, $\mathcal{R}_{sufficient}$, $\sqsubseteq$ | ✓ | ✗ | ✓ Certificado ([StructuralSufficiency.lean](takt-formal/TaktFormal/StructuralSufficiency.lean#L155-L170)) |
 | T6 | Generalización: $\sigma_R \preceq \sigma_D$ para estructuras binarias | $\sigma_R$, $\sigma_c$, $\sigma_D$, $\preceq$ | ✓ | ✓ | Pendiente (Capa Representation Generalization) |
 
 > **Nota.** La columna "Estado Lean" indica el alcance de la certificación mecánica de la versión 1.0. La ausencia de certificación no implica invalidez matemática, sino que el resultado pertenece a una capa posterior del programa de formalización.
@@ -224,8 +224,8 @@ El espacio de capacidades y la estructura de gaps entre representaciones, indepe
 Ninguna hipótesis o axioma adicional más allá de las definiciones del espacio de capacidades $\mathcal{C}$ y la relación de refinamiento $\sqsubseteq$.
 
 **Resultados**
-* Teoremas: [T3](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L57) (Correspondencia del gap) y [T4](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L58) (Monotonicidad del refinamiento).
-* Consecuencias: [C1](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L102) (Criterio de parada para el planificador EVSI) y [C2](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L103) (El gap medido en runtime es exacto y no un mero heurístico).
+* Teoremas: [T3](docs/dependency-map.md#L57) (Correspondencia del gap) y [T4](docs/dependency-map.md#L58) (Monotonicidad del refinamiento).
+* Consecuencias: [C1](docs/dependency-map.md#L102) (Criterio de parada para el planificador EVSI) y [C2](docs/dependency-map.md#L103) (El gap medido en runtime es exacto y no un mero heurístico).
 
 **Pregunta que responde**
 > ¿Cómo se estructuran y se comportan las capacidades y sus gaps bajo el refinamiento?
@@ -243,8 +243,8 @@ La relación de preservación exacta entre una decisión concreta del mundo real
 * **A0 (Contract Coherence):** $\ker(D) = \bigcap_{c \in C_D} K_c$. La semántica de la decisión real coincide exactamente con la intersección de sus capacidades requeridas.
 
 **Resultados nuevos**
-* Teoremas: [T1](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L55) (Caracterización de suficiencia), [T2](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L56) (Estructura de upset y existencia de mínimo único), y [T5](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L59) (Punto fijo de la suficiencia / del enriquecimiento).
-* Consecuencias: [C3](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L104) (Equivalencia formal entre la condición del ContractVerifier en runtime y la seguridad teórica) y [C4](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L105) (La planificación de enriquecimiento equivale al refinamiento ordenado del núcleo hacia $K_D$).
+* Teoremas: [T1](docs/dependency-map.md#L55) (Caracterización de suficiencia), [T2](docs/dependency-map.md#L56) (Estructura de upset y existencia de mínimo único), y [T5](docs/dependency-map.md#L59) (Punto fijo de la suficiencia / del enriquecimiento).
+* Consecuencias: [C3](docs/dependency-map.md#L104) (Equivalencia formal entre la condición del ContractVerifier en runtime y la seguridad teórica) y [C4](docs/dependency-map.md#L105) (La planificación de enriquecimiento equivale al refinamiento ordenado del núcleo hacia $K_D$).
 
 **Pregunta nueva**
 > ¿Bajo qué condiciones precisas una representación preserva exactamente la semántica de una decisión real?
@@ -262,8 +262,8 @@ La extensión y validez de la caracterización de suficiencia a clases de estruc
 * **A1 (Arbitrary meets):** El retículo de la estructura formal del tipo $\mathcal{T}$ admite ínfimos (meets) sobre familias arbitrarias (no solo finitas) de estructuras.
 
 **Resultados nuevos**
-* Teoremas: [T6](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L60) (Generalización de suficiencia a estructuras binarias monotónicas).
-* Consecuencias: [C5](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L106) (Criterio para extender la teoría a preórdenes y pseudométricas mediante la verificación de A1 para la estructura concreta).
+* Teoremas: [T6](docs/dependency-map.md#L60) (Generalización de suficiencia a estructuras binarias monotónicas).
+* Consecuencias: [C5](docs/dependency-map.md#L106) (Criterio para extender la teoría a preórdenes y pseudométricas mediante la verificación de A1 para la estructura concreta).
 
 **Pregunta nueva**
 > ¿Qué parte de la teoría de suficiencia y preservación depende críticamente de trabajar con relaciones de equivalencia?
@@ -276,7 +276,7 @@ La extensión y validez de la caracterización de suficiencia a clases de estruc
 
 La arquitectura de la teoría TAKT sigue el principio de **extensión conservativa**. Desde una perspectiva de diseño lógico y matemático:
 
-1. **Invariabilidad de los teoremas base:** Los nuevos axiomas únicamente amplían el conjunto de resultados demostrables; no alteran la validez de los resultados obtenidos en capas inferiores. Añadir el axioma de coherencia **A0** no restringe ni modifica los teoremas de la Capa 1 ([T3](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L57), [T4](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L58)). Del mismo modo, introducir **A1** en la Capa 3 no altera los teoremas de suficiencia de la Capa 2 ([T1](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L55), [T2](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L56), [T5](file:///home/valentin/code/takt-theory/docs/dependency-map.md#L59)).
+1. **Invariabilidad de los teoremas base:** Los nuevos axiomas únicamente amplían el conjunto de resultados demostrables; no alteran la validez de los resultados obtenidos en capas inferiores. Añadir el axioma de coherencia **A0** no restringe ni modifica los teoremas de la Capa 1 ([T3](docs/dependency-map.md#L57), [T4](docs/dependency-map.md#L58)). Del mismo modo, introducir **A1** en la Capa 3 no altera los teoremas de suficiencia de la Capa 2 ([T1](docs/dependency-map.md#L55), [T2](docs/dependency-map.md#L56), [T5](docs/dependency-map.md#L59)).
 2. **Ampliación del dominio de aplicación:** Cada axioma añadido actúa exclusivamente como un puente de generalización o conexión semántica. El paso de Capa 1 a Capa 2 formaliza el puente con las decisiones concretas. El paso de Capa 2 a Capa 3 amplía el dominio matemático de aplicación desde relaciones de equivalencia discretas hasta espacios continuos y métricas.
 
 Este diseño permite que la formalización sea modular y robusta, permitiendo que nuevas extensiones se incorporen sin revisar las demostraciones pertenecientes a capas inferiores.

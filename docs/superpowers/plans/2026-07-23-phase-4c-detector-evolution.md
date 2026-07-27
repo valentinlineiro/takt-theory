@@ -149,7 +149,7 @@ Create `docs/cards/CARD-359-detector-evolution-runtime.md`:
 # CARD-359: Detector Evolution Runtime Implementation
 
 **Status:** Backlog  
-**Prerequisite:** Phase IV-C.1 Theory ([2026-07-23-phase-4c-governed-convergence-design.md](file:///home/valentin/code/takt-theory/docs/2026-07-23-phase-4c-governed-convergence-design.md)), `TaktFormal/DetectorEvolution.lean`.
+**Prerequisite:** Phase IV-C.1 Theory ([2026-07-23-phase-4c-governed-convergence-design.md](docs/2026-07-23-phase-4c-governed-convergence-design.md)), `TaktFormal/DetectorEvolution.lean`.
 
 ## Goal
 Implement the runtime evolution engine and empirical evaluation suite derived from Phase IV-C.1 formal theory.

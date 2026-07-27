@@ -3,7 +3,7 @@
 **Date:** 2026-07-23  
 **Author:** TAKT Core Team & Antigravity AI  
 **Status:** Theoretical Design Specification (Fase IV-C.7)  
-**Prerequisites:** Phases IV-C.1 through IV-C.6 Theoretical Specifications ([2026-07-23-phase-4c6-runtime-convergence-design.md](file:///home/valentin/code/takt-theory/docs/2026-07-23-phase-4c6-runtime-convergence-design.md)), `TaktFormal/RuntimeConvergence.lean`.
+**Prerequisites:** Phases IV-C.1 through IV-C.6 Theoretical Specifications ([2026-07-23-phase-4c6-runtime-convergence-design.md](docs/2026-07-23-phase-4c6-runtime-convergence-design.md)), `TaktFormal/RuntimeConvergence.lean`.
 
 ---
 
