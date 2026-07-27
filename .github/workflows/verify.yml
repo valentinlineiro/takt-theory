@@ -1,0 +1,44 @@
+name: Scientific Verification Suite (ST-016 v1.0)
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*', 'st016*' ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  scientific-verification:
+    name: Zero-Contact Verification (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, macos-latest ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Lean 4
+        uses: leanprover/lean-action@v1
+        with:
+          lean-version: 'leanprover/lean4:v4.7.0'
+
+      - name: Bootstrap Environment
+        run: ./scripts/bootstrap.sh
+
+      - name: Execute Scientific Verification Suite
+        run: ./scripts/verify.sh
+
+      - name: Upload Verification Report Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-report-${{ matrix.os }}
+          path: artifacts/verification/st016-v1.0/
