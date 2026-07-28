@@ -1,4 +1,4 @@
-# TAKT ST-016 v1.0.0 Publication Checklist
+# TAKT ST-016 v1.0.0 Publication & Manuscript Checklist
 
 **Standard Baseline:** ST-016 v1.0.0 (`st016-v1.0.0` / `fca31f0`)  
 **Zenodo DOI:** [10.5281/zenodo.21638014](https://doi.org/10.5281/zenodo.21638014)  
@@ -7,7 +7,7 @@
 
 ---
 
-## Administrative & Preservation Tasks
+## 1. Frozen Artifact Preservation Tasks
 
 - [x] **Git Release Tag (`st016-v1.0.0`):** Pushed to GitHub repository.
 - [x] **Final State Baseline Snapshot:** [`ST-016_FINAL_STATE.md`](../ST-016_FINAL_STATE.md) committed.
@@ -16,4 +16,13 @@
 - [x] **Zero-Contact Replication Package:** Audited via 6 External Dry Runs (`PASS WITH ENVIRONMENTAL LIMITATION`).
 - [x] **GitHub Release (`st016-v1.0.0`):** Formal entry created on GitHub Releases page ([https://github.com/valentinlineiro/takt-theory/releases/tag/st016-v1.0.0](https://github.com/valentinlineiro/takt-theory/releases/tag/st016-v1.0.0)).
 - [x] **Zenodo Archive & DOI:** Repository release archived on Zenodo ([https://doi.org/10.5281/zenodo.21638014](https://doi.org/10.5281/zenodo.21638014)).
-- [ ] **arXiv Preprint Submission:** Academic manuscript ([`docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md`](../docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md)) submitted.
+
+---
+
+## 2. Scientific Manuscript Milestones (`MILESTONE-PAPER-READY`)
+
+- [x] **Draft Manuscript Structure:** [`docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md`](../docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md) written.
+- [ ] **State-of-the-Art Positioning:** Detailed comparative analysis vs abstract interpretation, bisimulation, and runtime verification.
+- [ ] **Definitive Paper Figures:** High-resolution architectural, validation pipeline, and research roadmap diagrams.
+- [ ] **External Academic Review:** Peer-review feedback incorporated from formal methods & software architecture specialists.
+- [ ] **Preprint Submission (arXiv):** Final submission to arXiv repository.
