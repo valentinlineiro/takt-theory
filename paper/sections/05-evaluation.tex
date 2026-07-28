@@ -1,45 +1,59 @@
 \section{Empirical Validation \& Component Ablation (EXP-004)}
 
-The formal model identifies the conditions under which capability removal violates
-decision preservation. EXP-004~\cite{takt_st016_2026} tests whether these conditions
-are observable in the reference TypeScript implementation under controlled ablations:
+\subsection{Experimental Protocol}
 
-\begin{itemize}
-    \item \textbf{$C_{\text{contract}}$ Ablation:} Ablating contract verification
-    yields $\pi_{\text{full}} = \text{STOP}$ vs.\ $\pi_{\text{reduced}} = \text{EXECUTE}$.
+EXP-004~\cite{takt_st016_2026} ablates one capability at a time from the reference
+TypeScript runtime and records whether the runtime's decision diverges from the
+full-capability baseline on a designated trigger scenario. Each scenario is
+designed so that the ablated capability is the deciding factor.
 
-    \item \textbf{$C_{\text{uncertainty}}$ Ablation:} Ablating margin estimation
-    at critical decision boundary ($M_D \approx 0$) yields
-    $\pi_{\text{full}} = \text{REFINE}$ vs.\ $\pi_{\text{reduced}} = \text{EXECUTE}$.
+\begin{table}[htbp]
+\caption{EXP-004 Ablation Protocol and Results}
+\label{tab:exp004}
+\centering\small
+\begin{tabular}{p{2.2cm}p{2.6cm}p{1.5cm}p{1.5cm}p{1.2cm}}
+\toprule
+\textbf{Ablation} & \textbf{Trigger scenario} & \textbf{Full policy} & \textbf{Ablated policy} & \textbf{Result} \\
+\midrule
+$C_{\text{contract}}$    & Contract-violating state    & STOP      & EXECUTE  & Diverge \\
+$C_{\text{uncertainty}}$ & Margin boundary ($M_D\!\approx\!0$) & REFINE & EXECUTE & Diverge \\
+$C_{\text{temporal}}$    & History-dependent prefix    & INTERVENE & MONITOR  & Diverge \\
+\midrule
+None (baseline)          & All trigger scenarios        & Correct   & N/A      & Stable  \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-    \item \textbf{$C_{\text{temporal}}$ Ablation:} Ablating trajectory monitoring
-    yields $\pi_{\text{full}} = \text{INTERVENE}$ vs.\ $\pi_{\text{reduced}} = \text{MONITOR}$.
-\end{itemize}
-
-Each ablation scenario is manually encoded into a \texttt{WitnessArtifact} record
-and verified against the formal model via the \texttt{WitnessConsistentWithRuntime}
-predicate. When consistency holds, the formal elevation theorem applies.
+Each ablation divergence is manually encoded into a \texttt{WitnessArtifact}
+record and verified against the formal model via \texttt{WitnessConsistentWithRuntime}.
+When consistency holds, the formal elevation theorem applies within the Lean model.
 
 \subsection{Evidence Traceability Matrix}
-Table~\ref{tab:evidence} maps each theoretical claim to its primary evidence,
-with explicit scope annotations for each evidence type.
+
+Table~\ref{tab:evidence} maps theoretical claims to primary evidence, with explicit
+scope annotations distinguishing formal model results from TypeScript-level results.
 
 \begin{table}[htbp]
 \caption{ST-016 Evidence Traceability Matrix}
 \label{tab:evidence}
 \centering\small
-\begin{tabular}{p{3.2cm}p{3.5cm}p{1.4cm}}
+\begin{tabular}{p{3.0cm}p{3.2cm}p{2.0cm}}
 \toprule
 \textbf{Claim} & \textbf{Primary Evidence} & \textbf{Scope} \\
 \midrule
+\multicolumn{3}{l}{\textit{Formal model (Lean 4)}} \\
 Structural sufficiency       & \texttt{StructuralSufficiency} & Lean model \\
 Framework definitions        & \texttt{RuntimeSufficiency}    & Lean model \\
-$C_{\text{contract}}$ witness    & \texttt{contract.ablation}     & Finite inst.\ \\
-$C_{\text{uncertainty}}$ witness & \texttt{uncertainty.ablation}  & Finite inst.\ \\
-$C_{\text{temporal}}$ witness    & \texttt{temporal.ablation}     & Finite inst.\ \\
-Witness validation schema    & \texttt{RuntimeWitness}        & Lean model \\
-Implementation stability     & Vitest (283/283)               & TypeScript  \\
-Reproducibility~\cite{takt_st016_2026} & Replication kit     & 6 Runs      \\
+Witness validation           & \texttt{RuntimeWitness}        & Lean model \\
+\midrule
+\multicolumn{3}{l}{\textit{Witness scenarios (finite instances)}} \\
+$C_{\text{contract}}$ witness    & \texttt{contract.ablation}     & 3 scenarios \\
+$C_{\text{uncertainty}}$ witness & \texttt{uncertainty.ablation}  & 3 scenarios \\
+$C_{\text{temporal}}$ witness    & \texttt{temporal.ablation}     & 3 scenarios \\
+\midrule
+\multicolumn{3}{l}{\textit{Runtime engineering (TypeScript)}} \\
+Integration stability        & Vitest (283/283, 76 files)     & TypeScript  \\
+Reproducibility~\cite{takt_st016_2026} & Replication kit       & 6 Runs      \\
 \bottomrule
 \end{tabular}
 \end{table}

@@ -98,11 +98,88 @@
 
 ---
 
+## R2 — Software / Systems Engineering
+
+**Profile:** Runtime systems / software engineering  
+**Q1 (Contribution):** Framework formal para kernel mínimo de gobierno; Lean 4; ablación EXP-004; paquete replicable. Aprecia la separación ST-016/ST-017.  
+**Q2 (Formally proved):** Teorema de necesidad en modelo formal; estructura del witness bridge.  
+**Q3 (Empirically validated):** EXP-004 (pares policy divergentes); 283/283 tests; 6 dry runs.  
+**Q4 (Ambiguous):** Brecha entre modelo formal y runtime TypeScript no explicada. EXP-004 muy breve. Witness bridge descrito como "elevación" pero mecanismo no detallado.  
+**Q5 (Hardest to justify):** Witness bridge como elevación automática; 283 tests como evidencia de kernel correctness.
+
+### Hallazgos R2
+
+| ID | Severidad | Categoría | Descripción |
+| :- | :--- | :--- | :--- |
+| R2-1 | Alta | Editorial + Evidence | Contribuciones 3 y 4 no desarrolladas — EXP-004 sin protocolo ni métricas cuantitativas |
+| R2-2 | Media | Editorial | π* ambiguo: ¿π* sobre S o sobre R? Pedir distinción π*_S : S→D y π_M : R→D |
+| R2-3 | Media | Editorial | No hay fragmento Lean en el cuerpo; revisor no puede verificar correspondencia modelo-código |
+| R2-4 | Alta | Evidence | EXP-004 sin datos cuantitativos — resultados anecdóticos |
+| R2-5 | Media | Scope | Brecha formal↔TypeScript no cerrada — falta tabla de mapeo |
+| R2-6 | Baja | Editorial | Discusión no conecta principios a resultados concretos |
+| R2-7 | Media | Scope | Contribución 2 en Sec. 1.1 sin calificador "within the formal ST-016 model" |
+| R2-8 | Baja | Evidence | 283/283 tests mezcla ablación vs. tests generales; no distingue categorías |
+| R2-9 | Baja | Future | Trabajo relacionado superficial para audiencia sistemas — falta OPA, Kubernetes admission |
+
+### Clasificación y Acción R2
+
+| ID | Categoría final | Acción |
+| :- | :--- | :--- |
+| R2-1 | Editorial + Evidence | Añadir tabla de protocolo EXP-004 con columnas: Ablation / Scenario / Expected / Observed |
+| R2-2 | Editorial | Sec. 3: añadir distinción π*_S y π_M explícitamente en la definición de sufficiency |
+| R2-3 | Editorial | Sec. 4: añadir snippet Lean de definición clave (NecessaryCapability o MinimalRuntime) |
+| R2-4 | Evidence | Sec. 5: añadir fila de protocolo con número de scenarios y tipo de divergencia |
+| R2-5 | Scope | Sec. 4 o 5: añadir tabla formal concept → runtime implementation |
+| R2-6 | Editorial | Sec. 6: vincular cada principio a EXP-004 resultado concreto |
+| R2-7 | Scope | Sec. 1.1 Contrib 2: añadir "within the formal ST-016 model" |
+| R2-8 | Evidence | Sec. 5: separar tests de ablación de tests de integridad en la Evidence Matrix |
+| R2-9 | Future | Log para ST-017 / extended related work — no actuar ahora |
+
+---
+
+## Aggregate Classification (R1 + R2)
+
+| Category | Count | Key items |
+| :--- | :--- | :--- |
+| Editorial clarity (A) | 7 | H6, H8, H10, R2-2, R2-3, R2-6, R2-7 |
+| Evidence interpretation (B) | 4 | R2-1, R2-4, R2-8, H9 |
+| Scope / Non-Claim (C) | 3 | H3, R2-5, R2-7 |
+| Formal definition (A) | 5 | H1, H2, H7, H5, R2-3 |
+| Future / ST-017 (D) | 2 | H3, R2-9 |
+
+**Convergence:** Both reviewers identify the same central gap: claim–formalization desalignment, inadequate EXP-004 description, and unexplained witness bridge mechanism.
+
+---
+
+## Changes Accepted (to apply in paper-v0.3)
+
+| Issue | Change |
+| :- | :--- |
+| R2-2 | Sec. 3: distinguish π*_S : S→D from π_M : R→D in decision preservation definition |
+| R2-3 | Sec. 4: add Lean snippet of NecessaryCapability or MinimalRuntime definition |
+| R2-1/4 | Sec. 5: add EXP-004 experimental protocol table with scenario / expected / observed |
+| R2-5 | Sec. 4/5: add formal concept → runtime implementation mapping table |
+| R2-6 | Sec. 6: link each design principle to concrete EXP-004 result |
+| R2-7 | Sec. 1.1 Contrib 2: add "within the formal ST-016 model" qualifier |
+| R2-8 | Sec. 5: separate ablation tests from integration tests in Evidence Matrix |
+
+## Changes Rejected
+
+| Issue | Rationale |
+| :- | :--- |
+| H3 | Semantic grounding → ST-017. Non-Claim added. |
+| R2-9 | OPA/Kubernetes refs → extended related work for journal version. |
+
+---
+
 ## Hito 2 Closure Criteria
 
-- [x] ≥ 1 formal methods response received (R1)
-- [ ] Apply all accepted changes → `paper-v0.2-post-review`
-- [ ] Verify: post-review reader correctly identifies what is proved vs. what is future work
-- [ ] Tag `paper-v0.2-post-review`
+- [x] ≥ 2 responses received (R1 formal methods, R2 software systems)
+- [x] R1 corrections applied → `paper-v0.2-post-review`
+- [x] All feedback classified
+- [x] R2 corrections applied → `paper-v0.3-arxiv-ready`
+- [x] `publication/arxiv/` updated with v0.3 PDF
+  - SHA-256: `1d5c20c2f9fa235e7ee8f8acc9e60e835afde464b2709befcbf14e1a44848079`
+- [x] Tag `paper-v0.3-arxiv-ready`
 
-**Next:** Apply 9 surgical corrections. No new Lean modules. No new experiments.
+**✅ Hito 2 CLOSED. Ready for arXiv submission.**

@@ -2,36 +2,75 @@
 
 The Lean 4 development in \texttt{takt-formal} provides the algebraic framework
 within which the ST-016 runtime model is defined and analyzed. Two canonical
-modules are presented:
+modules are presented.
 
-\begin{enumerate}
-    \item \textbf{\texttt{RuntimeSufficiency.lean}:} Defines the core algebraic
-    structures (\texttt{RuntimeCapability}, \texttt{Runtime}, \texttt{NecessaryCapability},
-    \texttt{MinimalRuntime}) and establishes that the definitions are internally consistent.
-    The module proves, as a definitional consequence, that any runtime satisfying
-    \texttt{MinimalRuntime} (i.e., \texttt{Sufficient} $\wedge$ \texttt{Irreducible})
-    has all its capabilities necessary by construction:
-    \[
-    \text{MinimalRuntime}(M, \pi^*) \implies
-    \forall C \in M.\mathit{caps},\; \text{NecessaryCapability}(C, M)
-    \]
-    This is a consequence of the definition of \texttt{Irreducible}, establishing
-    the definitional coherence of the framework rather than a new mathematical fact.
+\subsection{Core Definitions in \texttt{RuntimeSufficiency.lean}}
 
-    \item \textbf{\texttt{RuntimeWitness.lean}:} Defines the \emph{formal witness
-    validation schema} via \texttt{WitnessArtifact} and \texttt{WitnessConsistentWithRuntime}.
-    A \texttt{WitnessArtifact} is a record manually constructed from an observed
-    ablation scenario (e.g., EXP-004 traces). The elevation theorem:
-    \[
-    \text{Consistent}(M, w) \implies \text{NecessaryCapability}(w.\mathit{cap}, M)
-    \]
-    guarantees that \emph{if} a witness is consistent with the formal runtime model,
-    \emph{then} the corresponding capability is formally necessary within that model.
-    The bridge is a validation schema, not an automatic extraction from TypeScript traces.
-\end{enumerate}
+The module defines the core algebraic structures. The key definitions, shown
+verbatim from the Lean source, are:
 
-Both Lean 4 modules compile cleanly with zero errors and zero \texttt{sorry}s
-across all build jobs~\cite{takt_st016_2026}. The structural sufficiency results
-(kernel factorization, quotient representation theorems) are in
-\texttt{StructuralSufficiency.lean} and \texttt{Kernel.lean}, which provide
-the informational foundation connecting ST-015 and ST-016.
+\begin{small}
+\begin{verbatim}
+inductive RuntimeCapability
+  | contract | uncertainty | temporal
+
+structure Runtime (S : Type) (D : Type) where
+  capabilities : Set RuntimeCapability
+  policy       : S -> D
+
+def NecessaryCapability (C : RuntimeCapability) (M : Runtime S D) : Prop :=
+  Exists r, M.policy r != (removeCapability M C).policy r
+
+def Sufficient (M : Runtime S D) (pi_star : S -> D) : Prop :=
+  forall r, M.policy r = pi_star r
+
+def Irreducible (M : Runtime S D) : Prop :=
+  forall C, C in M.capabilities -> NecessaryCapability C M
+
+def MinimalRuntime (M : Runtime S D) (pi_star : S -> D) : Prop :=
+  Sufficient M pi_star /\ Irreducible M
+\end{verbatim}
+\end{small}
+
+As a definitional consequence of these definitions, any \texttt{MinimalRuntime}
+has all its capabilities necessary by construction (since \texttt{Irreducible}
+is the second conjunct of \texttt{MinimalRuntime}). The module also proves the
+non-trivial lemma \texttt{necessary\_implies\_non\_preservation}: that a necessary
+capability, when removed, strictly breaks \texttt{PreservesDecision}.
+
+\subsection{Formal to Runtime Mapping}
+
+Table~\ref{tab:formal-runtime} maps each formal concept to its counterpart in
+the reference TypeScript runtime.
+
+\begin{table}[htbp]
+\caption{Formal model to reference runtime mapping}
+\label{tab:formal-runtime}
+\centering\small
+\begin{tabular}{p{3.8cm}p{4.0cm}}
+\toprule
+\textbf{Formal concept (Lean)} & \textbf{Runtime counterpart (TypeScript)} \\
+\midrule
+\texttt{RuntimeCapability.contract}    & Contract validator layer \\
+\texttt{RuntimeCapability.uncertainty} & Decision margin evaluator \\
+\texttt{RuntimeCapability.temporal}    & History / prefix monitor \\
+\texttt{removeCapability M C}          & Runtime with component disabled \\
+\texttt{WitnessArtifact}               & EXP-004 recorded divergence record \\
+\texttt{WitnessConsistentWithRuntime}  & Formal consistency check predicate \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Formal Witness Validation Schema (\texttt{RuntimeWitness.lean})}
+
+Defines the formal witness validation schema via \texttt{WitnessArtifact} and
+\texttt{WitnessConsistentWithRuntime}. A \texttt{WitnessArtifact} is a record
+\emph{manually constructed} from an observed ablation scenario (e.g., EXP-004
+traces). The elevation theorem:
+\[
+\text{Consistent}(M, w) \implies \text{NecessaryCapability}(w.\mathit{cap}, M)
+\]
+guarantees that \emph{if} a witness is consistent with the formal runtime model,
+\emph{then} the corresponding capability is formally necessary within that model.
+
+Both modules compile with zero errors and zero \texttt{sorry}s~\cite{takt_st016_2026}.

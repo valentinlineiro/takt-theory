@@ -1,11 +1,15 @@
 \section{Theoretical Foundations \& Runtime Necessity Model}
 
 \subsection{Decision-Preserving Sufficiency (ST-015)}
-A representation $R \in \mathcal{R}$ is \emph{decision-sufficient} with respect to
-optimal policy $\pi^*$ if:
+Let $\pi^*_S : \mathcal{S} \to \mathcal{D}$ denote the optimal decision policy
+over full states, and $\pi_M : \mathcal{R} \to \mathcal{D}$ the policy executed
+by governed runtime $M$. A representation $R \in \mathcal{R}$ is
+\emph{decision-sufficient} if:
 \[
-\pi^*(R) = \pi^*(S) \quad \forall S \in \mathcal{S}\text{ s.t. }R = \rho(S)
+\pi_M(R) = \pi^*_S(S) \quad \forall S \in \mathcal{S}\text{ s.t. }R = \rho(S)
 \]
+When $\pi_M$ and $\pi^*_S$ agree on all representations reachable by $\rho$,
+we say $M$ \emph{preserves decisions} with respect to $\pi^*_S$.
 
 \subsection{Runtime Necessity Formalization (ST-016)}
 We formalize a TAKT Governed Runtime as a tuple $M = (\mathcal{C}, \pi_M)$, where
@@ -21,18 +25,17 @@ it contains exactly the capabilities proven necessary and no others.
 \noindent\textbf{Three definitions of decision preservation} appear across this
 work at different layers of abstraction:
 \begin{itemize}
-    \item \textbf{ST-015 (informational):} $\pi^*(R) = \pi^*(S)$ — the optimal policy
-    yields the same decision on the compressed representation as on the full state.
-    \item \textbf{Runtime alignment:} $\text{Sufficient}(M, \pi^*) \equiv \forall R,\; \pi_M(R) = \pi^*(R)$ — the runtime's policy matches the optimal policy on all representations.
+    \item \textbf{ST-015 (informational):} $\pi_M(R) = \pi^*_S(S)$ for all pairs $(S, R)$ with $R = \rho(S)$.
+    \item \textbf{Runtime sufficiency:} $\text{Sufficient}(M, \pi^*_S) \equiv \forall R,\; \pi_M(R) = \pi^*_S(\rho^{-1}(R))$ — the runtime policy matches the optimal policy on all compressed representations.
     \item \textbf{Cross-runtime:} $\text{PreservesDecision}(M_1, M_2) \equiv \forall R,\; \pi_{M_1}(R) = \pi_{M_2}(R)$ — two runtime instances agree on all decisions.
 \end{itemize}
-These are related: $\text{Sufficient}(M, \pi^*)$ implies $\text{PreservesDecision}(M, M')$ for any $M'$ also sufficient w.r.t.\ $\pi^*$.
+These are related: $\text{Sufficient}(M, \pi^*_S)$ implies $\text{PreservesDecision}(M, M')$ for any $M'$ also sufficient w.r.t.\ $\pi^*_S$.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{figures/architecture.pdf}
 \caption{Conceptual architecture: TAKT Governed Runtime $M$ enforces decision
-preservation $\pi^*(R)$ under state abstraction $\rho(S)$.}
+preservation $\pi_M(R) = \pi^*_S(S)$ under state abstraction $\rho(S)$.}
 \label{fig:architecture}
 \end{figure}
 
@@ -53,9 +56,9 @@ of Section~\ref{sec:limitations}.
 $C_{\text{temporal}}$ is ablated. Two trajectory-induced representations $R^1$
 and $R^2$ share an identical terminal observation yet arise from trajectories
 $\tau_1 = (r_0, r_1, r_2)$ (safe) and $\tau_2 = (r'_0, r'_1, r_2)$ (unsafe).
-Here $\pi^*$ is defined over representations that encode trajectory history;
+Here $\pi^*_S$ is defined over full states that encode trajectory history;
 $R^1 \neq R^2$ because their history components differ.
 A runtime inspecting only the terminal state $r_2$ produces:
-$\pi_{M\setminus\{C_{\text{temporal}}}\}(R^1) = \pi_{M\setminus\{C_{\text{temporal}}}\}(R^2)$,
-while the optimal policy correctly distinguishes them:
-$\pi^*(R^1) \neq \pi^*(R^2)$, violating decision preservation.
+$\pi_{M\setminus\{C_{\text{temporal}}\}}(R^1) = \pi_{M\setminus\{C_{\text{temporal}}\}}(R^2)$,
+while $\pi^*_S$ correctly distinguishes them:
+$\pi_M(R^1) \neq \pi_M(R^2)$, violating decision preservation.

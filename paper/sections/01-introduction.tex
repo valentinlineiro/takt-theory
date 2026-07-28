@@ -3,8 +3,9 @@
 As autonomous software agents and complex reactive systems scale, they continuously
 compress high-dimensional environmental context into abstract state representations
 $R = \rho(S)$. However, ungoverned state abstraction introduces decision divergence:
-an optimal policy $\pi^*$ computed on full observable state $S$ may fail when the
-governed runtime's policy $\pi_M$ is evaluated on compressed representation $R$.
+an optimal policy $\pi^*_S : \mathcal{S} \to \mathcal{D}$ computed on full observable
+state $S$ may fail when the governed runtime's policy $\pi_M : \mathcal{R} \to \mathcal{D}$
+is evaluated on compressed representation $R$.
 This phenomenon has been studied across formal verification~\cite{cousot1977abstract,leucker2009brief},
 decision theory~\cite{blackwell1951comparison}, and control under partial
 observability~\cite{kaelbling1998planning}, yet a formal algebraic framework for
@@ -23,13 +24,14 @@ This paper makes four primary contributions:
     \item \textbf{Algebraic Framework for Runtime Governance:} We formalize capability
     necessity, decision preservation, runtime sufficiency, and irreducibility under
     state abstraction in Lean 4.
-    \item \textbf{Formalized Witness Scenarios:} We construct Lean 4 certified witness
-    scenarios demonstrating that removing any of $\{C_{\text{contract}},
-    C_{\text{uncertainty}}, C_{\text{temporal}}\}$ from the formal model produces
-    decision preservation violations.
+    \item \textbf{Formalized Witness Scenarios} \emph{(within the formal ST-016 model):}
+    We construct Lean 4 certified witness scenarios demonstrating that removing any of
+    $\{C_{\text{contract}}, C_{\text{uncertainty}}, C_{\text{temporal}}\}$ from the
+    formal model produces decision preservation violations for specific representations.
     \item \textbf{Formal Witness Validation Schema:} We introduce a structured schema
-    for connecting empirical ablation observations (EXP-004) to the formal model,
-    where witness artifacts are manually constructed and formally verified.
+    connecting empirical ablation observations (EXP-004) to the formal model:
+    witness artifacts are manually constructed from TypeScript runtime traces and
+    formally verified against the Lean model via \texttt{WitnessConsistentWithRuntime}.
     \item \textbf{Audited Zero-Contact Replication Package:} We publish an
     immutable, versioned research package~\cite{takt_st016_2026} with multi-OS
     CI and an external audit trail of 6 independent dry runs.
