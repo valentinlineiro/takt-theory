@@ -15,7 +15,7 @@ Sucesor de [`blind-review/VERSION_PIN.md`](../blind-review/VERSION_PIN.md)
 | :--- | :--- |
 | Tag editorial | `paper-v0.2-post-review` |
 | Commit predecesor | `4d23780` (R2 corrections, Hito 2) |
-| Commit freeze | *(este commit — ver `git log -1`)* |
+| Commit freeze | `929e78a` |
 | Fecha build | 2026-07-28 |
 | Páginas | 11 |
 
