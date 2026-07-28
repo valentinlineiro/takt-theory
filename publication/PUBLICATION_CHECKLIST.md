@@ -2,6 +2,7 @@
 
 **Standard Baseline:** ST-016 v1.0.0 (`st016-v1.0.0` / `fca31f0`)  
 **Zenodo DOI:** [10.5281/zenodo.21638014](https://doi.org/10.5281/zenodo.21638014)  
+**Venue Strategy:** [`VENUE_POSITIONING.md`](VENUE_POSITIONING.md)  
 **Publication Record:** [`PUBLICATION_STATUS.md`](../PUBLICATION_STATUS.md)  
 **GitHub Release:** [st016-v1.0.0 Release](https://github.com/valentinlineiro/takt-theory/releases/tag/st016-v1.0.0)  
 
@@ -22,6 +23,7 @@
 ## 2. Three-Stage Pre-Submission Milestone Roadmap
 
 ### Hito 1 — Congelar Manuscrito & Maquetación LaTeX
+- [x] **Venue Strategy & Audience Alignment:** Formal strategy registered in [`VENUE_POSITIONING.md`](VENUE_POSITIONING.md) (Primary Target: Formal Methods / CAV / FM / TACAS).
 - [x] **Draft Manuscript Structure:** [`docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md`](../docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md) written.
 - [x] **State-of-the-Art Positioning:** Comparative analysis vs abstract interpretation, bisimulation, and runtime verification ([`docs/02-theoretical-positioning/2026-07-28-state-of-the-art-positioning.md`](../docs/02-theoretical-positioning/2026-07-28-state-of-the-art-positioning.md)).
 - [x] **Manuscript Traceability Audit:** Verification mapping of all manuscript claims to backing evidence assets ([`docs/04-academic-paper/2026-07-28-manuscript-traceability-audit.md`](../docs/04-academic-paper/2026-07-28-manuscript-traceability-audit.md)).
@@ -36,12 +38,24 @@
 - [ ] **Editorial Revision Incorporation:** Polish narrative based on reviewer feedback.
 
 ### Hito 3 — Depósito en arXiv & Envío a Target Venue
-- [ ] **Target Venue Selection:** Specific target selected (Formal Methods / Software Engineering conference or journal).
 - [ ] **Preprint Submission (arXiv):** Final manuscript submission to arXiv repository.
+- [ ] **Formal Submission:** Final submission to target formal methods conference/journal.
 
 ---
 
-## 3. Post-Submission Feedback Registry
+## 3. Reviewer Readiness Check
+
+| Reviewer Evaluation Question | Primary Objective | Verification & Location |
+| :--- | :--- | :--- |
+| **Clear Research Questions?** | Context & Problem Definition | Section 1 (Research Questions $Q_1, Q_2$) |
+| **Explicit Original Contributions?** | Novelty & Value Proposition | Section 1 (Main Contributions 1–4) |
+| **Traceable Assertion Evidence?** | Formal & Empirical Traceability | Section 5 Summary Matrix & [`manuscript-traceability-audit.md`](../docs/04-academic-paper/2026-07-28-manuscript-traceability-audit.md) |
+| **Scope & Non-Claims Declared?** | Rigorous Boundary Enforcement | Section 7 (Non-Claims) & [`scientific-claim-graph.md`](../docs/04-academic-paper/2026-07-28-scientific-claim-graph.md) |
+| **Zero-Contact Reproducibility?** | Verification Integrity | `./scripts/bootstrap.sh && ./scripts/verify.sh` & [`ST-016_FINAL_STATE.md`](../ST-016_FINAL_STATE.md) |
+
+---
+
+## 4. Post-Submission Feedback Registry
 
 | Date | Source / Evaluator | Observation / Critique | Action Taken | Targeted Milestone |
 | :--- | :--- | :--- | :--- | :--- |
