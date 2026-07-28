@@ -1,6 +1,15 @@
 \section{Introduction}
 
-As autonomous software agents and complex reactive systems scale, they continuously compress high-dimensional environmental context into abstract state representations $R = \rho(S)$. However, ungoverned state abstraction introduces decision divergence: an optimal policy $\pi^*$ computed on full observable state $S$ may fail when evaluated on a compressed representation $R$. This phenomenon has been studied across formal verification~\cite{cousot1977abstract,leucker2009brief}, decision theory~\cite{blackwell1951comparison}, and control under partial observability~\cite{kaelbling1998planning}, yet the formal characterization of the \emph{minimal runtime capability kernel} required to preserve decision equivalence dynamically has not been established.
+As autonomous software agents and complex reactive systems scale, they continuously
+compress high-dimensional environmental context into abstract state representations
+$R = \rho(S)$. However, ungoverned state abstraction introduces decision divergence:
+an optimal policy $\pi^*$ computed on full observable state $S$ may fail when the
+governed runtime's policy $\pi_M$ is evaluated on compressed representation $R$.
+This phenomenon has been studied across formal verification~\cite{cousot1977abstract,leucker2009brief},
+decision theory~\cite{blackwell1951comparison}, and control under partial
+observability~\cite{kaelbling1998planning}, yet the formal characterization of the
+\emph{minimal runtime capability kernel} required to ensure $\pi_M(R) = \pi^*(R)$
+dynamically has not been established.
 
 This work addresses two fundamental research questions:
 \begin{enumerate}

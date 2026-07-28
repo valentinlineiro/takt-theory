@@ -1,16 +1,21 @@
 \section{Theoretical Foundations \& Runtime Necessity Model}
 
 \subsection{Decision-Preserving Sufficiency (ST-015)}
-A representation $R_t \in \mathcal{R}$ is \emph{decision-sufficient} with respect to optimal policy $\pi^*$ if:
+A representation $R \in \mathcal{R}$ is \emph{decision-sufficient} with respect to
+optimal policy $\pi^*$ if:
 \[
-\pi^*(R_t) = \pi^*(S_t) \quad \forall S_t \in \mathcal{S}
+\pi^*(R) = \pi^*(S) \quad \forall S \in \mathcal{S}\text{ s.t. }R = \rho(S)
 \]
 
 \subsection{Runtime Necessity Formalization (ST-016)}
-We formalize a TAKT Governed Runtime as a tuple $M = (\mathcal{C}, \pi_M)$, where the capability set satisfies:
+We formalize a TAKT Governed Runtime as a tuple $M = (\mathcal{C}, \pi_M)$, where
+$\mathcal{C}$ is the runtime's capability set and $\pi_M : \mathcal{R} \to \mathcal{D}$
+is its decision policy. The \emph{minimal governance kernel} is defined as:
 \[
-\mathcal{C} \;\subseteq\; \{C_{\text{contract}},\; C_{\text{uncertainty}},\; C_{\text{temporal}}\}
+\mathcal{K}_D = \{C_{\text{contract}},\; C_{\text{uncertainty}},\; C_{\text{temporal}}\}
 \]
+A runtime $M$ is \emph{minimally governed} when $\mathcal{C} = \mathcal{K}_D$, i.e.,
+it contains exactly the capabilities proven necessary and no others.
 
 \begin{figure}[htbp]
 \centering
@@ -28,7 +33,10 @@ on at least one representation:
 \]
 
 \textbf{Example 1 (Temporal Prefix Necessity):} Consider a runtime where
-$C_{\text{temporal}}$ is ablated. Two trajectories $\tau_1 = (r_0, r_1, r_2)$
-and $\tau_2 = (r'_0, r'_1, r_2)$ share an identical terminal state $r_2$.
-If $\tau_1$ is safe and $\tau_2$ is unsafe, a runtime inspecting only $r_2$
-assigns identical actions — causing decision divergence $\pi_M(\tau_1) \neq \pi^*(\tau_1)$.
+$C_{\text{temporal}}$ is ablated. Two trajectory-induced representations $R^1$
+and $R^2$ share an identical terminal observation yet arise from trajectories
+$\tau_1 = (r_0, r_1, r_2)$ (safe) and $\tau_2 = (r'_0, r'_1, r_2)$ (unsafe).
+A runtime inspecting only the terminal state $r_2$ assigns identical actions:
+$\pi_{M\setminus\{C_{\text{temporal}}\}}(R^1) = \pi_{M\setminus\{C_{\text{temporal}}\}}(R^2)$,
+while the optimal policy correctly distinguishes them:
+$\pi^*(R^1) \neq \pi^*(R^2)$, violating decision preservation.
