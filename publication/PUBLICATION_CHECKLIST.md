@@ -25,6 +25,7 @@
 - [x] **State-of-the-Art Positioning:** Comparative analysis vs abstract interpretation, bisimulation, and runtime verification ([`docs/02-theoretical-positioning/2026-07-28-state-of-the-art-positioning.md`](../docs/02-theoretical-positioning/2026-07-28-state-of-the-art-positioning.md)).
 - [x] **Manuscript Traceability Audit:** Verification mapping of all manuscript claims to backing evidence assets ([`docs/04-academic-paper/2026-07-28-manuscript-traceability-audit.md`](../docs/04-academic-paper/2026-07-28-manuscript-traceability-audit.md)).
 - [x] **Scientific Claim Graph & Non-Claims Boundaries:** End-to-end evidence trees and formal scope non-claims ([`docs/04-academic-paper/2026-07-28-scientific-claim-graph.md`](../docs/04-academic-paper/2026-07-28-scientific-claim-graph.md)).
+- [x] **Threats to Validity Analysis:** Formal 4-pillar analysis covering Construct, Internal, External, and Reproducibility Validity ([`docs/04-academic-paper/2026-07-28-threats-to-validity.md`](../docs/04-academic-paper/2026-07-28-threats-to-validity.md)).
 - [ ] **Audited Primary Bibliography:** Canonical reference citations verified across foundational literature (Cousot 1977, Milner 1989, Leucker 2009, Blackwell 1951, Kaelbling 1998).
 - [ ] **Definitive Paper Figures:** High-resolution architectural, validation pipeline, and research roadmap diagrams.
 - [ ] **Cross-Document Terminology & Citation Audit:** Verification of zero discrepancies in nomenclature, test metrics (283/283), or DOI references.
