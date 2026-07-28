@@ -2,7 +2,7 @@
 
 **Status:** PROPOSED (Phase III Research Milestone)  
 **Prerequisite Baseline:** ST-016 v1.0.0 Frozen Release (`st016-v1.0.0`)  
-**Manifest Baseline:** [`theory-manifest.yml`](../../theory-manifest.yml) (Schema 1.0)  
+**Manifest Baseline:** [`theory-manifest.yml`](../../../theory-manifest.yml) (Schema 1.0)  
 
 ---
 
@@ -54,3 +54,22 @@ Two distinct runtime implementations $M_1$ and $M_2$ are declared **Kernel Equiv
 
 ST-017 strictly builds upon **ST-016 v1.0.0 (`fca31f0`)**.  
 No modifications to ST-016 capability kernel definitions or `RuntimeSufficiency.lean` shall be introduced during ST-017 execution.
+
+---
+
+## 5. Non-Claims (Scope Boundary)
+
+Mirroring the ST-016 scope discipline (`paper/sections/07-limitations.tex`), ST-017 does **not** claim, and must not be read as claiming, any of the following until separately proven:
+
+- **Not** universal transportability across arbitrary runtime pairs — only across runtimes shown to satisfy $M_1 \sim M_2$ (§2).
+- **Not** an automatic translation function $T$ — Phase III.1 targets existence/soundness of $T$ for the reference triple (TypeScript/Rust/Python); a general-purpose transpiler is out of scope.
+- **Not** a relaxation of ST-016's kernel necessity results — $\mathcal{K}_D$ remains fixed; ST-017 studies whether *witnesses about* $\mathcal{K}_D$ carry across implementations, not whether $\mathcal{K}_D$ itself changes.
+- **Not** empirical validation on production runtimes — Phase III.2/III.3 target purpose-built conformance harnesses (`takt-rust`, `takt-python`), not existing third-party systems.
+
+## 6. Success Criteria (Phase III.1 Exit Bar)
+
+Phase III.1 (axiomatization) is considered done when, and only when:
+
+1. `TaktFormal.RuntimeTransportability` compiles with zero `sorry`s and states `transportability_preserves_necessity` as a theorem (not an axiom) over the four conditions in §2.
+2. At least one non-trivial witness instance demonstrates the theorem's precondition ($M_1 \sim M_2$) holding between two distinct mock runtimes constructed for that purpose — analogous to ST-016's finite witness instances, not a universal proof.
+3. The Non-Claims in §5 are re-verified as still accurate against the final Lean statement (an over-strong theorem is a spec failure, per the ST-016 blind-review lesson on claim/evidence alignment).

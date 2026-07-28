@@ -31,3 +31,7 @@
 - **Phase III.1:** Axiomatization in Lean 4 (`TaktFormal.RuntimeTransportability`).
 - **Phase III.2:** Conformance test harnesses for Rust (`takt-rust`) and Python (`takt-python`).
 - **Phase III.3:** Empirical cross-runtime witness transportability validation.
+
+Exit criteria for each phase, and the explicit scope boundary this research
+line does not claim to cross, are defined in §5–6 of the design spec:
+[`2026-07-27-st017-witness-transportability-design.md`](2026-07-27-st017-witness-transportability-design.md).
