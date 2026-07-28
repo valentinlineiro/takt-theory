@@ -1,7 +1,7 @@
-# Paper v0.2-post-review — Version Pin
+# Paper v0.4-arxiv-ready — Version Pin
 
 **Fecha de preparación:** 2026-07-28
-**Estado:** 🔒 FROZEN — candidato a tag `paper-v0.2-post-review`
+**Estado:** 🔒 FROZEN — candidato a envío a arXiv, tag `paper-v0.4-arxiv-ready`
 
 Sucesor de [`blind-review/VERSION_PIN.md`](../blind-review/VERSION_PIN.md)
 (`paper-v0.1-submission-candidate`), tras incorporar las 3 lecturas ciegas
@@ -11,12 +11,25 @@ Sucesor de [`blind-review/VERSION_PIN.md`](../blind-review/VERSION_PIN.md)
 
 ## Identificador de versión
 
+Cadena de tags (ninguno reescrito; cada uno es un hito histórico inmutable):
+
+```
+paper-v0.1-submission-candidate  (b60aa9a) — candidato inicial
+paper-v0.2-post-review           (5a534e9) — R1 corrections
+paper-v0.3-arxiv-ready           (4d23780) — R2 corrections + claim calibration
+paper-v0.4-arxiv-ready           (db9fe7f) — R3 corrections + auditoría bibliográfica + freeze final  ← ESTE
+```
+
+`paper-v0.4-arxiv-ready` **supersede** a `paper-v0.3-arxiv-ready`: ese tag,
+pese a su nombre, se creó antes de incorporar la revisión R3 y la auditoría
+de bibliografía; no es el candidato de envío. El candidato de envío a arXiv
+es `paper-v0.4-arxiv-ready`.
+
 | Campo | Valor |
 | :--- | :--- |
-| Tag editorial | `paper-v0.2.1-post-review` |
-| Tag predecesor | `paper-v0.2-post-review` (`5a534e9` — solo R1, previo a R2/R3 y auditoría bibliográfica) |
-| Commit predecesor | `4d23780` (R2 corrections, Hito 2) |
-| Commit freeze | `c836f20` |
+| Tag editorial | `paper-v0.4-arxiv-ready` |
+| Tag superseded | `paper-v0.3-arxiv-ready` (`4d23780` — R1+R2, previo a R3 y auditoría bibliográfica) |
+| Commit freeze | `db9fe7f` |
 | Fecha build | 2026-07-28 |
 | Páginas | 11 |
 
@@ -64,4 +77,6 @@ de esta auditoría.
 
 No tocar `ST-017`, el runtime, ni los experimentos en este ciclo. El
 siguiente paso tras este freeze es el envío a arXiv; feedback posterior
-abre una nueva iteración, no modifica este pin retroactivamente.
+abre una nueva iteración, no modifica este pin retroactivamente. Ningún
+tag existente se reescribe: una corrección posterior recibe un nuevo tag
+numerado (`v0.5-...`), nunca mueve `v0.4-arxiv-ready`.
