@@ -3,6 +3,7 @@
 **Status:** PROPOSED (Phase III Research Milestone)  
 **Prerequisite Baseline:** ST-016 v1.0.0 Frozen Release (`st016-v1.0.0`)  
 **Manifest Baseline:** [`theory-manifest.yml`](../../../theory-manifest.yml) (Schema 1.0)  
+**Consolidated State:** [`2026-07-28-st017-formal-model-draft.md`](2026-07-28-st017-formal-model-draft.md) — frozen definitions, proven properties, and open questions accumulated on `st017-witness-transportability` since this spec was written. Read that file first for current state; this file remains the original scope/axiom statement.
 
 ---
 
