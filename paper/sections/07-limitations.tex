@@ -1,10 +1,53 @@
-\section{Scope Boundaries \& Future Work (ST-017)}
+\section{Scope Boundaries, Non-Claims \& Future Work (ST-017)}
+\label{sec:limitations}
 
 \subsection{Non-Claims \& Scope Boundaries}
 \begin{enumerate}
-    \item \textbf{Model Scope:} ST-016 proves necessity specifically under the formal decision-preserving model $M = (\mathcal{C}, \pi_M)$ and discrete decision domain $\mathcal{D}$. It does not claim universal necessity for arbitrary software or continuous control systems.
-    \item \textbf{Transportability (ST-017 Boundary):} ST-016 proves necessity on the reference architecture. Transporting certified witness artifacts across heterogeneous runtimes ($M_1 \sim M_2$) is explicitly reserved for \textbf{ST-017}.
+    \item \textbf{Model Scope:} ST-016 establishes an algebraic framework and
+    witness-based demonstration that $C_{\text{contract}}$, $C_{\text{uncertainty}}$,
+    and $C_{\text{temporal}}$ are necessary in formalized finite-instance scenarios.
+    It does \emph{not} claim universal necessity for all possible governed runtimes,
+    continuous control systems, or runtime models other than the ST-016 formal model.
+
+    \item \textbf{Capability Semantics:} The formal Lean model treats
+    $C_{\text{contract}}$, $C_{\text{uncertainty}}$, and $C_{\text{temporal}}$
+    as abstract labels. The semantic connection to contract soundness, uncertainty
+    bounding, and temporal consistency is established through finite-instance
+    examples. General semantic grounding is reserved for future work.
+
+    \item \textbf{Axiom0:} The structural sufficiency module postulates
+    $\text{kernel}_D(x,y) \leftrightarrow K_D(x,y)$. This is a modelling
+    assumption characterizing the class of decision problems studied, not a
+    derived theorem.
+
+    \item \textbf{Witness Bridge Automation:} The formal witness validation schema
+    requires manual construction of \texttt{WitnessArtifact} records from
+    observed TypeScript traces. No automatic extraction mechanism from runtime
+    executions to Lean proofs exists in ST-016.
+
+    \item \textbf{Transportability (ST-017 Boundary):} Transporting certified
+    witness artifacts across heterogeneous runtimes ($M_1 \sim M_2$) is reserved
+    for \textbf{ST-017}.
 \end{enumerate}
 
+\subsection{Open Research Direction: ST016\_Conjecture}
+The following claim is \textbf{not proven} in this work and constitutes the
+central open research direction for ST-017:
+
+\begin{quote}
+\textit{ST016 Conjecture:} For any runtime $M$ with $\mathcal{C} =
+\{C_{\text{contract}}, C_{\text{uncertainty}}, C_{\text{temporal}}\}$
+and any optimal policy $\pi^*$, if $M$ is decision-preserving then $M$ is
+minimal (i.e., no capability can be removed while preserving $\pi^*$).
+\end{quote}
+
+Proving this conjecture would require establishing formal semantic axioms for
+each capability class and demonstrating irreducibility in a model-independent
+way, which is the core research question of ST-017.
+
 \subsection{Conclusion}
-ST-016 establishes an immutable, machine-certified baseline for minimal decision-preserving runtime governance. By bridging formal Lean 4 theorems with empirical ablation witness artifacts, this work provides a reproducible foundation upon which transportability and heterogeneous runtime implementations will be studied in ST-017.
+ST-016 establishes an algebraic Lean 4 framework for reasoning about minimal
+decision-preserving runtime governance, backed by formalized witness scenarios
+and an audited replication package. The central open conjecture and semantic
+grounding of capability classes provide the foundation for the ST-017 research
+line on transportability and generalization.

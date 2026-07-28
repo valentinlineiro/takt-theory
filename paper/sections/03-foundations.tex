@@ -17,6 +17,17 @@ is its decision policy. The \emph{minimal governance kernel} is defined as:
 A runtime $M$ is \emph{minimally governed} when $\mathcal{C} = \mathcal{K}_D$, i.e.,
 it contains exactly the capabilities proven necessary and no others.
 
+\smallskip
+\noindent\textbf{Three definitions of decision preservation} appear across this
+work at different layers of abstraction:
+\begin{itemize}
+    \item \textbf{ST-015 (informational):} $\pi^*(R) = \pi^*(S)$ — the optimal policy
+    yields the same decision on the compressed representation as on the full state.
+    \item \textbf{Runtime alignment:} $\text{Sufficient}(M, \pi^*) \equiv \forall R,\; \pi_M(R) = \pi^*(R)$ — the runtime's policy matches the optimal policy on all representations.
+    \item \textbf{Cross-runtime:} $\text{PreservesDecision}(M_1, M_2) \equiv \forall R,\; \pi_{M_1}(R) = \pi_{M_2}(R)$ — two runtime instances agree on all decisions.
+\end{itemize}
+These are related: $\text{Sufficient}(M, \pi^*)$ implies $\text{PreservesDecision}(M, M')$ for any $M'$ also sufficient w.r.t.\ $\pi^*$.
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{figures/architecture.pdf}
@@ -32,11 +43,19 @@ on at least one representation:
 \exists\, R \in \mathcal{R}:\; \pi_M(R) \;\neq\; \pi_{M \setminus \{C\}}(R)
 \]
 
+\textbf{Note on Axiom0:} The structural sufficiency module (ST-015) postulates
+$\text{kernel}_D(x,y) \leftrightarrow K_D(x,y)$, asserting that the decision
+kernel coincides with the intersection of capability kernels. This is a modelling
+assumption, not a derived theorem, and is listed explicitly in the Non-Claims
+of Section~\ref{sec:limitations}.
+
 \textbf{Example 1 (Temporal Prefix Necessity):} Consider a runtime where
 $C_{\text{temporal}}$ is ablated. Two trajectory-induced representations $R^1$
 and $R^2$ share an identical terminal observation yet arise from trajectories
 $\tau_1 = (r_0, r_1, r_2)$ (safe) and $\tau_2 = (r'_0, r'_1, r_2)$ (unsafe).
-A runtime inspecting only the terminal state $r_2$ assigns identical actions:
-$\pi_{M\setminus\{C_{\text{temporal}}\}}(R^1) = \pi_{M\setminus\{C_{\text{temporal}}\}}(R^2)$,
+Here $\pi^*$ is defined over representations that encode trajectory history;
+$R^1 \neq R^2$ because their history components differ.
+A runtime inspecting only the terminal state $r_2$ produces:
+$\pi_{M\setminus\{C_{\text{temporal}}}\}(R^1) = \pi_{M\setminus\{C_{\text{temporal}}}\}(R^2)$,
 while the optimal policy correctly distinguishes them:
 $\pi^*(R^1) \neq \pi^*(R^2)$, violating decision preservation.

@@ -1,8 +1,8 @@
 \section{Empirical Validation \& Component Ablation (EXP-004)}
 
-The theoretical theorems prove necessity within the formal model. We validate the
-predicted behavior under controlled capability ablations in experiment
-\textbf{EXP-004}~\cite{takt_st016_2026}:
+The formal model identifies the conditions under which capability removal violates
+decision preservation. EXP-004~\cite{takt_st016_2026} tests whether these conditions
+are observable in the reference TypeScript implementation under controlled ablations:
 
 \begin{itemize}
     \item \textbf{$C_{\text{contract}}$ Ablation:} Ablating contract verification
@@ -16,11 +16,13 @@ predicted behavior under controlled capability ablations in experiment
     yields $\pi_{\text{full}} = \text{INTERVENE}$ vs.\ $\pi_{\text{reduced}} = \text{MONITOR}$.
 \end{itemize}
 
-Each ablation produces a machine-verifiable \texttt{WitnessArtifact} elevated to
-a Lean 4 theorem via the \texttt{validWitness\_implies\_necessity} bridge.
+Each ablation scenario is manually encoded into a \texttt{WitnessArtifact} record
+and verified against the formal model via the \texttt{WitnessConsistentWithRuntime}
+predicate. When consistency holds, the formal elevation theorem applies.
 
 \subsection{Evidence Traceability Matrix}
-Table~\ref{tab:evidence} maps each theoretical claim to its primary evidence asset.
+Table~\ref{tab:evidence} maps each theoretical claim to its primary evidence,
+with explicit scope annotations for each evidence type.
 
 \begin{table}[htbp]
 \caption{ST-016 Evidence Traceability Matrix}
@@ -28,16 +30,16 @@ Table~\ref{tab:evidence} maps each theoretical claim to its primary evidence ass
 \centering\small
 \begin{tabular}{p{3.2cm}p{3.5cm}p{1.4cm}}
 \toprule
-\textbf{Claim} & \textbf{Primary Evidence} & \textbf{Status} \\
+\textbf{Claim} & \textbf{Primary Evidence} & \textbf{Scope} \\
 \midrule
-Decision Suff.\ ($\Sigma^*$)       & \texttt{StructuralSufficiency} & Verified \\
-Kernel Nec.\ ($\mathcal{K}_D$)     & \texttt{RuntimeSufficiency}    & Verified \\
-$C_{\text{contract}}$ nec.         & \texttt{contract.ablation}     & Witness  \\
-$C_{\text{uncertainty}}$ nec.      & \texttt{uncertainty.ablation}  & Witness  \\
-$C_{\text{temporal}}$ nec.         & \texttt{temporal.ablation}     & Witness  \\
-Witness bridge                     & \texttt{RuntimeWitness}        & Verified \\
-Runtime correctness                & Vitest (283/283)               & Passing  \\
-Reproducibility~\cite{takt_st016_2026} & Replication kit           & 6 Runs   \\
+Structural sufficiency       & \texttt{StructuralSufficiency} & Lean model \\
+Framework definitions        & \texttt{RuntimeSufficiency}    & Lean model \\
+$C_{\text{contract}}$ witness    & \texttt{contract.ablation}     & Finite inst.\ \\
+$C_{\text{uncertainty}}$ witness & \texttt{uncertainty.ablation}  & Finite inst.\ \\
+$C_{\text{temporal}}$ witness    & \texttt{temporal.ablation}     & Finite inst.\ \\
+Witness validation schema    & \texttt{RuntimeWitness}        & Lean model \\
+Implementation stability     & Vitest (283/283)               & TypeScript  \\
+Reproducibility~\cite{takt_st016_2026} & Replication kit     & 6 Runs      \\
 \bottomrule
 \end{tabular}
 \end{table}
