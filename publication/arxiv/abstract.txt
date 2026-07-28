@@ -1,0 +1,20 @@
+TAKT: A Formal Framework for Minimal Decision-Preserving Runtime Governance
+
+Software systems operating under abstracted or compressed state representations
+frequently risk decision instability when critical informational context is
+discarded. This paper introduces TAKT (Theory of Adequate Knowledge for
+Decisions), a formal and empirical framework for determining the minimal necessary
+governance kernel of an execution runtime.
+
+We prove in Lean 4 that any governed runtime preserving optimal decisions under
+state abstraction within the formal ST-016 runtime model must possess three
+capability kernels: ContractSoundness (C_contract), UncertaintyBound
+(C_uncertainty), and TemporalConsistency (C_temporal). We formalize capability
+necessity, decision preservation, runtime sufficiency, and irreducibility,
+proving that the minimal governance kernel K_D = {C_contract, C_uncertainty,
+C_temporal} is both necessary and irreducible.
+
+We validate this kernel necessity on a reference TypeScript runtime via component
+ablation (EXP-004), elevated to formal Lean 4 theorems via a machine-certified
+3-layer witness bridge. The complete replication package is archived under
+DOI 10.5281/zenodo.21638014 and has passed six independent external audit rounds.

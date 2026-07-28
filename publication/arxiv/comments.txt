@@ -1,0 +1,5 @@
+Lean 4 proofs and complete replication package available at:
+https://doi.org/10.5281/zenodo.21638014 (ST-016 v1.0.0, archived 2026-07-28)
+
+Replication: ./scripts/bootstrap.sh && ./scripts/verify.sh
+Tests: 283/283 passing. Zero sorry in Lean 4 build.

@@ -1,0 +1,9 @@
+Primary:   cs.LO  (Logic in Computer Science)
+Secondary: cs.SE  (Software Engineering)
+Secondary: cs.PL  (Programming Languages)
+
+Rationale:
+  cs.LO — primary venue for Lean 4 machine-checked proofs, formal necessity
+           theorems, and decision-preserving runtime formalization.
+  cs.SE  — runtime governance, ablation methodology, replication package.
+  cs.PL  — type-theoretic foundations, abstract interpretation connections.

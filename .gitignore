@@ -5,3 +5,4 @@ benchmarks/test-datasets/
 .takt/
 *.aux\n*.log\n*.bbl\n*.blg\n*.out\n*.toc\n*.fls\n*.fdb_latexmk\n*.synctex.gz\n*.gz
 blind-review/paper.pdf
+publication/arxiv/main.pdf\npublication/arxiv/source.tar.gz
