@@ -31,3 +31,15 @@
 - [ ] **Audited Primary Bibliography:** Canonical reference citations verified across foundational literature (Cousot 1977, Milner 1989, Leucker 2009, Blackwell 1951, Kaelbling 1998).
 - [ ] **External Academic Review:** Peer-review feedback incorporated from formal methods & software architecture specialists.
 - [ ] **Preprint Submission (arXiv):** Final manuscript submission to arXiv repository.
+
+---
+
+## 3. Reviewer Readiness Check
+
+| Reviewer Evaluation Question | Primary Objective | Verification & Location |
+| :--- | :--- | :--- |
+| **Clear Research Questions?** | Context & Problem Definition | Section 1 (Research Questions $Q_1, Q_2$) |
+| **Explicit Original Contributions?** | Novelty & Value Proposition | Section 1 (Main Contributions 1–4) |
+| **Traceable Assertion Evidence?** | Formal & Empirical Traceability | Section 5 Summary Matrix & [`manuscript-traceability-audit.md`](../docs/04-academic-paper/2026-07-28-manuscript-traceability-audit.md) |
+| **Scope & Non-Claims Declared?** | Rigorous Boundary Enforcement | Section 7 (Non-Claims) & [`scientific-claim-graph.md`](../docs/04-academic-paper/2026-07-28-scientific-claim-graph.md) |
+| **Zero-Contact Reproducibility?** | Verification Integrity | `./scripts/bootstrap.sh && ./scripts/verify.sh` & [`ST-016_FINAL_STATE.md`](../ST-016_FINAL_STATE.md) |
