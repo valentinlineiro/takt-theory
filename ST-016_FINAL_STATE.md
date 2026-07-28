@@ -2,7 +2,8 @@
 
 **Standard:** ST-016 Runtime Kernel Necessity & Minimal Sufficiency  
 **Version:** `v1.0.0`  
-**Git Tag:** `st016-v1.0.0`  
+**Zenodo DOI:** [`10.5281/zenodo.21638014`](https://doi.org/10.5281/zenodo.21638014)  
+**Git Tag:** [`st016-v1.0.0`](https://github.com/valentinlineiro/takt-theory/releases/tag/st016-v1.0.0)  
 **Reference Commit:** `fca31f0`  
 **Date:** 2026-07-27  
 **Manifest:** [`theory-manifest.yml`](theory-manifest.yml) (Schema 1.0)  
@@ -24,6 +25,7 @@ This baseline snapshot records the exact frozen reference state of **ST-016 v1.0
 | **CI Automation** | `.github/workflows/verify.yml` | PASS | Ubuntu & macOS Runners |
 | **External Audit** | 6 Independent Dry Run Iterations | VERIFIED | Final Verdict: `PASS WITH ENVIRONMENTAL LIMITATION` |
 | **Closure Report** | `docs/superpowers/specs/2026-07-27-st016-closure-report.md` | COMPLETE | Full research closure |
+| **Zenodo Citation** | `10.5281/zenodo.21638014` | ARCHIVED | Permanent citable scientific object |
 
 ---
 
@@ -45,5 +47,5 @@ This baseline snapshot records the exact frozen reference state of **ST-016 v1.0
 
 With ST-016 v1.0.0 established as an immutable scientific baseline, research progresses to **ST-017**:
 - **ST-015:** Representation Sufficiency ($\Sigma^*$)
-- **ST-016:** Runtime Kernel Necessity ($\mathcal{K}_D$)
+- **ST-016:** Runtime Kernel Necessity ($\mathcal{K}_D$) — DOI: [`10.5281/zenodo.21638014`](https://doi.org/10.5281/zenodo.21638014)
 - **ST-017:** Witness Transportability & Cross-Implementation Equivalence ($M_1 \sim M_2$)
