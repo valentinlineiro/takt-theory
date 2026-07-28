@@ -1,30 +1,25 @@
-\documentclass[10pt,conference]{IEEEtran}
-\usepackage{cite}
+\documentclass[11pt,a4paper]{article}
 \usepackage{amsmath,amssymb,amsfonts}
-\usepackage{algorithmic}
 \usepackage{graphicx}
-\usepackage{textcomp}
 \usepackage{xcolor}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage{booktabs}
 
 \begin{document}
 
 \title{TAKT: A Formal Framework for Minimal Decision-Preserving Runtime Governance}
 
-\author{\IEEEauthorblockN{Valentin Lineiro}
-\IEEEauthorblockA{\textit{TAKT Research Initiative} \\
-DOI: 10.5281/zenodo.21638014}
-}
+\author{Valentin Lineiro \\ \small TAKT Research Initiative \\ \small DOI: 10.5281/zenodo.21638014}
 
+\date{2026-07-28}
 \maketitle
 
-\begin{abstract}
+\begin{abstract}\noindent
 Software systems operating under abstracted or compressed state representations frequently risk decision instability when critical informational context is discarded. This paper introduces TAKT (Theory of Adequate Knowledge for Decisions), a formal and empirical framework for determining the minimal necessary governance kernel of an execution runtime. We prove in Lean 4 that any governed runtime preserving optimal decisions under state abstraction MUST possess three capability kernels within the formal ST-016 runtime model: ContractSoundness ($C_{\text{contract}}$), UncertaintyBound ($C_{\text{uncertainty}}$), and TemporalConsistency ($C_{\text{temporal}}$). We validate this kernel necessity on a reference TypeScript runtime via component ablation (EXP-004), elevated to formal Lean 4 theorems via a machine-certified 3-layer witness bridge. Finally, we present an audited zero-contact replication package evaluated across six independent external audit rounds (\texttt{PASS WITH ENVIRONMENTAL LIMITATION}), backed by an immutable Zenodo archive (DOI: 10.5281/zenodo.21638014).
 \end{abstract}
 
-\begin{IEEEkeywords}
-Runtime Governance, Formal Verification, Decision Preservation, State Abstraction, Lean 4 Proof Assistant, Component Ablation.
-\end{IEEEkeywords}
+\smallskip\noindent\textbf{Keywords:} Runtime Governance, Formal Verification, Decision Preservation, State Abstraction, Lean 4 Proof Assistant, Component Ablation.
 
 \input{sections/01-introduction}
 \input{sections/02-related-work}
@@ -34,7 +29,7 @@ Runtime Governance, Formal Verification, Decision Preservation, State Abstractio
 \input{sections/06-discussion}
 \input{sections/07-limitations}
 
-\bibliographystyle{IEEEtran}
+\bibliographystyle{plain}
 \bibliography{bibliography}
 
 \end{document}

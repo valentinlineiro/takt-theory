@@ -1,0 +1,65 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, backgrounds}
+
+\definecolor{stateblue}{RGB}{41, 98, 255}
+\definecolor{repgreen}{RGB}{0, 150, 136}
+\definecolor{kernelgray}{RGB}{55, 71, 79}
+\definecolor{capblue}{RGB}{30, 136, 229}
+\definecolor{decisionorange}{RGB}{255, 111, 0}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+
+\begin{document}
+\begin{tikzpicture}[
+  node distance=0.6cm and 1.2cm,
+  box/.style={rectangle, rounded corners=4pt, minimum width=3.2cm, minimum height=0.8cm, align=center, font=\small},
+  cap/.style={rectangle, rounded corners=3pt, minimum width=2.8cm, minimum height=0.7cm, align=center, font=\footnotesize, text=white},
+  arrow/.style={-{Stealth[length=6pt]}, thick},
+  label/.style={font=\footnotesize\itshape, midway, right=4pt},
+]
+
+% Level 1 — Full State
+\node[box, fill=stateblue!15, draw=stateblue, text=stateblue!80!black] (S)
+  {$S \;$\\[-2pt]\footnotesize Full Environment State};
+
+% Abstraction arrow
+\draw[arrow, color=stateblue] (S) -- node[label]{$R = \rho(S)$\\[-3pt]\tiny state abstraction} ++(0,-1.4)
+  coordinate (rhopoint);
+
+% Level 2 — Representation
+\node[box, fill=repgreen!15, draw=repgreen, text=repgreen!80!black, below=1.4cm of S] (R)
+  {$R \;$\\[-2pt]\footnotesize Compressed Representation};
+
+% Runtime kernel box
+\node[box, fill=kernelgray!8, draw=kernelgray, minimum width=4.6cm, minimum height=3.2cm,
+  below=0.8cm of R] (M) {};
+
+\node[font=\small\bfseries, text=kernelgray, above=-2.4cm of M] {TAKT Governed Runtime $M$};
+
+% Three capabilities inside M
+\node[cap, fill=capblue, below=0.05cm of M.north, yshift=-0.7cm] (Cc)
+  {$C_{\text{contract}}$ \quad ContractSoundness};
+\node[cap, fill=capblue!80, below=0.15cm of Cc] (Cu)
+  {$C_{\text{uncertainty}}$ \quad UncertaintyBound};
+\node[cap, fill=capblue!60, below=0.15cm of Cu] (Ct)
+  {$C_{\text{temporal}}$ \quad TemporalConsistency};
+
+% Arrow R into M
+\draw[arrow, color=repgreen] (R) -- (M.north);
+
+% Level 3 — Decision
+\node[box, fill=decisionorange!15, draw=decisionorange, text=decisionorange!80!black,
+  below=0.8cm of M] (pi)
+  {$\pi^*(R)$\\[-2pt]\footnotesize Decision-Preserving Policy};
+
+% Arrow M into decision
+\draw[arrow, color=kernelgray] (M.south) -- (pi);
+
+% Side annotation
+\node[font=\footnotesize, text=kernelgray!70, right=0.5cm of M, align=left, text width=3.2cm]
+  {Each capability is\\ \textbf{necessary}: removing\\ any one causes\\ decision divergence\\[4pt]
+   $\exists R\colon \pi_M(R) \neq \pi_{M\setminus\{C\}}(R)$};
+
+\end{tikzpicture}
+\end{document}
