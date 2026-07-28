@@ -1,0 +1,18 @@
+\section{Introduction}
+
+As autonomous software agents and complex reactive systems scale, they continuously compress high-dimensional environmental context into abstract state representations $R = \rho(S)$. However, ungoverned state abstraction introduces decision divergence: an optimal policy $\pi^*$ computed on full observable state $S$ may fail when evaluated on a compressed representation $R$.
+
+This work addresses two fundamental research questions:
+\begin{enumerate}
+    \item \textit{What information must be preserved to guarantee decision equivalence?} (ST-015)
+    \item \textit{What minimal runtime capability composition is necessary and irreducible to enforce decision preservation dynamically?} (ST-016)
+\end{enumerate}
+
+\subsection{Main Contributions}
+This paper makes four primary contributions:
+\begin{enumerate}
+    \item \textbf{Formal Definition of Minimal Runtime Governance:} We formalize capability necessity, decision preservation, runtime sufficiency, and irreducibility under state abstraction.
+    \item \textbf{Machine-Checked Proof of Kernel Necessity:} We prove in Lean 4 that removing any capability from $\mathcal{K}_D = \{C_{\text{contract}}, C_{\text{uncertainty}}, C_{\text{temporal}}\}$ destroys decision preservation.
+    \item \textbf{Empirical Ablation Methodology:} We introduce experiment EXP-004, constructing an empirical witness bridge elevating trace artifacts into formal machine proofs.
+    \item \textbf{Audited Zero-Contact Replication Package:} We publish an immutable, versioned research package with multi-OS CI and an external audit trail of 6 independent dry runs.
+\end{enumerate}

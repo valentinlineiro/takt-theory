@@ -1,0 +1,8 @@
+\section{Related Work \& Positioning}
+
+TAKT builds upon several established formal methodologies while addressing a complementary research question centered on \textbf{decision preservation under representation contraction}:
+\begin{itemize}
+    \item \textbf{Abstract Interpretation (Cousot \& Cousot):} Focuses on sound static over-approximation of program semantics. TAKT focuses on dynamic policy decision invariance ($\pi^*(R) = \pi^*(S)$).
+    \item \textbf{Bisimulation \& Refinement (Milner, Park):} Enforces strict state-by-state trace equivalence. TAKT permits aggressive internal state contraction provided temporal prefix monitoring ($C_{\text{temporal}}$) maintains policy consistency.
+    \item \textbf{Runtime Verification (Leucker \& Schallhart):} Evaluates execution traces against temporal logic formulas (LTL). TAKT formalizes and machine-checks the \textit{necessity of the governance runtime kernel itself}.
+\end{itemize}

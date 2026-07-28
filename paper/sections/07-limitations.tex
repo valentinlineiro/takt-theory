@@ -1,0 +1,10 @@
+\section{Scope Boundaries \& Future Work (ST-017)}
+
+\subsection{Non-Claims \& Scope Boundaries}
+\begin{enumerate}
+    \item \textbf{Model Scope:} ST-016 proves necessity specifically under the formal decision-preserving model $M = (\mathcal{C}, \pi_M)$ and discrete decision domain $\mathcal{D}$. It does not claim universal necessity for arbitrary software or continuous control systems.
+    \item \textbf{Transportability (ST-017 Boundary):} ST-016 proves necessity on the reference architecture. Transporting certified witness artifacts across heterogeneous runtimes ($M_1 \sim M_2$) is explicitly reserved for \textbf{ST-017}.
+\end{enumerate}
+
+\subsection{Conclusion}
+ST-016 establishes an immutable, machine-certified baseline for minimal decision-preserving runtime governance. By bridging formal Lean 4 theorems with empirical ablation witness artifacts, this work provides a reproducible foundation upon which transportability and heterogeneous runtime implementations will be studied in ST-017.

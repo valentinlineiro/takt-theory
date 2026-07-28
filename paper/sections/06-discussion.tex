@@ -1,0 +1,10 @@
+\section{Discussion \& Architectural Implications}
+
+The primary contribution of ST-016 is not proposing another specific runtime implementation, but rather \textbf{identifying and machine-checking the minimal governance capabilities required for decision preservation within the formal model}.
+
+For runtime system architects, ST-016 provides three actionable design principles:
+\begin{enumerate}
+    \item \textbf{Safety Contract Decoupling:} Safety verification ($C_{\text{contract}}$) cannot be subsumed by statistical policy estimation alone.
+    \item \textbf{Dynamic Boundary Monitoring:} Operating near ambiguity boundaries requires explicit uncertainty estimation ($C_{\text{uncertainty}}$) to prevent premature execution.
+    \item \textbf{Trajectory History Dependence:} Stateless evaluation fails under history-dependent processes, necessitating explicit trajectory prefix tracking ($C_{\text{temporal}}$).
+\end{enumerate}
