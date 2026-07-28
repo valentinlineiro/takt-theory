@@ -80,6 +80,7 @@ import TaktFormal.ApproximateGovernance
 import TaktFormal.RuntimeConvergence
 import TaktFormal.RuntimeSufficiency
 import TaktFormal.RuntimeWitness
+import TaktFormal.RuntimeTransportability -- ST-017 Phase III.1: capability-relative transportability core
 import TaktFormal.ImpossibilityLimits
 import TaktFormal.Metatheory
 import TaktFormal.Composition
