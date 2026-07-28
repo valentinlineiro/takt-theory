@@ -1,11 +1,24 @@
 \section{Machine-Certified Lean 4 Formalization}
 
-The theoretical results establish necessity within the formal model. We implement the proofs in two canonical Lean 4 modules (\texttt{takt-formal}):
+The theoretical results establish necessity within the formal model. We implement
+the proofs in two canonical Lean 4 modules in the \texttt{takt-formal} package:
+
 \begin{enumerate}
-    \item \textbf{\texttt{RuntimeSufficiency.lean}:} Formalizes \texttt{RuntimeCapability}, \texttt{Runtime}, \texttt{removeCapability}, \texttt{PreservesDecision}, \texttt{NecessaryCapability}, \texttt{Sufficient}, \texttt{Irreducible}, \texttt{MinimalRuntime}, proving:
-    $$\text{MinimalRuntime}(M, \pi^*) \implies \forall C \in M.\text{capabilities}, \quad \text{NecessaryCapability}(C, M)$$
-    \item \textbf{\texttt{RuntimeWitness.lean}:} Defines the 3-layer certification bridge (\texttt{WitnessArtifact}, \texttt{WitnessConsistentWithRuntime} predicate) and proves the elevation theorem:
-    $$\text{theorem } \texttt{validWitness\_implies\_necessity} : \text{WitnessConsistentWithRuntime}(M, w) \implies \text{NecessaryCapability}(w.\text{capability}, M)$$
+    \item \textbf{\texttt{RuntimeSufficiency.lean}:} Formalizes the core algebraic
+    structures (\texttt{RuntimeCapability}, \texttt{Runtime}, \texttt{NecessaryCapability},
+    \texttt{MinimalRuntime}) and proves the core necessity theorem:
+    \[
+    \text{MinimalRuntime}(M, \pi^*) \implies
+    \forall C \in M.\mathit{caps},\; \text{NecessaryCapability}(C, M)
+    \]
+
+    \item \textbf{\texttt{RuntimeWitness.lean}:} Defines the 3-layer certification
+    bridge via \texttt{WitnessArtifact} and \texttt{WitnessConsistentWithRuntime},
+    proving the witness elevation theorem:
+    \[
+    \text{Consistent}(M, w) \implies \text{NecessaryCapability}(w.\mathit{cap}, M)
+    \]
 \end{enumerate}
 
-Both Lean 4 modules compile cleanly with zero errors and zero \texttt{sorry}s.
+Both Lean 4 modules compile cleanly with zero errors and zero \texttt{sorry}s
+across all build jobs~\cite{takt_st016_2026}.

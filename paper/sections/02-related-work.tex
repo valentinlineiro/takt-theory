@@ -1,8 +1,17 @@
 \section{Related Work \& Positioning}
 
 TAKT builds upon several established formal methodologies while addressing a complementary research question centered on \textbf{decision preservation under representation contraction}:
-\begin{itemize}
-    \item \textbf{Abstract Interpretation (Cousot \& Cousot):} Focuses on sound static over-approximation of program semantics. TAKT focuses on dynamic policy decision invariance ($\pi^*(R) = \pi^*(S)$).
-    \item \textbf{Bisimulation \& Refinement (Milner, Park):} Enforces strict state-by-state trace equivalence. TAKT permits aggressive internal state contraction provided temporal prefix monitoring ($C_{\text{temporal}}$) maintains policy consistency.
-    \item \textbf{Runtime Verification (Leucker \& Schallhart):} Evaluates execution traces against temporal logic formulas (LTL). TAKT formalizes and machine-checks the \textit{necessity of the governance runtime kernel itself}.
+
+\begin{itemize}\sloppy
+    \item \textbf{Abstract Interpretation~\cite{cousot1977abstract}:} Focuses on sound static over-approximation of program semantics via Galois connections. TAKT focuses on dynamic policy decision invariance ($\pi^*(R) = \pi^*(S)$) rather than total semantic property preservation.
+
+    \item \textbf{Bisimulation \& Process Refinement~\cite{milner1989communication,park1981concurrency}:} Enforces strict state-by-state behavioral equivalence between transition systems. TAKT permits aggressive internal state contraction provided temporal prefix monitoring ($C_{\text{temporal}}$) maintains policy consistency across trajectory prefixes.
+
+    \item \textbf{Runtime Verification~\cite{leucker2009brief}:} Evaluates execution traces dynamically against temporal logic formulas (LTL/ERE). TAKT formalizes and machine-checks the \textit{necessity of the governance runtime kernel itself}, bridging empirical trace witnesses to Lean 4 necessity theorems.
+
+    \item \textbf{Statistical Decision Theory~\cite{blackwell1951comparison}:} Establishes the foundational notion of observational sufficiency for decision problems. TAKT operationalizes this into an irreducible 3-capability runtime kernel $\mathcal{K}_D$.
+
+    \item \textbf{Planning Under Partial Observability~\cite{kaelbling1998planning}:} Provides optimal control frameworks under belief-state uncertainty (POMDP). TAKT provides formal necessity certification for governance components rather than belief update algorithms.
 \end{itemize}
+
+Unlike these paradigms, ST-016 directly formalizes the \emph{minimal governance capability kernel} required for decision preservation, connecting formal proofs to independently audited empirical witnesses~\cite{takt_st016_2026}.

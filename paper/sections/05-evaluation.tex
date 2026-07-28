@@ -1,29 +1,43 @@
 \section{Empirical Validation \& Component Ablation (EXP-004)}
 
-The theoretical theorems prove necessity within the formal model. We evaluate whether the reference TypeScript implementation (\texttt{cli/src/runtime/}) exhibits the predicted behavior under controlled capability ablations in experiment \textbf{EXP-004}:
+The theoretical theorems prove necessity within the formal model. We validate the
+predicted behavior under controlled capability ablations in experiment
+\textbf{EXP-004}~\cite{takt_st016_2026}:
+
 \begin{itemize}
-    \item \textbf{Representative $C_{\text{contract}}$ Ablation Scenario:} Identifies representations violating safety contracts ($\text{Contract}(R) = \text{false} \implies \pi_{\text{full}} = \text{STOP}, \pi_{\text{reduced}} = \text{EXECUTE}$).
-    \item \textbf{Representative $C_{\text{uncertainty}}$ Ablation Scenario:} Identifies representations at critical margin boundaries ($M_D(R) \approx 0 \implies \pi_{\text{full}} = \text{REFINE}, \pi_{\text{reduced}} = \text{EXECUTE}$).
-    \item \textbf{Representative $C_{\text{temporal}}$ Ablation Scenario:} Identifies prefix-dependent trajectories ($\tau_1 \neq \tau_2 \implies \pi_{\text{full}} = \text{INTERVENE}, \pi_{\text{reduced}} = \text{MONITOR}$).
+    \item \textbf{$C_{\text{contract}}$ Ablation:} Ablating contract verification
+    yields $\pi_{\text{full}} = \text{STOP}$ vs.\ $\pi_{\text{reduced}} = \text{EXECUTE}$.
+
+    \item \textbf{$C_{\text{uncertainty}}$ Ablation:} Ablating margin estimation
+    at critical decision boundary ($M_D \approx 0$) yields
+    $\pi_{\text{full}} = \text{REFINE}$ vs.\ $\pi_{\text{reduced}} = \text{EXECUTE}$.
+
+    \item \textbf{$C_{\text{temporal}}$ Ablation:} Ablating trajectory monitoring
+    yields $\pi_{\text{full}} = \text{INTERVENE}$ vs.\ $\pi_{\text{reduced}} = \text{MONITOR}$.
 \end{itemize}
 
-\subsection{Summary of Evidence Matrix}
-Table~\ref{tab:evidence} summarizes the evidence mapping connecting theoretical claims to machine-checked formal proofs and empirical witness files.
+Each ablation produces a machine-verifiable \texttt{WitnessArtifact} elevated to
+a Lean 4 theorem via the \texttt{validWitness\_implies\_necessity} bridge.
+
+\subsection{Evidence Traceability Matrix}
+Table~\ref{tab:evidence} maps each theoretical claim to its primary evidence asset.
 
 \begin{table}[htbp]
-\caption{Summary of Evidence Matrix for ST-016 Baseline}
+\caption{ST-016 Evidence Traceability Matrix}
 \label{tab:evidence}
-\centering
-\begin{tabular}{|l|l|l|}
-\hline
-\textbf{Evaluated Claim} & \textbf{Primary Evidence Asset} & \textbf{Status} \\ \hline
-Decision Sufficiency ($\Sigma^*$) & StructuralSufficiency.lean & Verified (0 sorrys) \\ \hline
-Kernel Necessity ($\mathcal{K}_D$) & RuntimeSufficiency.lean & Verified (0 sorrys) \\ \hline
-Contract Capability ($C_{\text{contract}}$) & contract.ablation.test.ts & Certified Witness \\ \hline
-Uncertainty Capability ($C_{\text{uncertainty}}$) & uncertainty.ablation.test.ts & Certified Witness \\ \hline
-Temporal Capability ($C_{\text{temporal}}$) & temporal.ablation.test.ts & Certified Witness \\ \hline
-Witness Elevation Bridge & RuntimeWitness.lean & Verified (0 sorrys) \\ \hline
-Runtime Correctness & Vitest Test Suite & 283/283 Passing \\ \hline
-Zero-Contact Reproducibility & Replication Kit & 6 Dry Runs \\ \hline
+\centering\small
+\begin{tabular}{p{3.2cm}p{3.5cm}p{1.4cm}}
+\toprule
+\textbf{Claim} & \textbf{Primary Evidence} & \textbf{Status} \\
+\midrule
+Decision Suff.\ ($\Sigma^*$)       & \texttt{StructuralSufficiency} & Verified \\
+Kernel Nec.\ ($\mathcal{K}_D$)     & \texttt{RuntimeSufficiency}    & Verified \\
+$C_{\text{contract}}$ nec.         & \texttt{contract.ablation}     & Witness  \\
+$C_{\text{uncertainty}}$ nec.      & \texttt{uncertainty.ablation}  & Witness  \\
+$C_{\text{temporal}}$ nec.         & \texttt{temporal.ablation}     & Witness  \\
+Witness bridge                     & \texttt{RuntimeWitness}        & Verified \\
+Runtime correctness                & Vitest (283/283)               & Passing  \\
+Reproducibility~\cite{takt_st016_2026} & Replication kit           & 6 Runs   \\
+\bottomrule
 \end{tabular}
 \end{table}

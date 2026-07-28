@@ -1,6 +1,6 @@
 \section{Introduction}
 
-As autonomous software agents and complex reactive systems scale, they continuously compress high-dimensional environmental context into abstract state representations $R = \rho(S)$. However, ungoverned state abstraction introduces decision divergence: an optimal policy $\pi^*$ computed on full observable state $S$ may fail when evaluated on a compressed representation $R$.
+As autonomous software agents and complex reactive systems scale, they continuously compress high-dimensional environmental context into abstract state representations $R = \rho(S)$. However, ungoverned state abstraction introduces decision divergence: an optimal policy $\pi^*$ computed on full observable state $S$ may fail when evaluated on a compressed representation $R$. This phenomenon has been studied across formal verification~\cite{cousot1977abstract,leucker2009brief}, decision theory~\cite{blackwell1951comparison}, and control under partial observability~\cite{kaelbling1998planning}, yet the formal characterization of the \emph{minimal runtime capability kernel} required to preserve decision equivalence dynamically has not been established.
 
 This work addresses two fundamental research questions:
 \begin{enumerate}
@@ -14,5 +14,7 @@ This paper makes four primary contributions:
     \item \textbf{Formal Definition of Minimal Runtime Governance:} We formalize capability necessity, decision preservation, runtime sufficiency, and irreducibility under state abstraction.
     \item \textbf{Machine-Checked Proof of Kernel Necessity:} We prove in Lean 4 that removing any capability from $\mathcal{K}_D = \{C_{\text{contract}}, C_{\text{uncertainty}}, C_{\text{temporal}}\}$ destroys decision preservation.
     \item \textbf{Empirical Ablation Methodology:} We introduce experiment EXP-004, constructing an empirical witness bridge elevating trace artifacts into formal machine proofs.
-    \item \textbf{Audited Zero-Contact Replication Package:} We publish an immutable, versioned research package with multi-OS CI and an external audit trail of 6 independent dry runs.
+    \item \textbf{Audited Zero-Contact Replication Package:} We publish an
+    immutable, versioned research package~\cite{takt_st016_2026} with multi-OS
+    CI and an external audit trail of 6 independent dry runs.
 \end{enumerate}

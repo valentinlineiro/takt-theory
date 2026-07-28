@@ -1,3 +1,43 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{blackwell1951comparison}
+David Blackwell.
+\newblock Comparison of experiments.
+\newblock In {\em Proceedings of the Second Berkeley Symposium on Mathematical
+  Statistics and Probability}, pages 93--102. University of California Press,
+  1951.
+
+\bibitem{cousot1977abstract}
+Patrick Cousot and Radhia Cousot.
+\newblock Abstract interpretation: a unified lattice model for static analysis
+  of programs by construction or approximation of fixpoints.
+\newblock pages 238--252, 1977.
+
+\bibitem{kaelbling1998planning}
+Leslie~Pack Kaelbling, Michael~L. Littman, and Anthony~R. Cassandra.
+\newblock Planning and acting in partially observable stochastic domains.
+\newblock {\em Artificial Intelligence}, 101(1-2):99--134, 1998.
+
+\bibitem{leucker2009brief}
+Martin Leucker and Christian Schallhart.
+\newblock A brief account of runtime verification.
+\newblock {\em Journal of Logic and Algebraic Programming}, 78(5):293--303,
+  2009.
+
+\bibitem{takt_st016_2026}
+Valentin Lineiro.
+\newblock {TAKT ST-016}: Minimal decision-preserving runtime governance
+  standard, 2026.
+
+\bibitem{milner1989communication}
+Robin Milner.
+\newblock {\em Communication and Concurrency}.
+\newblock Prentice Hall, 1989.
+
+\bibitem{park1981concurrency}
+David Park.
+\newblock Concurrency and automata on infinite sequences.
+\newblock In {\em Theoretical Computer Science (5th GI-Conference)}, pages
+  167--183. Springer, 1981.
 
 \end{thebibliography}
