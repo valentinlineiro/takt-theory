@@ -2,7 +2,10 @@
 
 **Protocol version:** Hito 2  
 **Paper version:** `paper-v0.1-submission-candidate` (Commit `b60aa9a`)  
-**Status:** 🔄 IN PROGRESS
+**Paper version sent:** `paper-v0.1-submission-candidate` (Commit `b60aa9a`)  
+**PDF SHA-256:** `f86c1d7c07bc8c4ec3dd4ea658c8d169c85cb7da2c7b5284629aecf9b50b3d21`  
+**Date dispatched:** 2026-07-28  
+**Status:** 🔄 IN PROGRESS — awaiting responses
 
 ---
 
@@ -10,9 +13,9 @@
 
 | # | Profile | Date Sent | Date Received | Status |
 | :- | :--- | :--- | :--- | :--- |
-| R1 | — | — | — | Pending |
-| R2 | — | — | — | Pending |
-| R3 | — | — | — | Pending |
+| R1 | Formal methods | 2026-07-28 | — | Pending |
+| R2 | Software systems | 2026-07-28 | — | Pending |
+| R3 | External domain | 2026-07-28 | — | Pending |
 | R4 | — | — | — | Pending |
 | R5 | — | — | — | Pending |
 
