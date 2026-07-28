@@ -1,33 +1,41 @@
 # TAKT (Theory of Adequate Knowledge for Decisions)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21638014.svg)](https://doi.org/10.5281/zenodo.21638014)
+[![Release](https://img.shields.io/github/v/release/valentinlineiro/takt-theory?include_prereleases)](https://github.com/valentinlineiro/takt-theory/releases/tag/st016-v1.0.0)
+[![Scientific Verification](https://github.com/valentinlineiro/takt-theory/actions/workflows/verify.yml/badge.svg)](https://github.com/valentinlineiro/takt-theory/actions/workflows/verify.yml)
+
 TAKT is an axiomatic theory of decision-preserving representations. It provides a formal framework for determining when compressing or abstracting representation states preserves the optimal decisions made under complete information.
 
-This repository consolidates the theoretical foundations, Lean 4 formal proofs, and empirical validation suites for the TAKT framework.
+This repository consolidates the theoretical foundations, Lean 4 formal proofs, reference TypeScript runtime implementation, and empirical validation suites for the TAKT framework.
 
 ---
 
-## 1. Repository Structure
+## 1. How to Cite
 
-The project is semantic, functional, and organized as follows:
+If you use TAKT, reference the ST-016 frozen standard release, or build upon the formal Lean 4 models, please cite our official Zenodo archive:
 
-* **/docs/** — Core theoretical knowledge & specifications
-  * `superpowers/specs/` — Normative specifications (ST-016 Runtime Kernel Specification)
-  * `01-foundations/` — Axiomatic introduction, formal specifications, and reference guides
-  * `02-theoretical-positioning/` — Positioning audits comparing TAKT to Blackwell sufficiency, bisimulation, etc.
-  * `03-design-contracts/` — Operational contract definitions
-  * `04-academic-paper/` — Academic paper drafts and bibliography
-  * `05-archives/` — Historical phase freezes, revisions, and precursor formalisms
-* **/artifacts/verification/** — Versioned verification reports, SHA-256 manifests, and environment metadata
-* **/takt-formal/** — Canonical Lean 4 verification package
-  * `TaktFormal/` — Lean 4 source files demonstrating proofs of safety equivalence, factorization, dynamic contracts, and ST-016 Runtime Sufficiency & Witness elevation
-* **/cli/** — TypeScript evaluation engine running batch analysis & EXP-004 ablation suite
-* **`theory-manifest.yml`** — Normative specification manifest mapping theoretical capabilities to Lean 4 modules and runtime components
+```bibtex
+@software{takt_st016_2026,
+  author    = {Lineiro, Valentin},
+  title     = {TAKT ST-016: Minimal Decision-Preserving Runtime Governance Standard},
+  year      = {2026},
+  publisher = {Zenodo},
+  version   = {1.0.0},
+  doi       = {10.5281/zenodo.21638014},
+  url       = {https://doi.org/10.5281/zenodo.21638014}
+}
+```
+
+* **Zenodo DOI:** [`10.5281/zenodo.21638014`](https://doi.org/10.5281/zenodo.21638014)
+* **GitHub Release:** [`st016-v1.0.0`](https://github.com/valentinlineiro/takt-theory/releases/tag/st016-v1.0.0)
+* **Scientific Manuscript Draft:** [`docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md`](docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md)
+* **Scientific Closure Report:** [`docs/superpowers/specs/2026-07-27-st016-closure-report.md`](docs/superpowers/specs/2026-07-27-st016-closure-report.md)
 
 ---
 
 ## 2. Zero-Contact Reproduction & Verification
 
-To execute the automated zero-contact verification suite (ST-016 v1.0 standard):
+To execute the automated zero-contact verification suite (ST-016 v1.0.0 standard):
 
 ```bash
 ./scripts/bootstrap.sh && ./scripts/verify.sh
@@ -40,18 +48,23 @@ This single command pipeline automatically:
 4. Generates EXP-004 component ablation witnesses for $C_{\text{contract}}$, $C_{\text{uncertainty}}$, and $C_{\text{temporal}}$.
 5. Verifies SHA-256 artifact hashes and generates [`CONFORMANCE.md`](CONFORMANCE.md) and [`artifacts/verification/st016-v1.0/st016-v1.0-report.md`](artifacts/verification/st016-v1.0/st016-v1.0-report.md).
 
-### 2.1 Independent TypeScript Test Run
-```bash
-npx vitest run
-```
+---
 
-### 2.2 Independent Lean 4 Build
-```bash
-cd takt-formal
-lake build
-```
+## 3. Repository Structure
+
+* **/docs/** — Core theoretical knowledge & specifications
+  * `superpowers/specs/` — Normative specifications (ST-016 Runtime Kernel Specification)
+  * `04-academic-paper/` — Academic paper drafts and bibliography ([`2026-07-27-takt-st016-paper-draft.md`](docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md))
+* **/publication/** — Publication metadata, BibTeX records, and checklists
+* **/artifacts/verification/st016-v1.0/** — Versioned verification reports, SHA-256 manifests, and environment metadata
+* **/takt-formal/** — Canonical Lean 4 verification package (`RuntimeSufficiency.lean`, `RuntimeWitness.lean`)
+* **/cli/** — Reference TypeScript runtime & EXP-004 ablation experiment suite
+* **`ST-016_FINAL_STATE.md`** — Invariable snapshot of the ST-016 v1.0.0 release baseline
+* **`theory-manifest.yml`** — Normative theory manifest mapping capabilities to Lean 4 modules and runtime components
 
 ---
 
-## 3. Scientific Program Status
-See [`SCIENTIFIC_STATUS.md`](SCIENTIFIC_STATUS.md) for the active research matrix and frozen theoretical standards.
+## 4. Scientific Program Status & Trajectory
+* **Scientific Status Registry:** [`SCIENTIFIC_STATUS.md`](SCIENTIFIC_STATUS.md)
+* **Research Roadmap:** [`TAKT_RESEARCH_ROADMAP.md`](TAKT_RESEARCH_ROADMAP.md)
+* **ST-017 Research Line (Transportability):** [`st017/README.md`](st017/README.md)
