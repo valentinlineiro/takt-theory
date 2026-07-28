@@ -22,7 +22,7 @@
 ## 2. Scientific Manuscript Milestones (`MILESTONE-PAPER-READY`)
 
 - [x] **Draft Manuscript Structure:** [`docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md`](../docs/04-academic-paper/2026-07-27-takt-st016-paper-draft.md) written.
-- [ ] **State-of-the-Art Positioning:** Detailed comparative analysis vs abstract interpretation, bisimulation, and runtime verification.
+- [x] **State-of-the-Art Positioning:** Comparative analysis vs abstract interpretation, bisimulation, and runtime verification ([`docs/02-theoretical-positioning/2026-07-28-state-of-the-art-positioning.md`](../docs/02-theoretical-positioning/2026-07-28-state-of-the-art-positioning.md)).
 - [ ] **Definitive Paper Figures:** High-resolution architectural, validation pipeline, and research roadmap diagrams.
 - [ ] **External Academic Review:** Peer-review feedback incorporated from formal methods & software architecture specialists.
 - [ ] **Preprint Submission (arXiv):** Final submission to arXiv repository.
