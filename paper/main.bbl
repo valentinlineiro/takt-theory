@@ -11,7 +11,8 @@ David Blackwell.
 Patrick Cousot and Radhia Cousot.
 \newblock Abstract interpretation: a unified lattice model for static analysis
   of programs by construction or approximation of fixpoints.
-\newblock pages 238--252, 1977.
+\newblock In {\em Proceedings of the 4th ACM SIGACT-SIGPLAN Symposium on
+  Principles of Programming Languages (POPL)}, pages 238--252. ACM, 1977.
 
 \bibitem{kaelbling1998planning}
 Leslie~Pack Kaelbling, Michael~L. Littman, and Anthony~R. Cassandra.
@@ -27,7 +28,9 @@ Martin Leucker and Christian Schallhart.
 \bibitem{takt_st016_2026}
 Valentin Lineiro.
 \newblock {TAKT ST-016}: Minimal decision-preserving runtime governance
-  standard, 2026.
+  standard.
+\newblock Zenodo, 2026.
+\newblock Version 1.0.0, Zenodo DOI: 10.5281/zenodo.21638014.
 
 \bibitem{milner1989communication}
 Robin Milner.

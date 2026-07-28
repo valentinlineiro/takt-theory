@@ -4,7 +4,7 @@
 **Paper version sent:** `paper-v0.1-submission-candidate` (Commit `b60aa9a`)  
 **PDF SHA-256:** `f86c1d7c07bc8c4ec3dd4ea658c8d169c85cb7da2c7b5284629aecf9b50b3d21`  
 **Date dispatched:** 2026-07-28  
-**Status:** 🔄 IN PROGRESS — 1/3 core responses received
+**Status:** ✅ COMPLETE — 3/3 core responses received; corrections in progress (v0.4)
 
 ---
 
@@ -183,3 +183,70 @@
 - [x] Tag `paper-v0.3-arxiv-ready`
 
 **✅ Hito 2 CLOSED. Ready for arXiv submission.**
+
+---
+
+## R3 — External Scientific Reader
+
+**Profile:** Scientific reader outside the TAKT domain
+**Q1 (Contribution):** Framework algebraico en Lean 4 que define qué significa que una capacidad sea necesaria para preservar decisiones bajo abstracción de estado; demuestra mediante witnesses que tres capacidades son necesarias en instancias finitas.
+**Q2 (Formally proved):** Definiciones de RuntimeSufficiency y RuntimeWitness; coherencia interna; MinimalRuntime → NecessaryCapability por construcción; teorema de elevación. Todo con 0 errors y 0 sorrys.
+**Q3 (Empirically validated):** Las 3 ablaciones EXP-004 muestran divergencia observable al remover cada capacidad.
+**Q4 (Ambiguous):** π* sobre R vs S (mismo símbolo, dos dominios); puente ST-015→ST-016 implícito; Axiom0 inescrutble sin lenguaje natural; WitnessArtifact nunca mostrado con un ejemplo concreto.
+**Q5 (Hardest to justify):** Que el puente witness "ya funciona" — no queda claro si los 3 WitnessArtifacts concretos fueron verificados consistentes con el modelo Lean.
+**One-week recall:** "Tres capacidades son necesarias bajo abstracción de estado en un marco algebraico Lean 4 con witnesses formales. La conjetura de universalidad está abierta."
+
+### Hallazgos R3
+
+| ID | Severidad | Categoría | Descripción |
+| :- | :--- | :--- | :--- |
+| R3-1 | Media | Editorial | π* ambiguo: misma notación para S→D y R→D; pedir π_S* explícito |
+| R3-2 | Media | Editorial | Puente ST-015→ST-016 implícito; no hay párrafo que explique la conexión |
+| R3-3 | Media | Editorial | Axiom0 nunca traducido a lenguaje natural; inescrutble para lector no matemático |
+| R3-4 | Alta | Evidence | WitnessArtifact nunca mostrado con ejemplo concreto; puente "magia" para lector |
+| R3-5 | Media | Scope | Abstract no aclara que witnesses son en instancias finitas del modelo formal |
+| R3-6 | Baja | Scope | Contribución 2 "removing any capability" suena a afirmación general sin calificador |
+
+### Clasificación y Acción R3
+
+| ID | Categoría final | Acción |
+| :- | :--- | :--- |
+| R3-1 | Editorial | Sec. 3: usar π_S* : S→D consistentemente; definir preservación como π_M(ρ(S)) = π_S*(S) |
+| R3-2 | Editorial | Sec. 3: añadir párrafo "ST-015 answers: what info can't I lose? ST-016 answers: what mechanisms keep it?" |
+| R3-3 | Editorial | Sec. 3 + 7: añadir traducción informal de Axiom0 en lenguaje natural |
+| R3-4 | Evidence | Sec. 4/5: mostrar un WitnessArtifact concreto + diagrama del puente manual |
+| R3-5 | Scope | Abstract: añadir "within the formal ST-016 runtime model" al claim de witnesses |
+| R3-6 | Scope | Contrib 2: verificar que el calificador "within the formal model" es visible |
+
+---
+
+## Aggregate Classification (R1 + R2 + R3)
+
+| Convergencia | Los 3 revisores identifican | Acción |
+| :--- | :--- | :--- |
+| π* ambiguo | R2-2, R3-1 | Notación π_S* ya parcialmente corregida; completar en foundations |
+| Witness bridge opaco | R1-H5, R2-R1, R3-4 | Mostrar WitnessArtifact concreto |
+| Scope del claim | R1-H4, R2-R7, R3-5/6 | Calificadores añadidos en v0.2/v0.3; refinar en abstract |
+| EXP-004 insuficiente | R1, R2-R1, R3-4 | Tabla de protocolo añadida en v0.3 |
+
+**R3 diagnosis:** La contribución es ya legible y reconstruíble. Los problemas restantes son de frontera epistemológica — que el lector nunca confunda "demostrado en el modelo", "observado experimentalmente" y "hipótesis futura".
+
+## Changes Accepted (paper-v0.4 — arXiv-final)
+
+| Issue | Change |
+| :- | :--- |
+| R3-1 | Foundations: π_S* : S→D + preservación como π_M(ρ(S)) = π_S*(S) |
+| R3-2 | Foundations: párrafo bridging ST-015 → ST-016 |
+| R3-3 | Foundations + Limitations: Axiom0 en lenguaje natural |
+| R3-4 | Formalization: ejemplo concreto de WitnessArtifact + esquema del puente manual |
+| R3-5 | Abstract: "within the formal ST-016 runtime model, on finite witness instances" |
+| R3-6 | Abstract + Introduction: verificar calificadores |
+
+## Hito 2 Final Status
+
+- [x] 3/3 core responses received and registered
+- [x] R1 corrections → `paper-v0.2-post-review`
+- [x] R2 corrections → `paper-v0.3-arxiv-ready`
+- [ ] R3 corrections → `paper-v0.4-arxiv-final`
+- [ ] Tag `paper-v0.4-arxiv-final`
+- [ ] Submit to arXiv

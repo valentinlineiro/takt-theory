@@ -3,13 +3,26 @@
 \subsection{Decision-Preserving Sufficiency (ST-015)}
 Let $\pi^*_S : \mathcal{S} \to \mathcal{D}$ denote the optimal decision policy
 over full states, and $\pi_M : \mathcal{R} \to \mathcal{D}$ the policy executed
-by governed runtime $M$. A representation $R \in \mathcal{R}$ is
-\emph{decision-sufficient} if:
+by governed runtime $M$. A representation $R = \rho(S)$ is
+\emph{decision-sufficient} when the runtime produces the same decision as the
+optimal full-state policy:
 \[
-\pi_M(R) = \pi^*_S(S) \quad \forall S \in \mathcal{S}\text{ s.t. }R = \rho(S)
+\forall S \in \mathcal{S}:\quad \pi_M(\rho(S)) \;=\; \pi^*_S(S)
 \]
-When $\pi_M$ and $\pi^*_S$ agree on all representations reachable by $\rho$,
-we say $M$ \emph{preserves decisions} with respect to $\pi^*_S$.
+This condition says: \emph{no matter which full state $S$ the system is in, if
+the runtime sees its compressed representation $\rho(S)$, it makes the same
+decision that the optimal full-state policy would make on $S$}.
+
+\subsection{From Informational Sufficiency to Runtime Necessity (ST-016)}
+ST-015 answers: \emph{what information must not be lost in compression?}
+ST-016 answers: \emph{what runtime mechanisms are required to preserve that
+information dynamically during execution?}
+
+The connection is direct: if removing a runtime capability $C$ causes the runtime
+to discard information that $\pi^*_S$ requires to distinguish two states, then
+$\pi_M(\rho(S)) \neq \pi^*_S(S)$ for some $S$, and decision preservation breaks.
+ST-016 formalizes exactly which capability classes produce this breakage in the
+reference governance model.
 
 \subsection{Runtime Necessity Formalization (ST-016)}
 We formalize a TAKT Governed Runtime as a tuple $M = (\mathcal{C}, \pi_M)$, where
@@ -18,24 +31,21 @@ is its decision policy. The \emph{minimal governance kernel} is defined as:
 \[
 \mathcal{K}_D = \{C_{\text{contract}},\; C_{\text{uncertainty}},\; C_{\text{temporal}}\}
 \]
-A runtime $M$ is \emph{minimally governed} when $\mathcal{C} = \mathcal{K}_D$, i.e.,
-it contains exactly the capabilities proven necessary and no others.
+A runtime $M$ is \emph{minimally governed} when $\mathcal{C} = \mathcal{K}_D$.
 
 \smallskip
-\noindent\textbf{Three definitions of decision preservation} appear across this
-work at different layers of abstraction:
+\noindent\textbf{Three definitions of decision preservation} appear at different
+layers of abstraction, all specializations of the same core condition:
 \begin{itemize}
-    \item \textbf{ST-015 (informational):} $\pi_M(R) = \pi^*_S(S)$ for all pairs $(S, R)$ with $R = \rho(S)$.
-    \item \textbf{Runtime sufficiency:} $\text{Sufficient}(M, \pi^*_S) \equiv \forall R,\; \pi_M(R) = \pi^*_S(\rho^{-1}(R))$ — the runtime policy matches the optimal policy on all compressed representations.
-    \item \textbf{Cross-runtime:} $\text{PreservesDecision}(M_1, M_2) \equiv \forall R,\; \pi_{M_1}(R) = \pi_{M_2}(R)$ — two runtime instances agree on all decisions.
+    \item \textbf{Full-state (ST-015):} $\pi_M(\rho(S)) = \pi^*_S(S)$ for all $S \in \mathcal{S}$.
+    \item \textbf{Runtime sufficiency:} $\text{Sufficient}(M, \pi^*_S) \equiv \forall R \in \mathcal{R},\; \pi_M(R) = \pi^*_S(\rho^{-1}(R))$.
+    \item \textbf{Cross-runtime:} $\text{PreservesDecision}(M_1, M_2) \equiv \forall R,\; \pi_{M_1}(R) = \pi_{M_2}(R)$.
 \end{itemize}
-These are related: $\text{Sufficient}(M, \pi^*_S)$ implies $\text{PreservesDecision}(M, M')$ for any $M'$ also sufficient w.r.t.\ $\pi^*_S$.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{figures/architecture.pdf}
-\caption{Conceptual architecture: TAKT Governed Runtime $M$ enforces decision
-preservation $\pi_M(R) = \pi^*_S(S)$ under state abstraction $\rho(S)$.}
+\caption{TAKT runtime $M$ enforces $\pi_M(\rho(S)) = \pi^*_S(S)$ under abstraction.}
 \label{fig:architecture}
 \end{figure}
 
@@ -46,11 +56,15 @@ on at least one representation:
 \exists\, R \in \mathcal{R}:\; \pi_M(R) \;\neq\; \pi_{M \setminus \{C\}}(R)
 \]
 
-\textbf{Note on Axiom0:} The structural sufficiency module (ST-015) postulates
-$\text{kernel}_D(x,y) \leftrightarrow K_D(x,y)$, asserting that the decision
-kernel coincides with the intersection of capability kernels. This is a modelling
-assumption, not a derived theorem, and is listed explicitly in the Non-Claims
-of Section~\ref{sec:limitations}.
+\noindent\textbf{Axiom0 (Kernel Coincidence):} The structural sufficiency module postulates:
+\[
+\text{kernel}_D(x,y) \;\leftrightarrow\; K_D(x,y)
+\]
+\emph{Informally: two states $x$ and $y$ are indistinguishable for the decision
+task (i.e., any optimal policy treats them identically) if and only if they
+preserve all task-relevant capability relations.} This is a modelling assumption
+characterizing the class of decision problems studied; it is listed in the
+Non-Claims of Section~\ref{sec:limitations}.
 
 \textbf{Example 1 (Temporal Prefix Necessity):} Consider a runtime where
 $C_{\text{temporal}}$ is ablated. Two trajectory-induced representations $R^1$
@@ -60,5 +74,5 @@ Here $\pi^*_S$ is defined over full states that encode trajectory history;
 $R^1 \neq R^2$ because their history components differ.
 A runtime inspecting only the terminal state $r_2$ produces:
 $\pi_{M\setminus\{C_{\text{temporal}}\}}(R^1) = \pi_{M\setminus\{C_{\text{temporal}}\}}(R^2)$,
-while $\pi^*_S$ correctly distinguishes them:
-$\pi_M(R^1) \neq \pi_M(R^2)$, violating decision preservation.
+while $\pi_M$ correctly distinguishes them:
+$\pi_M(R^1) \neq \pi_M(R^2)$, violating $\pi_M(\rho(S)) = \pi^*_S(S)$.

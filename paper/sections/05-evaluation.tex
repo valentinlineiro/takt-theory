@@ -25,8 +25,9 @@ None (baseline)          & All trigger scenarios        & Correct   & N/A      &
 \end{table}
 
 Each ablation divergence is manually encoded into a \texttt{WitnessArtifact}
-record and verified against the formal model via \texttt{WitnessConsistentWithRuntime}.
-When consistency holds, the formal elevation theorem applies within the Lean model.
+record, encoding the experimentally observed divergence as a formally checkable
+witness verified against the formal model via \texttt{WitnessConsistentWithRuntime}.
+When consistency holds, \texttt{NecessaryCapability} is established within the Lean model.
 
 \subsection{Evidence Traceability Matrix}
 
