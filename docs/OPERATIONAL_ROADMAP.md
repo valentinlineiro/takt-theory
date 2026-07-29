@@ -1,62 +1,52 @@
-# TAKT Operational Engineering Roadmap (2026-2027)
+# TAKT Post-Consolidation Roadmap & Priorities (2026)
 
-**Fecha de Formalización:** 2026-07-24  
-**Enfoque Estratégico:** Transición de la Formulación Teórica a la Infraestructura de Ejecución Operativa  
-**Principio Rector:** *Acumular Evidencia Empírica de Infraestructura antes de Añadir Capas Teóricas Adicionales*
+**Fecha de Actualización:** 2026-07-29  
+**Estado de la Plataforma:** Plataforma de Evidencia Experimental Consolidada  
+**Principio Rector:** *Investigar usando TAKT para descubrir qué merece ser construido (de "building the lab" a "using the lab")*
 
 ---
 
-## 1. Cadena de Dependencias Operacionales
+## 1. Cadena de Dependencias Post-Consolidación
 
 ```mermaid
 graph TD
-    Fase1[Fase 1: Completar el Runtime] --> Fase2[Fase 2: Instrumentar el Runtime]
-    Fase2 --> Fase3[Fase 3: Casos Reales en Producción]
-    Fase3 --> Fase4[Fase 4: Campaña Serie T Humana]
-    Fase4 --> Fase5[Fase 5: Publicación Científica]
+    Fase0[Fase 0: Consolidación ✓] --> Fase1[Fase 1: Difusión Científica ST-016]
+    Fase1 --> Fase2[Fase 2: Programa Experimental BENCHMARK-002+]
+    Fase2 --> Fase3[Fase 3: Evidence Sets & Agregación]
+    Fase3 --> Fase4[Fase 4: Multi-runtime Interoperabilidad]
+    Fase4 --> Fase5[Fase 5: Nueva Línea Teórica ST-018]
     
+    style Fase0 fill:#1b4332,stroke:#fff,color:#fff
     style Fase1 fill:#2d5a88,stroke:#fff,color:#fff
 ```
 
 ---
 
-## 2. Definición Detallada de las 5 Fases
+## 2. Definición Detallada de las Fases
 
-### Fase 1: Completar el Runtime (Máxima Prioridad)
-* **Objetivo:** Cerrar el motor de ejecución en TypeScript (`cli/src/runtime/`) eliminando comportamientos provisionales y stubs restantes.
+### Fase 0 — Consolidación de Plataforma (CERRADA ✓)
+* **Estado:** ST-016 congelado v1.0.0, ST-017 Phase III.1 sellada en Lean 4 (`0 sorry`), `CertifiedRuntimePipeline` integrado con `GovernanceEventBus` (eventos inmutables), `ExperimentArtifact` (schema v1) y `ArtifactReader` con test de retrocompatibilidad, **BENCHMARK-001** verificado de punta a punta.
+
+### Fase 1 — Difusión Científica de ST-016 (Prioridad Actual #1)
+* **Objetivo:** Difusión internacional del estándar congelado de necesidad del kernel (ST-016 v1.0.0 / DOI: `10.5281/zenodo.21638014`).
 * **Hitos Clave:**
-  1. Completar la integración del modelo de capacidades y enriquecimiento en `GovernanceStateMachine.ts`.
-  2. Integrar completamente el planificador dinámico con la tubería de ejecución operativa (`CertifiedRuntimePipeline.ts`).
-  3. Garantizar que **el $100\%$ de las decisiones relevantes del sistema pasen explícitamente por la gobernanza de TAKT** sin atajos ni rutas especiales.
-* **Criterio de Salida:** El runtime ejecuta el ciclo de vida completo de decisión de forma autocontenida y sin componentes pendientes.
+  1. Seguimiento de solicitudes de endorsement para arXiv (`cs.LO` / `cs.PL` / `cs.SE`).
+  2. Empaquetado final de reproducibilidad en `publication/` (`abstract.md`, `citation.bib`, `reproducibility.md`).
 
-### Fase 2: Instrumentar el Runtime
-* **Objetivo:** Convertir el runtime en un instrumento cuantitativo de observación metrológica.
-* **Métricas Operacionales a Registrar:**
-  * Tiempo invertido por fase de decisión ($\Delta t_{\text{phase}}$).
-  * Frecuencia de refinamiento de estado y solicitudes de enriquecimiento.
-  * Tasa de reapertura de decisiones ($\text{ReopenCount}$).
-  * Incertidumbre residual del espacio de representación antes y después del enriquecimiento ($\epsilon_{\text{before}} \to \epsilon_{\text{after}}$).
-  * Fricción neta eliminada frente a baselines sin gobernanza.
+### Fase 2 — Programa Experimental Real (Prioridad Actual #2)
+* **Objetivo:** Responder preguntas científicas empíricas utilizando el runtime instrumentado y el marco de pre-registro de 5 puntos.
+* **Próximos Benchmarks:**
+  * **BENCHMARK-002 (Coste Observacional & Escalado):** Evaluar escalado de latencia y `observationCost` frente a la dimensión $|S|$.
+  * **BENCHMARK-003 (Horizonte Temporal & Recalibración):** Evaluar la deriva temporal y frecuencia de recalibración ($H$).
 
-### Fase 3: Casos Reales en Producción
-* **Objetivo:** Aplicar la infraestructura de runtime instrumentada a flujos operativos reales.
-* **Dominios Objetivo Iniciales:**
-  1. Evolución dinámica de backlogs de ingeniería.
-  2. Gestión y triaje de incidencias operativas.
-  3. Auditoría y revisión de decisiones de arquitectura de software.
-  4. Priorización dinámica de tareas bajo deriva de contexto.
+### Fase 3 — Evidence Sets (Aparición por Necesidad)
+* **Objetivo:** Agrupar múltiples `ExperimentArtifact` (schema v1) para respaldar afirmaciones científicas compuestas cuando un único benchmark sea insuficiente.
 
-### Fase 4: Campaña de Replicación Serie T Humana (`T-001`+)
-* **Objetivo:** Abrir el Kit de Replicación v1.2-R2 a investigadores humanos independientes (Nivel 3).
-* **Condición de Entrada:** Runtime completo e instrumentado, paquete congelado.
-* **Métrica Principal:** Medir $N_{consults} = 0$, tiempo hasta primera ejecución $T_{first\_exp}$ y $N_{assumptions}$ en observadores humanos independientes.
+### Fase 4 — Multi-Runtime (Demandado por Evidencia)
+* **Objetivo:** Extender la generación de `ExperimentArtifact` (schema v1) a runtimes heterogéneos (`takt-rust`, `takt-python`).
 
-### Fase 5: Publicación Científica
-* **Objetivo:** Difusión formal en la comunidad científica internacional.
-* **Entregables:**
-  * Preprint en arXiv incorporando la teoría axiomaticamente probada en Lean 4, la evidencia empírica acumulada y los datos de la campaña de transportabilidad.
-  * Envío a revisión por pares en conferencias/revistas de primer nivel.
+### Fase 5 — Próxima Línea Teórica ST-018 (Anomalías o Límite Empírico)
+* **Objetivo:** Formular ST-018 únicamente cuando la evidencia experimental o una anomalía empírica desafíe las predicciones de los modelos actuales.
 
 ---
 
