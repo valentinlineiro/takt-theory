@@ -7,7 +7,7 @@
       "nodeVersion": "v24.14.1",
       "os": "linux"
     },
-    "startTimeISO": "2026-07-29T06:40:29.752Z"
+    "startTimeISO": "2026-07-29T06:49:41.660Z"
   },
   "summary": {
     "totalCycles": 5,
@@ -28,7 +28,7 @@
       "observationCost": 1,
       "elapsedTimeMs": 1,
       "outcome": "PASS",
-      "timestampISO": "2026-07-29T06:40:29.752Z"
+      "timestampISO": "2026-07-29T06:49:41.660Z"
     },
     {
       "type": "GovernanceCycleCompleted",
@@ -40,7 +40,7 @@
       "observationCost": 1,
       "elapsedTimeMs": 1,
       "outcome": "PASS",
-      "timestampISO": "2026-07-29T06:40:29.752Z"
+      "timestampISO": "2026-07-29T06:49:41.660Z"
     },
     {
       "type": "GovernanceCycleCompleted",
@@ -52,7 +52,7 @@
       "observationCost": 1,
       "elapsedTimeMs": 1,
       "outcome": "PASS",
-      "timestampISO": "2026-07-29T06:40:29.752Z"
+      "timestampISO": "2026-07-29T06:49:41.660Z"
     },
     {
       "type": "GovernanceCycleCompleted",
@@ -64,7 +64,7 @@
       "observationCost": 1,
       "elapsedTimeMs": 1,
       "outcome": "DEGRADED",
-      "timestampISO": "2026-07-29T06:40:29.752Z"
+      "timestampISO": "2026-07-29T06:49:41.660Z"
     },
     {
       "type": "GovernanceCycleCompleted",
@@ -76,7 +76,7 @@
       "observationCost": 1,
       "elapsedTimeMs": 1,
       "outcome": "PASS",
-      "timestampISO": "2026-07-29T06:40:29.752Z"
+      "timestampISO": "2026-07-29T06:49:41.660Z"
     }
   ]
 }

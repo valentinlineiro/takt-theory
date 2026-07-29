@@ -75,6 +75,13 @@ async function runBenchmark001() {
 
   const reportMd = `# BENCHMARK-001: Conservative vs Aggressive Governance Policy
 
+**Benchmark:** BENCHMARK-001  
+**Artifact Schema:** v1  
+**Generated From:** \`ExperimentArtifact\` (schema v1) via \`ArtifactReader\`  
+**Execution Method:** Deterministic multi-policy step evaluation  
+
+---
+
 ## 1. Executive Summary
 Comparative evaluation of two governance policies over an identical 5-step scenario sequence.
 
