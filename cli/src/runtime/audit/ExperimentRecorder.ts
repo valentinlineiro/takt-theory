@@ -14,6 +14,7 @@ export interface ExperimentMetadata {
 }
 
 export interface ExperimentArtifact {
+  readonly schemaVersion: 1;
   readonly metadata: ExperimentMetadata;
   readonly summary: {
     readonly totalCycles: number;
@@ -61,6 +62,7 @@ export class ExperimentRecorder {
     const totalCycles = events.length;
 
     return {
+      schemaVersion: 1,
       metadata: {
         ...this.metadata,
         environment: {
