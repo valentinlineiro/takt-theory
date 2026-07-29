@@ -22,7 +22,29 @@ graph TD
 
 ---
 
-## 2. Definición Detallada de las Fases
+## 2. El Modelo de Doble Bucle (Dual-Loop Execution Model)
+
+El programa se estructura formalmente en dos bucles desacoplados con ritmos independientes:
+
+```text
+       SCIENTIFIC LOOP (Bucle Científico)           PLATFORM LOOP (Bucle de Plataforma)
+  Pregunta Científica (Pre-registro)                   Necesidad Experimental
+                 │                                                │
+                 ▼                                                ▼
+         BENCHMARK-00X                              Refactor / Cambio en Engine
+                 │                                                │
+                 ▼                                                ▼
+       ExperimentArtifact (v1)                      Validación & Retrocompatibilidad
+                 │                                                │
+                 ▼                                                ▼
+        Conclusión / Reporte                        Re-ejecución del Benchmark
+```
+
+* **El Bucle de Plataforma sirve exclusivamente al Bucle Científico**: No se realizarán cambios de software ni adiciones de infraestructura a menos que una pregunta de investigación preregistrada no pueda responderse con las capacidades actuales del runtime.
+
+---
+
+## 3. Definición Detallada de las Fases
 
 ### Fase 0 — Consolidación de Plataforma (CERRADA ✓)
 * **Estado:** ST-016 congelado v1.0.0, ST-017 Phase III.1 sellada en Lean 4 (`0 sorry`), `CertifiedRuntimePipeline` integrado con `GovernanceEventBus` (eventos inmutables), `ExperimentArtifact` (schema v1) y `ArtifactReader` con test de retrocompatibilidad, **BENCHMARK-001** verificado de punta a punta.
