@@ -14,11 +14,11 @@ All changes modifying the observable behavior or governance decision logic of th
 
 ## 2. Experimental Benchmark Registry
 
-| Benchmark ID | Research Question | Independent Variable(s) | Theoretical Target | Associated Evidence | Status |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **BENCHMARK-001** | How do conservative vs. aggressive governance threshold/drift settings impact decision margin and degradation rate? | `minimumMarginThreshold`<br>`maxDriftRate` | ST-016 Runtime Kernel Necessity | `ExperimentArtifact` (v1)<br>[`report.md`](BENCHMARK-001/report.md) | ✅ Complete & Verified |
-| **BENCHMARK-002** | What is the observational overhead and decision latency scaling under increasing state vector dimensionality? | State vector size ($|S|$) | TAKT Runtime Performance | — | Planned |
-| **BENCHMARK-003** | How does temporal recalibration frequency affect long-term decision margin stability? | Recalibration horizon ($H$) | ST-016 / ST-017 Temporal Drift | — | Planned |
+| Benchmark ID | Research Question | Independent Variable(s) | Scientific Phenomenon | Related Standard / Layer | Associated Evidence | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **BENCHMARK-001** | How do conservative vs. aggressive governance threshold/drift settings impact decision margin and degradation rate? | `minimumMarginThreshold`<br>`maxDriftRate` | Decision Margin & Degradation | ST-016 | `ExperimentArtifact` (v1)<br>[`report.md`](BENCHMARK-001/report.md) | ✅ Complete & Verified |
+| **BENCHMARK-002** | What is the observational overhead and decision latency scaling under increasing state vector dimensionality? | State vector size ($|S|$) | Observational Cost & Latency | TAKT Runtime Engine | — | Planned |
+| **BENCHMARK-003** | How does temporal recalibration frequency affect long-term decision margin stability? | Recalibration horizon ($H$) | Temporal Drift & Recalibration | ST-016 / ST-017 | — | Planned |
 
 ---
 
