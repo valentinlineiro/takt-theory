@@ -121,7 +121,19 @@ Si el cambio no está directamente motivado por la necesidad de responder a una 
 
 ---
 
-## 3. Directivas de Exclusión (Lo que NO se priorizará)
+## 4. Orden de Prioridad Operativa (5 Reglas de Ejecución)
+
+| Prioridad | Acción / Dominio | Criterio de Ejecución | Estado |
+| :--- | :--- | :--- | :--- |
+| **1. Difusión ST-016** | Desbloquear difusión externa | Seguimiento de endorsement arXiv (`cs.LO`/`cs.PL`/`cs.SE`) y paquete en `publication/REPRODUCIBILITY.md`. | **Cuello de Botella Externo (Prioridad #1)** |
+| **2. Investigación Empírica** | Programa de Benchmarks | Ejecutar `BENCHMARK-002` (escalado $|S|$) y `BENCHMARK-003` (horizonte $H$) bajo Ficha de Pre-Registro de 5 Puntos. | **Activo (Prioridad #2)** |
+| **3. Conocimiento `CLAIMS.md`** | Actualización del Registro | Modificar el estado de afirmaciones únicamente cuando exista evidencia `ExperimentArtifact` (v1) reproducible. | **Por Evidencia** |
+| **4. Estabilidad del Runtime** | Mantenimiento del Engine | Modificar el runtime solo cuando un benchmark preregistrado revele una limitación técnica o metodológica. | **En Standby** |
+| **5. Difusión de Resultados** | Canales Públicos | Publicar en arXiv, GitHub Release y LinkedIn conforme se consoliden nuevos claims experimentales. | **Al Hito** |
+
+---
+
+## 5. Directivas de Exclusión (Lo que NO se priorizará)
 
 1. **Sin Generalización Prematura:** No extender TAKT a dominios teóricos no requeridos sin necesidad observada.
 2. **Sin Capas Teóricas Adicionales:** No añadir nuevos constructos formales a menos que respondan a fallos del runtime en casos reales.
