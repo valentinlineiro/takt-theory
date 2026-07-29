@@ -44,6 +44,32 @@ El programa se estructura formalmente en dos bucles desacoplados con ritmos inde
 
 ---
 
+## 3. Jerarquía Estructural de Dependencias
+
+Las dependencias fluyen estrictamente de arriba hacia abajo:
+
+```text
+Scientific Questions (Preguntas de Investigación)
+        │
+        ▼
+Scientific Assets (ST-016, ST-017, CLAIMS, Benchmarks)
+        │
+        ▼
+Platform Infrastructure (Runtime, EventBus, ExperimentArtifact, ArtifactReader)
+        │
+        ▼
+Implementation Details (Refactors, optimizaciones internas)
+```
+
+### Regla de Gobernanza de Cambios (Filtro Activo)
+Antes de aceptar o ejecutar cualquier propuesta de modificación de código o refactorización del runtime, se debe responder positivamente a la siguiente pregunta:
+
+> **"¿Qué pregunta científica preregistrada justifica este cambio?"**
+
+Si el cambio no está directamente motivado por la necesidad de responder a una hipótesis de investigación preregistrada, el cambio se diferirá fuera del roadmap activo.
+
+---
+
 ## 3. Definición Detallada de las Fases
 
 ### Fase 0 — Consolidación de Plataforma (CERRADA ✓)
