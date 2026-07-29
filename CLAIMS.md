@@ -41,3 +41,17 @@ The TAKT framework v1.0 would be considered **refuted or fundamentally flawed** 
 2. **Sub-optimal Minimal Quotient:** Discovery of a representation $R'$ strictly coarser than $S / K_D$ ($\text{ker}(S/K_D) \subsetneq \text{ker}(R')$) that preserves decision accuracy for all $s \in S$.
 3. **Margin Contract Breach:** Observation of a contract violation ($D(s) \neq \hat{D}(s)$) during a period where $M_D(\tau_{:t}) > 0$ and measured drift rate $\theta < \theta_{\text{crit}}$ (Contradiction of G2 Governance Horizon).
 4. **Computational Negative Value:** Empirical proof across diverse benchmarks that the computational overhead of computing $K_D$ and evaluating $M_D$ strictly exceeds full-state search or naive sampling across all parameter regimes.
+
+---
+
+## 4. Evidence Traceability & Verification Protocol (PROTOCOL C)
+
+All official scientific claims of TAKT are bound to empirical evidence artifacts formatted according to the **`ExperimentArtifact` (schema v1)** specification and validated via reproducible benchmarks.
+
+| Claim / Theorem | Formal Mechanization | Empirical Benchmark Target | Canonical Evidence Artifact |
+| :--- | :--- | :--- | :--- |
+| **ST-015 Structural Sufficiency** | `TaktFormal.StructuralSufficiency` | `benchmarks/batch-f-001..005` | `ExperimentArtifact` (v1) |
+| **ST-016 Runtime Kernel Necessity** | `TaktFormal.RuntimeSufficiency`<br>`TaktFormal.RuntimeWitness` | `benchmarks/benchmark-001` | [`BENCHMARK-001/artifact-policy-a.json`](file:///home/valentin/code/takt-theory/benchmarks/benchmark-001/artifact-policy-a.json)<br>[`BENCHMARK-001/artifact-policy-b.json`](file:///home/valentin/code/takt-theory/benchmarks/benchmark-001/artifact-policy-b.json) |
+| **ST-017 Witness Transportability** | `TaktFormal.RuntimeTransportability` | `cli/src/st017-transportability` | `mockRuntime.ts` Witness |
+| **G2 Governance Horizon** | `TaktFormal.DynamicSafetyContract` | `benchmarks/batch-g2-001..004` | `ExperimentArtifact` (v1) |
+
