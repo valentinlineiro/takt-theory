@@ -18,9 +18,31 @@ graph TD
     
     style Fase0 fill:#1b4332,stroke:#fff,color:#fff
     style Fase1 fill:#2d5a88,stroke:#fff,color:#fff
-```
-
 ---
+
+## 1.1 El Modelo Arquitectónico Tricapa (Tri-Layer Model)
+
+Conceptualmente, toda la plataforma TAKT se condensa en tres capas con responsabilidades y respuestas unívocas:
+
+```text
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 1. KNOWLEDGE LAYER (Conocimiento / "¿Qué significa?")                      │
+│    └─ takt-theory, Lean 4 proofs, ST-016/ST-017, CLAIMS.md                  │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                     │
+                                     ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 2. EVIDENCE LAYER (Evidencia / "¿Qué ocurrió?")                             │
+│    └─ Runtime Engine, EventBus (Object.freeze), ExperimentArtifact (v1),    │
+│       ArtifactReader, Benchmarks reproducibles                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                     │
+                                     ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ 3. GOVERNANCE LAYER (Gobernanza / "¿Qué reglas nos disciplinan?")           │
+│    └─ OPERATIONAL_ROADMAP.md, Pre-registro (5 puntos), 4 Estados Ciclo Vida │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ## 2. El Modelo de Doble Bucle (Dual-Loop Execution Model)
 
