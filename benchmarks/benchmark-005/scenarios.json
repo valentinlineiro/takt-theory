@@ -1,0 +1,22 @@
+[
+  { "stepIndex": 1, "concreteStateVector": [0.01, 0.02], "trueDecision": 1 },
+  { "stepIndex": 2, "concreteStateVector": [0.02, 0.04], "trueDecision": 1 },
+  { "stepIndex": 3, "concreteStateVector": [0.05, 0.10], "trueDecision": 1 },
+  { "stepIndex": 4, "concreteStateVector": [0.10, 0.20], "trueDecision": 1 },
+  { "stepIndex": 5, "concreteStateVector": [0.15, 0.30], "trueDecision": 1 },
+  { "stepIndex": 6, "concreteStateVector": [0.20, 0.40], "trueDecision": 1 },
+  { "stepIndex": 7, "concreteStateVector": [0.25, 0.50], "trueDecision": 1 },
+  { "stepIndex": 8, "concreteStateVector": [0.30, 0.60], "trueDecision": 1 },
+  { "stepIndex": 9, "concreteStateVector": [0.35, 0.70], "trueDecision": 1 },
+  { "stepIndex": 10, "concreteStateVector": [0.40, 0.80], "trueDecision": 1 },
+  { "stepIndex": 11, "concreteStateVector": [0.45, 0.90], "trueDecision": 1 },
+  { "stepIndex": 12, "concreteStateVector": [0.50, 1.00], "trueDecision": 1 },
+  { "stepIndex": 13, "concreteStateVector": [0.55, 1.10], "trueDecision": 1 },
+  { "stepIndex": 14, "concreteStateVector": [0.60, 1.20], "trueDecision": 1 },
+  { "stepIndex": 15, "concreteStateVector": [0.65, 1.30], "trueDecision": 1 },
+  { "stepIndex": 16, "concreteStateVector": [0.70, 1.40], "trueDecision": 1 },
+  { "stepIndex": 17, "concreteStateVector": [0.75, 1.50], "trueDecision": 1 },
+  { "stepIndex": 18, "concreteStateVector": [0.80, 1.60], "trueDecision": 1 },
+  { "stepIndex": 19, "concreteStateVector": [0.85, 1.70], "trueDecision": 1 },
+  { "stepIndex": 20, "concreteStateVector": [0.90, 1.80], "trueDecision": 1 }
+]
