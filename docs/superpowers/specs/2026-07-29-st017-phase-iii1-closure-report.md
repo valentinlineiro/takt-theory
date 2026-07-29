@@ -1,6 +1,6 @@
 # ST-017 Phase III.1 Closure Report: Capability-Relative Witness Transportability
 
-**Status:** Complete & Sealed  
+**Status:** Complete & Sealed (Stable research baseline)  
 **Branch:** `st017-witness-transportability`  
 **Scope:** Phase III.1 Core Formalization, Executable Witness Instance, and Traceability  
 
