@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "experimentId": "bench-002-dim-1000",
+    "title": "BENCHMARK-002 Regulative Scale |S|=1000",
+    "environment": {
+      "nodeVersion": "v24.14.1",
+      "os": "linux"
+    },
+    "startTimeISO": "2026-07-29T09:55:44.244Z"
+  },
+  "summary": {
+    "totalCycles": 10,
+    "passCount": 10,
+    "violationCount": 0,
+    "degradedCount": 0,
+    "averageDecisionMargin": 0.225,
+    "totalElapsedTimeMs": 10
+  },
+  "events": [
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-002-1",
+      "representationId": "GOV-BENCH-002",
+      "uncertainty": 0.05,
+      "decision": "1",
+      "decisionMargin": 0.45,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T09:55:44.244Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-002-2",
+      "representationId": "GOV-BENCH-002",
+      "uncertainty": 0.1,
+      "decision": "1",
+      "decisionMargin": 0.4,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T09:55:44.244Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-002-3",
+      "representationId": "GOV-BENCH-002",
+      "uncertainty": 0.15000000000000002,
+      "decision": "1",
+      "decisionMargin": 0.35,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T09:55:44.244Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-002-4",
+      "representationId": "GOV-BENCH-002",
+      "uncertainty": 0.2,
+      "decision": "1",
+      "decisionMargin": 0.3,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T09:55:44.244Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-002-5",
+      "representationId": "GOV-BENCH-002",
+      "uncertainty": 0.25,
+      "decision": "1",
+      "decisionMargin": 0.25,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T09:55:44.244Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-002-6",
+      "representationId": "GOV-BENCH-002",
+      "uncertainty": 0.30000000000000004,
+      "decision": "1",
+      "decisionMargin": 0.19999999999999996,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T09:55:44.244Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-002-7",
+      "representationId": "GOV-BENCH-002",
+      "uncertainty": 0.35000000000000003,
+      "decision": "1",
+      "decisionMargin": 0.14999999999999997,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T09:55:44.244Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-002-8",
+      "representationId": "GOV-BENCH-002",
+      "uncertainty": 0.4,
+      "decision": "1",
+      "decisionMargin": 0.09999999999999998,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T09:55:44.244Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-002-9",
+      "representationId": "GOV-BENCH-002",
+      "uncertainty": 0.45,
+      "decision": "1",
+      "decisionMargin": 0.04999999999999999,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T09:55:44.244Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-002-10",
+      "representationId": "GOV-BENCH-002",
+      "uncertainty": 0.5,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T09:55:44.244Z"
+    }
+  ]
+}

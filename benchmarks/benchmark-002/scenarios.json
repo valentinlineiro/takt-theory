@@ -1,0 +1,12 @@
+[
+  { "stepIndex": 1, "concreteStateVector": [0.01, 0.02], "trueDecision": 1 },
+  { "stepIndex": 2, "concreteStateVector": [0.02, 0.04], "trueDecision": 1 },
+  { "stepIndex": 3, "concreteStateVector": [0.03, 0.06], "trueDecision": 1 },
+  { "stepIndex": 4, "concreteStateVector": [0.04, 0.08], "trueDecision": 1 },
+  { "stepIndex": 5, "concreteStateVector": [0.05, 0.10], "trueDecision": 1 },
+  { "stepIndex": 6, "concreteStateVector": [0.06, 0.12], "trueDecision": 1 },
+  { "stepIndex": 7, "concreteStateVector": [0.07, 0.14], "trueDecision": 1 },
+  { "stepIndex": 8, "concreteStateVector": [0.08, 0.16], "trueDecision": 1 },
+  { "stepIndex": 9, "concreteStateVector": [0.09, 0.18], "trueDecision": 1 },
+  { "stepIndex": 10, "concreteStateVector": [0.10, 0.20], "trueDecision": 1 }
+]
