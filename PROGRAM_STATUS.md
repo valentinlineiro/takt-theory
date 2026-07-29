@@ -1,7 +1,7 @@
 # PROGRAM_STATUS.md: Estado del Programa de Investigación TAKT
 
-**Fecha de Actualización:** 2026-07-24  
-**Fase Actual:** Fase III — Congelación Observacional y Transportabilidad del Protocolo (Serie T)  
+**Fecha de Actualización:** 2026-07-29  
+**Fase Actual:** Fase III — Congelación Observacional y Transportabilidad del Protocolo (ST-017 Phase III.1 Closed)  
 **Versión Congelada del Core:** v1.2 / R2  
 
 ---
