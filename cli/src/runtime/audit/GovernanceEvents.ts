@@ -34,9 +34,10 @@ export class GovernanceEventBus {
   }
 
   public emit(event: GovernanceEvent): void {
+    const frozenEvent = Object.freeze({ ...event });
     for (const observer of this.observers) {
       try {
-        observer.onEvent(event);
+        observer.onEvent(frozenEvent);
       } catch (err) {
         console.error('Observer error:', err);
       }
