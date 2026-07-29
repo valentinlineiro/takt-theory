@@ -48,10 +48,10 @@ The TAKT framework v1.0 would be considered **refuted or fundamentally flawed** 
 
 All official scientific claims of TAKT are bound to empirical evidence artifacts formatted according to the **`ExperimentArtifact` (schema v1)** specification and validated via reproducible benchmarks.
 
-| Claim / Theorem | Formal Mechanization | Empirical Benchmark Target | Canonical Evidence Artifact |
-| :--- | :--- | :--- | :--- |
-| **ST-015 Structural Sufficiency** | `TaktFormal.StructuralSufficiency` | `benchmarks/batch-f-001..005` | `ExperimentArtifact` (v1) |
-| **ST-016 Runtime Kernel Necessity** | `TaktFormal.RuntimeSufficiency`<br>`TaktFormal.RuntimeWitness` | `benchmarks/benchmark-001` | [`BENCHMARK-001/artifact-policy-a.json`](file:///home/valentin/code/takt-theory/benchmarks/benchmark-001/artifact-policy-a.json)<br>[`BENCHMARK-001/artifact-policy-b.json`](file:///home/valentin/code/takt-theory/benchmarks/benchmark-001/artifact-policy-b.json) |
-| **ST-017 Witness Transportability** | `TaktFormal.RuntimeTransportability` | `cli/src/st017-transportability` | `mockRuntime.ts` Witness |
-| **G2 Governance Horizon** | `TaktFormal.DynamicSafetyContract` | `benchmarks/batch-g2-001..004` | `ExperimentArtifact` (v1) |
+| Claim / Theorem | Formal Basis (Lean 4) | Benchmark Target | Empirical Evidence (Schema v1) | Claim Status | Open Questions |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **ST-015 Structural Sufficiency** | `TaktFormal.StructuralSufficiency` | `benchmarks/batch-f-001..005` | `ExperimentArtifact` (v1) | **Supported** | Generalization to continuous MDPs |
+| **ST-016 Runtime Kernel Necessity** | `TaktFormal.RuntimeSufficiency`<br>`TaktFormal.RuntimeWitness` | `benchmarks/benchmark-001` | [`BENCHMARK-001/artifact-policy-a.json`](file:///home/valentin/code/takt-theory/benchmarks/benchmark-001/artifact-policy-a.json)<br>[`BENCHMARK-001/artifact-policy-b.json`](file:///home/valentin/code/takt-theory/benchmarks/benchmark-001/artifact-policy-b.json) | **Supported** (Frozen v1.0.0) | Observational overhead scaling (BENCHMARK-002) |
+| **ST-017 Witness Transportability** | `TaktFormal.RuntimeTransportability` | `cli/src/st017-transportability` | `mockRuntime.ts` Witness | **Supported Core** (Phase III.1) | Q1–Q6 (Granularity, certificate structure, cross-lang) |
+| **G2 Governance Horizon** | `TaktFormal.DynamicSafetyContract` | `benchmarks/batch-g2-001..004` | `ExperimentArtifact` (v1) | **Supported** | Recalibration frequency limits (BENCHMARK-003) |
 
