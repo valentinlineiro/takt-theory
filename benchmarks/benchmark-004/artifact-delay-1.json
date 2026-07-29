@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "experimentId": "bench-004-nodeA-delay-1",
+    "title": "BENCHMARK-004 Node A delay=1",
+    "environment": {
+      "nodeVersion": "v24.14.1",
+      "os": "linux"
+    },
+    "startTimeISO": "2026-07-29T10:36:10.678Z"
+  },
+  "summary": {
+    "totalCycles": 20,
+    "passCount": 15,
+    "violationCount": 0,
+    "degradedCount": 5,
+    "averageDecisionMargin": 0.1125,
+    "totalElapsedTimeMs": 20
+  },
+  "events": [
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-1",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.05,
+      "decision": "1",
+      "decisionMargin": 0.45,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-2",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.1,
+      "decision": "1",
+      "decisionMargin": 0.4,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-3",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.15000000000000002,
+      "decision": "1",
+      "decisionMargin": 0.35,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-4",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.2,
+      "decision": "1",
+      "decisionMargin": 0.3,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-5",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.25,
+      "decision": "1",
+      "decisionMargin": 0.25,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-6",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.30000000000000004,
+      "decision": "1",
+      "decisionMargin": 0.19999999999999996,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-7",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.35000000000000003,
+      "decision": "1",
+      "decisionMargin": 0.14999999999999997,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-8",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.4,
+      "decision": "1",
+      "decisionMargin": 0.09999999999999998,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-9",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.45,
+      "decision": "1",
+      "decisionMargin": 0.04999999999999999,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-10",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.5,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-11",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.55,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "DEGRADED",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-12",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.6000000000000001,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-13",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.65,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "DEGRADED",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-14",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.7000000000000001,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-15",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.75,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "DEGRADED",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-16",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.8,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-17",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.8500000000000001,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "DEGRADED",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-18",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.9,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-19",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 0.9500000000000001,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "DEGRADED",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-004-20",
+      "representationId": "GOV-BENCH-004",
+      "uncertainty": 1,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T10:36:10.678Z"
+    }
+  ]
+}
