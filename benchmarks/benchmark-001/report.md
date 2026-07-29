@@ -7,7 +7,19 @@
 
 ---
 
-## 1. Executive Summary
+## 1. Scientific Pre-Registration Card
+
+| Field | Content |
+| :--- | :--- |
+| **Research Question** | How do conservative vs. aggressive governance threshold/drift settings impact decision margin and degradation rate? |
+| **Null Hypothesis ($H_0$)** | Relaxing margin thresholds and increasing drift tolerances does not alter decision margin degradation or safety verdicts. |
+| **Independent Variable(s)** | `minimumMarginThreshold` ($0.60$ vs $0.30$), `maxDriftRate` ($0.02$ vs $0.08$) |
+| **Dependent Metrics** | Average Decision Margin ($Delta$), Pass/Degraded/Violation counts, Total Elapsed Time |
+| **Success Criterion** | Detectable negative delta ($Delta < 0$) in average decision margin and explicit degradation state capture. |
+
+---
+
+## 2. Executive Summary
 Comparative evaluation of two governance policies over an identical 5-step scenario sequence.
 
 * **Policy A (Conservative)**: `minimumMarginThreshold` = 0.60, `maxDriftRate` = 0.02

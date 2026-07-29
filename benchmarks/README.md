@@ -34,3 +34,18 @@ benchmarks/BENCHMARK-00X/
 ├── artifact-policy-b.json  # Immutable ExperimentArtifact (schema v1)
 └── report.md               # Generated Markdown report with scientific provenance header
 ```
+
+---
+
+## 4. Benchmark Pre-Registration Specification Template
+
+Before introducing a new benchmark into the registry, the following 5-point scientific specification card **MUST** be defined in its `report.md`:
+
+| Card Field | Description | Requirement |
+| :--- | :--- | :--- |
+| **Research Question** | Precise scientific question under test | Must state the specific hypothesis |
+| **Null Hypothesis ($H_0$)** | Baseline assumption expected to be challenged/tested | Must be falsifiable via empirical metrics |
+| **Independent Variable(s)** | Parameters manipulated across trial runs | Must be explicitly configured in `run.ts` |
+| **Dependent Metrics** | Quantities extracted from `ExperimentArtifact` (v1) | Must be read via `ArtifactReader` |
+| **Success Criterion** | Empirical threshold determining hypothesis resolution | Must be objectively verifiable from deltas |
+
