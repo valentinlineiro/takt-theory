@@ -104,11 +104,14 @@ Si el cambio no está directamente motivado por la necesidad de responder a una 
   1. Seguimiento de solicitudes de endorsement para arXiv (`cs.LO` / `cs.PL` / `cs.SE`).
   2. Empaquetado final de reproducibilidad en `publication/` (`abstract.md`, `citation.bib`, `reproducibility.md`).
 
-### Fase 2 — Programa Experimental Real (Prioridad Actual #2)
-* **Objetivo:** Responder preguntas científicas empíricas utilizando el runtime instrumentado y el marco de pre-registro de 5 puntos.
-* **Próximos Benchmarks:**
-  * **BENCHMARK-002 (Coste Observacional & Escalado):** Evaluar escalado de latencia y `observationCost` frente a la dimensión $|S|$.
-  * **BENCHMARK-003 (Horizonte Temporal & Recalibración):** Evaluar la deriva temporal y frecuencia de recalibración ($H$).
+### Fase 2 — Programa Experimental Real (Completada Serie Base ✓)
+* **Estado:** `BENCHMARK-001` (Políticas A/B), `BENCHMARK-002` (Escalado $|S|$) y `BENCHMARK-003` (Horizonte $H$) **completados y verificados** de punta a punta. Evidencia sintetizada en Release `v1.0-EXP`.
+
+### Fase 2.1 — Exploración de Fronteras (Prioridad Actual #2)
+* **Objetivo:** Explorar límites estructurales donde la teoría actual pueda verse desafiada, generando disparadores empíricos para ST-018.
+* **Secuencia Operativa:**
+  1. **BENCHMARK-004 (Consenso Multi-Nodo bajo Retardo $\tau_{\text{delay}}$):** Evaluar rotura de hipótesis de observabilidad compartida.
+  2. **BENCHMARK-005 (Composición Multi-Contrato):** Evaluar interbloqueos y conflictos de gobernanza multi-objetivo.
 
 ### Fase 3 — Evidence Sets (Aparición por Necesidad)
 * **Objetivo:** Agrupar múltiples `ExperimentArtifact` (schema v1) para respaldar afirmaciones científicas compuestas cuando un único benchmark sea insuficiente.
@@ -117,7 +120,7 @@ Si el cambio no está directamente motivado por la necesidad de responder a una 
 * **Objetivo:** Extender la generación de `ExperimentArtifact` (schema v1) a runtimes heterogéneos (`takt-rust`, `takt-python`).
 
 ### Fase 5 — Próxima Línea Teórica ST-018 (Anomalías o Límite Empírico)
-* **Objetivo:** Formular ST-018 únicamente cuando la evidencia experimental o una anomalía empírica desafíe las predicciones de los modelos actuales.
+* **Objetivo:** Formular ST-018 **únicamente** cuando la evidencia de BENCHMARK-004 o BENCHMARK-005 revele una limitación real no explicada por los modelos actuales.
 
 ---
 
@@ -126,7 +129,7 @@ Si el cambio no está directamente motivado por la necesidad de responder a una 
 | Prioridad | Acción / Dominio | Criterio de Ejecución | Estado |
 | :--- | :--- | :--- | :--- |
 | **1. Difusión ST-016** | Desbloquear difusión externa | Seguimiento de endorsement arXiv (`cs.LO`/`cs.PL`/`cs.SE`) y paquete en `publication/REPRODUCIBILITY.md`. | **Cuello de Botella Externo (Prioridad #1)** |
-| **2. Investigación Empírica** | Programa de Benchmarks | Ejecutar `BENCHMARK-002` (escalado $|S|$) y `BENCHMARK-003` (horizonte $H$) bajo Ficha de Pre-Registro de 5 Puntos. | **Activo (Prioridad #2)** |
+| **2. Frontera BENCHMARK-004** | Retardo Multi-Nodo ($\tau_{\text{delay}}$) | Preregistrar y ejecutar BENCHMARK-004 para evaluar límites de observabilidad distribuida. | **Activo (Prioridad #2)** |
 | **3. Conocimiento `CLAIMS.md`** | Actualización del Registro | Modificar el estado de afirmaciones únicamente cuando exista evidencia `ExperimentArtifact` (v1) reproducible. | **Por Evidencia** |
 | **4. Estabilidad del Runtime** | Mantenimiento del Engine | Modificar el runtime solo cuando un benchmark preregistrado revele una limitación técnica o metodológica. | **En Standby** |
 | **5. Difusión de Resultados** | Canales Públicos | Publicar en arXiv, GitHub Release y LinkedIn conforme se consoliden nuevos claims experimentales. | **Al Hito** |
