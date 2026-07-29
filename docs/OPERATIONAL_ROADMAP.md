@@ -137,7 +137,17 @@ Si el cambio no está directamente motivado por la necesidad de responder a una 
 
 ---
 
-## 5. Directivas de Exclusión (Lo que NO se priorizará)
+## 5. Política Estricta de Versionado Científico
+
+Para garantizar la estabilidad de las conclusiones publicadas y proteger el baseline experimental:
+
+* **`v1.0` (Línea Base Congelada):** `v1.0-EXP-FINAL` permanece inmutable. No se alterarán teoremas, especificaciones o artefactos existentes.
+* **`v1.x` (Revisiones Editoriales / Replicaciones):** Reservado exclusivamente para correcciones ortográficas, mejoras en guías de reproducibilidad o integración de replicaciones multi-runtime (Fase 4) que no modifiquen los hallazgos empíricos de v1.0.
+* **`v2.0` (Expansión Teórica por Evidencia):** Reservado únicamente para cuando nueva evidencia empírica justifique formalmente una modificación del dominio de validez o el nacimiento de una nueva línea teórica (ST-018+).
+
+---
+
+## 6. Directivas de Exclusión (Lo que NO se priorizará)
 
 1. **Sin Generalización Prematura:** No extender TAKT a dominios teóricos no requeridos sin necesidad observada.
 2. **Sin Capas Teóricas Adicionales:** No añadir nuevos constructos formales a menos que respondan a fallos del runtime en casos reales.
