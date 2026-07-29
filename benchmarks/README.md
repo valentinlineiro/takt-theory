@@ -47,5 +47,20 @@ Before introducing a new benchmark into the registry, the following 5-point scie
 | **Null Hypothesis ($H_0$)** | Baseline assumption expected to be challenged/tested | Must be falsifiable via empirical metrics |
 | **Independent Variable(s)** | Parameters manipulated across trial runs | Must be explicitly configured in `run.ts` |
 | **Dependent Metrics** | Quantities extracted from `ExperimentArtifact` (v1) | Must be read via `ArtifactReader` |
-| **Success Criterion** | Empirical threshold determining hypothesis resolution | Must be objectively verifiable from deltas |
+| **Success Criterion** | Quantifiable, observable threshold in metrics | Must be objectively verifiable from deltas (e.g. $|\Delta| > 0.20$) |
+
+---
+
+## 5. Methodological Lifecycle States
+
+Every benchmark entry progresses through four explicit lifecycle states:
+
+```text
+Draft  ──►  Pre-registered  ──►  Executed  ──►  Verified
+```
+
+1. **Draft**: Initial research question and hypothesis proposed.
+2. **Pre-registered**: 5-point scientific specification card frozen in `report.md` prior to run.
+3. **Executed**: Scenario execution completed, producing immutable `ExperimentArtifact` (v1) outputs.
+4. **Verified**: Comparative analysis successfully extracted via `ArtifactReader` and checked for reproducibility.
 
