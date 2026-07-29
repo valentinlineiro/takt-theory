@@ -5,17 +5,21 @@ import { AuditLogger, type AuditRecord } from './audit/AuditLogger.js';
 import { validateContractPayload } from './schema/ContractSchema.js';
 import { validateEventPayload } from './schema/EventStreamSchema.js';
 
+import { GovernanceEventBus } from './audit/GovernanceEvents.js';
+
 export interface PipelineConfig {
   readonly stableContractId: string;
   readonly contractVersion: string;
   readonly minimumMarginThreshold: number;
   readonly maxDriftRate: number;
+  readonly eventBus?: GovernanceEventBus;
 }
 
 export class CertifiedRuntimePipeline<S = number[], Z = boolean, A = number> {
   private contract: CertifiedContract<S, Z, A>;
   private stateMachine: GovernanceStateMachine;
   private auditLogger: AuditLogger;
+  private eventBus?: GovernanceEventBus;
   private evaluationCounter = 0;
 
   constructor(config: PipelineConfig) {
@@ -39,6 +43,7 @@ export class CertifiedRuntimePipeline<S = number[], Z = boolean, A = number> {
 
     this.stateMachine = new GovernanceStateMachine();
     this.auditLogger = new AuditLogger();
+    this.eventBus = config.eventBus;
   }
 
   public async processStep(eventPayload: unknown): Promise<{ newState: string; auditRecord: AuditRecord }> {
@@ -76,6 +81,23 @@ export class CertifiedRuntimePipeline<S = number[], Z = boolean, A = number> {
     };
 
     this.auditLogger.log(auditRecord);
+
+    if (this.eventBus) {
+      const margin = this.contract.minimumMarginThreshold - evalContext.cumulativeDrift;
+      const outcome = rule.outcome === 'SAFE' ? 'PASS' : rule.outcome === 'FALLBACK' ? 'VIOLATION' : 'DEGRADED';
+      this.eventBus.emit({
+        type: 'GovernanceCycleCompleted',
+        cycleId: auditRecord.evaluationId,
+        representationId: this.contract.metadata.stableContractId,
+        uncertainty: evalContext.cumulativeDrift,
+        decision: String(event.trueDecision),
+        decisionMargin: Math.max(0, margin),
+        observationCost: 1.0,
+        elapsedTimeMs: 1,
+        outcome,
+        timestampISO: auditRecord.timestampISO
+      });
+    }
 
     return { newState, auditRecord };
   }
