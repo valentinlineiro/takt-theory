@@ -124,15 +124,16 @@ Si el cambio no está directamente motivado por la necesidad de responder a una 
 
 ---
 
-## 4. Orden de Prioridad Operativa (5 Reglas de Ejecución)
+## 4. Orden de Prioridad Operativa (Dominio Interno vs Dependencia Externa)
 
-| Prioridad | Acción / Dominio | Criterio de Ejecución | Estado |
-| :--- | :--- | :--- | :--- |
-| **1. Difusión ST-016** | Desbloquear difusión externa | Seguimiento de endorsement arXiv (`cs.LO`/`cs.PL`/`cs.SE`) y paquete en `publication/REPRODUCIBILITY.md`. | **Cuello de Botella Externo (Prioridad #1)** |
-| **2. Frontera BENCHMARK-004** | Retardo Multi-Nodo ($\tau_{\text{delay}}$) | Preregistrar y ejecutar BENCHMARK-004 para evaluar límites de observabilidad distribuida. | **Activo (Prioridad #2)** |
-| **3. Conocimiento `CLAIMS.md`** | Actualización del Registro | Modificar el estado de afirmaciones únicamente cuando exista evidencia `ExperimentArtifact` (v1) reproducible. | **Por Evidencia** |
-| **4. Estabilidad del Runtime** | Mantenimiento del Engine | Modificar el runtime solo cuando un benchmark preregistrado revele una limitación técnica o metodológica. | **En Standby** |
-| **5. Difusión de Resultados** | Canales Públicos | Publicar en arXiv, GitHub Release y LinkedIn conforme se consoliden nuevos claims experimentales. | **Al Hito** |
+### A. Acciones Bajo Control Interno
+1. **Mantener Congelada la Línea Base v1.0-EXP-FINAL:** Evitar modificaciones en el motor o especificaciones que alteren las conclusiones publicadas.
+2. **Replicación Multi-Runtime (Fase 4):** Implementar un segundo runtime (`takt-rust` o `takt-python`) y ejecutar exactamente la misma batería `BENCHMARK-001..005` para evaluar la portabilidad del protocolo `ExperimentArtifact` (v1).
+3. **Mantenimiento del Registro Científico (`CLAIMS.md`):** Actualizar el estado de soporte o refutación únicamente cuando exista evidencia empírica reproducible.
+
+### B. Objetivos Dependientes del Exterior
+1. **Desbloqueo de Difusión ST-016:** Seguimiento activo de las solicitudes de endorsement en arXiv (`cs.LO` / `cs.PL` / `cs.SE`).
+2. **Validación Independiente por Terceros:** Facilitar que investigadores externos ejecuten la guía [`publication/REPRODUCIBILITY.md`](file:///home/valentin/code/takt-theory/publication/REPRODUCIBILITY.md) y documentar cualquier hallazgo o discrepancia.
 
 ---
 
