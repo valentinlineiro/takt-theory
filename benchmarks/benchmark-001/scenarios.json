@@ -1,0 +1,7 @@
+[
+  { "stepIndex": 1, "concreteStateVector": [0.05, 0.10], "trueDecision": 1 },
+  { "stepIndex": 2, "concreteStateVector": [0.08, 0.15], "trueDecision": 1 },
+  { "stepIndex": 3, "concreteStateVector": [0.12, 0.22], "trueDecision": 1 },
+  { "stepIndex": 4, "concreteStateVector": [0.18, 0.31], "trueDecision": 1 },
+  { "stepIndex": 5, "concreteStateVector": [0.25, 0.40], "trueDecision": 1 }
+]

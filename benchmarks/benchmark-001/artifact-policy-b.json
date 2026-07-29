@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "experimentId": "bench-001-policy-b",
+    "title": "Policy B (Aggressive Governance)",
+    "environment": {
+      "nodeVersion": "v24.14.1",
+      "os": "linux"
+    },
+    "startTimeISO": "2026-07-29T06:40:29.752Z"
+  },
+  "summary": {
+    "totalCycles": 5,
+    "passCount": 4,
+    "violationCount": 0,
+    "degradedCount": 1,
+    "averageDecisionMargin": 0.08399999999999999,
+    "totalElapsedTimeMs": 5
+  },
+  "events": [
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-001-1",
+      "representationId": "GOV-BENCH-001",
+      "uncertainty": 0.08,
+      "decision": "1",
+      "decisionMargin": 0.21999999999999997,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T06:40:29.752Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-001-2",
+      "representationId": "GOV-BENCH-001",
+      "uncertainty": 0.16,
+      "decision": "1",
+      "decisionMargin": 0.13999999999999999,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T06:40:29.752Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-001-3",
+      "representationId": "GOV-BENCH-001",
+      "uncertainty": 0.24,
+      "decision": "1",
+      "decisionMargin": 0.06,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T06:40:29.752Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-001-4",
+      "representationId": "GOV-BENCH-001",
+      "uncertainty": 0.32,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "DEGRADED",
+      "timestampISO": "2026-07-29T06:40:29.752Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "eval-GOV-BENCH-001-5",
+      "representationId": "GOV-BENCH-001",
+      "uncertainty": 0.4,
+      "decision": "1",
+      "decisionMargin": 0,
+      "observationCost": 1,
+      "elapsedTimeMs": 1,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T06:40:29.752Z"
+    }
+  ]
+}
