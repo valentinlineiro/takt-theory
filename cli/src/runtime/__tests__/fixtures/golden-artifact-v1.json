@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "experimentId": "golden-exp-v1",
+    "title": "Golden Reference Experiment Artifact Schema v1",
+    "description": "Used for backwards-compatibility regression testing of ArtifactReader",
+    "gitCommitHash": "23a6230",
+    "environment": {
+      "nodeVersion": "v20.0.0",
+      "os": "linux"
+    },
+    "startTimeISO": "2026-07-29T08:00:00.000Z"
+  },
+  "summary": {
+    "totalCycles": 2,
+    "passCount": 1,
+    "violationCount": 0,
+    "degradedCount": 1,
+    "averageDecisionMargin": 0.15,
+    "totalElapsedTimeMs": 5
+  },
+  "events": [
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "cycle-001",
+      "representationId": "rep-v1",
+      "uncertainty": 0.01,
+      "decision": "ALLOW",
+      "decisionMargin": 0.25,
+      "observationCost": 1.0,
+      "elapsedTimeMs": 2,
+      "outcome": "PASS",
+      "timestampISO": "2026-07-29T08:00:00.100Z"
+    },
+    {
+      "type": "GovernanceCycleCompleted",
+      "cycleId": "cycle-002",
+      "representationId": "rep-v1",
+      "uncertainty": 0.12,
+      "decision": "DENY",
+      "decisionMargin": 0.05,
+      "observationCost": 1.5,
+      "elapsedTimeMs": 3,
+      "outcome": "DEGRADED",
+      "timestampISO": "2026-07-29T08:00:00.200Z"
+    }
+  ]
+}
