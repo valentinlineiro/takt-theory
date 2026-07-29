@@ -2,7 +2,8 @@
 
 **Fecha de Actualización:** 2026-07-29  
 **Estado de la Plataforma:** Plataforma de Evidencia Experimental Consolidada  
-**Principio Rector:** *Investigar usando TAKT para descubrir qué merece ser construido (de "building the lab" a "using the lab")*
+**Principio Rector:** *Investigar usando TAKT para descubrir qué merece ser construido (de "building the lab" a "using the lab")*  
+**Principio Epistemológico:** *La infraestructura es estable; el conocimiento es revisable.*  
 
 ---
 
