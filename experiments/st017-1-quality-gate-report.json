@@ -1,0 +1,157 @@
+{
+  "quality_gate_id": "QG-ST017.1-A",
+  "timestamp": "2026-07-31T08:33:15.811Z",
+  "corpus": {
+    "baseline": "ST-016 v1.0.0",
+    "specification_file": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md",
+    "total_lines_analyzed": 111,
+    "coverage": "100%"
+  },
+  "metrics": {
+    "total_statements": 75,
+    "missing_statements": 0,
+    "duplicate_candidates_count": 12,
+    "header_candidates_count": 11,
+    "granularity_review_candidates_count": 7
+  },
+  "findings": {
+    "duplicate_candidates": [
+      {
+        "id": "S-034",
+        "duplicate_of": "S-031",
+        "text": "+-------------------------------------------------------------+"
+      },
+      {
+        "id": "S-037",
+        "duplicate_of": "S-031",
+        "text": "+-------------------------------------------------------------+"
+      },
+      {
+        "id": "S-040",
+        "duplicate_of": "S-031",
+        "text": "+-------------------------------------------------------------+"
+      },
+      {
+        "id": "S-041",
+        "duplicate_of": "S-035",
+        "text": "|"
+      },
+      {
+        "id": "S-043",
+        "duplicate_of": "S-031",
+        "text": "+-------------------------------------------------------------+"
+      },
+      {
+        "id": "S-046",
+        "duplicate_of": "S-031",
+        "text": "+-------------------------------------------------------------+"
+      },
+      {
+        "id": "S-047",
+        "duplicate_of": "S-035",
+        "text": "|"
+      },
+      {
+        "id": "S-049",
+        "duplicate_of": "S-031",
+        "text": "+-------------------------------------------------------------+"
+      },
+      {
+        "id": "S-052",
+        "duplicate_of": "S-031",
+        "text": "+-------------------------------------------------------------+"
+      },
+      {
+        "id": "S-053",
+        "duplicate_of": "S-035",
+        "text": "|"
+      },
+      {
+        "id": "S-055",
+        "duplicate_of": "S-031",
+        "text": "+-------------------------------------------------------------+"
+      },
+      {
+        "id": "S-058",
+        "duplicate_of": "S-031",
+        "text": "+-------------------------------------------------------------+"
+      }
+    ],
+    "header_candidates": [
+      {
+        "id": "S-001",
+        "text": "# ST-016 Normative Runtime Specification & Architecture Contract"
+      },
+      {
+        "id": "S-002",
+        "text": "## Status"
+      },
+      {
+        "id": "S-004",
+        "text": "## 1. Purpose & Scope"
+      },
+      {
+        "id": "S-006",
+        "text": "### In-Scope Certification"
+      },
+      {
+        "id": "S-011",
+        "text": "### Out-of-Scope Details"
+      },
+      {
+        "id": "S-015",
+        "text": "## 2. Abstract Mathematical Model"
+      },
+      {
+        "id": "S-022",
+        "text": "## 3. Normative Capabilities & Mapping Matrix"
+      },
+      {
+        "id": "S-029",
+        "text": "## 4. End-to-End Validation Pipeline"
+      },
+      {
+        "id": "S-059",
+        "text": "## 5. Runtime Invariants"
+      },
+      {
+        "id": "S-067",
+        "text": "## 6. Conformance Criteria"
+      },
+      {
+        "id": "S-073",
+        "text": "## 7. ST-016 Freeze Declaration"
+      }
+    ],
+    "granularity_review_candidates": [
+      {
+        "id": "S-016",
+        "text": "A conforming TAKT Runtime is defined as a tuple $M = (\\mathcal{C}, \\pi_M)$, where:"
+      },
+      {
+        "id": "S-030",
+        "text": "The TAKT validation cycle bridges empirical runtime execution with machine-certified Lean 4 proofs:"
+      },
+      {
+        "id": "S-060",
+        "text": "Any conforming runtime MUST satisfy the following core invariants:"
+      },
+      {
+        "id": "S-061",
+        "text": "1. **Policy Preservation Invariant:**"
+      },
+      {
+        "id": "S-063",
+        "text": "2. **Capability Irreducibility Invariant:**"
+      },
+      {
+        "id": "S-065",
+        "text": "3. **Certifiable Witness Generation Invariant:**"
+      },
+      {
+        "id": "S-069",
+        "text": "> A software runtime implementation is declared **ST-016 Conforming** if and only if:"
+      }
+    ]
+  }
+}

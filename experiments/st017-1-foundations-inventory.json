@@ -1,0 +1,539 @@
+{
+  "corpus_freeze": {
+    "baseline": "ST-016 v1.0.0",
+    "specification_file": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md",
+    "total_lines_analyzed": 111,
+    "coverage": "100%"
+  },
+  "metrics": {
+    "total_statements_extracted": 75,
+    "total_documents_analyzed": 1
+  },
+  "statements": [
+    {
+      "id": "S-001",
+      "literal_text": "# ST-016 Normative Runtime Specification & Architecture Contract",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L1",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-002",
+      "literal_text": "## Status",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L3",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-003",
+      "literal_text": "**Frozen Specification** (v1.0) / ST-016 Conformance Reference Standard",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L4",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-004",
+      "literal_text": "## 1. Purpose & Scope",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L6",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-005",
+      "literal_text": "This normative document defines the formal compliance requirements for any software implementation of a **TAKT Governed Runtime**.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L8",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-006",
+      "literal_text": "### In-Scope Certification",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L10",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-007",
+      "literal_text": "* Formal mapping between theoretical capability kernels ($K_D$) and operational runtime components.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L11",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-008",
+      "literal_text": "* Mathematical definition of capability necessity, decision preservation, runtime sufficiency, and irreducibility.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L12",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-009",
+      "literal_text": "* Specification of the 3-layer empirical witness elevation pipeline (`WitnessArtifact` $\\to$ `WitnessConsistentWithRuntime` $\\to$ `NecessaryCapability`).",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L13",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-010",
+      "literal_text": "* Minimum compliance criteria for any language implementation (TypeScript reference, Rust, Python, etc.).",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L14",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-011",
+      "literal_text": "### Out-of-Scope Details",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L16",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-012",
+      "literal_text": "* Internal algorithmic data structures or database storage layer (e.g. SQLite, libsql).",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L17",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-013",
+      "literal_text": "* Language-specific serialization format (JSON, Protocol Buffers, FlatBuffers).",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L18",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-014",
+      "literal_text": "* Hardware or platform-specific execution constraints.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L19",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-015",
+      "literal_text": "## 2. Abstract Mathematical Model",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L23",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-016",
+      "literal_text": "A conforming TAKT Runtime is defined as a tuple $M = (\\mathcal{C}, \\pi_M)$, where:",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L25",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-017",
+      "literal_text": "* $\\mathcal{R}$ is the universe of observable state representations $R_t$.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L27",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-018",
+      "literal_text": "* $\\mathcal{D} = \\{\\text{EXECUTE}, \\text{REFINE}, \\text{STOP}, \\text{INTERVENE}\\}$ is the discrete decision domain.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L28",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-019",
+      "literal_text": "* $\\pi^* : \\mathcal{R} \\to \\mathcal{D}$ is the optimal theoretical policy under full information.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L29",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-020",
+      "literal_text": "* $\\mathcal{C}$ is a set of abstract runtime capabilities $\\mathcal{C} \\subseteq \\{C_{\\text{contract}}, C_{\\text{uncertainty}}, C_{\\text{temporal}}\\}$.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L30",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-021",
+      "literal_text": "* $\\pi_M : \\mathcal{R} \\to \\mathcal{D}$ is the operational policy enforced by runtime composition $M$.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L31",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-022",
+      "literal_text": "## 3. Normative Capabilities & Mapping Matrix",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L35",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-023",
+      "literal_text": "Every conforming TAKT Runtime MUST implement the three fundamental capability kernels $K_D = K_{\\text{contract}} \\cap K_{\\text{uncertainty}} \\cap K_{\\text{temporal}}$.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L37",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-024",
+      "literal_text": "| Abstract Capability | Responsibility | Reference Implementation (TypeScript) | Formal Module (Lean 4) | Empirical Witness Test (EXP-004) |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L39",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-025",
+      "literal_text": "| :--- | :--- | :--- | :--- | :--- |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L40",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-026",
+      "literal_text": "| **ContractSoundness** ($C_{\\text{contract}}$) | Verification of domain invariants & contract safety | [`ContractEvaluator.ts`](cli/src/runtime/ContractEvaluator.ts) | [`RuntimeSufficiency.lean`](takt-formal/TaktFormal/RuntimeSufficiency.lean) | [`contract.ablation.test.ts`](cli/src/runtime/__tests__/ablation/contract.ablation.test.ts) |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L41",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-027",
+      "literal_text": "| **UncertaintyBound** ($C_{\\text{uncertainty}}$) | Dynamic margin estimation ($M_D \\approx 0$) under ambiguity | [`RobustMarginEstimator.ts`](cli/src/runtime/RobustMarginEstimator.ts) | [`RuntimeSufficiency.lean`](takt-formal/TaktFormal/RuntimeSufficiency.lean) | [`uncertainty.ablation.test.ts`](cli/src/runtime/__tests__/ablation/uncertainty.ablation.test.ts) |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L42",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-028",
+      "literal_text": "| **TemporalConsistency** ($C_{\\text{temporal}}$) | History-dependent trajectory monitoring ($\\tau = (R_0, \\dots, R_t)$) | [`TrajectoryMonitor.ts`](cli/src/runtime/TrajectoryMonitor.ts) | [`RuntimeSufficiency.lean`](takt-formal/TaktFormal/RuntimeSufficiency.lean) | [`temporal.ablation.test.ts`](cli/src/runtime/__tests__/ablation/temporal.ablation.test.ts) |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L43",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-029",
+      "literal_text": "## 4. End-to-End Validation Pipeline",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L47",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-030",
+      "literal_text": "The TAKT validation cycle bridges empirical runtime execution with machine-certified Lean 4 proofs:",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L49",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-031",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L52",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-032",
+      "literal_text": "|                Formal Theory (ST-015 / ST-016)              |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L53",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-033",
+      "literal_text": "|                 takt-formal/TaktFormal/*.lean               |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L54",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-034",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L55",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-035",
+      "literal_text": "|",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L56",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-036",
+      "literal_text": "v  [Normative Contract]",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L57",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-037",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L58",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-038",
+      "literal_text": "|           TypeScript Reference Runtime Execution           |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L59",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-039",
+      "literal_text": "|                     cli/src/runtime/                        |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L60",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-040",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L61",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-041",
+      "literal_text": "|",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L62",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-042",
+      "literal_text": "v  [EXP-004 Ablation]",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L63",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-043",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L64",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-044",
+      "literal_text": "|               Witness Artifact Generation                   |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L65",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-045",
+      "literal_text": "|          cli/src/runtime/__tests__/ablation/                |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L66",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-046",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L67",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-047",
+      "literal_text": "|",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L68",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-048",
+      "literal_text": "v  [Bridge Adapter]",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L69",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-049",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L70",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-050",
+      "literal_text": "|          WitnessConsistentWithRuntime Verification          |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L71",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-051",
+      "literal_text": "|            takt-formal/TaktFormal/RuntimeWitness.lean       |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L72",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-052",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L73",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-053",
+      "literal_text": "|",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L74",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-054",
+      "literal_text": "v  [Elevation Theorem]",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L75",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-055",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L76",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-056",
+      "literal_text": "|              NecessaryCapability Certification               |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L77",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-057",
+      "literal_text": "|                      (0 errors, 0 sorrys)                   |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L78",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-058",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L79",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-059",
+      "literal_text": "## 5. Runtime Invariants",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L84",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-060",
+      "literal_text": "Any conforming runtime MUST satisfy the following core invariants:",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L86",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-061",
+      "literal_text": "1. **Policy Preservation Invariant:**",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L88",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-062",
+      "literal_text": "$$\\forall R \\in \\mathcal{R}: \\pi_{M_{\\text{full}}}(R) = \\pi^*(R)$$",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L89",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-063",
+      "literal_text": "2. **Capability Irreducibility Invariant:**",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L90",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-064",
+      "literal_text": "$$\\forall C_i \\in \\{C_{\\text{contract}}, C_{\\text{uncertainty}}, C_{\\text{temporal}}\\}, \\exists R_i \\in \\mathcal{R}: \\pi_{M_{\\text{full}}}(R_i) \\neq \\pi_{M_{\\text{full}} \\setminus \\{C_i\\}}(R_i)$$",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L91",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-065",
+      "literal_text": "3. **Certifiable Witness Generation Invariant:**",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L92",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-066",
+      "literal_text": "Every ablation test MUST produce a valid `WitnessArtifact` structure such that `WitnessConsistentWithRuntime M w` evaluates to `True` in Lean 4.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L93",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-067",
+      "literal_text": "## 6. Conformance Criteria",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L97",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-068",
+      "literal_text": "> **Definition (ST-016 Conforming Runtime):**",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L99",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-069",
+      "literal_text": "> A software runtime implementation is declared **ST-016 Conforming** if and only if:",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L100",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-070",
+      "literal_text": "> 1. It implements operational equivalents for $C_{\\text{contract}}$, $C_{\\text{uncertainty}}$, and $C_{\\text{temporal}}$.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L101",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-071",
+      "literal_text": "> 2. It produces empirical ablation witnesses $W_i$ for all three capabilities under its experimental domain.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L102",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-072",
+      "literal_text": "> 3. Its witness artifacts pass formal verification in Lean 4 via `validWitness_implies_necessity` with 0 `sorry`s.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L103",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-073",
+      "literal_text": "## 7. ST-016 Freeze Declaration",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L107",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-074",
+      "literal_text": "By order of this specification, **ST-016 is declared FROZEN**.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L109",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    },
+    {
+      "id": "S-075",
+      "literal_text": "No further modifications to the kernel capability definitions, 3-layer witness certification logic, or runtime compliance invariants shall be made without issuing a formal revision proposal (e.g. ST-016.1 or ST-017).",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L110",
+      "type_provisional": "UNCLASSIFIED",
+      "dependencies": []
+    }
+  ]
+}

@@ -1,0 +1,1325 @@
+{
+  "experiment_id": "ST-017.1-Phase-B",
+  "timestamp": "2026-07-31T09:05:40.884Z",
+  "metrics": {
+    "inventory_entries": 75,
+    "structural_entries": 23,
+    "semantic_statements": 52,
+    "taxonomy_counts": {
+      "Primitive": 2,
+      "Derived": 46,
+      "Definition": 1,
+      "OperationalAssumption": 3,
+      "OpenHypothesis": 0
+    }
+  },
+  "disjoint_partition_verified": true,
+  "dag": {
+    "nodes": [
+      {
+        "id": "S-001",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-002",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-003",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-004",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-005",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-006",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-007",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-008",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-009",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-010",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-011",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-012",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-013",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-014",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-015",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-016",
+        "eligibility": "Semantic",
+        "classification": "Definition",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-017",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-018",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-019",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-020",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-021",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-022",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-023",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-024",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-025",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-026",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-027",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-028",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-029",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-030",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-031",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-032",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-033",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-034",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-035",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-036",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-037",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-038",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-039",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-040",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-041",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-042",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-043",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-044",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-045",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-046",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-047",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-048",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-049",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-050",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-051",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-052",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-053",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-054",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-055",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-056",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-057",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-058",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-059",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-060",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-061",
+        "eligibility": "Semantic",
+        "classification": "Operational Assumption",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-062",
+        "eligibility": "Semantic",
+        "classification": "Primitive Axiom",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-063",
+        "eligibility": "Semantic",
+        "classification": "Operational Assumption",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-064",
+        "eligibility": "Semantic",
+        "classification": "Primitive Axiom",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-065",
+        "eligibility": "Semantic",
+        "classification": "Operational Assumption",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-066",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-067",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-068",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-069",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-070",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-071",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-072",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-073",
+        "eligibility": "Structural",
+        "classification": "NON_SEMANTIC_STRUCTURAL",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-074",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      },
+      {
+        "id": "S-075",
+        "eligibility": "Semantic",
+        "classification": "Derived Theorem",
+        "confidence": "CONFIRMED"
+      }
+    ],
+    "edges": [
+      {
+        "from": "S-060",
+        "to": "S-061",
+        "relation": "normative_constraint"
+      },
+      {
+        "from": "S-016",
+        "to": "S-062",
+        "relation": "defines_formal_bounds"
+      },
+      {
+        "from": "S-060",
+        "to": "S-063",
+        "relation": "normative_constraint"
+      },
+      {
+        "from": "S-016",
+        "to": "S-064",
+        "relation": "defines_formal_bounds"
+      },
+      {
+        "from": "S-060",
+        "to": "S-065",
+        "relation": "normative_constraint"
+      }
+    ]
+  },
+  "statements_classified": [
+    {
+      "id": "S-001",
+      "literal_text": "# ST-016 Normative Runtime Specification & Architecture Contract",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L1",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "Section header or title element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L1",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-002",
+      "literal_text": "## Status",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L3",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "Section header or title element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L3",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-003",
+      "literal_text": "**Frozen Specification** (v1.0) / ST-016 Conformance Reference Standard",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L4",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L4",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-004",
+      "literal_text": "## 1. Purpose & Scope",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L6",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "Section header or title element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L6",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-005",
+      "literal_text": "This normative document defines the formal compliance requirements for any software implementation of a **TAKT Governed Runtime**.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L8",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L8",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-006",
+      "literal_text": "### In-Scope Certification",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L10",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "Section header or title element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L10",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-007",
+      "literal_text": "* Formal mapping between theoretical capability kernels ($K_D$) and operational runtime components.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L11",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L11",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-008",
+      "literal_text": "* Mathematical definition of capability necessity, decision preservation, runtime sufficiency, and irreducibility.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L12",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L12",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-009",
+      "literal_text": "* Specification of the 3-layer empirical witness elevation pipeline (`WitnessArtifact` $\\to$ `WitnessConsistentWithRuntime` $\\to$ `NecessaryCapability`).",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L13",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L13",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-010",
+      "literal_text": "* Minimum compliance criteria for any language implementation (TypeScript reference, Rust, Python, etc.).",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L14",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L14",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-011",
+      "literal_text": "### Out-of-Scope Details",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L16",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "Section header or title element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L16",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-012",
+      "literal_text": "* Internal algorithmic data structures or database storage layer (e.g. SQLite, libsql).",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L17",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L17",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-013",
+      "literal_text": "* Language-specific serialization format (JSON, Protocol Buffers, FlatBuffers).",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L18",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L18",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-014",
+      "literal_text": "* Hardware or platform-specific execution constraints.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L19",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L19",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-015",
+      "literal_text": "## 2. Abstract Mathematical Model",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L23",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "Section header or title element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L23",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-016",
+      "literal_text": "A conforming TAKT Runtime is defined as a tuple $M = (\\mathcal{C}, \\pi_M)$, where:",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L25",
+      "eligibility": "Semantic",
+      "classification": "Definition",
+      "justification": "Establishes mathematical notation, tuple structure, or syntactic definition",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L25",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-017",
+      "literal_text": "* $\\mathcal{R}$ is the universe of observable state representations $R_t$.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L27",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L27",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-018",
+      "literal_text": "* $\\mathcal{D} = \\{\\text{EXECUTE}, \\text{REFINE}, \\text{STOP}, \\text{INTERVENE}\\}$ is the discrete decision domain.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L28",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L28",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-019",
+      "literal_text": "* $\\pi^* : \\mathcal{R} \\to \\mathcal{D}$ is the optimal theoretical policy under full information.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L29",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L29",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-020",
+      "literal_text": "* $\\mathcal{C}$ is a set of abstract runtime capabilities $\\mathcal{C} \\subseteq \\{C_{\\text{contract}}, C_{\\text{uncertainty}}, C_{\\text{temporal}}\\}$.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L30",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L30",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-021",
+      "literal_text": "* $\\pi_M : \\mathcal{R} \\to \\mathcal{D}$ is the operational policy enforced by runtime composition $M$.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L31",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L31",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-022",
+      "literal_text": "## 3. Normative Capabilities & Mapping Matrix",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L35",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "Section header or title element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L35",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-023",
+      "literal_text": "Every conforming TAKT Runtime MUST implement the three fundamental capability kernels $K_D = K_{\\text{contract}} \\cap K_{\\text{uncertainty}} \\cap K_{\\text{temporal}}$.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L37",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derivable property from core policy models",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L37",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-024",
+      "literal_text": "| Abstract Capability | Responsibility | Reference Implementation (TypeScript) | Formal Module (Lean 4) | Empirical Witness Test (EXP-004) |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L39",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L39",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-025",
+      "literal_text": "| :--- | :--- | :--- | :--- | :--- |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L40",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L40",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-026",
+      "literal_text": "| **ContractSoundness** ($C_{\\text{contract}}$) | Verification of domain invariants & contract safety | [`ContractEvaluator.ts`](cli/src/runtime/ContractEvaluator.ts) | [`RuntimeSufficiency.lean`](takt-formal/TaktFormal/RuntimeSufficiency.lean) | [`contract.ablation.test.ts`](cli/src/runtime/__tests__/ablation/contract.ablation.test.ts) |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L41",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L41",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-027",
+      "literal_text": "| **UncertaintyBound** ($C_{\\text{uncertainty}}$) | Dynamic margin estimation ($M_D \\approx 0$) under ambiguity | [`RobustMarginEstimator.ts`](cli/src/runtime/RobustMarginEstimator.ts) | [`RuntimeSufficiency.lean`](takt-formal/TaktFormal/RuntimeSufficiency.lean) | [`uncertainty.ablation.test.ts`](cli/src/runtime/__tests__/ablation/uncertainty.ablation.test.ts) |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L42",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L42",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-028",
+      "literal_text": "| **TemporalConsistency** ($C_{\\text{temporal}}$) | History-dependent trajectory monitoring ($\\tau = (R_0, \\dots, R_t)$) | [`TrajectoryMonitor.ts`](cli/src/runtime/TrajectoryMonitor.ts) | [`RuntimeSufficiency.lean`](takt-formal/TaktFormal/RuntimeSufficiency.lean) | [`temporal.ablation.test.ts`](cli/src/runtime/__tests__/ablation/temporal.ablation.test.ts) |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L43",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L43",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-029",
+      "literal_text": "## 4. End-to-End Validation Pipeline",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L47",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "Section header or title element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L47",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-030",
+      "literal_text": "The TAKT validation cycle bridges empirical runtime execution with machine-certified Lean 4 proofs:",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L49",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L49",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-031",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L52",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L52",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-032",
+      "literal_text": "|                Formal Theory (ST-015 / ST-016)              |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L53",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L53",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-033",
+      "literal_text": "|                 takt-formal/TaktFormal/*.lean               |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L54",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L54",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-034",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L55",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "ASCII table border / separation element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L55",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-035",
+      "literal_text": "|",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L56",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L56",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-036",
+      "literal_text": "v  [Normative Contract]",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L57",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L57",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-037",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L58",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "ASCII table border / separation element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L58",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-038",
+      "literal_text": "|           TypeScript Reference Runtime Execution           |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L59",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L59",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-039",
+      "literal_text": "|                     cli/src/runtime/                        |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L60",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L60",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-040",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L61",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "ASCII table border / separation element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L61",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-041",
+      "literal_text": "|",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L62",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "ASCII table border / separation element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L62",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-042",
+      "literal_text": "v  [EXP-004 Ablation]",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L63",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L63",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-043",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L64",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "ASCII table border / separation element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L64",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-044",
+      "literal_text": "|               Witness Artifact Generation                   |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L65",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L65",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-045",
+      "literal_text": "|          cli/src/runtime/__tests__/ablation/                |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L66",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L66",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-046",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L67",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "ASCII table border / separation element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L67",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-047",
+      "literal_text": "|",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L68",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "ASCII table border / separation element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L68",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-048",
+      "literal_text": "v  [Bridge Adapter]",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L69",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L69",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-049",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L70",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "ASCII table border / separation element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L70",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-050",
+      "literal_text": "|          WitnessConsistentWithRuntime Verification          |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L71",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L71",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-051",
+      "literal_text": "|            takt-formal/TaktFormal/RuntimeWitness.lean       |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L72",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L72",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-052",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L73",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "ASCII table border / separation element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L73",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-053",
+      "literal_text": "|",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L74",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "ASCII table border / separation element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L74",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-054",
+      "literal_text": "v  [Elevation Theorem]",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L75",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L75",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-055",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L76",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "ASCII table border / separation element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L76",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-056",
+      "literal_text": "|              NecessaryCapability Certification               |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L77",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L77",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-057",
+      "literal_text": "|                      (0 errors, 0 sorrys)                   |",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L78",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L78",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-058",
+      "literal_text": "+-------------------------------------------------------------+",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L79",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "ASCII table border / separation element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L79",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-059",
+      "literal_text": "## 5. Runtime Invariants",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L84",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "Section header or title element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L84",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-060",
+      "literal_text": "Any conforming runtime MUST satisfy the following core invariants:",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L86",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derivable property from core policy models",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L86",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-061",
+      "literal_text": "1. **Policy Preservation Invariant:**",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L88",
+      "eligibility": "Semantic",
+      "classification": "Operational Assumption",
+      "justification": "Normative requirement for conforming runtime execution (Level 3 Operational)",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L88",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-062",
+      "literal_text": "$$\\forall R \\in \\mathcal{R}: \\pi_{M_{\\text{full}}}(R) = \\pi^*(R)$$",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L89",
+      "eligibility": "Semantic",
+      "classification": "Primitive Axiom",
+      "justification": "Core mathematical formal statement bound in Lean 4 model",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L89",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-063",
+      "literal_text": "2. **Capability Irreducibility Invariant:**",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L90",
+      "eligibility": "Semantic",
+      "classification": "Operational Assumption",
+      "justification": "Normative requirement for conforming runtime execution (Level 3 Operational)",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L90",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-064",
+      "literal_text": "$$\\forall C_i \\in \\{C_{\\text{contract}}, C_{\\text{uncertainty}}, C_{\\text{temporal}}\\}, \\exists R_i \\in \\mathcal{R}: \\pi_{M_{\\text{full}}}(R_i) \\neq \\pi_{M_{\\text{full}} \\setminus \\{C_i\\}}(R_i)$$",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L91",
+      "eligibility": "Semantic",
+      "classification": "Primitive Axiom",
+      "justification": "Core mathematical formal statement bound in Lean 4 model",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L91",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-065",
+      "literal_text": "3. **Certifiable Witness Generation Invariant:**",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L92",
+      "eligibility": "Semantic",
+      "classification": "Operational Assumption",
+      "justification": "Normative requirement for conforming runtime execution (Level 3 Operational)",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L92",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-066",
+      "literal_text": "Every ablation test MUST produce a valid `WitnessArtifact` structure such that `WitnessConsistentWithRuntime M w` evaluates to `True` in Lean 4.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L93",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derivable property from core policy models",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L93",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-067",
+      "literal_text": "## 6. Conformance Criteria",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L97",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "Section header or title element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L97",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-068",
+      "literal_text": "> **Definition (ST-016 Conforming Runtime):**",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L99",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L99",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-069",
+      "literal_text": "> A software runtime implementation is declared **ST-016 Conforming** if and only if:",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L100",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L100",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-070",
+      "literal_text": "> 1. It implements operational equivalents for $C_{\\text{contract}}$, $C_{\\text{uncertainty}}$, and $C_{\\text{temporal}}$.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L101",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L101",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-071",
+      "literal_text": "> 2. It produces empirical ablation witnesses $W_i$ for all three capabilities under its experimental domain.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L102",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L102",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-072",
+      "literal_text": "> 3. Its witness artifacts pass formal verification in Lean 4 via `validWitness_implies_necessity` with 0 `sorry`s.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L103",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L103",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-073",
+      "literal_text": "## 7. ST-016 Freeze Declaration",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L107",
+      "eligibility": "Structural",
+      "classification": "NON_SEMANTIC_STRUCTURAL",
+      "justification": "Section header or title element",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L107",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-074",
+      "literal_text": "By order of this specification, **ST-016 is declared FROZEN**.",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L109",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L109",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    },
+    {
+      "id": "S-075",
+      "literal_text": "No further modifications to the kernel capability definitions, 3-layer witness certification logic, or runtime compliance invariants shall be made without issuing a formal revision proposal (e.g. ST-016.1 or ST-017).",
+      "location": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L110",
+      "eligibility": "Semantic",
+      "classification": "Derived Theorem",
+      "justification": "Derived descriptive or normative baseline claim",
+      "evidence_ref": "docs/superpowers/specs/2026-07-27-st016-normative-runtime-specification.md:L110",
+      "confidence": "CONFIRMED",
+      "timestamp": "2026-07-31T09:05:40.884Z"
+    }
+  ]
+}
